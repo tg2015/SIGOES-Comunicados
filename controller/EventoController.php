@@ -4,9 +4,22 @@
 class EventoController
 {
 
-
+private $post_ID;
 	public function __construct()
-	{/**..**/}
+	{
+		//Setear Categoria por defecto para Eventos
+		/**
+		 * @param  [int] $post_ID. Identificador de CPT evento.	
+		 * @return [type] Ninguno
+		 */
+		function default_category_evento($post_ID)
+		{	// el parametro '3' Corresponde term_id de eventos  que esta en la tabla wp_terms
+        	wp_set_post_categories($post_ID, 3 );  
+        }
+        	//Hook Para Establecer Categoria por Defecto cada vez que entre al menu de Eventos
+        	add_action( 'save_post', 'default_category_evento' );
+       	/**..**/
+	}
 
 ///Funcion para crear los Custom Type Post para Eventos.
 
@@ -58,17 +71,23 @@ public function EventoInit()
 						);
 			///Registrar Nuestro CTP (Custom Type Post)
 				register_post_type( 'evento', $args ); 
-		}/// fin Funcion ProyectoCTP
+
+		}/// fin Funcion EventoCTP
 
 		//Hook init para agregar CPT al menu de Administracion.
 		add_action( 'init', 'EventoCTP' );
+		//Remover La opcion de Modificar Categorias 	
+			function RemoverCategoriaEvento() 
+			{
+  			 remove_meta_box('categorydiv', 'evento', 'side');
+  			}
+			add_action( 'admin_menu', 'RemoverCategoriaEvento' );
+
+	}////fin Funcion EventoInit
 
 
-	}////fin Funcion ProyectoInit
-
-
-}//fin class ComunicadoController.
-//Instaciar la clase para que los Proyectos se Desplieguen en la Admin Bar
+}//fin class EventoController.
+//Instaciar la clase para que los Evento se Desplieguen en la Admin Bar
 $varMenu= new EventoController();
 $varMenu->EventoInit();
 ?>

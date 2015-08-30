@@ -4,9 +4,22 @@
 class ProyectoController
 {
 
-
+private $post_ID;
 	public function __construct()
-	{/**..**/}
+	{
+		//Setear Categoria por defecto para Proyectos
+		/**
+		 * @param  [int] $post_ID. Identificador de CPT proyecto.	
+		 * @return [type] Ninguno
+		 */
+		function default_category_proyecto($post_ID)
+		{	// el parametro '2' Corresponde term_id de proyectos  que esta en la tabla wp_terms
+        	wp_set_post_categories($post_ID, 2 );  
+        }
+        	//Hook Para Establecer Categoria por Defecto cada vez que entre al menu de Proyectos
+        	add_action( 'save_post', 'default_category_proyecto' );
+       	/**..**/
+	}
 
 ///Funcion para crear los Custom Type Post para Proyectos.
 
@@ -90,14 +103,34 @@ public function ProyectoInit()
 				}
 		add_filter('request', 'AgregarCPTMainFeed');
 
+		// Obligar Seleccionar Imgagen destacada*/
+		
+		//require_once(SIGOES_PLUGIN_DIR.'/includes/ImagenDestacada.php');
+		//ValidarImagen();//Funcion que se encuentra en el archivo requirido.
+		//Categoria por Proyecto
 
-
-
+		//Remover La opcion de Modificar Categorias 	
+			function RemoverCategoriaProyeto() 
+			{
+  			 remove_meta_box('categorydiv', 'proyecto', 'side');
+  			}
+			add_action( 'admin_menu', 'RemoverCategoriaProyeto' );
 	}////fin Funcion ProyectoInit
-//********************Fin Configuraciones extras*******************************************//
+/********************Fin Configuraciones extras*******************************************
+function SetCategoria(){
+function default_category_save($post_ID) {
+  
+  
+        wp_set_post_categories( $post_ID, 3 );  
+   
+
+}
+add_action( 'save_post', 'default_category_save' );
+}**/
 
 }//fin class ComunicadoController.
 //Instaciar la clase para que los Proyectos se Desplieguen en la Admin Bar
 $varMenu= new ProyectoController();
 $varMenu->ProyectoInit();
+//$varMenu->SetCategoria();
 ?>

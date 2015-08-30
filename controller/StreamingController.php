@@ -6,12 +6,25 @@ class StreamingController
 
 
 	public function __construct()
-	{/**..**/}
+	{
+		//Setear Categoria por defecto para Streaming
+		/**
+		 * @param  [int] $post_ID. Identificador de CPT streaming.	
+		 * @return [type] Ninguno
+		 */
+		function default_category_streaming($post_ID)
+		{	// el parametro '4' Corresponde term_id de eventos  que esta en la tabla wp_terms
+        	wp_set_post_categories($post_ID, 4 );  
+        }
+        	//Hook Para Establecer Categoria por Defecto cada vez que entre al menu de Streaming
+        	add_action( 'save_post', 'default_category_streaming' );
+       	/**..**/
+	}
 
-///Funcion para crear los Custom Type Post para Eventos.
+///Funcion para crear los Custom Type Post para Streaming.
 
 /**
- * Registrat post type Eventos.
+ * Registrat post type Streaming.
  *
  * @link http://codex.wordpress.org/Function_Reference/register_post_type
  */
@@ -58,17 +71,22 @@ public function StreamingInit()
 						);
 			///Registrar Nuestro CTP (Custom Type Post)
 				register_post_type( 'streaming', $args ); 
-		}/// fin Funcion ProyectoCTP
+		}/// fin Funcion StreamingCTP
 
 		//Hook init para agregar CPT al menu de Administracion.
 		add_action( 'init', 'StreamingCTP' );
+		//Remover La opcion de Modificar Categorias 
+			function RemoverCategoriaStreaming() 
+			{
+  			 remove_meta_box('categorydiv', 'streaming', 'side');
+  			}
+			add_action( 'admin_menu', 'RemoverCategoriaStreaming' );
+
+	}////fin Funcion StreamingInit
 
 
-	}////fin Funcion ProyectoInit
-
-
-}//fin class ComunicadoController.
-//Instaciar la clase para que los Proyectos se Desplieguen en la Admin Bar
+}//fin class StreamingController.
+//Instaciar la clase para que los Streaming se Desplieguen en la Admin Bar
 $varMenu= new StreamingController();
 $varMenu->StreamingInit();
 ?>
