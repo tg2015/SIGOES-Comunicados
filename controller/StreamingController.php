@@ -7,27 +7,21 @@ class StreamingController
 
 	public function __construct()
 	{
-		function default_category_save4($post_ID){
-			$_idCPT=0;
-			$_tipoCPT="";
-			$_idCPT=$post_ID;
-			$_tipoCPT=get_post_type( $post_ID );
-			echo '<br>';
-			 echo "CPT tipo: ".$_tipoCPT;
-			 echo '<br>';
-			 echo "CPT ID: ".$_idCPT;
-			 if ($_tipoCPT=="streaming") {
+		function default_category_save4($post_ID)
+		{
+			$_idCPT=0;//id CPT
+			$_tipoCPT="";// variable tipo CPT
+			$_idCPT=$post_ID;//Asignar id CPT
+			$_tipoCPT=get_post_type( $post_ID );//Obtener tipo CPT.
+			if ($_tipoCPT=="streaming") {
 			 	wp_set_post_categories($post_ID, 4 );
-			 	echo 'Cierto';
-			 }
-        
-
-    }
+			 } 
+	    }
         add_action( 'save_post', 'default_category_save4' );
 
 
 
-	/**..**/}
+	/**..**/}//Fin Constructor
 
 ///Funcion para crear los Custom Type Post para Eventos.
 
@@ -83,7 +77,6 @@ public function StreamingInit()
 
 		//Hook init para agregar CPT al menu de Administracion.
 		add_action( 'init', 'StreamingCTP' );
-
 
 	}////fin Funcion ProyectoInit
 

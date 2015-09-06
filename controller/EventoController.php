@@ -4,22 +4,18 @@
 class EventoController
 {
 
-private $post_ID;
+
 	public function __construct()
 	{
-function default_category_save3($post_ID){
-			$_idCPT=0;
-			$_tipoCPT="";
-			$_idCPT=$post_ID;
-			$_tipoCPT=get_post_type( $post_ID );
-			echo '<br>';
-			 echo "CPT tipo: ".$_tipoCPT;
-			 echo '<br>';
-			 echo "CPT ID: ".$_idCPT;
-			 if ($_tipoCPT=="evento") {
+function default_category_save3($post_ID)
+		{
+			$_idCPT=0;//id CPT
+			$_tipoCPT="";// variable tipo CPT
+			$_idCPT=$post_ID; //Asignar id CPT
+			$_tipoCPT=get_post_type( $post_ID );//Obtener tipo CPT.
+			if ($_tipoCPT=="evento") {
 			 	wp_set_post_categories($post_ID, 3 );
-			 	echo 'Cierto';
-			 }
+		}
         
 
     }
@@ -81,17 +77,6 @@ public function EventoInit()
 
 		//Hook init para agregar CPT al menu de Administracion.
 		add_action( 'init', 'EventoCTP' );
-
-
-
-
-
-		
-
-
-
-
-
 	}////fin Funcion ProyectoInit
 
 

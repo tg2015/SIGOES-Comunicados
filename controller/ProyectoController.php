@@ -4,23 +4,18 @@
 class ProyectoController
 {
 
-private $post_ID;
+
 	public function __construct()
 	{
 //$this->post_ID;
 //
 function default_category_save2($post_ID){
-			$_idCPT=0;
-			$_tipoCPT="";
-			$_idCPT=$post_ID;
-			$_tipoCPT=get_post_type( $post_ID );
-			echo '<br>';
-			 echo "CPT tipo: ".$_tipoCPT;
-			 echo '<br>';
-			 echo "CPT ID: ".$_idCPT;
-			 if ($_tipoCPT=="proyecto") {
+			$_idCPT=0;//id CPT
+			$_tipoCPT="";// variable tipo CPT
+			$_idCPT=$post_ID;//Asignar id CPT
+			$_tipoCPT=get_post_type( $post_ID );//Obtener tipo CPT.
+			if ($_tipoCPT=="proyecto") {
 			 	wp_set_post_categories($post_ID, 2);
-			 	echo 'Cierto';
 			 }
 
 
@@ -118,31 +113,26 @@ public function ProyectoInit()
 		
 		//require_once(SIGOES_PLUGIN_DIR.'/includes/ImagenDestacada.php');
 		//ValidarImagen();//Funcion que se encuentra en el archivo requirido.
-		//Categoria por Proyecto
-
-
-
-
-
-
-
-
+		
+		//Agregar los CPT al menu categorias
+		add_filter('pre_get_posts', 'query_post_type');
+			function query_post_type($query) {
+			  if(is_category() || is_tag()) {
+			    $post_type = get_query_var('post_type');
+				if($post_type)
+				    $post_type = $post_type;
+				else
+				    $post_type = array('post','proyecto','streaming','evento'); // replace cpt to your custom post type
+			    $query->set('post_type',$post_type);
+				return $query;
+			    }
+			}
 	}////fin Funcion ProyectoInit
-/********************Fin Configuraciones extras*******************************************
-function SetCategoria(){
-function default_category_save($post_ID) {
-  
-  
-        wp_set_post_categories( $post_ID, 2 );  
-   
+/********************Fin Configuraciones extras*******************************************/
 
-}
-add_action( 'save_post', 'default_category_save' );
-}**/
 
 }//fin class ComunicadoController.
 //Instaciar la clase para que los Proyectos se Desplieguen en la Admin Bar
 $varMenu= new ProyectoController();
 $varMenu->ProyectoInit();
-//arMenu->SetCategoria();
 ?>
