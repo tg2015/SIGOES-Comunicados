@@ -118,8 +118,8 @@ public function ProyectoInit()
 
 		// Obligar Seleccionar Imgagen destacada*/
 		
-		//require_once(SIGOES_PLUGIN_DIR.'/includes/ImagenDestacada.php');
-		//ValidarImagen();//Funcion que se encuentra en el archivo requirido.
+		require_once(SIGOES_PLUGIN_DIR.'/includes/ImagenDestacada.php');
+		ValidarImagen();//Funcion que se encuentra en el archivo requirido.
 		
 		//Agregar los CPT al menu categorias
 		add_filter('pre_get_posts', 'query_post_type');

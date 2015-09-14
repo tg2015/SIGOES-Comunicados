@@ -19,5 +19,8 @@ require_once(SIGOES_PLUGIN_DIR.'/controller/StreamingController.php');
 ///Para Imagen en Feed
 //require_once(SIGOES_PLUGIN_DIR.'/includes/postthumbnails.class.php');
 require_once(SIGOES_PLUGIN_DIR.'/includes/SoloUnaCategoria.php');
+//Configurar estado Comunicados
+require_once(SIGOES_PLUGIN_DIR.'/includes/EstadoComunicado.php');
+
 
 ?>
