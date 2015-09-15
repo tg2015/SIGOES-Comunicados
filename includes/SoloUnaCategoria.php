@@ -102,9 +102,4 @@ add_action('admin_init','categoria');
     Fin Agregar nuevos categorias
 ------------------------------------------------------------------------------------*/
 
-//Quitar status Cancelado cuando Agrege un nuevo Comunicado
-function EliminarCanceladoList() {
-    
-}// fin EliminarCanceladoList
-//add_action('admin_init','EliminarCanceladoList');
 ?>

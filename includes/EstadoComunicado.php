@@ -87,10 +87,10 @@ if( $post->post_type == 'proyecto' ||$post->post_type == 'evento' ||$post->post_
    }//Fin If ( $post->post_type == 'proyecto' )
 
 global $pagenow;
-    echo $pagenow;
+    //echo $pagenow;
 if ( in_array( $pagenow, array( 'post-new.php' ) ) )
     {
-      echo ">Entro post-new  ";
+      //echo ">Entro post-new  ";
      echo '
      <script>
      jQuery(document).ready(function($){

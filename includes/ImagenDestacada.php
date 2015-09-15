@@ -26,7 +26,7 @@ function wpds_thumbnail_error($post_id)
     $titulo=get_the_title( $post_id );
     if ( get_transient( "has_post_thumbnail" ) == "no" ) {
         echo "<div id='msjDestacada1' class='error'><p><strong>Debes establecer una Imagen Destacada al Proyecto: ".$titulo.".</strong></p>
-                <p>NOTA: El borrador automatico esta habilitado, pero no puedes publicarla aún</p></div>";
+                <p>NOTA: El borrador automatico esta habilitado, pero no puedes publicarla aún.</p></div>";
         
         delete_transient( "has_post_thumbnail" );
     }
