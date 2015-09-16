@@ -42,18 +42,12 @@ add_filter( 'display_post_states', 'jc_display_cancelado_state' );
 
 function jc_append_post_status_bulk_edit() {
     echo '
-
-    <script>
-
-    jQuery(document).ready(function($){
-
-    $(".inline-edit-status select ").append("<option value=\"cancelado\">Cancelado</option>");
-
-    });
-
-    </script>
-
-    ';
+     <script>
+     jQuery(document).ready(function($){
+     $("#bulk-action-selector-top").find("option[value=edit]").remove();  
+     });
+     </script>
+            ';
 
 }
 
