@@ -97,7 +97,7 @@ wp_insert_category($my_catOtros);
 
 
 }
-add_action('admin_init','categoria');
+//add_action('admin_init','categoria');
 /*------------------------------------------------------------------------------------
     Fin Agregar nuevos categorias
 ------------------------------------------------------------------------------------*/

@@ -70,7 +70,7 @@ if( $post->post_type == 'proyecto' ||$post->post_type == 'evento' ||$post->post_
         $complete = ' selected=\"selected\"';
         $label = '<span id=\"post-status-display\"> cancelado</span>';
     }
-
+    //echo "Boton Publicar Deshabilitado sino hay imagen destacada";
     echo '<script>
     jQuery(document).ready(function($){
         $("select#post_status").append("<option value=\"cancelado\" '.$complete.'>Cancelado</option>");

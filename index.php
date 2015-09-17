@@ -16,6 +16,7 @@ define('SIGOES_PLUGIN_DIR', plugin_dir_path(__FILE__));
 require_once(SIGOES_PLUGIN_DIR.'/controller/ProyectoController.php');
 require_once(SIGOES_PLUGIN_DIR.'/controller/EventoController.php');
 require_once(SIGOES_PLUGIN_DIR.'/controller/StreamingController.php');
+require_once(SIGOES_PLUGIN_DIR.'/controller/OtrosController.php');
 ///Para Imagen en Feed
 require_once(SIGOES_PLUGIN_DIR.'/includes/ImagenEnFeed.php');
 require_once(SIGOES_PLUGIN_DIR.'/includes/SoloUnaCategoria.php');

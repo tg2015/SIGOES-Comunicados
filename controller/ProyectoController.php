@@ -97,13 +97,13 @@ public function ProyectoInit()
 				 remove_menu_page('upload.php');//Remover Menu Medios.
 				 remove_menu_page('edit-comments.php');//Remover Menu Comentarios.
     	    	 remove_menu_page('edit.php'); //Remover Menu Entradas.
-    	    	 //remove_menu_page('edit-tags.php'); //Remover Menu categorias.
+    	    	 remove_menu_page('edit-tags.php'); //Remover Menu categorias.
     	    	 //Remover Categorias dentro de proyectos, eventos, streaming
-    	    	 //remove_submenu_page( 'edit.php?post_type=evento', 'edit-tags.php?taxonomy=category&amp;post_type=evento' );
-    	    	 //remove_submenu_page( 'edit.php?post_type=proyecto', 'edit-tags.php?taxonomy=category&amp;post_type=proyecto' );
-    	    	// remove_submenu_page( 'edit.php?post_type=streaming', 'edit-tags.php?taxonomy=category&amp;post_type=streaming' );
+    	    	 remove_submenu_page( 'edit.php?post_type=evento', 'edit-tags.php?taxonomy=category&amp;post_type=evento' );
+    	    	 remove_submenu_page( 'edit.php?post_type=proyecto', 'edit-tags.php?taxonomy=category&amp;post_type=proyecto' );
+    	    	 remove_submenu_page( 'edit.php?post_type=streaming', 'edit-tags.php?taxonomy=category&amp;post_type=streaming' );
     	    	 //NOTA FALTA OTROS
-    	    	 //remove_submenu_page( 'edit.php?post_type=otros', 'edit-tags.php?taxonomy=category&amp;post_type=otros' );
+    	    	 remove_submenu_page( 'edit.php?post_type=otros', 'edit-tags.php?taxonomy=category&amp;post_type=otros' );
 
     	    	}
 		add_action( 'admin_menu', 'RemoverMenuEntradasWP' ); 
@@ -111,7 +111,7 @@ public function ProyectoInit()
 		function AgregarCPTMainFeed($qv) 
 				{
 				 if (isset($qv['feed']) && !isset($qv['post_type']))
-				 $qv['post_type'] = array('proyecto', 'evento','streaming');//CPT creados
+				 $qv['post_type'] = array('proyecto', 'evento','streaming','otros');//CPT creados
 				 return $qv;
 				}
 		add_filter('request', 'AgregarCPTMainFeed');
@@ -129,7 +129,7 @@ public function ProyectoInit()
 				if($post_type)
 				    $post_type = $post_type;
 				else
-				    $post_type = array('post','proyecto','streaming','evento',); // replace cpt to your custom post type
+				    $post_type = array('post','proyecto','streaming','evento','otros'); // replace cpt to your custom post type
 			    $query->set('post_type',$post_type);
 				return $query;
 			    }

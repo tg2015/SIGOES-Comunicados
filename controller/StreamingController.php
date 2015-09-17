@@ -7,7 +7,7 @@ class StreamingController
 
 	public function __construct()
 	{
-		function default_category_save4($post_ID)
+		function default_category_save1($post_ID)
 		{
 			$_idCPT=0;//id CPT
 			$_tipoCPT="";// variable tipo CPT
