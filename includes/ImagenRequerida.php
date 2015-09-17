@@ -1,5 +1,5 @@
 <?php
-const proyectoConstante = array('proyecto');
+//const proyectoConstante = array('proyecto');
 //require_once('admin-options.php');
 function rfi_guard( $new_status, $old_status, $post ) {
     if ( $new_status === 'publish' 
@@ -11,11 +11,11 @@ function rfi_guard( $new_status, $old_status, $post ) {
 add_action( 'admin_enqueue_scripts', 'rfi_enqueue_edit_screen_js' );
 function rfi_enqueue_edit_screen_js( $hook ) {
     global $post;
-    //$postProyecto=['proyecto'];
+    $postProyecto1=['proyecto'];
 	if ( $hook !== 'post.php' && $hook !== 'post-new.php' )
         return;
                                     //rfi_return_post_types()
-    if ( in_array( $post->post_type, proyectoConstante ) ) {
+    if ( in_array( $post->post_type, $postProyecto1 ) ) {
         wp_register_script( 'rfi-admin-js', plugins_url('SIGOES-Comunicados/includes/js/ImagenRequerida.js'), array( 'jquery' ) );
         wp_enqueue_script( 'rfi-admin-js' );
         wp_localize_script(
@@ -40,8 +40,9 @@ function rfi_enforcement_start_time() {
 }
 
 function rfi_should_let_post_publish( $post ) {
+    $postProyecto2=['proyecto'];
     $has_featured_image = has_post_thumbnail( $post->ID );
-    $is_watched_post_type = in_array( $post->post_type, proyectoConstante );
+    $is_watched_post_type = in_array( $post->post_type, $postProyecto2 );
     $is_after_enforcement_time = strtotime( $post->post_date ) > rfi_enforcement_start_time();
     
     if ( $is_after_enforcement_time && $is_watched_post_type ) {
