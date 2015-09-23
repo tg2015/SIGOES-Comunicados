@@ -20,6 +20,14 @@ echo '<style type="text/css">#category-add-toggle {
     visibility: hidden;
 }
     </style>';
+
+      ///Ocultar div de Autor.  
+    echo '<style type="text/css">
+    #authordiv {
+    display: none;
+    visibility: hidden;
+}
+    </style>';
 //Ocultar check categoria
 echo '<style type="text/css">
     #categorydiv-hide {
@@ -36,6 +44,31 @@ echo '<style type="text/css">
     </style>';
 
 
+//requiridos
+/* style all input elements with a required attribute */
+echo '<style type="text/css">
+input:required {
+  box-shadow: 4px 4px 20px rgba(200, 0, 0, 0.85);
+}
+
+/**
+ * style input elements that have a required
+ * attribute and a focus state
+ */
+input:required:focus {
+  border: 1px solid red;
+  outline: none;
+}
+
+/**
+ * style input elements that have a required
+ * attribute and a hover state
+ */
+input:required:hover {
+  opacity: 1;
+}
+ </style>';
+//
 }//Fin customAdminCSS
 add_action('admin_head', 'customAdminCSS');
 
@@ -102,4 +135,16 @@ wp_insert_category($my_catOtros);
     Fin Agregar nuevos categorias
 ------------------------------------------------------------------------------------*/
 
+
+
+ 
+
+function add_custom_fields_to_rss() {
+    if(get_post_type() == 'proyecto' && $my_meta_value = get_post_meta(get_the_ID(), 'orden1', true)) {
+        ?>
+        <orden1><?php echo $my_meta_value ?></orden1>
+        <?php
+    }
+}
+add_action('rss2_item', 'add_custom_fields_to_rss');
 ?>

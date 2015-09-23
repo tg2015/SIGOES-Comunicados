@@ -17,11 +17,15 @@ jQuery(document).ready(function($) {
 		$('#nofeature-message').addClass("error")
 			.html('<p>'+objectL10n.jsWarningHtml+'</p>');
 		$('#publish').attr('disabled','disabled');
+		//alert('error');
+		//jQuery(':input#publish').attr('value', '* No se Puede Publicar');
 	}
 
 	function clearWarningAndEnablePublish() {
 		$('#nofeature-message').remove();
 		$('#publish').removeAttr('disabled');
+		//jQuery(':input#publish').attr('value', 'Publicar');
+
 	}
 
 	function createMessageAreaIfNeeded() {

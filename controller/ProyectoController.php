@@ -70,7 +70,7 @@ public function ProyectoInit()
 			'has_archive'        => true,
 			'hierarchical'       => false,
 			'menu_position'      => null,
-			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'category' ),
+			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'category'/*,'custom-fields'*/ ),
 			'taxonomies' => array( 'category'),
 			'menu_icon' => 'dashicons-groups'
 						);
