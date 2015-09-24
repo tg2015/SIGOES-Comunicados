@@ -14,10 +14,14 @@ class StreamingController
 			$_idCPT=$post_ID;//Asignar id CPT
 			$_tipoCPT=get_post_type( $post_ID );//Obtener tipo CPT.
 			if ($_tipoCPT=="streaming") {
-			 	wp_set_post_categories($post_ID, 4 );
+				//Obtener Dinamicamente id Categoria Eventos 
+				global $wpdb;
+				$WP_term_id1 = $wpdb->get_row( "SELECT term_id FROM $wpdb->terms WHERE slug = 'streaming'", ARRAY_N );
+				$ID_CategoriaStreaming=(int)$WP_term_id1[0];
+			 	wp_set_post_categories($post_ID, $ID_CategoriaStreaming );			 	
 			 } 
 	    }
-        add_action( 'save_post', 'default_category_save4' );
+        add_action( 'save_post', 'default_category_save1' );
 
 
 

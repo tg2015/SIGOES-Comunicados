@@ -14,7 +14,11 @@ function default_category_save4($post_ID)
 			$_idCPT=$post_ID; //Asignar id CPT
 			$_tipoCPT=get_post_type( $post_ID );//Obtener tipo CPT.
 			if ($_tipoCPT=="otros") {
-			 	wp_set_post_categories($post_ID, 21 );
+				//Obtener Dinamicamente id Categoria Eventos 
+				global $wpdb;
+				$WP_term_id4 = $wpdb->get_row( "SELECT term_id FROM $wpdb->terms WHERE slug = 'otros'", ARRAY_N );
+				$ID_CategoriaOtros=(int)$WP_term_id4[0];
+			 	wp_set_post_categories($post_ID, $ID_CategoriaOtros );			 	
 		}
         
 

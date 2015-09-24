@@ -15,7 +15,12 @@ function default_category_save2($post_ID){
 			$_idCPT=$post_ID;//Asignar id CPT
 			$_tipoCPT=get_post_type( $post_ID );//Obtener tipo CPT.
 			if ($_tipoCPT=="proyecto") {
-			 	wp_set_post_categories($post_ID, 2);
+				//Obtener Dinamicamente id Categoria Proyectos 
+				global $wpdb;
+				$WP_term_id = $wpdb->get_row( "SELECT term_id FROM $wpdb->terms WHERE slug = 'proyectos'", ARRAY_N );
+				$ID_CategoriaProyectos=(int)$WP_term_id[0];
+			 	wp_set_post_categories($post_ID, $ID_CategoriaProyectos);
+
 			 }
 
 

@@ -14,7 +14,11 @@ function default_category_save3($post_ID)
 			$_idCPT=$post_ID; //Asignar id CPT
 			$_tipoCPT=get_post_type( $post_ID );//Obtener tipo CPT.
 			if ($_tipoCPT=="evento") {
-			 	wp_set_post_categories($post_ID, 3 );
+				//Obtener Dinamicamente id Categoria Eventos 
+				global $wpdb;
+				$WP_term_id3 = $wpdb->get_row( "SELECT term_id FROM $wpdb->terms WHERE slug = 'eventos'", ARRAY_N );
+				$ID_CategoriaEventos=(int)$WP_term_id3[0];
+			 	wp_set_post_categories($post_ID, $ID_CategoriaEventos );
 		}
         
 
