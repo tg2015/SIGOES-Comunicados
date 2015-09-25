@@ -14,7 +14,7 @@ class StreamingController
 			$_idCPT=$post_ID;//Asignar id CPT
 			$_tipoCPT=get_post_type( $post_ID );//Obtener tipo CPT.
 			if ($_tipoCPT=="streaming") {
-				//Obtener Dinamicamente id Categoria Eventos 
+				//Obtener Dinamicamente id Categoria Streaming 
 				global $wpdb;
 				$WP_term_id1 = $wpdb->get_row( "SELECT term_id FROM $wpdb->terms WHERE slug = 'streaming'", ARRAY_N );
 				$ID_CategoriaStreaming=(int)$WP_term_id1[0];

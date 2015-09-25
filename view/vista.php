@@ -7,7 +7,7 @@ Version: 1.0
 Author: Equipo de desarrollo SIGOES
 Author URI: http://modulos.egob.sv
 Text Domain: SIGOES-Comunicados
- */
+
 
 
 //Ruta relatica del Plugin SIGOES-Comunicados
@@ -25,8 +25,6 @@ require_once(SIGOES_PLUGIN_DIR.'/includes/ImagenEnFeed.php');
 require_once(SIGOES_PLUGIN_DIR.'/includes/EstadoComunicado.php');
 //Configurar imagen
 require_once(SIGOES_PLUGIN_DIR.'/includes/ImagenRequerida.php');
-//Ordenar Comunicados
-require_once(SIGOES_PLUGIN_DIR.'/includes/OrdenarComunicado.php');
-
+ */
 
 ?>

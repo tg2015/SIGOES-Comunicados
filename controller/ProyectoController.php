@@ -139,6 +139,7 @@ public function ProyectoInit()
 				return $query;
 			    }
 			}
+
 	}////fin Funcion ProyectoInit
 /********************Fin Configuraciones extras*******************************************/
 
