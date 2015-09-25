@@ -98,31 +98,31 @@ function remove_row_actions( $actions, $post )
 ------------------------------------------------------------------------------------*/
 //Definir las categorias de Los Comunicados
 function categoria(){
-$my_catProyecto = array('cat_name' => 'proyectos2', 
+$my_catProyecto = array('cat_name' => 'proyectos', 
     'category_description' => 'Proyectos sociales de CAPRES',
-     'category_nicename' => 'proyectos2',
+     'category_nicename' => 'proyectos',
       'category_parent' => '');
 
 // Create the category
 wp_insert_category($my_catProyecto);
 
-$my_catEventos = array('cat_name' => 'eventos2', 
+$my_catEventos = array('cat_name' => 'eventos', 
     'category_description' => 'Eventos de emergencias que ocurren en El Salvador',
-     'category_nicename' => 'eventos2',
+     'category_nicename' => 'eventos',
       'category_parent' => '');
 // Create the category
 wp_insert_category($my_catEventos);
 
-$my_catStreaming = array('cat_name' => 'streaming2', 
+$my_catStreaming = array('cat_name' => 'streaming', 
     'category_description' => 'Transmisión de vídeo en vivo de Streaming',
-     'category_nicename' => 'streaming2',
+     'category_nicename' => 'streaming',
       'category_parent' => '');
 // Create the category
 wp_insert_category($my_catStreaming);
 
-$my_catOtros = array('cat_name' => 'otros2', 
+$my_catOtros = array('cat_name' => 'otros', 
     'category_description' => 'Otro tipos de comunicados de CAPRES',
-     'category_nicename' => 'otros2',
+     'category_nicename' => 'otros',
       'category_parent' => '');
 
 // Create the category
@@ -130,7 +130,7 @@ wp_insert_category($my_catOtros);
 
 
 }
-//add_action('admin_init','categoria');
+add_action('admin_init','categoria');
 /*------------------------------------------------------------------------------------
     Fin Agregar nuevos categorias
 ------------------------------------------------------------------------------------*/
