@@ -6,7 +6,7 @@ function rfi_guard( $new_status, $old_status, $post ) {
         && !rfi_should_let_post_publish( $post ) ) {
       // wp_die('Error, Debes establecer una Imagen Destacada.', 'Error',  array( 'response' => 500, 'back_link' => true ));
        //wp_die( __( 'Imagen destacada requerida para cambiar Estado.', 'require-featured-image' ) );
-         wp_die( __( 'You cannot publish without a featured image.', 'require-featured-image' ) );
+         wp_die( __( 'Debes establecer una Imagen Destacada.', 'require-featured-image' ) );
      }
 }
 add_action( 'admin_enqueue_scripts', 'rfi_enqueue_edit_screen_js' );
@@ -23,7 +23,7 @@ function rfi_enqueue_edit_screen_js( $hook ) {
             'rfi-admin-js',
             'objectL10n',
             array(
-                'jsWarningHtml' => __( '<strong>This entry has no featured image.</strong> Please set one. You need to set a featured image before publishing.', 'require-featured-image' ),
+                'jsWarningHtml' => __( '<strong>El Proyecto no Tiene Imagen Requerida.</strong>. Es necesario asignarle una para publicar en Proyecto.', 'require-featured-image' ),
             )
         );
     }

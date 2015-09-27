@@ -14,11 +14,13 @@ function default_category_save4($post_ID)
 			$_idCPT=$post_ID; //Asignar id CPT
 			$_tipoCPT=get_post_type( $post_ID );//Obtener tipo CPT.
 			if ($_tipoCPT=="otros") {
-				//Obtener Dinamicamente id Categoria Eventos 
-				global $wpdb;
-				$WP_term_id4 = $wpdb->get_row( "SELECT term_id FROM $wpdb->terms WHERE slug = 'otros'", ARRAY_N );
-				$ID_CategoriaOtros=(int)$WP_term_id4[0];
-			 	wp_set_post_categories($post_ID, $ID_CategoriaOtros );			 	
+				//Obtener Dinamicamente id Categoria otros 
+				require_once(SIGOES_PLUGIN_DIR.'/model/ComunicadoModel.php');//Modelo Para comunicados
+  				$model = new  ComunicadoModel(); //Instanciar La clase ComunicadoModel
+  				$resultado = $model->get_Categoria("otros");//Obtener el Id de la categoria "otros"
+				wp_set_post_categories($post_ID, $resultado);//Asignar Categoria Automaticamente a otros nuevo
+
+
 		}
         
 

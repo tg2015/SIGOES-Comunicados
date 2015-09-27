@@ -15,10 +15,10 @@ class StreamingController
 			$_tipoCPT=get_post_type( $post_ID );//Obtener tipo CPT.
 			if ($_tipoCPT=="streaming") {
 				//Obtener Dinamicamente id Categoria Streaming 
-				global $wpdb;
-				$WP_term_id1 = $wpdb->get_row( "SELECT term_id FROM $wpdb->terms WHERE slug = 'streaming'", ARRAY_N );
-				$ID_CategoriaStreaming=(int)$WP_term_id1[0];
-			 	wp_set_post_categories($post_ID, $ID_CategoriaStreaming );			 	
+				require_once(SIGOES_PLUGIN_DIR.'/model/ComunicadoModel.php');//Modelo Para comunicados
+  				$model = new  ComunicadoModel(); //Instanciar La clase ComunicadoModel
+  				$resultado = $model->get_Categoria("streaming");//Obtener el Id de la categoria "streaming"
+				wp_set_post_categories($post_ID, $resultado);//Asignar Categoria Automaticamente a streaming nuevo			 	
 			 } 
 	    }
         add_action( 'save_post', 'default_category_save1' );

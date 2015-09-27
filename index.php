@@ -27,6 +27,14 @@ require_once(SIGOES_PLUGIN_DIR.'/includes/EstadoComunicado.php');
 require_once(SIGOES_PLUGIN_DIR.'/includes/ImagenRequerida.php');
 //Ordenar Comunicados
 require_once(SIGOES_PLUGIN_DIR.'/includes/OrdenarComunicado.php');
+/*Espacio para los Includes de Rafel Romero*/
+//require_once(SIGOES_PLUGIN_DIR.'/controller/NombreArchivo.php');
 
 
+/*Espacio para los Includes de Gabriel Lopez*/
+//require_once(SIGOES_PLUGIN_DIR.'/controller/NombreArchivo.php');
+
+/**
+ *OJO NO AGREGAR CARACTERES (esto incluye caracteres especiales )DESPUES DE ETIQUETA ?>
+**/
 ?>

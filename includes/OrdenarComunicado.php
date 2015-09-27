@@ -475,7 +475,7 @@ add_filter('posts_orderby', 'CPTOrderPosts2');
     function CPTOrderPosts2($orderBy) 
         {
         $orderBy = "wp_posts.menu_order, wp_posts.post_date DESC";
-         return($orderBy);
+         return $orderBy;
         }   
         
 ///

@@ -16,11 +16,10 @@ function default_category_save2($post_ID){
 			$_tipoCPT=get_post_type( $post_ID );//Obtener tipo CPT.
 			if ($_tipoCPT=="proyecto") {
 				//Obtener Dinamicamente id Categoria Proyectos 
-				global $wpdb;
-				$WP_term_id = $wpdb->get_row( "SELECT term_id FROM $wpdb->terms WHERE slug = 'proyectos'", ARRAY_N );
-				$ID_CategoriaProyectos=(int)$WP_term_id[0];
-			 	wp_set_post_categories($post_ID, $ID_CategoriaProyectos);
-
+				require_once(SIGOES_PLUGIN_DIR.'/model/ComunicadoModel.php');//Modelo Para comunicados
+  				$model = new  ComunicadoModel(); //Instanciar La clase ComunicadoModel
+  				$resultado = $model->get_Categoria("proyectos");//Obtener el Id de la categoria "proyectos"
+				wp_set_post_categories($post_ID, $resultado);//Asignar Categoria Automaticamente a proyecto nuevo
 			 }
 
 
