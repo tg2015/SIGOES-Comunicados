@@ -72,9 +72,6 @@ input:required:hover {
 }//Fin customAdminCSS
 add_action('admin_head', 'customAdminCSS');
 
-
-
-/* Pruebas*/
 /*------------------------------------------------------------------------------------
     Remover edicion rapida los comunicados
 ------------------------------------------------------------------------------------*/
@@ -94,7 +91,7 @@ function remove_row_actions( $actions, $post )
 
 
 /*------------------------------------------------------------------------------------
-    Agregar nuevos categorias
+    Agregar nuevas categorias
 ------------------------------------------------------------------------------------*/
 //Definir las categorias de Los Comunicados
 function categoria(){
@@ -134,17 +131,4 @@ add_action('admin_init','categoria');
 /*------------------------------------------------------------------------------------
     Fin Agregar nuevos categorias
 ------------------------------------------------------------------------------------*/
-
-
-
- 
-
-function add_custom_fields_to_rss() {
-    if(get_post_type() == 'proyecto' && $my_meta_value = get_post_meta(get_the_ID(), 'orden1', true)) {
-        ?>
-        <orden1><?php echo $my_meta_value ?></orden1>
-        <?php
-    }
-}
-add_action('rss2_item', 'add_custom_fields_to_rss');
 ?>

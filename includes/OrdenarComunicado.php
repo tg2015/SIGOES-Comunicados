@@ -1,7 +1,4 @@
 <?php
-//define('SCPORDER_URL', plugins_url('', __FILE__));
-//define('SCPORDER_DIR', plugin_dir_path(__FILE__));
-   
 $scporder = new SCPO_Engine();
 
 class SCPO_Engine {
@@ -10,7 +7,6 @@ class SCPO_Engine {
         if (!get_option('scporder_install'))
             $this->scporder_install();
 
-       // add_action('admin_menu', array($this, 'admin_menu'));
 
         add_action('admin_init', array($this, 'refresh'));
 
@@ -45,15 +41,7 @@ class SCPO_Engine {
         update_option('scporder_install', 1);
     }
 
-    function admin_menu() {
-     //   add_options_page(__('SCPOrder', 'scporder'), __('SCPOrder', 'scporder'), 'manage_options', 'scporder-settings', array($this, 'admin_page'));
-    }
-
-    function admin_page() {
-       // require SCPORDER_DIR . 'settings.php';
-    }
-
-    function _check_load_script_css() {
+     function _check_load_script_css() {
         $active = false;
 
         $objects = $this->get_scporder_options_objects();

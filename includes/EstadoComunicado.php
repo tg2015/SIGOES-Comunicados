@@ -38,9 +38,9 @@ add_filter( 'display_post_states', 'jc_display_cancelado_state' );
 
 
 
-/* Agregar estado cancelado en in line edit dropdown */
-
+/* Css Para el estado Cancelado */
 function jc_append_post_status_bulk_edit() {
+    //Eliminar  Editar de la Lista de Acciones en lote 
     echo '
      <script>
      jQuery(document).ready(function($){
@@ -48,7 +48,12 @@ function jc_append_post_status_bulk_edit() {
      });
      </script>
             ';
-
+//Agregar al inline edit estado "cancelado" 
+echo "<script>
+  jQuery(document).ready( function() {
+    jQuery( 'select[name=\"_status\"]' ).append( '<option value=\"cancelado\">Cancelado</option>' );
+  });
+  </script>";
 }
 
 add_action( 'admin_footer-edit.php', 'jc_append_post_status_bulk_edit' );

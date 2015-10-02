@@ -1,6 +1,4 @@
 <?php
-//const proyectoConstante = array('proyecto');
-//require_once('admin-options.php');
 function rfi_guard( $new_status, $old_status, $post ) {
     if ( $new_status === 'publish' 
         && !rfi_should_let_post_publish( $post ) ) {
