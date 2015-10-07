@@ -32,7 +32,7 @@ require_once(SIGOES_PLUGIN_DIR.'/includes/ImagenRequerida.php');
 
 
 /*Espacio para los Includes de Gabriel Lopez*/
-//require_once(SIGOES_PLUGIN_DIR.'/controller/NombreArchivo.php');
+require_once(SIGOES_PLUGIN_DIR.'/includes/ValidacionComunicado.php');
 
 /**
  *OJO NO AGREGAR CARACTERES (esto incluye caracteres especiales )DESPUES DE ETIQUETA ?>
