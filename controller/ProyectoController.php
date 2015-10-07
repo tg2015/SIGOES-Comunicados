@@ -125,7 +125,7 @@ public function ProyectoInit()
 		require_once(SIGOES_PLUGIN_DIR.'/includes/ImagenDestacada.php');
 		ValidarImagen();//Funcion que se encuentra en el archivo requirido.
 		
-		//Agregar los CPT al menu categorias
+		//Agregar los CPT al menu categorias en la parte publica de wordpress
 		add_filter('pre_get_posts', 'query_post_type');
 			function query_post_type($query) {
 			  if(is_category() || is_tag()) {
@@ -138,6 +138,13 @@ public function ProyectoInit()
 				return $query;
 			    }
 			}
+
+		require_once(SIGOES_PLUGIN_DIR.'/view/ComunicadoVista.php');
+		$varAyudaProyecto= new ComunicadoVista();
+		$varAyudaProyecto->RenderAyudaComunicado( );//Funcion que se encuentra en el archivo requirido.
+
+		require_once(SIGOES_PLUGIN_DIR.'/model/OrdenarComunicadoModel.php');
+		$scporder = new OrdenarComunicadoModel();
 
 	}////fin Funcion ProyectoInit
 /********************Fin Configuraciones extras*******************************************/
