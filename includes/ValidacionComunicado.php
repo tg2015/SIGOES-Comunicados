@@ -22,10 +22,9 @@ function my_action_callback() {
     $titulo2=$titulo;
 	//$titulo += ' PHP';
         echo $titulo;    
-
-$whatever = intval( $_POST['whatever'] );
+	$whatever = intval( $_POST['whatever'] );
 	$whatever += 100;
-        echo $whatever;
+    echo $whatever;
 
 
 	wp_die();
