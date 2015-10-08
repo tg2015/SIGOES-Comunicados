@@ -28,6 +28,10 @@ require_once(SIGOES_PLUGIN_DIR.'/includes/ImagenRequerida.php');
 //Ordenar Comunicados
 //require_once(SIGOES_PLUGIN_DIR.'/includes/OrdenarComunicado.php');
 /*Espacio para los Includes de Rafel Romero*/
+require_once(SIGOES_PLUGIN_DIR.'/includes/GenerarReportes.php');
+require_once(SIGOES_PLUGIN_DIR.'/view/ReporteView.php');
+require_once(SIGOES_PLUGIN_DIR.'/controller/ReporteController.php');
+//require_once(SIGOES_PLUGIN_DIR.'/controller/ReportePDF.php');
 //require_once(SIGOES_PLUGIN_DIR.'/controller/NombreArchivo.php');
 
 
