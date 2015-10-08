@@ -1,0 +1,13 @@
+{
+	"folders":
+	[
+		{
+			"path": "/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados"
+		}
+	],
+"settings": {
+        "xdebug": {
+             "url": "http://172.16.0.109/wordpress/wp-admin/post-new.php?post_type=evento"
+        }
+    }
+}
