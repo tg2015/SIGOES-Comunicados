@@ -7,16 +7,16 @@ var tituloTemp=jQuery.trim(jQuery('#title').val());
 var data = {
 		'action': 'my_action',
 		'whatever': ajax_object.we_value,      // We pass php values differently!
-		'titulo' :ajax_object.titulo+tituloTemp     // We pass php values differently!
+		'titulo' :tituloTemp     // We pass php values differently!
 	};
 
 if (ajax_object.we_value==1) {
-	alert('vale: 1 ');
+	//alert('vale: 1 ');
 	console.log(ajax_object.we_value);
 };
 
 		if(($title_value == 0 && $title_value != " ")|| ajax_object.we_value==1){
-			alert('Please insert title');
+			//alert('Please insert title');
 			jQuery('.spinner').css("visibility", "hidden");
 			jQuery('#title').focus();
 			return false;

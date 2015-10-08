@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"pu",
+				"public"
+			],
+			[
+				"glo",
+				"global"
+			],
+			[
+				"in",
+				"intval"
+			],
+			[
+				"co",
+				"correcion"
+			],
+			[
+				"fo",
+				"foo"
+			],
+			[
 				"ti",
 				"tituloTemp"
 			],
@@ -189,10 +209,10 @@
 			}
 		},
 		{
-			"contents": "=> /var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/ValidacionComunicado.php\n	|+| 2\n	|+| 4\n	|+| 5\n	|+| 9\n	|+| 12\n	|+| 17\n	|+| 18\n	|+| 19\n	|+| 24\n	|+| 26\n	|+| 27\n",
+			"contents": "=> /var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/ValidacionComunicado.php\n	|+| 32\n	|+| 33\n	|+| 35\n	|+| 37\n	|+| 47\n	|+| 50\n	|+| 51\n	|+| 55\n	|+| 56\n	|+| 60\n	|+| 61\n	|+| 62\n",
 			"settings":
 			{
-				"buffer_size": 178,
+				"buffer_size": 190,
 				"line_ending": "Unix",
 				"name": "Xdebug Breakpoint",
 				"read_only": true,
@@ -228,9 +248,17 @@
 	},
 	"file_history":
 	[
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/EstadoComunicado.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/OrdenarComunicado.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/js/ValidacionComunicado.js",
 		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/ValidacionComunicado.php",
 		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/index.php",
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/js/ValidacionComunicado.js",
+		"/var/www/wordpress/wp-settings.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/controller/EventoController.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/ImagenRequerida.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/ImagenEnFeed.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/ImagenDestacada.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/js/taxonomy_order.js",
 		"/home/abarcawill/Dropbox/TG_2015/Shared/William/Desarrollo/SIGOES-Comunicados-07-10-15-Antes-Rafa/includes/js/ValidacionComunicado.js",
 		"/home/abarcawill/Dropbox/TG_2015/Shared/William/Desarrollo/SIGOES-Comunicados-07-10-15-Antes-Rafa/includes/ValidacionComunicado.php",
 		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/SIGOES-Comunicados.sublime-project",
@@ -239,7 +267,6 @@
 		"/var/www/wordpress/wp-admin/includes/template.php",
 		"/var/www/wordpress/wp-content/themes/RedSV/framework/meta-box/inc/classes/meta-box.php",
 		"/var/www/wordpress/wp-includes/plugin.php",
-		"/var/www/wordpress/wp-settings.php",
 		"/var/www/wordpress/wp-admin/admin.php",
 		"/var/www/wordpress/wp-admin/post-new.php",
 		"/var/www/wordpress/wp-content/plugins/advanced-access-manager/application/control/subject.php",
@@ -257,15 +284,10 @@
 		"/var/www/wordpress/wp-content/plugins/advanced-access-manager/config.php",
 		"/var/www/wordpress/wp-includes/pluggable.php",
 		"/var/www/wordpress/wp-includes/http.php",
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/ImagenRequerida.php",
 		"/var/www/wordpress/wp-content/uploads/export.csv",
 		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/controller/ProyectoController.php",
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/controller/EventoController.php",
 		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/OrdenComunicado.php",
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/ImagenEnFeed.php",
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/ImagenDestacada.php",
 		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/js/EstadoComunicado.js",
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/EstadoComunicado.php",
 		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/controller/OtrosController.php",
 		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/controller/StreamingController.php",
 		"/var/www/debug.sublime-project",
@@ -888,15 +910,15 @@
 					"buffer": 3,
 					"settings":
 					{
-						"buffer_size": 178,
+						"buffer_size": 190,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								178,
-								178
+								190,
+								190
 							]
 						],
 						"settings":
