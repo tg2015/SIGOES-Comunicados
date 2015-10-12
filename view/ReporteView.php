@@ -1,40 +1,40 @@
-<?php 
+<?php
 
 if(isset($_POST['Estado_Post'])){ 
-                $estado_1 = $_POST['Estado_Post'];
-                switch ($estado_1) {
+                $post_status = $_POST['Estado_Post'];
+                switch ($post_status) {
                      case 'Publicado':
-                         $estado_ ='publish';
+                         $estado ='publish';
                          break;
                      case 'Pendiente de revision':
-                         $estado_ ='pending'; 
+                         $estado ='pending'; 
                          break;
                      case 'Borrador':
-                         $estado_ ='draft'; 
+                         $estado ='draft'; 
                          break;
                      case 'Cancelado':
-                         $estado_ ='Cancelado'; 
+                         $estado ='Cancelado'; 
                          break;
                      default:
-                         $estado_ = $estado_1;
+                         $estado = $post_status;
                          break;
                  } 
                  
 
-            }else{$estado_1 = '%';
-                  $estado_ = '%';}
+            }else{$post_status = '%';
+                  $estado = '%';}
 
             if(isset($_POST['cat'])){ 
-                    $catego_1 = $_POST['cat']; 
-                    }else{$catego_1 = '%';}
+                    $cat = $_POST['cat']; 
+                    }else{$cat = '%';}
 
             if(isset($_POST['Autor_post'])){ 
-                    $autor_1 = $_POST['Autor_post'];
-                    }else{$autor_1 = '%';}
+                    $autor = $_POST['Autor_post'];
+                    }else{$autor = '%';}
 
             if(isset($_POST['Nick_user'])){ 
-                    $nick_1 = $_POST['Nick_user'];
-                    }else{$nick_1 = '%';}               
+                    $nick = $_POST['Nick_user'];
+                    }else{$nick = '%';}               
 
             if(isset($_POST['fecha_ini'])){ 
                     $fecha_ini = $_POST['fecha_ini'];
@@ -53,17 +53,14 @@ if (!class_exists('WP_List_Table')) {
 
         private $order;
         private $orderby;
-        private $posts_per_page = 25;
+        private $posts_per_page = 10;
 
         public function __construct()   
         {
             parent :: __construct(array(
-                'singular' => "ftraveler",
-                'plural' => "ftraveler",
-                'ajax' => true ));
-
-
-//ob_start();
+            'singular' => "ftraveler",
+            'plural' => "ftraveler",
+            'ajax' => true ));
             $this->set_order();
             $this->set_orderby();
             $this->prepare_items();
@@ -75,43 +72,41 @@ if (!class_exists('WP_List_Table')) {
          /// realiza la consulta y escribe en archivo CSV
 private function get_sql_results()  
         {
-            global $wpdb;
-
             if(isset($_POST['Estado_Post'])){ 
-                $estado_1 = $_POST['Estado_Post'];
-                switch ($estado_1) {
+                $post_status = $_POST['Estado_Post'];
+                switch ($post_status) {
                      case 'Publicado':
-                         $estado_ ='publish';
+                         $estado ='publish';
                          break;
                      case 'Pendiente de revision':
-                         $estado_ ='pending'; 
+                         $estado ='pending'; 
                          break;
                      case 'Borrador':
-                         $estado_ ='draft'; 
+                         $estado ='draft'; 
                          break;
                      case 'Cancelado':
-                         $estado_ ='Cancelado'; 
+                         $estado ='Cancelado'; 
                          break;
                      default:
-                         $estado_ = $estado_1;
+                         $estado = $post_status;
                          break;
                  } 
                  
 
-            }else{$estado_1 = '%';
-                  $estado_ = '%';}
+            }else{$post_status = '%';
+                  $estado = '%';}
 
             if(isset($_POST['cat'])){ 
-                    $catego_1 = $_POST['cat']; 
-                    }else{$catego_1 = '%';}
+                    $cat = $_POST['cat']; 
+                    }else{$cat = '%';}
 
             if(isset($_POST['Autor_post'])){ 
-                    $autor_1 = $_POST['Autor_post'];
-                    }else{$autor_1 = '%';}
+                    $autor = $_POST['Autor_post'];
+                    }else{$autor = '%';}
 
             if(isset($_POST['Nick_user'])){ 
-                    $nick_1 = $_POST['Nick_user'];
-                    }else{$nick_1 = '%';}   
+                    $nick = $_POST['Nick_user'];
+                    }else{$nick = '%';}   
 
             if(isset($_POST['fecha_ini'])){ 
                     $fecha_ini = $_POST['fecha_ini'];
@@ -123,35 +118,22 @@ private function get_sql_results()
 
 
 
-require_once(SIGOES_PLUGIN_DIR.'/controller/ReporteController.php');
-   $model_consulta = new ReporteController();
+   require_once(SIGOES_PLUGIN_DIR.'/controller/ReporteController.php');
+   $reporteController = new ReporteController();
    // Consultas para llenar las opciones del select
-   $estados_array    = $model_consulta->get_sql_post_status();
-   $categorias_array = $model_consulta->get_sql_post_type();
-   $rol_array        = $model_consulta->get_sql_rol_user();
-   $nick_array       = $model_consulta->get_sql_nickname_user();   
+   $estados     = $reporteController->get_sql_post_status();
+   $categorias  = $reporteController->get_sql_post_type();
+   $roles       = $reporteController->get_sql_rol_user();
+   $nicks       = $reporteController->get_sql_nickname_user();   
 
     //Obtiene la consulta presentada en pantalla
-    $sql_results = $model_consulta->get_sql_result_pantalla($estado_,$catego_1,$autor_1,$nick_1,$fecha_ini,$fecha_fin);
-    // Obtiene consulta para crear archivo csv
-    $array_results = $model_consulta->get_sql_result_csv($estado_,$catego_1,$autor_1,$nick_1,$fecha_ini,$fecha_fin); 
-
-
-
+    $sql_results = $reporteController->get_sql_result_pantalla($estado,$cat,$autor,$nick,$fecha_ini,$fecha_fin);
+    
 if(isset($_POST['filtra_fecha'])){
     if (isset($_POST['fecha_ini']) && !isset($_POST['fecha_fin'])){
         //alert : debe fijar las 2 fechas!
     }
 }
-
-    require(SIGOES_PLUGIN_DIR.'/controller/ReportePDF.php');
-    if(isset($_POST['Export_action'])){ 
-     
-    $pdf_new = new Reporte_PDF();
-    $pdf_new->get_elementos($estado_,$catego_1,$autor_1,$nick_1,$fecha_ini,$fecha_fin,$sql_results);
-    //get_elementos($estado_,$catego_1,$autor_1,$nick_1,$fecha_ini,$fecha_fin,$sql_results);
-    
-    }
 
 ?>
 
@@ -161,116 +143,126 @@ if(isset($_POST['filtra_fecha'])){
 <label class="screen-reader-text" for="post-search-input">Buscar por Titulo:</label>
 <input id="post-search-input" type="search" value="" name="titulo">
 <input id="search-submit" class="button" type="submit" value="Buscar por Titulo">
+<form action="admin.php?page=output" method="post">                
+    <input id="export" class="button button-primary" type="submit" value="Exportar" name="Export_action">
+    <input name="tipo" type="radio" value="pdf" checked>PDF
+    <input name="tipo" type="radio" value="csv">CSV
+    <input type="hidden" value="'<?php echo $estado; ?>'" name="ExportarEstado" />
+    <input type="hidden" value="'<?php echo $cat; ?>'" name="ExportarCat" />
+    <input type="hidden" value="'<?php echo $autor; ?>'" name="ExportarAutor" />
+    <input type="hidden" value="'<?php echo $nick; ?>'" name="ExportarNick" />
+    <input type="hidden" value="'<?php echo $fecha_ini; ?>'" name="ExportarFechaIni" />
+    <input type="hidden" value="'<?php echo $fecha_fin; ?>'" name="ExportarFechaFin" />
+</form>
 </p>
-<div class="tablenav top">
+<div class="tablenav top widefat fixed">
         <div class="alignleft actions bulkactions">
             <label class="screen-reader-text" for="bulk-action-selector-top">Filtrar por Estado</label>
             <form action="#" method="post">
-            <TABLE>    
+            <TABLE class="widefat">    
                 <TR>
-                  
-                 <TD>
-                 <h3>Estado</h3>     
+                <!--Filtro Estado de Publicacion-->  
+                <TD>
+                <h3>Estado</h3>     
                 <select id="Estado_Post"  name = "Estado_Post" onchange = "javascript: submit()" >
                     <option selected="selected" value= "%">Todos los Estados</option>
                     <?php
-                    $item1 = array();
-                    $item_sttus = array();
-                    foreach ($estados_array as $key => $value) {
-                    $estado=$value['post_status'];
+                    foreach ($estados as $key => $value) {
+                    $estadoFiltro=$value['post_status'];
                     if(isset($_POST['Estado_Post']))
                     {
-                      if($estado==$_POST['Estado_Post']) 
+                      if($estadoFiltro==$_POST['Estado_Post']) 
                       {
-                        echo '<option value= "'.$estado.'" selected>';
-                             echo $estado;
+                        echo '<option value= "'.$estadoFiltro.'" selected>';
+                             echo $estadoFiltro;
                             echo '</option>';
                       }
                        else
                        {
-                        echo '<option value= "'.$estado.'">';
-                             echo $estado;
+                        echo '<option value= "'.$estadoFiltro.'">';
+                             echo $estadoFiltro;
                             echo '</option>';
                        }
                     }
                     else
                     {
-                      echo '<option value= "'.$estado.'">';
-                             echo $estado;
+                      echo '<option value= "'.$estadoFiltro.'">';
+                             echo $estadoFiltro;
                             echo '</option>';  
                     }
 
                     
                     }
-                    ?>
+                ?>
                 </select>
                  </TD>
-                 <TD>
-            <label class="screen-reader-text" for="cat">Filtrar por categoría</label>
+                 <!--Filtro Categorias de Publicacion-->  
+                <TD>
+                <label class="screen-reader-text" for="cat">Filtrar por categoría</label>
                 <h3>Categoria</h3>
                 <select id="cat" class="postform" name="cat" onchange = "javascript: submit()">
                     <option value="%">Todas las categorías</option>
                     <?php
-                    $item2 = array();
-                    foreach ( $categorias_array as $key =>$item2) 
+                    
+                    foreach ( $categorias as $key =>$value) 
                     {
-                        $cat=$item2['post_type'];
+                        $catFiltro=$value['post_type'];
                         if(isset($_POST['cat']))
                         {
-                            if($cat==$_POST['cat'])
+                            if($catFiltro==$_POST['cat'])
                             {
-                            echo '<option value= "'.$cat.'" selected>';
-                             echo $cat;
+                            echo '<option value= "'.$catFiltro.'" selected>';
+                             echo $catFiltro;
                             echo '</option>';
                             }
                             else
                             {
-                            echo '<option value= "'.$cat.'">';
-                             echo $cat;
+                            echo '<option value= "'.$catFiltro.'">';
+                             echo $catFiltro;
                             echo '</option>';  
                             }
                         }
                         else
                         {
-                            echo '<option value= "'.$cat.'">';
-                             echo $cat;
+                            echo '<option value= "'.$catFiltro.'">';
+                             echo $catFiltro;
                             echo '</option>'; 
                         }
                     }
                     ?>
                    
                 </select>
-                 </TD>
-                 <TD>
-            <label class="screen-reader-text" for="cat">Filtrar por Rol</label>
+                </TD>
+                <TD>
+                <!--Filtro Rol de Usuario-->  
+                <label class="screen-reader-text" for="cat">Filtrar por Rol</label>
                     <h3>Rol</h3>
                     <select id="Autor_post" class="postform" name="Autor_post" onchange = "javascript: submit()">
                         <option value="%">Todos los Roles</option>
-                        <?php
+                    <?php
                         
-                    $item3 = array();
-                    foreach ( $rol_array as $key =>$item3) 
+                    foreach ( $roles as $key =>$value) 
                     {
-                       $rol=array_pop($item3);
+                       $rolFiltro=array_pop($value);
                        if(isset($_POST['Autor_post']))
                         {
-                            if($rol==$_POST['Autor_post'])
+                            if($rolFiltro==$_POST['Autor_post'])
                             {
-                            echo '<option value= "'.$rol.'" selected>';
-                            echo $rol;
+                            echo '<option value= "'.$rolFiltro.'" selected>';
+                            echo $rolFiltro;
                             echo '</option>';
                             }
                             else
                             {
-                            echo '<option value= "'.$rol.'">';
-                            echo $rol;
+                            echo '<option value= "'.$rolFiltro.'">';
+                            echo $rolFiltro;
                             echo '</option>';   
                             }
                         }
                         else
                         {
-                            echo '<option value= "'.$rol.'">';
-                            echo $rol;
+                            echo '<option value= "'.$rolFiltro.'">';
+                            echo $rolFiltro;
                             echo '</option>';
                         }
                     
@@ -279,58 +271,56 @@ if(isset($_POST['filtra_fecha'])){
                    
                     </select>
                 </TD>
+                <!--Filtro Usuario de SIGOES-->  
                 <TD>
-            <label class="screen-reader-text" for="cat">Filtrar por Nickname</label>
+                <label class="screen-reader-text" for="cat">Filtrar por Nickname</label>
                     <h3>Usuario</h3>
                     <select id="Nick_user" class="postform" name="Nick_user" onchange = "javascript: submit()">
                         <option value="%">Todos los Usuarios</option> 
-                        <?php
+                    <?php
                         
-                        $item4 = array();
-                    foreach ( $nick_array as $key =>$item4) 
+                    foreach ( $nicks as $key =>$value) 
                     {
-                        $nick = $item4['meta_value'];
+                        $nickFiltro = $value['meta_value'];
                         if(isset($_POST['Nick_user']))
                         {
-                            if($nick==$_POST['Nick_user'])
+                            if($nickFiltro==$_POST['Nick_user'])
                                 {
-                                 echo '<option value= "'.$nick.'" selected>';
-                                 echo $nick;
+                                 echo '<option value= "'.$nickFiltro.'" selected>';
+                                 echo $nickFiltro;
                                  echo '</option>';
                                 }
                             else
                                 {
-                                 echo '<option value= "'.$nick.'">';
-                                 echo $nick;
+                                 echo '<option value= "'.$nickFiltro.'">';
+                                 echo $nickFiltro;
                                  echo '</option>';   
                                 }
                         }
                         else
                         {
-                          echo '<option value= "'.$nick.'">';
-                          echo $nick;
+                          echo '<option value= "'.$nickFiltro.'">';
+                          echo $nickFiltro;
                           echo '</option>';  
                         }
 
-                        ?>       
-                    
-                    <?php
                     }
                     ?>
                    
                     </select>
                     </TD>
+                    
                     <TD>
-                <label class="screen-reader-text" for="filter-by-date"> Filtrar por fecha</label>
-                <h3>Fecha inicio</h3>
+                    <label class="screen-reader-text" for="filter-by-date"> Filtrar por fecha</label>
+                    <h3>Fecha inicio</h3>
 
-                <link rel="stylesheet" href=<?php echo SIGOES_PLUGIN_DIR.'/js/Calendario/jquery-ui.css'?>>
-                <script src=<?php echo SIGOES_PLUGIN_DIR.'/js/Calendario/jquery-1.9.1.js'?>></script>
-                <script src=<?php echo SIGOES_PLUGIN_DIR.'/js/Calendario/jquery-ui.js' ?>></script> 
+                    <link rel="stylesheet" href=<?php echo SIGOES_PLUGIN_DIR.'/js/Calendario/jquery-ui.css'?>>
+                    <script src=<?php echo SIGOES_PLUGIN_DIR.'/js/Calendario/jquery-1.9.1.js'?>></script>
+                    <script src=<?php echo SIGOES_PLUGIN_DIR.'/js/Calendario/jquery-ui.js' ?>></script> 
 
                 <script>
                         $(function() {
-                        $( '#fecha_ini' ).datepicker({dateFormat: 'yy-mm-dd',
+                        $( '#fecha_ini' ).datepicker({dateFormat: 'dd-mm-yy',
                                                       timeFormat: 'HH:mm:ss', 
                                                                     firstDay: 1,
                                                                 changeYear: true,
@@ -355,7 +345,7 @@ if(isset($_POST['filtra_fecha'])){
 
 
                         
-                        $( '#fecha_fin' ).datepicker({dateFormat: 'yy-mm-dd', 
+                        $( '#fecha_fin' ).datepicker({dateFormat: 'dd-mm-yy', 
                                                                     firstDay: 1,
                                                                     changeMonth: true,
                                                                     changeYear: true,
@@ -373,80 +363,51 @@ if(isset($_POST['filtra_fecha'])){
                         });
 
                 </script>
-                <?php 
+                <?php
                    if(isset($_POST['fecha_ini'])){
-                    $Fecha1 = $_POST['fecha_ini'];
-                    echo '<input type="text" id="fecha_ini" name = "fecha_ini" value = "'.$Fecha1.'" class = "date">';
+                    $fecha_ini = $_POST['fecha_ini'];
+                    echo '<input type="date" id="fecha_ini" name = "fecha_ini" value = "'.$fecha_ini.'" class = "date" size=10>';
                    }else{
-                    echo '<input type="text" id="fecha_ini" name = "fecha_ini" class = "date"> ';
+                    echo '<input type="date" id="fecha_ini" name = "fecha_ini" class = "date" size=10> ';
                    }
-                 ?>           
-                <!--<input type="text" id="fecha_ini" name = "fecha_ini" value = $_POST['fecha_ini']>  -->
-                <!--<input type="text" id="fecha_ini" name = "fecha_ini" > -->
-                
+                ?>           
                 </TD>
                 <TD>
                     <h3>Fecha fin</h3>
-                <?php 
+                <?php
                    if(isset($_POST['fecha_fin'])){
-                    $Fecha2 = $_POST['fecha_fin'];
-                    echo '<input type="text" id="fecha_fin" name = "fecha_fin" value = "'.$Fecha2.'" class = "date">';
+                    $fecha_fin = $_POST['fecha_fin'];
+                    echo '<input type="date" id="fecha_fin" name = "fecha_fin" value = "'.$fecha_fin.'" class = "date" size=10>';
                    }else{
-                    echo '<input type="text" id="fecha_fin" name = "fecha_fin" class = "date"> ';
+                    echo '<input type="date" id="fecha_fin" name = "fecha_fin" class = "date" size=10> ';
                    }
-                 ?>   
-                <!--<input type="text" id="fecha_fin" name = "fecha_fin" value = $_POST['fecha_fin']>
-                <input type="text" id="fecha_fin" name = "fecha_fin">-->
+                ?>   
                 </TD>
-                <TD>
-                <input type="submit" class="button" value="Fitrar por fecha" name="filtra_fecha" id="post-query-submit">
-                  <!--<input id="post-query-submit" class="button" type="submit" value="Filtrar" name="filter_action"> -->
                 
+                <TD>
+                <br/>
+                <input type="submit" class="button" value="Fitrar por fecha" name="filtra_fecha" id="post-query-submit">
                 </TD>
                 <TD>
-                <input type="button" class="button" value="Reestablecer" onclick="window.location.href='admin.php?page=Reporte_SIOGOES'" action=$_SERVER['PHP_SELF']>
+                <br/>
+                <input type="button" class="button" value="Reestablecer" onclick="window.location.href='admin.php?page=Reporte_SIGOES'" action=$_SERVER['PHP_SELF']>
                 </TD>
+        </form>
+        
+       
                 <TD>
-                <input id="export" class="button button-primary" type="submit" value="Exportar" name="Export_action">
                 </TD>
                 </TR>
             </TABLE>    
-        </form>
+        
         
         </div>
-        <div class="alignleft actions"> 
-             
-             <!--<input id="post-query-export" class="button" type="submit" value="Exportar" name="Export_action">  -->
-             
-             <?php echo ' Estado: '. $estado_1;?>
-             <?php echo ' Cat: '.$catego_1;?>
-             <?php echo ' Rol_Autor: '.$autor_1;?>   
-             <?php echo ' Nick: '.$nick_1;?> 
-             <?php echo ' $fecha_ini: '.$fecha_ini;?> 
-             <?php echo ' $fecha_fin: '.$fecha_fin;?> 
-             <!--<p><a href="pdf.php">Ver tabla en PDF</a></p>-->
-
-        </div>
+       
         </div> 
 
 
 <?php
-        $fp= fopen('php://output', 'w+');
-        $fp = fopen( SIGOES_PLUGIN_DIR.'controller/fichero.csv' , "w+" ); 
         
-        
-        $columnas = ["Post ID","Titulo","Categoria","Estado","Rol_Autor","Nombre_Autor","Apellido_Autor","Fecha_ini","Fecha_fin"];
-        fputcsv($fp, $columnas, ",");
-        foreach ($array_results as $valor) { // escribe tabla en archivo csv
-            
-            fputcsv($fp, $valor, ",");
-        }
-       
-        rewind( $fp );    
-      
-        fclose($fp);
-
-    
         return $sql_results;
         }
 
@@ -523,8 +484,8 @@ if(isset($_POST['filtra_fecha'])){
                 'Rol_Autor' => array('Rol_Autor', true),  
                 'ID_Usuario' => array('alias', true),
                 'Nombre' => array('nombre', true), 
-                'Fecha_Creado' => array('Fecha_Creacion', true),                
-                'Fecha_modificado' => array('Fecha_modificacion', true)
+                'Fecha_Creacion' => array('Fecha_Creacion', true),                
+                'Fecha_Modificacion' => array('Fecha_Modificacion', true)
             );
             return $sortable;
         }
@@ -599,12 +560,8 @@ if(isset($_POST['filtra_fecha'])){
         {
 
             ?>
-            <div class="tablenav <?php echo esc_attr($which); ?>">
-                <!-- 
-                <div class="alignleft actions">
-                <?php # $this->bulk_actions( $which );    ?>
-                </div>
-                -->
+            <div class="tablenav <?php echo esc_attr($which); ?> widefat fixed">
+                
                 <?php
                 $this->extra_tablenav($which);
                 $this->pagination($which);

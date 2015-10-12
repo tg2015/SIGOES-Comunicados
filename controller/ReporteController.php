@@ -1,5 +1,5 @@
 <?php
-
+//require_once(SIGOES_PLUGIN_DIR.'/class/Comunicado.php');
 class ReporteController
 {
 
@@ -42,12 +42,12 @@ public function get_sql_nickname_user()
     return $nick_array;
 }
 ////////////////// CONSULTAS PARA OBTENER REPORTE PANTALLA - ARCHIVO CSV
-public function get_sql_result_pantalla($estado_,$catego_1,$autor_1,$nick_1,$fecha_ini,$fecha_fin)
+public function get_sql_result_pantalla($estado, $cat, $autor, $nick, $fecha_ini, $fecha_fin)
 {
 
         require_once(SIGOES_PLUGIN_DIR.'/model/ReporteModel.php');
             $model_consulta = new ReporteModel();
-            $sql_result =  $model_consulta->get_reporte_pantalla($estado_, $catego_1, $autor_1,$nick_1,$fecha_ini,$fecha_fin); 
+            $sql_result =  $model_consulta->get_reporte($estado, $cat, $autor, $nick, $fecha_ini, $fecha_fin); 
 
     return ($sql_result);
 }
@@ -78,7 +78,13 @@ public function crear_archivo_csv($output,$array_results)
 
     }
 
+    public function Listar($estado, $cat, $autor,$nick,$fecha_ini,$fecha_fin)
+    {
+            
+            require_once(SIGOES_PLUGIN_DIR.'/model/ReporteModel.php');
+            $consulta = new ReporteModel();
+            $sql_result =  $consulta->get_reporte($estado, $cat, $autor,$nick,$fecha_ini,$fecha_fin); 
+    }
+
 }
-
-
 ?>    

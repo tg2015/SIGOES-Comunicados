@@ -2,17 +2,28 @@
 
 function Activar_Reporte_Sigoes()
 {
-    add_menu_page('Reporte SIGOES', 'Reporte SIGOES', 'manage_options', 'Reporte_SIOGOES', 'ft_list');
+    add_menu_page('Reporte SIGOES', 'Reporte SIGOES', 'manage_options', 'Reporte_SIGOES', 'MostrarReporte');
+    //this submenu is HIDDEN, however, we need to add it anyways
+
+    add_submenu_page('null', //parent slug
+    'Modificar Estudiante', //page title
+    'Modificar Estudiante', //menu title
+    'manage_options', //capability
+    'output', //menu slug
+    'GenerarReporte');
 }
 
 add_action('admin_menu', 'Activar_Reporte_Sigoes');
 
+function GenerarReporte()
+{
+  require_once(SIGOES_PLUGIN_DIR.'view/output.php');
+}
+
 // Muestra reporte en pantalla
-function ft_list()
+function MostrarReporte()
 {
     echo '<div class="wrap"><h1>'. __('Reporte SIGOES') .'</h1>';
-
-
     $ftList = new FT_WP_Table();
     echo '</div>';
 }
@@ -39,4 +50,15 @@ function registrar_js()
     wp_register_script( 'jquery-ui', plugins_url(SIGOES_PLUGIN_DIR.'/js/Calendario/jquery-ui.js') );
     wp_enqueue_script( 'jquery-ui' );
 }
+
+add_action('init', 'do_output_buffer');
+function do_output_buffer() {
+        ob_start();
+}
+/*
+
+                <link rel="stylesheet" href=<?php echo SIGOES_PLUGIN_DIR.'/js/Calendario/jquery-ui.css'?>>
+                <script src=<?php echo SIGOES_PLUGIN_DIR.'/js/Calendario/jquery-1.9.1.js'?>></script>
+                <script src=<?php echo SIGOES_PLUGIN_DIR.'/js/Calendario/jquery-ui.js' ?>></script> 
+*/
 ?>
