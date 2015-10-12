@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"h",
+				"hook"
+			],
+			[
+				"we",
+				"we_value"
+			],
+			[
+				"re",
+				"retorno"
+			],
+			[
+				"ti",
+				"titulo"
+			],
+			[
+				"co",
+				"Correcciones"
+			],
+			[
 				"pu",
 				"public"
 			],
@@ -16,16 +36,8 @@
 				"intval"
 			],
 			[
-				"co",
-				"correcion"
-			],
-			[
 				"fo",
 				"foo"
-			],
-			[
-				"ti",
-				"tituloTemp"
 			],
 			[
 				"req",
@@ -176,10 +188,26 @@
 	"buffers":
 	[
 		{
-			"contents": "",
+			"file": "includes/ValidacionInternaComunicado.php",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 55760,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/var/www/wordpress/wp-includes/plugin.php",
+			"settings":
+			{
+				"buffer_size": 31492,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "$_COOKIE = array[8]\n	$_COOKIE['wordpress_a1df40e5518f380f8e448eb532a12022'] = (string) tg2015|1444518296|AqLb1jLHF2Svu6EjMo20OGv4LnFbqvu24sXAHQ7SouZ|cafea9e73eb0612316e16158942f8b05851497e4e9e4c458fd52a9c86fa6512f\n	$_COOKIE['wp-settings-1'] = (string) libraryContent=browse&posts_list_mode=excerpt&hidetb=0&editor=html&post_dfw=off&wplink=0\n	$_COOKIE['wp-settings-time-1'] = (string) 1444098971\n	$_COOKIE['wp-settings-time-4'] = (string) 1442465908\n	$_COOKIE['wp-settings-time-7'] = (string) 1442465779\n	$_COOKIE['wordpress_test_cookie'] = (string) WP Cookie check\n	$_COOKIE['wordpress_logged_in_a1df40e5518f380f8e448eb532a12022'] = (string) tg2015|1444518296|AqLb1jLHF2Svu6EjMo20OGv4LnFbqvu24sXAHQ7SouZ|294da3481a0fe561f252e3598dfb8731fc1f48a13442f1fd9a0fc49ed5fa6248\n	$_COOKIE['XDEBUG_SESSION'] = (string) sublime.xdebug\n$_ENV = array[0]\n$_FILES = array[0]\n$_GET = array[0]\n$_POST = array[2]\n	$_POST['action'] = (string) my_action\n	$_POST['titulo'] = (string) mierda\n$_REQUEST = array[2]\n	$_REQUEST['action'] = (string) my_action\n	$_REQUEST['titulo'] = (string) mierda\n$_SERVER = array[36]\n	$_SERVER['SERVER_SOFTWARE'] = (string) Apache/2.4.10 (Debian)\n	$_SERVER['REQUEST_URI'] = (string) /wordpress/wp-admin/admin-ajax.php\n	$_SERVER['HTTP_HOST'] = (string) 172.16.0.109\n	$_SERVER['HTTP_USER_AGENT'] = (string) Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0 Iceweasel/38.3.0\n	$_SERVER['HTTP_ACCEPT'] = (string) */*\n	$_SERVER['HTTP_ACCEPT_LANGUAGE'] = (string) es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3\n	$_SERVER['HTTP_ACCEPT_ENCODING'] = (string) gzip, deflate\n	$_SERVER['CONTENT_TYPE'] = (string) application/x-www-form-urlencoded; charset=UTF-8\n	$_SERVER['HTTP_X_REQUESTED_WITH'] = (string) XMLHttpRequest\n	$_SERVER['HTTP_REFERER'] = (string) http://172.16.0.109/wordpress/wp-admin/post-new.php?post_type=evento&XDEBUG_SESSION_START=sublime.xdebug\n	$_SERVER['CONTENT_LENGTH'] = (string) 30\n	$_SERVER['HTTP_COOKIE'] = (string) wordpress_a1df40e5518f380f8e448eb532a12022=tg2015%7C1444518296%7CAqLb1jLHF2Svu6EjMo20OGv4LnFbqvu24sXAHQ7SouZ%7Ccafea9e73eb0612316e16158942f8b05851497e4e9e4c458fd52a9c86fa6512f; wp-settings-1=libraryContent%3Dbrowse%26posts_list_mode%3Dexcerpt%26hidetb%3D0%26editor%3Dhtml%26post_dfw%3Doff%26wplink%3D0; wp-settings-time-1=1444098971; wp-settings-time-4=1442465908; wp-settings-time-7=1442465779; wordpress_test_cookie=WP+Cookie+check; wordpress_logged_in_a1df40e5518f380f8e448eb532a12022=tg2015%7C1444518296%7CAqLb1jLHF2Svu6EjMo20OGv4LnFbqvu24sXAHQ7SouZ%7C294da3481a0fe561f252e3598dfb8731fc1f48a13442f1fd9a0fc49ed5fa6248; XDEBUG_SESSION=sublime.xdebug\n	$_SERVER['HTTP_CONNECTION'] = (string) keep-alive\n	$_SERVER['HTTP_PRAGMA'] = (string) no-cache\n	$_SERVER['HTTP_CACHE_CONTROL'] = (string) no-cache\n	$_SERVER['PATH'] = (string) /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\n	$_SERVER['SERVER_SIGNATURE'] = (string) <address>Apache/2.4.10 (Debian) Server at 172.16.0.109 Port 80</address> \n	$_SERVER['SERVER_NAME'] = (string) 172.16.0.109\n	$_SERVER['SERVER_ADDR'] = (string) 172.16.0.109\n	$_SERVER['SERVER_PORT'] = (string) 80\n	$_SERVER['REMOTE_ADDR'] = (string) 172.16.0.109\n	$_SERVER['DOCUMENT_ROOT'] = (string) /var/www\n	$_SERVER['REQUEST_SCHEME'] = (string) http\n	$_SERVER['CONTEXT_PREFIX'] = <string>\n	$_SERVER['CONTEXT_DOCUMENT_ROOT'] = (string) /var/www\n	$_SERVER['SERVER_ADMIN'] = (string) webmaster@localhost\n	$_SERVER['SCRIPT_FILENAME'] = (string) /var/www/wordpress/wp-admin/admin-ajax.php\n	$_SERVER['REMOTE_PORT'] = (string) 50923\n	$_SERVER['GATEWAY_INTERFACE'] = (string) CGI/1.1\n	$_SERVER['SERVER_PROTOCOL'] = (string) HTTP/1.1\n	$_SERVER['REQUEST_METHOD'] = (string) POST\n	$_SERVER['QUERY_STRING'] = <string>\n	...\n$GLOBALS = array[119]\n	$GLOBALS['_GET'] = array[0]\n	$GLOBALS['_POST'] = array[2]\n		...\n	$GLOBALS['_COOKIE'] = array[8]\n		...\n	$GLOBALS['_FILES'] = array[0]\n	$GLOBALS['_ENV'] = array[0]\n	$GLOBALS['_REQUEST'] = array[2]\n		...\n	$GLOBALS['_SERVER'] = array[36]\n		...\n	$GLOBALS['table_prefix'] = (string) wp_\n	$GLOBALS['GLOBALS'] = <array>\n	$GLOBALS['wp_version'] = (string) 4.3.1\n	$GLOBALS['wp_db_version'] = (int) 33056\n	$GLOBALS['tinymce_version'] = (string) 4205-20150910\n	$GLOBALS['required_php_version'] = (string) 5.2.4\n	$GLOBALS['required_mysql_version'] = (string) 5.0\n	$GLOBALS['blog_id'] = (int) 1\n	$GLOBALS['PHP_SELF'] = (string) /wordpress/wp-admin/admin-ajax.php\n	$GLOBALS['timestart'] = (float) 1444377409.6307\n	$GLOBALS['wp_filter'] = array[384]\n		...\n	$GLOBALS['wp_actions'] = array[21]\n		...\n	$GLOBALS['merged_filters'] = array[27]\n		...\n	$GLOBALS['wp_current_filter'] = array[1]\n		...\n	$GLOBALS['wpdb'] = wpdb[60]\n		...\n	$GLOBALS['_wp_using_ext_object_cache'] = <null>\n	$GLOBALS['wp_object_cache'] = WP_Object_Cache[6]\n		...\n	$GLOBALS['allowedposttags'] = array[81]\n		...\n	$GLOBALS['allowedtags'] = array[14]\n		...\n	$GLOBALS['allowedentitynames'] = array[253]\n		...\n	$GLOBALS['current_site'] = <null>\n	$GLOBALS['shortcode_tags'] = array[9]\n		...\n	$GLOBALS['wp_embed'] = WP_Embed[7]\n		...\n	$GLOBALS['wp_registered_sidebars'] = array[5]\n		...\n	$GLOBALS['wp_registered_widgets'] = array[24]\n		...\n	...\n$TituloGlobal = (string) mierda\n$foo1 = ValidacionComunicado[1]\n	$foo1->holaClass = (int) 1\n$retorno = (string) ******\n$titulo = (string) mierda\n$titulo2 = (string) mierda\n$valor = (int) 1\n$valorHola = (int) 1\n$whatever = (int) 0\n",
+			"settings":
+			{
+				"buffer_size": 5332,
 				"line_ending": "Unix",
 				"name": "Xdebug Context",
 				"read_only": true,
@@ -198,10 +226,10 @@
 			}
 		},
 		{
-			"contents": "",
+			"contents": "[0] file:///var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/ValidacionInternaComunicado.php.my_action_callback:1827\n[1] file:///var/www/wordpress/wp-includes/plugin.php.call_user_func_array:{/var/www/wordpress/wp-includes/plugin.php:503}:503\n[2] file:///var/www/wordpress/wp-includes/plugin.php.do_action:503\n[3] file:///var/www/wordpress/wp-admin/admin-ajax.php.{main}:89\n",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 390,
 				"line_ending": "Unix",
 				"name": "Xdebug Stack",
 				"read_only": true,
@@ -209,10 +237,10 @@
 			}
 		},
 		{
-			"contents": "=> /var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/ValidacionComunicado.php\n	|+| 32\n	|+| 33\n	|+| 35\n	|+| 37\n	|+| 47\n	|+| 50\n	|+| 51\n	|+| 55\n	|+| 56\n	|+| 60\n	|+| 61\n	|+| 62\n",
+			"contents": "=> /var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/ValidacionInternaComunicado.php\n	|+| 10\n	|+| 12\n	|+| 13\n	|+| 15\n	|+| 1827\n	|+| 1830\n	|+| 1833\n	|+| 1835\n	|+| 1839\n	|+| 1858\n	|+| 1859\n",
 			"settings":
 			{
-				"buffer_size": 190,
+				"buffer_size": 203,
 				"line_ending": "Unix",
 				"name": "Xdebug Breakpoint",
 				"read_only": true,
@@ -248,12 +276,20 @@
 	},
 	"file_history":
 	[
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/EstadoComunicado.php",
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/OrdenarComunicado.php",
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/js/ValidacionComunicado.js",
+		"/var/www/wordpress/wp-includes/plugin.php",
+		"/var/www/wordpress/wp-includes/wp-db.php",
+		"/var/www/wordpress/wp-includes/cache.php",
+		"/var/www/wordpress/wp-includes/load.php",
+		"/var/www/wordpress/wp-content/themes/RedSV/framework/demo-importer/demo-importer.php",
 		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/ValidacionComunicado.php",
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/index.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/js/ValidacionComunicado.js",
 		"/var/www/wordpress/wp-settings.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/index.php",
+		"/var/www/wordpress/wp-admin/admin-ajax.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/EstadoComunicado.php",
+		"/var/www/wordpress/wp-includes/functions.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/ValidacionInternaComunicado.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/OrdenarComunicado.php",
 		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/controller/EventoController.php",
 		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/ImagenRequerida.php",
 		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/ImagenEnFeed.php",
@@ -262,24 +298,18 @@
 		"/home/abarcawill/Dropbox/TG_2015/Shared/William/Desarrollo/SIGOES-Comunicados-07-10-15-Antes-Rafa/includes/js/ValidacionComunicado.js",
 		"/home/abarcawill/Dropbox/TG_2015/Shared/William/Desarrollo/SIGOES-Comunicados-07-10-15-Antes-Rafa/includes/ValidacionComunicado.php",
 		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/SIGOES-Comunicados.sublime-project",
-		"/var/www/wordpress/wp-content/themes/RedSV/framework/demo-importer/demo-importer.php",
 		"/var/www/wordpress/wp-content/themes/RedSV/framework/page-composer/page-composer.php",
 		"/var/www/wordpress/wp-admin/includes/template.php",
 		"/var/www/wordpress/wp-content/themes/RedSV/framework/meta-box/inc/classes/meta-box.php",
-		"/var/www/wordpress/wp-includes/plugin.php",
 		"/var/www/wordpress/wp-admin/admin.php",
 		"/var/www/wordpress/wp-admin/post-new.php",
 		"/var/www/wordpress/wp-content/plugins/advanced-access-manager/application/control/subject.php",
 		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/SoloUnaCategoria.php",
-		"/var/www/wordpress/wp-admin/admin-ajax.php",
 		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/js/OrdenarComunicado.js",
 		"/var/www/wordpress/wp-content/plugins/metabox.php",
 		"/var/www/wordpress/wp-includes/formatting.php",
 		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/js/ImagenRequerida.js",
-		"/var/www/wordpress/wp-includes/load.php",
 		"/var/www/wordpress/wp-includes/option.php",
-		"/var/www/wordpress/wp-includes/functions.php",
-		"/var/www/wordpress/wp-includes/cache.php",
 		"/var/www/wordpress/wp-includes/pluggable-deprecated.php",
 		"/var/www/wordpress/wp-content/plugins/advanced-access-manager/config.php",
 		"/var/www/wordpress/wp-includes/pluggable.php",
@@ -294,7 +324,6 @@
 		"/var/www/wordpress/wp-admin/admin-header.php",
 		"/var/www/wordpress/wp-admin/edit-form-advanced.php",
 		"/var/www/wordpress/wp-admin/post.php",
-		"/var/www/wordpress/wp-includes/wp-db.php",
 		"/var/www/wordpress/wp-content/plugins/require-featured-image/admin-options.php",
 		"/var/www/wordpress/wp-includes/link-template.php",
 		"/var/www/wordpress/wp-includes/functions.wp-scripts.php",
@@ -322,6 +351,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"deshoyganizar_comentarios_viejos",
+			"comentarios_viejos",
+			"comentarios_",
 			"Post Difficulty Level",
 			"EventoController",
 			"EventoCTP",
@@ -396,19 +428,182 @@
 	"groups":
 	[
 		{
-			"sheets":
-			[
-			]
-		},
-		{
 			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
+					"file": "includes/ValidacionInternaComunicado.php",
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 55760,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								55091,
+								55091
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 34500.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/var/www/wordpress/wp-includes/plugin.php",
+					"settings":
+					{
+						"buffer_size": 31492,
 						"regions":
 						{
 						},
@@ -560,18 +755,189 @@
 								"Ruby on Rails": "ruby"
 							},
 							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1440.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 2,
+					"settings":
+					{
+						"buffer_size": 5332,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5332,
+								5332
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
 							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
 							"translate_tabs_to_spaces": false,
 							"word_wrap": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 233.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 1,
+					"buffer": 3,
 					"settings":
 					{
 						"buffer_size": 0,
@@ -738,22 +1104,22 @@
 			]
 		},
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
-					"buffer": 2,
+					"buffer": 4,
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 390,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								390,
+								390
 							]
 						],
 						"settings":
@@ -907,18 +1273,18 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 5,
 					"settings":
 					{
-						"buffer_size": 190,
+						"buffer_size": 203,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								190,
-								190
+								203,
+								203
 							]
 						],
 						"settings":

@@ -5,7 +5,7 @@
 */
 class ValidacionComunicado
 {
-	
+	private $valorCoreccion;
 	function __construct()
 	{
 		# code...
@@ -30,9 +30,10 @@ function my_enqueue($hook) {
 
 function my_action_callback() {
 	global $wpdb;
-	
+	global $tituloGLOBAL;
     $titulo = $_POST['titulo'];
     $titulo2=$titulo;
+    $tituloGLOBAL=$titulo;
 	//$titulo += ' PHP';
         echo $titulo;    
 
@@ -40,7 +41,11 @@ $whatever = intval( $_POST['whatever'] );
 	$whatever += 100;
         echo $whatever;
 
+/////Prueba setear JS
 
+///
+///
+///
 	wp_die();
 }// Fin my_action_callback
 
@@ -54,11 +59,26 @@ public function set_we_value(){
 	add_action( 'admin_enqueue_scripts', 'setearJS' );
 	
 }
+ public function get_ValidacionTitulo()
+        {
+        	global $tituloGLOBAL;
+        	$valorCoreccion=0;
+//            require_once(SIGOES_PLUGIN_DIR.'/includes/ValidacionInternaComunicado.php');
+  //           $Correcciones = deshoyganizar_comentarios_viejos($tituloGLOBAL);
+    //         if (strcmp($tituloGLOBAL, $Correcciones) !== 0) {
+   				 //echo '$var1 no es igual a $var2 en una comparación que considera mayúsculas y minúsculas';
+   	//			 $valorCoreccion=1;
+		
+             return $valorCoreccion;
 
-}//Fin ValidacionComunicado
+        }
+
+
+}//Fin class ValidacionComunicado
 
 $foo = new ValidacionComunicado;
-$correcion=1;
+
+$correcion=$foo->get_ValidacionTitulo();
 if ($correcion!=0) {
 	$hola=1;
 	global $pagenow;
@@ -75,7 +95,7 @@ function wpds_thumbnail_error2()
 }
 }// Fin page-now
 
-	$foo->set_we_value($correcion);
+	$foo->set_we_value();
 
 }//Fin $correcion
 else $hola=0;
