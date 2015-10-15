@@ -10,8 +10,9 @@ add_action('admin_menu', 'Activar_Menu_Instituciones');
 function MostrarInstituciones()
 {
   require_once(SIGOES_PLUGIN_DIR.'view/InstitucionView.php');
+  echo '<div class="wrap">';
   $vista=new InstitucionView;
-
+  echo '</div>';
 }
 
 function AgregarInstitucion()

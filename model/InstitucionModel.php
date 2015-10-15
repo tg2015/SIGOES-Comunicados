@@ -12,7 +12,7 @@ class InstitucionModel
 
 public function get_institucion()
 {
-$resultados=$this->CRUD->get_results("SELECT * FROM institucion");
+$resultados=$this->CRUD->get_results("SELECT * FROM ".$this->tabla);
 return $resultados;
 }
 
@@ -30,6 +30,5 @@ public function delete_institucion()
 {
 	
 }
-
 
 }

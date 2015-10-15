@@ -1,5 +1,6 @@
 <?php
 require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
+$estado = $_POST['ExportarEstado'];
 class InstitucionView extends WP_List_Table
 {
 
@@ -30,6 +31,7 @@ private $posts_per_page = 10;
     <label class="screen-reader-text" for="post-search-input">Buscar por Titulo:</label>
     <input id="post-search-input" type="search" value="" name="titulo">
     <input id="search-submit" class="button" type="submit" value="Buscar por Titulo">
+    <input id="comprobar" class="button" type="submit" value="Comprobar">
     </p>';
 
     return $resultados;
@@ -82,10 +84,12 @@ private $posts_per_page = 10;
         public function get_columns()
         {
             $columns = array(  
-                'idInstitucion' => __('idInstitucion'),
-                'nombreInstitucion' => __('nombreInstitucion'),
-                'descripcionInstitucion' => __('descripcionInstitucion'),
-                'telefonoInstitucion' => __('telefonoInstitucion')              
+                'idInstitucion' => __('id'),
+                'nombreInstitucion' => __('nombre'),
+                'descripcionInstitucion' => __('descripcion'),
+                'telefonoInstitucion' => __('telefono'),
+                'urlInstitucion' => __('url'),
+                'Editar' => __('Editar')              
             );
             return $columns;
         }
@@ -96,10 +100,10 @@ private $posts_per_page = 10;
         public function get_sortable_columns()
         {
             $sortable = array(
-                'idInstitucion' => array('idInstitucion', true),
+                'idInstitucion' => array('idInstitucion', true)/*,
                 'nombreInstitucion' => array('nombreInstitucion', false),
                 'descripcionInstitucion' => array('descripcionInstitucion', false),
-                'telefonoInstitucion' => array('telefonoInstitucion', false)
+                'telefonoInstitucion' => array('telefonoInstitucion', false)*/
             );
             return $sortable;
         }
@@ -146,8 +150,9 @@ private $posts_per_page = 10;
             $rows_array = array_intersect_key($rows, $range);
             # <<<< Pagination
             // Prepare the data
-            $permalink = __('Edit:');
+            //$permalink = __('Edit:');
             foreach ($rows_array as $key => $row) {
+                $row->Editar="<a href=admin.php?page=Instituciones&id=".$row->idInstitucion.">Editar</a>";
                 /*$link = get_edit_post_link($post->ID);
                 $no_title = __('Sin titulo');
                 $title = !$post->post_title ? "<em>{$no_title}</em>" : $post->post_title;
