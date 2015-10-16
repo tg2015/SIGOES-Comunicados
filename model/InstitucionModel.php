@@ -5,14 +5,14 @@ class InstitucionModel
 
  protected $CRUD;
  protected $tabla='institucion';
- function __Construct(){
+ 		function __Construct(){
             global $wpdb;
             $this->CRUD=$wpdb;
         }
 
 public function get_institucion()
 {
-$resultados=$this->CRUD->get_results("SELECT * FROM ".$this->tabla);
+$resultados=$this->CRUD->get_results("SELECT *, 'Sin Comprobar' AS Estado, 'No Instalado' AS Plugin FROM ".$this->tabla);
 return $resultados;
 }
 

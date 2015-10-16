@@ -1,12 +1,15 @@
 <?php
 require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
-$estado = $_POST['ExportarEstado'];
+if(isset($_POST['Comprobar']))
+    {$comprobar = $_POST['Comprobar'];}
+if(isset($_POST['titulo']))
+    {$titulo = $_POST['titulo'];}
 class InstitucionView extends WP_List_Table
 {
 
 private $order;
 private $orderby;
-private $posts_per_page = 10;
+private $posts_per_page = 5;
 
     public function __Construct()   
     {
@@ -22,16 +25,34 @@ private $posts_per_page = 10;
 
     private function get_sql_results() 
     {
+    if(isset($_POST['Comprobar']))
+    {$comprobar = $_POST['Comprobar'];}
+    
+    if(isset($_POST['titulo']))
+    {$titulo = $_POST['titulo'];}
+
     require_once(SIGOES_PLUGIN_DIR.'/controller/InstitucionController.php');
     $institucionController = new InstitucionController();
-    $resultados=$institucionController->get_institucion();
+    
+    if(isset($_POST['Comprobar']))
+    {
+        $resultados=$institucionController->comprobar_estado_instituciones();
+        //echo '<script>alert("'.$comprobar.'")</script>';
+    }
+    else
+    {
+        $resultados=$institucionController->get_institucion();
+        //echo '<script>alert("'.$comprobar.'")</script>';
+    }
+
     echo '<h1>Instituciones</h1>
     <p class="search-box">
     <form action="#" method="post">  
     <label class="screen-reader-text" for="post-search-input">Buscar por Titulo:</label>
-    <input id="post-search-input" type="search" value="" name="titulo">
+    <input id="post-search-input" type="search" value="'.$titulo.'" name="titulo">
     <input id="search-submit" class="button" type="submit" value="Buscar por Titulo">
-    <input id="comprobar" class="button" type="submit" value="Comprobar">
+    <input id="comprobar" class="button" type="submit" value="Comprobar" name="Comprobar">
+    </form>
     </p>';
 
     return $resultados;
@@ -84,11 +105,13 @@ private $posts_per_page = 10;
         public function get_columns()
         {
             $columns = array(  
-                'idInstitucion' => __('id'),
-                'nombreInstitucion' => __('nombre'),
-                'descripcionInstitucion' => __('descripcion'),
-                'telefonoInstitucion' => __('telefono'),
-                'urlInstitucion' => __('url'),
+                'idInstitucion' => __('Id'),
+                'nombreInstitucion' => __('Nombre'),
+                'descripcionInstitucion' => __('Descripcion'),
+                'telefonoInstitucion' => __('Telefono'),
+                'urlInstitucion' => __('Url'),
+                'Estado' => __('Estado'),
+                'Plugin' => __('Plugin'),
                 'Editar' => __('Editar')              
             );
             return $columns;
@@ -149,14 +172,9 @@ private $posts_per_page = 10;
             // Filter out the posts we're not displaying on the current page.
             $rows_array = array_intersect_key($rows, $range);
             # <<<< Pagination
-            // Prepare the data
-            //$permalink = __('Edit:');
             foreach ($rows_array as $key => $row) {
                 $row->Editar="<a href=admin.php?page=Instituciones&id=".$row->idInstitucion.">Editar</a>";
-                /*$link = get_edit_post_link($post->ID);
-                $no_title = __('Sin titulo');
-                $title = !$post->post_title ? "<em>{$no_title}</em>" : $post->post_title;
-                $posts[$key]->post_title = "<a title='{$permalink} {$title}' href='{$link}'>{$title}</a>";*/
+                $row->urlInstitucion="<a href=".$row->urlInstitucion."/feed target=blank >".$row->urlInstitucion."/feed</a>";
              }
 
             $this->items = $rows_array;

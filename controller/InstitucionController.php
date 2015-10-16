@@ -24,11 +24,35 @@ function AgregarInstitucion()
 
 class InstitucionController
 {
-	function get_institucion()
+	function __Construct(){
+
+        }
+
+  function get_institucion()
 	{
   	require_once(SIGOES_PLUGIN_DIR.'model/InstitucionModel.php');
   	$model=new InstitucionModel;
   	return $model->get_institucion();
 	}
+
+  function comprobar_estado_instituciones()
+  {
+    $resultados=$this->get_institucion();
+    require_once(SIGOES_PLUGIN_DIR.'includes/Rss.php');
+    $rss=new Rss;
+    foreach ($resultados as $row) 
+    {
+      $url=$row->urlInstitucion;
+      if($rss->chequearUrl($url.'/feed'))
+        {
+          $row->Estado='Activo';
+          if($rss->verificarPlugin($url.'/feed'))
+          {$row->Plugin='Instalado';}
+        }
+      else{$row->Estado='Inactivo';}
+    }
+    return $resultados;
+  }
+
 }
 ?>
