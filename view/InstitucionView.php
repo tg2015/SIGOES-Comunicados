@@ -3,13 +3,13 @@ require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 if(isset($_POST['Comprobar']))
     {$comprobar = $_POST['Comprobar'];}
 if(isset($_POST['titulo']))
-    {$titulo = $_POST['titulo'];}
+    {$nombre = $_POST['titulo'];}
 class InstitucionView extends WP_List_Table
 {
 
 private $order;
 private $orderby;
-private $posts_per_page = 5;
+private $posts_per_page = 10;
 
     public function __Construct()   
     {
@@ -29,29 +29,32 @@ private $posts_per_page = 5;
     {$comprobar = $_POST['Comprobar'];}
     
     if(isset($_POST['titulo']))
-    {$titulo = $_POST['titulo'];}
+    {$nombre = $_POST['titulo'];}
 
     require_once(SIGOES_PLUGIN_DIR.'/controller/InstitucionController.php');
     $institucionController = new InstitucionController();
     
     if(isset($_POST['Comprobar']))
     {
-        $resultados=$institucionController->comprobar_estado_instituciones();
+        $resultados=$institucionController->comprobar_estado_instituciones($nombre);
         //echo '<script>alert("'.$comprobar.'")</script>';
     }
     else
     {
-        $resultados=$institucionController->get_institucion();
+        $resultados=$institucionController->get_institucion($nombre);
         //echo '<script>alert("'.$comprobar.'")</script>';
     }
 
     echo '<h1>Instituciones</h1>
-    <p class="search-box">
+    <p>
     <form action="#" method="post">  
     <label class="screen-reader-text" for="post-search-input">Buscar por Titulo:</label>
-    <input id="post-search-input" type="search" value="'.$titulo.'" name="titulo">
-    <input id="search-submit" class="button" type="submit" value="Buscar por Titulo">
+    <input id="post-search-input" type="search" value="'.$nombre.'" name="titulo">
+    <input id="search-submit" class="button" type="submit" value="Buscar por Nombre" name="Buscar">
     <input id="comprobar" class="button" type="submit" value="Comprobar" name="Comprobar">
+    </form>
+    <form action="#" method="post">  
+    <input id="reestablecer" class="button" type="submit" value="Reestablecer" name="Reestablecer">
     </form>
     </p>';
 

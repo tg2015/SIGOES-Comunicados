@@ -16,8 +16,16 @@ class Rss
 	{
 		/*Inicio Validar si las entradas del feed son validas*/
 		libxml_use_internal_errors(true);
+			try{
 				$rss = new DOMDocument();
 				$rss->load($url);
+				libxml_clear_errors();
+			}
+			catch(Exception $e)
+			{
+				return false;
+			}
+				
 				//echo $e->getMessage(), "\n";
 		if (strpos($http_response_header[0], '404')) {
     		die('file not found. exiting.');
@@ -72,8 +80,8 @@ sudo apt-get install php5-curl*/
 		return false; 
     	}
     	$ch = curl_init($url);  
-    	curl_setopt($ch, CURLOPT_TIMEOUT, 3);  
-    	curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);  
+    	curl_setopt($ch, CURLOPT_TIMEOUT, 5);  
+    	curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);  
     	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);  
     	$data = curl_exec($ch);  
     	$httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);  

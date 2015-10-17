@@ -28,16 +28,16 @@ class InstitucionController
 
         }
 
-  function get_institucion()
+  function get_institucion($nombre)
 	{
   	require_once(SIGOES_PLUGIN_DIR.'model/InstitucionModel.php');
   	$model=new InstitucionModel;
-  	return $model->get_institucion();
+  	return $model->get_institucion($nombre);
 	}
 
-  function comprobar_estado_instituciones()
+  function comprobar_estado_instituciones($nombre)
   {
-    $resultados=$this->get_institucion();
+    $resultados=$this->get_institucion($nombre);
     require_once(SIGOES_PLUGIN_DIR.'includes/Rss.php');
     $rss=new Rss;
     foreach ($resultados as $row) 

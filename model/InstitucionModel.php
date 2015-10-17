@@ -10,9 +10,17 @@ class InstitucionModel
             $this->CRUD=$wpdb;
         }
 
-public function get_institucion()
+public function get_institucion($nombre)
 {
-$resultados=$this->CRUD->get_results("SELECT *, 'Sin Comprobar' AS Estado, 'No Instalado' AS Plugin FROM ".$this->tabla);
+if(!is_null($nombre))
+{
+	$filtro="WHERE nombreInstitucion LIKE '".$nombre."%'";
+}
+else
+{
+	$filtro="";
+}
+$resultados=$this->CRUD->get_results("SELECT *, 'Sin Comprobar' AS Estado, 'No Instalado' AS Plugin FROM ".$this->tabla." ".$filtro);
 return $resultados;
 }
 
