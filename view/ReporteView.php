@@ -128,6 +128,34 @@ private function get_sql_results()
 
     //Obtiene la consulta presentada en pantalla
     $sql_results = $reporteController->get_sql_result_pantalla($estado,$cat,$autor,$nick,$fecha_ini,$fecha_fin);
+
+
+    // Obtiene consulta para crear archivo csv
+    $array_results = $reporteController->get_sql_result_csv($estado,$cat,$autor,$nick,$fecha_ini,$fecha_fin); 
+    
+    ///////////////// EXPORTAR ARCHIVOS PDF Y CSV    
+    $tipo = isset($_POST['tipo']) ? $_POST['tipo'] : 'pdf';
+    
+    if(isset($_POST['Export_action']))
+    {
+    $arrayExportar = $array_results;
+    $estadoExportar = $_POST['ExportarEstado']; // Estado
+    $categoExportar = $_POST['ExportarCat']; // Categoria
+    $rolExportar = $_POST['ExportarAutor'];       // Rol
+    $nickExportar = $_POST['ExportarNick'];     // Nick  
+    $fechaInExportar = $_POST['ExportarFechaIni'];  // FechaInicio
+    $fechaFinExportar = $_POST['ExportarFechaFin']; // FechaFin
+    require(SIGOES_PLUGIN_DIR.'/view/output.php');  
+    $output_new = new output('L','cm','Letter');
+    $output_new->AddPage();
+    //$output_new->get_elementos($estadoExportar,$categoExportar,$rolExportar,$nickExportar,$fechaInExportar,$fechaFinExportar,$array_results,$tipo);
+    $output_new->get_elementos($estadoExportar,$categoExportar,$rolExportar,$nickExportar,$fechaInExportar,$fechaFinExportar,$array_results,$tipo);
+    $output_new->Output();
+    
+    }
+
+
+
     
 if(isset($_POST['filtra_fecha'])){
     if (isset($_POST['fecha_ini']) && !isset($_POST['fecha_fin'])){
@@ -143,17 +171,21 @@ if(isset($_POST['filtra_fecha'])){
 <label class="screen-reader-text" for="post-search-input">Buscar por Titulo:</label>
 <input id="post-search-input" type="search" value="" name="titulo">
 <input id="search-submit" class="button" type="submit" value="Buscar por Titulo">
-<form action="admin.php?page=output" method="post">                
+<!--<form action="admin.php?page=output" method="post">                -->
+<form  method="post">
     <input id="export" class="button button-primary" type="submit" value="Exportar" name="Export_action">
     <input name="tipo" type="radio" value="pdf" checked>PDF
     <input name="tipo" type="radio" value="csv">CSV
-    <input type="hidden" value="'<?php echo $estado; ?>'" name="ExportarEstado" />
-    <input type="hidden" value="'<?php echo $cat; ?>'" name="ExportarCat" />
-    <input type="hidden" value="'<?php echo $autor; ?>'" name="ExportarAutor" />
-    <input type="hidden" value="'<?php echo $nick; ?>'" name="ExportarNick" />
-    <input type="hidden" value="'<?php echo $fecha_ini; ?>'" name="ExportarFechaIni" />
-    <input type="hidden" value="'<?php echo $fecha_fin; ?>'" name="ExportarFechaFin" />
+    <input type="hidden" value="<?php echo $estado; ?>" name="ExportarEstado" />
+    <input type="hidden" value="<?php echo $cat; ?>" name="ExportarCat" />
+    <input type="hidden" value="<?php echo $autor; ?>" name="ExportarAutor" />
+    <input type="hidden" value="<?php echo $nick; ?>" name="ExportarNick" />
+    <input type="hidden" value="<?php echo $fecha_ini; ?>" name="ExportarFechaIni" />
+    <input type="hidden" value="<?php echo $fecha_fin; ?>" name="ExportarFechaFin" />
 </form>
+
+
+
 </p>
 <div class="tablenav top widefat fixed">
         <div class="alignleft actions bulkactions">
