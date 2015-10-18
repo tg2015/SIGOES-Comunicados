@@ -41,22 +41,25 @@ private $posts_per_page = 10;
     }
     else
     {
-        $resultados=$institucionController->get_institucion($nombre);
+        $resultados=$institucionController->get_instituciones($nombre);
         //echo '<script>alert("'.$comprobar.'")</script>';
     }
 
     echo '<h1>Instituciones</h1>
-    <p>
+    <p class="search-box">
     <form action="#" method="post">  
-    <label class="screen-reader-text" for="post-search-input">Buscar por Titulo:</label>
+    <label class="screen-reader-text" for="post-search-input">Buscar por Nombre:</label>
     <input id="post-search-input" type="search" value="'.$nombre.'" name="titulo">
     <input id="search-submit" class="button" type="submit" value="Buscar por Nombre" name="Buscar">
     <input id="comprobar" class="button" type="submit" value="Comprobar" name="Comprobar">
     </form>
+    </p>
     <form action="#" method="post">  
+    <div class="tablenav top">
     <input id="reestablecer" class="button" type="submit" value="Reestablecer" name="Reestablecer">
+    <input id="agregar" class="button" type="submit" value="Agregar" name="Agregar" onclick=location.href="admin.php?page=AgregarInstitucion">
     </form>
-    </p>';
+    </div>';
 
     return $resultados;
     }
@@ -176,7 +179,7 @@ private $posts_per_page = 10;
             $rows_array = array_intersect_key($rows, $range);
             # <<<< Pagination
             foreach ($rows_array as $key => $row) {
-                $row->Editar="<a href=admin.php?page=Instituciones&id=".$row->idInstitucion.">Editar</a>";
+                $row->Editar="<a href=admin.php?page=AgregarInstitucion&id=".$row->idInstitucion.">Editar</a>";
                 $row->urlInstitucion="<a href=".$row->urlInstitucion."/feed target=blank >".$row->urlInstitucion."/feed</a>";
              }
 

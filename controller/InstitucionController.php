@@ -27,16 +27,23 @@ class InstitucionController
 
         }
 
-  function get_institucion($nombre)
+  function get_instituciones($nombre)
 	{
   	require_once(SIGOES_PLUGIN_DIR.'model/InstitucionModel.php');
   	$model=new InstitucionModel;
-  	return $model->get_institucion($nombre);
+  	return $model->get_instituciones($nombre);
 	}
+
+  function get_institucion($id)
+  {
+    require_once(SIGOES_PLUGIN_DIR.'model/InstitucionModel.php');
+    $model=new InstitucionModel;
+    return $model->get_institucion($id);
+  }
 
   function comprobar_estado_instituciones($nombre)
   {
-    $resultados=$this->get_institucion($nombre);
+    $resultados=$this->get_instituciones($nombre);
     require_once(SIGOES_PLUGIN_DIR.'includes/Rss.php');
     $rss=new Rss;
     foreach ($resultados as $row) 
@@ -51,6 +58,33 @@ class InstitucionController
       else{$row->Estado='Inactivo';}
     }
     return $resultados;
+  }
+
+  function borrar_institucion($id)
+  {
+    if(!is_null($id))
+    {
+    require_once(SIGOES_PLUGIN_DIR.'model/InstitucionModel.php');
+    $model=new InstitucionModel;
+    return $model->borrar_institucion($id);
+    }
+  }
+
+  function update_institucion($id, $nombre, $descripcion, $telefono, $url)
+  {
+    if(!is_null($id))
+    {
+    require_once(SIGOES_PLUGIN_DIR.'model/InstitucionModel.php');
+    $model=new InstitucionModel;
+    return $model->update_institucion($id, $nombre, $descripcion, $telefono, $url);
+    }
+  }
+
+  function insert_institucion($nombre, $descripcion, $telefono, $url)
+  {
+    require_once(SIGOES_PLUGIN_DIR.'model/InstitucionModel.php');
+    $model=new InstitucionModel;
+    return $model->insert_institucion($id, $nombre, $descripcion, $telefono, $url);
   }
 
 }
