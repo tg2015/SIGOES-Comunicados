@@ -1,5 +1,4 @@
 <?php
-
 function Activar_Menu_Instituciones()
 {
    add_menu_page('Instituciones', 'Instituciones', 'manage_options', 'Instituciones', 'MostrarInstituciones');

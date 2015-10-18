@@ -1,5 +1,4 @@
 <?php
-
 //Clase para Crear Otros Proyectos de CAPRES.
 class OtrosController
 {

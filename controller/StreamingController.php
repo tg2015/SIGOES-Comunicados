@@ -1,5 +1,4 @@
 <?php
-
 //Clase para Crear Streaming de CAPRES.
 class StreamingController
 {

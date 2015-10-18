@@ -7,11 +7,7 @@ Version: 3.0
 Author: Equipo de desarrollo SIGOES
 Author URI: http://modulos.egob.sv
 Text Domain: SIGOES-Comunicados
- */
-
-
-//Ruta relatica del Plugin SIGOES-Comunicados
-//define('SIGOES_PLUGIN_DIR',WP_CONTENT_URL.'/plugins/');
+*/
 define('SIGOES_PLUGIN_DIR', plugin_dir_path(__FILE__));
 require_once(SIGOES_PLUGIN_DIR.'/includes/SoloUnaCategoria.php');
 require_once(SIGOES_PLUGIN_DIR.'/controller/ProyectoController.php');
@@ -20,7 +16,6 @@ require_once(SIGOES_PLUGIN_DIR.'/controller/StreamingController.php');
 require_once(SIGOES_PLUGIN_DIR.'/controller/OtrosController.php');
 ///Para Imagen en Feed
 require_once(SIGOES_PLUGIN_DIR.'/includes/ImagenEnFeed.php');
-
 //Configurar estado Comunicados
 require_once(SIGOES_PLUGIN_DIR.'/includes/EstadoComunicado.php');
 //Configurar imagen
@@ -31,16 +26,9 @@ require_once(SIGOES_PLUGIN_DIR.'/includes/ImagenRequerida.php');
 require_once(SIGOES_PLUGIN_DIR.'/includes/GenerarReportes.php');
 require_once(SIGOES_PLUGIN_DIR.'/view/ReporteView.php');
 require_once(SIGOES_PLUGIN_DIR.'/controller/ReporteController.php');
-//require_once(SIGOES_PLUGIN_DIR.'/controller/ReportePDF.php');
-//require_once(SIGOES_PLUGIN_DIR.'/controller/NombreArchivo.php');
-
 
 /*Espacio para los Includes de Gabriel Lopez*/
-//require_once(SIGOES_PLUGIN_DIR.'/includes/ValidacionComunicado.php');
 require_once(SIGOES_PLUGIN_DIR.'/includes/ValidacionInternaComunicado.php');
 
-
-/**
- *OJO NO AGREGAR CARACTERES (esto incluye caracteres especiales )DESPUES DE ETIQUETA ?>
-**/
-?>
+/*Espacio para los Includes de Christian Ayala*/
+require_once(SIGOES_PLUGIN_DIR.'/controller/InstitucionController.php');

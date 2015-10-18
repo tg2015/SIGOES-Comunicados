@@ -1,5 +1,4 @@
 <?php
-
 function Activar_Reporte_Sigoes()
 {
     add_menu_page('Reporte SIGOES', 'Reporte SIGOES', 'manage_options', 'Reporte_SIGOES', 'MostrarReporte');

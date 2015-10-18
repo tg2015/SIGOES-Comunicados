@@ -1849,9 +1849,8 @@ else {
   //$foo1->set_we_value($hola);
 }
 //setear JS
-//
-}//Fin Validar Titulo
 ///Inicio fuera clase archivo
 //global $valorHola;
 //$foo1 = new ValidacionComunicado($valorHola);
 //$foo1->set_we_value();
+}//Fin Validar Titulo

@@ -1,5 +1,5 @@
 <?php
-require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
+require_once(ABSPATH.'wp-admin/includes/class-wp-list-table.php');
 if(isset($_POST['Comprobar']))
     {$comprobar = $_POST['Comprobar'];}
 if(isset($_POST['titulo']))

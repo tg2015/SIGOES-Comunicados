@@ -1,4 +1,4 @@
-<?php 
+<?php
 function ptif_do_post_thumbnail_feeds($content) {
     global $post;
     

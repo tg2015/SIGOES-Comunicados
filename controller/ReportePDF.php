@@ -1,5 +1,4 @@
 <?php
-
 require(SIGOES_PLUGIN_DIR.'/pdf/fpdf.php');
 
 class Reporte_PDF extends FPDF
