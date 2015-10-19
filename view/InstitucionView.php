@@ -45,24 +45,21 @@ private $posts_per_page = 10;
         //echo '<script>alert("'.$comprobar.'")</script>';
     }
 
-    echo '<h1>Instituciones</h1>
-    <div class="tablenav top widefat fixed">
-    <form action="#" method="post">  
-    <input id="reestablecer" class="button" type="submit" value="Reestablecer" name="Reestablecer">
-    <input id="agregar" class="button" type="button" value="Agregar" name="Agregar" onclick=location.href="admin.php?page=AgregarInstitucion">
-    </form>
-    </div>
-    
-    <p class="search-box">
+    echo '<h2>Instituciones&nbsp;&nbsp;<input id="agregar" class="add-new-h2" type="button" value="Agregar Nuevo" name="Agregar Nuevo" onclick=location.href="admin.php?page=AgregarInstitucion"></h2>
+    <table class="fixed">
+    <tr>
     <form action="#" method="post">
-    <div class="tablenav top">  
+    <td>
+    <div class="tablenav top">   
     <label class="screen-reader-text" for="post-search-input">Buscar por Nombre:</label>
-    <input id="post-search-input" type="search" value="'.$nombre.'" name="titulo">
-    <input id="search-submit" class="button" type="submit" value="Buscar por Nombre" name="Buscar">
-    <input id="comprobar"     class="button" type="submit" value="Comprobar" name="Comprobar">
+    <input id="post-search-input" type="search" value="'.$nombre.'" name="titulo"></td>
+    <td><input id="search-submit" class="button" type="submit" value="Buscar por Nombre" name="Buscar"></td>
+    <td><input id="comprobar"     class="button" type="submit" value="Comprobar" name="Comprobar"></td>
+    <td><input id="reestablecer" class="button" type="submit" value="Reestablecer" name="Reestablecer"></td>
     </div>
     </form>
-    </p>
+    </tr>
+    </table>
     ';
 
     return $resultados;

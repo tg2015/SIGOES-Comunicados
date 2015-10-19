@@ -25,7 +25,8 @@ class InstitucionAgregarView
 	}
 	else if($_POST['Borrar'])
 	{	
-		if(!is_null($id) and $institucionController->borrar_institucion($id))
+		
+		if(!is_null($id) and $institucionController->delete_institucion($id))
 		{
 		echo '<div class="updated highlight"><p>Institucion '.$nombre.' Borrada Exitosamente</p></div>
 		&nbsp;&nbsp;
@@ -35,7 +36,7 @@ class InstitucionAgregarView
 	}
 	else if($_POST['Guardar'])
 	{
-		if($institucionController->insert_institucion($id, $nombre, $descripcion, $telefono, $url))
+		if($institucionController->insert_institucion($nombre, $descripcion, $telefono, $url))
 		echo '<div class="updated highlight"><p>Institucion Agregada Exitosamente</p></div>
 		&nbsp;&nbsp;
 		<input type="button" value="Regresar" class="button" onclick=location.href="admin.php?page=Instituciones">
@@ -57,7 +58,7 @@ class InstitucionAgregarView
 
 	public function Agregar()
 	{
-	echo '<h1>Agregar Institucion</h1>
+	echo '<h2>Agregar Institucion</h2>
 	<div class="wrap">
 	<table class="form-table">
 	<form action="#" method="post">
@@ -67,7 +68,7 @@ class InstitucionAgregarView
 	
 	<tr>
 	<th><h3>&nbsp;Nombre Institucion: </h3></th>	<td><input type="text" value="'.$nombre.'" name="nombre" size=40 required maxlength="50"><span class="requerido"></span></td>
-	<th><h3>Telefono: </h3></th>					<td><input id="phone" type="text" value="'.$telefono.'" name="telefono" maxlength="9"></td>
+	<th><h3>Telefono: </h3></th>					<td><input type="text" value="'.$telefono.'" name="telefono" maxlength="9" id="phone"></td>
 	</tr>
 	
 	<tr>
@@ -77,9 +78,8 @@ class InstitucionAgregarView
 	
 	<tr>
 	<th>
-	&nbsp;
-	<input id="guardar"  type="submit" value="Guardar"  class="button-primary" name="Guardar">&nbsp;&nbsp;
-	<input id="regresar" type="button" value="Regresar" class="button" onclick=location.href="admin.php?page=Instituciones">
+	<td><input id="guardar"  type="submit" value="Guardar"  class="button-primary" name="Guardar">&nbsp;&nbsp;
+	<input id="regresar" type="button" value="Regresar" class="button" onclick=location.href="admin.php?page=Instituciones"></td>
 	</th>
 	</tr>
 	</form>
@@ -102,7 +102,7 @@ class InstitucionAgregarView
     	$telefono=$row->telefonoInstitucion;
     	$url=$row->urlInstitucion;
     }
-	echo '<h1>Editar Institucion</h1>
+	echo '<h2>Editar Institucion</h2>
 	<div class="wrap">
 	<table class="form-table">
 	<form action="#" method="post">
@@ -112,7 +112,7 @@ class InstitucionAgregarView
 	
 	<tr>
 	<th><h3>Nombre Institucion: </h3></th>	<td><input type="text" value="'.$nombre.'" name="nombre"  size=40 required maxlength="50"><span class="requerido"></span></td>
-	<th><h3>Telefono: </h3></th>			<td><input type="tel" value="'.$telefono.'" name="telefono" maxlength="9"></td>
+	<th><h3>Telefono: </h3></th>			<td><input type="tel" value="'.$telefono.'" name="telefono" maxlength="9" id="phone"></td>
 	</tr>
 	
 	<tr>
@@ -121,10 +121,11 @@ class InstitucionAgregarView
 	</tr>
 
 	<th>
-	&nbsp;
+	<td>
 	<input id="actualizar"	type="submit"	class="button-primary"  value="Actualizar"  name="Actualizar">&nbsp;&nbsp;
-	<input id="borrar" 		type="submit"	class="button"  		value="Borrar"		name="Borrar"	onclick="return confirm(Desea Borrar el Registro '.$nombre.')">
+	<input id="borrar" 		type="submit"	class="button"  		value="Borrar"		name="Borrar"	onclick="myFunction()">
 	<input id="regresar" 	type="button"  	class="button" 			value="Regresar" onclick=location.href="admin.php?page=Instituciones">
+	</td>
 	</th>
 	</tr>
 	</form>

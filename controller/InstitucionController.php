@@ -24,12 +24,14 @@ function AgregarInstitucion()
 add_action( 'in_admin_footer', 'registrar_jsmask' );
 function registrar_jsmask()
 {       
-    ?>
-    <script src=<?php echo SIGOES_PLUGIN_DIR.'js/jquery.maskedinput.js' ?>></script>
+    wp_register_script( 'jmask', plugins_url('SIGOES-Comunicados/includes/js/jquery.maskedinput.js'), array( 'jquery' ) );
+    wp_enqueue_script( 'jmask' );
+    //<script src=<?php echo SIGOES_PLUGIN_DIR.'js/jquery.maskedinput.js' ?>></script>
+    ?> 
     <script>
       jQuery(function($){
       $("#date").mask("99/99/9999",{placeholder:"mm/dd/yyyy"});
-      $("#phone").mask("(999) 999-9999");
+      $("#phone").mask("9999-9999");
       $("#tin").mask("99-9999999");
       $("#ssn").mask("999-99-9999");
       });
@@ -76,13 +78,13 @@ class InstitucionController
     return $resultados;
   }
 
-  function borrar_institucion($id)
+  function delete_institucion($id)
   {
     if(!is_null($id))
     {
     require_once(SIGOES_PLUGIN_DIR.'model/InstitucionModel.php');
     $model=new InstitucionModel;
-    return $model->borrar_institucion($id);
+    return $model->delete_institucion($id);
     }
   }
 
@@ -100,7 +102,7 @@ class InstitucionController
   {
     require_once(SIGOES_PLUGIN_DIR.'model/InstitucionModel.php');
     $model=new InstitucionModel;
-    return $model->insert_institucion($id, $nombre, $descripcion, $telefono, $url);
+    return $model->insert_institucion($nombre, $descripcion, $telefono, $url);
   }
 
 }
