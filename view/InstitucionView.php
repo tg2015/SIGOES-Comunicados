@@ -46,20 +46,24 @@ private $posts_per_page = 10;
     }
 
     echo '<h1>Instituciones</h1>
-    <p class="search-box">
+    <div class="tablenav top widefat fixed">
     <form action="#" method="post">  
+    <input id="reestablecer" class="button" type="submit" value="Reestablecer" name="Reestablecer">
+    <input id="agregar" class="button" type="button" value="Agregar" name="Agregar" onclick=location.href="admin.php?page=AgregarInstitucion">
+    </form>
+    </div>
+    
+    <p class="search-box">
+    <form action="#" method="post">
+    <div class="tablenav top">  
     <label class="screen-reader-text" for="post-search-input">Buscar por Nombre:</label>
     <input id="post-search-input" type="search" value="'.$nombre.'" name="titulo">
     <input id="search-submit" class="button" type="submit" value="Buscar por Nombre" name="Buscar">
-    <input id="comprobar" class="button" type="submit" value="Comprobar" name="Comprobar">
+    <input id="comprobar"     class="button" type="submit" value="Comprobar" name="Comprobar">
+    </div>
     </form>
     </p>
-    <form action="#" method="post">  
-    <div class="tablenav top">
-    <input id="reestablecer" class="button" type="submit" value="Reestablecer" name="Reestablecer">
-    <input id="agregar" class="button" type="submit" value="Agregar" name="Agregar" onclick=location.href="admin.php?page=AgregarInstitucion">
-    </form>
-    </div>';
+    ';
 
     return $resultados;
     }

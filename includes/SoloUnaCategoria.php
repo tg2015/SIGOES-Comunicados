@@ -47,9 +47,17 @@ echo '<style type="text/css">
 //requiridos
 /* style all input elements with a required attribute */
 echo '<style type="text/css">
-input:required {
+/*input:required {
   box-shadow: 4px 4px 20px rgba(200, 0, 0, 0.85);
-}
+}*/
+
+.requerido:after {
+content:" *"; 
+color: #e32;
+position: absolute; 
+margin: 0px 0px 0px 5px; 
+font-size: large; 
+padding: 0 5px 0 0; }
 
 /**
  * style input elements that have a required

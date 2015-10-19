@@ -60,14 +60,14 @@ class InstitucionAgregarView
 	echo '<h1>Agregar Institucion</h1>
 	<div class="wrap">
 	<table class="form-table">
-	<form action="" method="post">
+	<form action="#" method="post">
 	<tr>
 	<th><h3>&nbsp;ID: </h3></th>					<td><input type="text" value="'.$id.'" name="id"  disabled></td>
 	</tr>
 	
 	<tr>
-	<th><h3>&nbsp;Nombre Institucion: </h3></th>	<td><input type="text" value="'.$nombre.'" name="nombre" required maxlength="50"><span class="requerido"></span></td>
-	<th><h3>Telefono: </h3></th>					<td><input type="tel" value="'.$telefono.'" name="telefono" maxlength="8"></td>
+	<th><h3>&nbsp;Nombre Institucion: </h3></th>	<td><input type="text" value="'.$nombre.'" name="nombre" size=40 required maxlength="50"><span class="requerido"></span></td>
+	<th><h3>Telefono: </h3></th>					<td><input id="phone" type="text" value="'.$telefono.'" name="telefono" maxlength="9"></td>
 	</tr>
 	
 	<tr>
@@ -77,13 +77,16 @@ class InstitucionAgregarView
 	
 	<tr>
 	<th>
-	&nbsp;<input id="guardar" class="button-primary" type="submit" value="Guardar" name="Guardar">&nbsp;&nbsp;
-	<input type="button" value="Regresar" class="button" onclick=location.href="admin.php?page=Instituciones">
+	&nbsp;
+	<input id="guardar"  type="submit" value="Guardar"  class="button-primary" name="Guardar">&nbsp;&nbsp;
+	<input id="regresar" type="button" value="Regresar" class="button" onclick=location.href="admin.php?page=Instituciones">
 	</th>
 	</tr>
 	</form>
 	</table>
-	</div>';
+	</div>
+	';
+
 	}
 
 
@@ -102,14 +105,14 @@ class InstitucionAgregarView
 	echo '<h1>Editar Institucion</h1>
 	<div class="wrap">
 	<table class="form-table">
-	<form action="" method="post">
+	<form action="#" method="post">
 	<tr>
 	<th><h3>ID: </h3></th>					<td><input type="text" value="'.$id.'" name="id"  disabled></td>
 	</tr>
 	
 	<tr>
-	<th><h3>Nombre Institucion: </h3></th>	<td><input type="text" value="'.$nombre.'" name="nombre" required maxlength="50"><span class="requerido"></span></td>
-	<th><h3>Telefono: </h3></th>			<td><input type="tel" value="'.$telefono.'" name="telefono" maxlength="8"></td>
+	<th><h3>Nombre Institucion: </h3></th>	<td><input type="text" value="'.$nombre.'" name="nombre"  size=40 required maxlength="50"><span class="requerido"></span></td>
+	<th><h3>Telefono: </h3></th>			<td><input type="tel" value="'.$telefono.'" name="telefono" maxlength="9"></td>
 	</tr>
 	
 	<tr>
@@ -118,9 +121,10 @@ class InstitucionAgregarView
 	</tr>
 
 	<th>
-	&nbsp;<input id="actualizar" class="button-primary" type="submit" value="Actualizar" name="Actualizar">&nbsp;&nbsp;
-	<input id="borrar" class="button" type="submit" value="Borrar" name="Borrar">
-	<input type="button" value="Regresar" class="button" onclick=location.href="admin.php?page=Instituciones">
+	&nbsp;
+	<input id="actualizar"	type="submit"	class="button-primary"  value="Actualizar"  name="Actualizar">&nbsp;&nbsp;
+	<input id="borrar" 		type="submit"	class="button"  		value="Borrar"		name="Borrar"	onclick="return confirm(Desea Borrar el Registro '.$nombre.')">
+	<input id="regresar" 	type="button"  	class="button" 			value="Regresar" onclick=location.href="admin.php?page=Instituciones">
 	</th>
 	</tr>
 	</form>
