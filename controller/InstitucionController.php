@@ -26,7 +26,7 @@ function registrar_jsmask()
 {       
     wp_register_script( 'jmask', plugins_url('SIGOES-Comunicados/includes/js/jquery.maskedinput.js'), array( 'jquery' ) );
     wp_enqueue_script( 'jmask' );
-    //<script src=<?php echo SIGOES_PLUGIN_DIR.'js/jquery.maskedinput.js' ?>></script>
+    
     ?> 
     <script>
       jQuery(function($){

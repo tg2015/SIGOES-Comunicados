@@ -54,9 +54,11 @@ private $posts_per_page = 10;
     <label class="screen-reader-text" for="post-search-input">Buscar por Nombre:</label>
     <input id="post-search-input" type="search" value="'.$nombre.'" name="titulo"></td>
     <td><input id="search-submit" class="button" type="submit" value="Buscar por Nombre" name="Buscar"></td>
-    <td><input id="comprobar"     class="button" type="submit" value="Comprobar" name="Comprobar"></td>
-    <td><input id="reestablecer" class="button" type="submit" value="Reestablecer" name="Reestablecer"></td>
+    <td><input id="comprobar"     class="button" type="submit" value="Comprobar" name="Comprobar"></td>    
     </div>
+    </form>
+    <form action="#" method="post">
+    <td><input id="reestablecer" class="button" type="submit" value="Reestablecer" name="Reestablecer"></td>
     </form>
     </tr>
     </table>

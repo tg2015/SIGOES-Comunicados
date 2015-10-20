@@ -25,7 +25,6 @@ class InstitucionAgregarView
 	}
 	else if($_POST['Borrar'])
 	{	
-		
 		if(!is_null($id) and $institucionController->delete_institucion($id))
 		{
 		echo '<div class="updated highlight"><p>Institucion '.$nombre.' Borrada Exitosamente</p></div>
@@ -121,16 +120,18 @@ class InstitucionAgregarView
 	</tr>
 
 	<th>
-	<td>
+	<td>';
+	?>
 	<input id="actualizar"	type="submit"	class="button-primary"  value="Actualizar"  name="Actualizar">&nbsp;&nbsp;
-	<input id="borrar" 		type="submit"	class="button"  		value="Borrar"		name="Borrar"	onclick="myFunction()">
-	<input id="regresar" 	type="button"  	class="button" 			value="Regresar" onclick=location.href="admin.php?page=Instituciones">
-	</td>
+	<input id="borrar"		type='submit' 	class='button'			value='Borrar'		name="Borrar"  onclick="return confirm('Esta Seguro que desea Borrar <?php echo $nombre; ?>')">
+	<input id="regresar" 	type="button"  	class="button" 			value="Regresar" 	onclick=location.href="admin.php?page=Instituciones">
+	</td> 
 	</th>
 	</tr>
 	</form>
 	</table>
-	</div>';
+	</div>
+	<?php
 	}
 
 }
