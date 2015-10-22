@@ -68,8 +68,6 @@ if (!class_exists('WP_List_Table')) {
 
         }
 
-            
-         /// realiza la consulta y escribe en archivo CSV
 private function get_sql_results()  
         {
             if(isset($_POST['Estado_Post'])){ 
@@ -129,34 +127,31 @@ private function get_sql_results()
     //Obtiene la consulta presentada en pantalla
     $sql_results = $reporteController->get_sql_result_pantalla($estado,$cat,$autor,$nick,$fecha_ini,$fecha_fin);
 
-
     // Obtiene consulta para crear archivo csv
     $array_results = $reporteController->get_sql_result_csv($estado,$cat,$autor,$nick,$fecha_ini,$fecha_fin); 
     
     ///////////////// EXPORTAR ARCHIVOS PDF Y CSV    
-    $tipo = isset($_POST['tipo']) ? $_POST['tipo'] : 'pdf';
-    
-    if(isset($_POST['Export_action']))
+    $fechaInExportar = $fecha_ini;
+    $fechaFinExportar = $fecha_fin;
+    $tipo = isset($_POST['tipo']) ? $_POST['tipo'] : 'pdf'; 
+    if(isset($_POST['Exportar']))
     {
     $arrayExportar = $array_results;
     $estadoExportar = $_POST['ExportarEstado']; // Estado
     $categoExportar = $_POST['ExportarCat']; // Categoria
     $rolExportar = $_POST['ExportarAutor'];       // Rol
-    $nickExportar = $_POST['ExportarNick'];     // Nick  
-    $fechaInExportar = $_POST['ExportarFechaIni'];  // FechaInicio
-    $fechaFinExportar = $_POST['ExportarFechaFin']; // FechaFin
-    require(SIGOES_PLUGIN_DIR.'/view/output.php');  
+    $nickExportar = $_POST['ExportarNick'];     // Nick 
+        
+    //$this->crearPDF($estadoExportar,$categoExportar,$rolExportar,$nickExportar,$fecha_ini,$fecha_fin,$array_results);
+    
+    require(SIGOES_PLUGIN_DIR.'/view/output.php'); 
     $output_new = new output('L','cm','Letter');
     $output_new->AddPage();
-    //$output_new->get_elementos($estadoExportar,$categoExportar,$rolExportar,$nickExportar,$fechaInExportar,$fechaFinExportar,$array_results,$tipo);
-    $output_new->get_elementos($estadoExportar,$categoExportar,$rolExportar,$nickExportar,$fechaInExportar,$fechaFinExportar,$array_results,$tipo);
+    $output_new->get_elementos($estadoExportar,$categoExportar,$rolExportar,$nickExportar,$fecha_ini,$fecha_fin,$array_results);
     $output_new->Output();
     
     }
 
-
-
-    
 if(isset($_POST['filtra_fecha'])){
     if (isset($_POST['fecha_ini']) && !isset($_POST['fecha_fin'])){
         //alert : debe fijar las 2 fechas!
@@ -167,30 +162,27 @@ if(isset($_POST['filtra_fecha'])){
 
 
 <!--  Vista HTML -->        
-<p class="search-box">
+<p class="search-box" >
 <label class="screen-reader-text" for="post-search-input">Buscar por Titulo:</label>
 <input id="post-search-input" type="search" value="" name="titulo">
 <input id="search-submit" class="button" type="submit" value="Buscar por Titulo">
-<!--<form action="admin.php?page=output" method="post">                -->
-<form  method="post">
-    <input id="export" class="button button-primary" type="submit" value="Exportar" name="Export_action">
-    <input name="tipo" type="radio" value="pdf" checked>PDF
-    <input name="tipo" type="radio" value="csv">CSV
-    <input type="hidden" value="<?php echo $estado; ?>" name="ExportarEstado" />
-    <input type="hidden" value="<?php echo $cat; ?>" name="ExportarCat" />
-    <input type="hidden" value="<?php echo $autor; ?>" name="ExportarAutor" />
-    <input type="hidden" value="<?php echo $nick; ?>" name="ExportarNick" />
-    <input type="hidden" value="<?php echo $fecha_ini; ?>" name="ExportarFechaIni" />
-    <input type="hidden" value="<?php echo $fecha_fin; ?>" name="ExportarFechaFin" />
-</form>
-
-
-
 </p>
 <div class="tablenav top widefat fixed">
         <div class="alignleft actions bulkactions">
             <label class="screen-reader-text" for="bulk-action-selector-top">Filtrar por Estado</label>
             <form action="#" method="post">
+            <p>
+            <input id="export" class="button button-primary" type="submit" value="Exportar" name="Exportar">
+            <input name="tipo" type="radio" value="pdf" checked>PDF
+            <input name="tipo" type="radio" value="csv">CSV
+            </p>
+            <input type="hidden" value="<?php echo $estado; ?>" name="ExportarEstado" />
+            <input type="hidden" value="<?php echo $cat; ?>" name="ExportarCat" />
+            <input type="hidden" value="<?php echo $autor; ?>" name="ExportarAutor" />
+            <input type="hidden" value="<?php echo $nick; ?>" name="ExportarNick" />
+            <input type="hidden" value="<?php echo $fecha_ini; ?>" name="ExportarFechaIni" />
+            <input type="hidden" value="<?php echo $fecha_fin; ?>" name="ExportarFechaFin" />
+      
             <TABLE class="widefat">    
                 <TR>
                 <!--Filtro Estado de Publicacion-->  
@@ -304,7 +296,7 @@ if(isset($_POST['filtra_fecha'])){
                     </select>
                 </TD>
                 <!--Filtro Usuario de SIGOES-->  
-                <TD>
+               <!-- <TD>
                 <label class="screen-reader-text" for="cat">Filtrar por Nickname</label>
                     <h3>Usuario</h3>
                     <select id="Nick_user" class="postform" name="Nick_user" onchange = "javascript: submit()">
@@ -341,7 +333,7 @@ if(isset($_POST['filtra_fecha'])){
                    
                     </select>
                     </TD>
-                    
+                    -->
                     <TD>
                     <label class="screen-reader-text" for="filter-by-date"> Filtrar por fecha</label>
                     <h3>Fecha inicio</h3>

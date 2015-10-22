@@ -74,21 +74,27 @@ return $resultados;
 
 public function get_reporte_csv( $estado, $cat, $autor, $nick, $fecha_ini, $fecha_fin )
 {
-
 $comilla = '"';
 $coma = "'";
-if( $fecha_ini!="" && $fecha_fin!=""){
-    if( $fecha_ini=="%" && $fecha_fin=="%" ) {
-       $filtro_fecha = ""; 
-    }else{ $filtro_fecha = "AND
-   post_date between '".$fecha_ini." 00:00:00' and '".$fecha_fin." 23:59:59'";}   
+if( $fecha_ini == NULL && $fecha_fin == NULL){
+    $filtro_fecha = " ";
 }else{ if( $fecha_ini=="%" && $fecha_fin=="%" ) {
-       $filtro_fecha = ""; 
-    }else{ $filtro_fecha = "AND
-   post_date between '".$fecha_ini." 00:00:00' and '".$fecha_fin." 23:59:59'";}}
-// consulta archivo csv
-$resultados = $this->CRUD->get_results(
-        "SELECT DISTINCT
+       $filtro_fecha = " ";
+    }
+    else
+    { 
+    $fecha_ini=strtotime($fecha_ini.' 00:00:00');
+    $fecha_fin=strtotime($fecha_fin.' 23:59:59');
+    $fecha_ini_format=date('Y-m-d H:i:s', $fecha_ini);
+    $fecha_fin_format=date('Y-m-d H:i:s', $fecha_fin);
+    if($fecha_fin_format>$fecha_ini_format)
+        {$filtro_fecha="AND post_date between '".$fecha_ini_format."' and '".$fecha_fin_format."'";}
+    }
+} 
+
+// Consulta Pantalla
+        $resultados = $this->CRUD->get_results(
+        " SELECT DISTINCT
         (@num:=@num+1) AS ID,
         Post.post_title, 
         Post.post_type,  
@@ -97,16 +103,16 @@ $resultados = $this->CRUD->get_results(
              WHEN 'pending'    THEN 'Pendiente de revision'
              WHEN 'draft'      THEN 'Borrador' 
              WHEN 'cancelado'  THEN 'Cancelado'  END) AS post_status,
- (SELECT DISTINCT  SUBSTRING_INDEX(SUBSTRING_INDEX( meta_value, '".$comilla."', 2), '".$comilla."', -1) 
+        (SELECT DISTINCT  SUBSTRING_INDEX(SUBSTRING_INDEX( meta_value, '".$comilla."', 2), '".$comilla."', -1) 
         FROM  wp_usermeta  
         WHERE user_id = post_author  AND 
              (meta_key = 'wp_capabilities' )  ) AS Rol_Autor,
-(SELECT meta_value FROM wp_usermeta WHERE user_id = post_author AND meta_key = 'nickname') alias,
-CONCAT(
-(SELECT meta_value FROM wp_usermeta WHERE user_id = post_author AND meta_key = 'first_name') , ' ',
-(SELECT meta_value FROM wp_usermeta WHERE user_id = post_author AND meta_key = 'last_name') ) nombre,        
-        Post.post_date AS Fecha_Creacion,
-        Post.post_date_gmt AS Fecha_Modificacion
+        (SELECT meta_value FROM wp_usermeta WHERE user_id = post_author AND meta_key = 'nickname') alias,
+        CONCAT(
+        (SELECT meta_value FROM wp_usermeta WHERE user_id = post_author AND meta_key = 'first_name') , ' ',
+        (SELECT meta_value FROM wp_usermeta WHERE user_id = post_author AND meta_key = 'last_name') ) nombre,        
+        date_format(Post.post_date, '%d-%m-%Y %H:%m:%s') AS Fecha_Creacion,
+        date_format(Post.post_date_gmt, '%d-%m-%Y %H:%m:%s') AS Fecha_Modificacion
         FROM  wp_posts AS Post, wp_usermeta AS User,
         (SELECT @num:=0) d
         WHERE 
@@ -121,7 +127,9 @@ CONCAT(
         (post_type != 'attachment')           AND
         (post_type != 'page')                 AND
         (post_type != 'post')                 AND
-        (post_type != 'revision')  ".$filtro_fecha." ", ARRAY_A);
+        (post_type != 'revision')  ".$filtro_fecha." 
+        #ORDER BY post_date DESC 
+        ", ARRAY_A);
 
 return $resultados;
 }

@@ -53,7 +53,14 @@ public function get_sql_result_csv($estado,$cat,$autor,$nick,$fecha_ini,$fecha_f
 
     require_once(SIGOES_PLUGIN_DIR.'/model/ReporteModel.php');
     $model_consulta = new ReporteModel();
-    $array_results =  $model_consulta->get_reporte_csv($estado, $cat, $autor, $nick,$fecha_ini,$fecha_fin); 
+    $array_results =  $model_consulta->get_reporte_csv($estado, $cat, $autor, $nick,$fecha_ini,$fecha_fin);
+    /*if($tipo=='pdf'){
+    require(SIGOES_PLUGIN_DIR.'/view/output.php');  
+    $output_new = new output('L','cm','Letter');
+    $output_new->AddPage();
+    $output_new->get_elementos($estado,$cat,$autor,$nick,$fecha_ini,$fecha_fin,$array_results,$tipo);
+    $output_new->Output();        
+    } */
     return $array_results;
 }
 
