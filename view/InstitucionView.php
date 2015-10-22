@@ -62,7 +62,11 @@ private $posts_per_page = 10;
     </form>
     </tr>
     </table>
-    ';
+    <div id="loading-div-background">
+    <div id="loading-div" class="ui-corner-all">
+        <img style="height:32px;width:32px;margin:30px;" src="/images/please_wait.gif" alt="Cargando.."/><br>Procesando. Porfavor Espere...
+    </div>
+    </div>';
 
     return $resultados;
     }
