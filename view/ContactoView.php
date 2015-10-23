@@ -1,10 +1,7 @@
 <?php
 require_once(ABSPATH.'wp-admin/includes/class-wp-list-table.php');
-if(isset($_POST['Comprobar']))
-    {$comprobar = $_POST['Comprobar'];}
-if(isset($_POST['titulo']))
-    {$nombre = $_POST['titulo'];}
-class InstitucionView extends WP_List_Table
+
+class ContactoView extends WP_List_Table
 {
 
 private $order;
@@ -25,49 +22,16 @@ private $posts_per_page = 10;
 
     private function get_sql_results() 
     {
-    if(isset($_POST['Comprobar']))
-    {$comprobar = $_POST['Comprobar'];}
     
-    if(isset($_POST['titulo']))
-    {$nombre = $_POST['titulo'];}
-
+	$id=$_GET['id'];
     require_once(SIGOES_PLUGIN_DIR.'/controller/InstitucionController.php');
     $institucionController = new InstitucionController();
     
-    if(isset($_POST['Comprobar']))
-    {
-        $resultados=$institucionController->comprobar_estado_instituciones($nombre);
-        //echo '<script>alert("'.$comprobar.'")</script>';
-    }
-    else
-    {
-        $resultados=$institucionController->get_instituciones($nombre);
-        //echo '<script>alert("'.$comprobar.'")</script>';
-    }
+   
+    $resultados=$institucionController->get_contactos($id);
     
-    echo '<h2>Instituciones&nbsp;&nbsp;<input id="agregar" class="add-new-h2" type="button" value="Agregar Nuevo" name="Agregar Nuevo" onclick=location.href="admin.php?page=AgregarInstitucion"></h2>
-    <table class="fixed">
-    <tr>
-    <form action="#" method="post">
-    <td>
-    <div class="tablenav top">   
-    <label class="screen-reader-text" for="post-search-input">Buscar por Nombre:</label>
-    <input id="post-search-input" type="search" value="'.$nombre.'" name="titulo"></td>
-    <td><input id="search-submit" class="button" type="submit" value="Buscar por Nombre" name="Buscar"></td>
-    <td><input id="comprobar"     class="button" type="submit" value="Comprobar" name="Comprobar" onclick="ShowProgressAnimation();"></td>    
-    </div>
-    </form>
-    <form action="#" method="post">
-    <td><input id="reestablecer" class="button" type="submit" value="Reestablecer" name="Reestablecer"></td>
-    </form>
-    </tr>
-    </table>
-    <div id="loading-div-background">
-        <div id="loading-div" class="ui-corner-all">
-            <img style="height:60%;width:55%;margin:10px;"src="'.plugins_url().'/SIGOES-Comunicados/includes/img/cargando.gif" alt="Procesando.."/><br>Procesando. Porfavor Espere...
-        </div>
-    </div>
-    ';
+    echo '<h2>Contactos&nbsp;&nbsp;<input id="agregar" class="add-new-h2" type="button" value="Agregar Nuevo" name="Agregar Nuevo" onclick=location.href="admin.php?page=AgregarInstitucion"></h2>';
+    
 
     return $resultados;
     }
@@ -119,16 +83,13 @@ private $posts_per_page = 10;
         public function get_columns()
         {
             $columns = array(  
-                'idInstitucion' => __('Id'),
-                'nombreInstitucion' => __('Nombre'),
-                'descripcionInstitucion' => __('Descripcion'),
-                'telefonoInstitucion' => __('Telefono'),
-                'urlInstitucion' => __('Url'),
-                'direccionInstitucion' => __('Direccion'),
-                'Estado' => __('Estado'),
-                'Plugin' => __('Plugin'),
-                'Contacto' => __('Contacto'),
-                'Editar' => __('Editar')              
+                'idContacto' => __('Id'),
+                'nombreContacto' => __('Nombre'),
+                'telefonoContacto' => __('Telefono'),
+                'emailContacto' => __('Email'),
+                'puestoContacto' => __('Puesto'),
+                'Editar' => __('Editar'),
+                'Borrar' => __('Borrar')
             );
             return $columns;
         }
@@ -139,7 +100,7 @@ private $posts_per_page = 10;
         public function get_sortable_columns()
         {
             $sortable = array(
-                'idInstitucion' => array('idInstitucion', true)/*,
+                'idContacto' => array('idContacto', true)/*,
                 'nombreInstitucion' => array('nombreInstitucion', false),
                 'descripcionInstitucion' => array('descripcionInstitucion', false),
                 'telefonoInstitucion' => array('telefonoInstitucion', false)*/
@@ -189,9 +150,8 @@ private $posts_per_page = 10;
             $rows_array = array_intersect_key($rows, $range);
             # <<<< Pagination
             foreach ($rows_array as $key => $row) {
-                $row->Editar="<a href=admin.php?page=AgregarInstitucion&id=".$row->idInstitucion.">Editar</a>";
-                $row->Contacto="<a href=admin.php?page=Contactos&id=".$row->idInstitucion.">Ver Contacto</a>";
-                $row->urlInstitucion="<a href=".$row->urlInstitucion."/feed target=blank >".$row->urlInstitucion."/feed</a>";
+                $row->Editar="<a href=admin.php?page=AgregarInstitucion&id=".$row->idContacto.">Editar</a>";
+                $row->Borrar="<a href=admin.php?page=Contactos&id=".$row->idContacto.">Borrar</a>";       
              }
 
             $this->items = $rows_array;

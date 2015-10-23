@@ -12,13 +12,14 @@ class InstitucionAgregarView
 	$url=$_POST["url"];
 	$telefono=$_POST["telefono"];
 	$descripcion=$_POST["descripcion"];
+	$direccion=$_POST["direccion"];
 	require_once(SIGOES_PLUGIN_DIR.'/controller/InstitucionController.php');
     $institucionController = new InstitucionController();
 
 	if($_POST['Actualizar'])
 	{
 		echo '<div class="updated highlight"><p>'.$nombre.' Actualizado</p></div>';
-		if(!is_null($id) and $institucionController->update_institucion($id, $nombre, $descripcion, $telefono, $url))
+		if(!is_null($id) and $institucionController->update_institucion($id, $nombre, $descripcion, $telefono, $url, $direccion))
 		{
 		$this->EditarBorrar($id);
 		}
@@ -35,7 +36,7 @@ class InstitucionAgregarView
 	}
 	else if($_POST['Guardar'])
 	{
-		if($institucionController->insert_institucion($nombre, $descripcion, $telefono, $url))
+		if($institucionController->insert_institucion($nombre, $descripcion, $telefono, $url, $direccion))
 		echo '<div class="updated highlight"><p>Institucion Agregada Exitosamente</p></div>
 		&nbsp;&nbsp;
 		<input type="button" value="Regresar" class="button" onclick=location.href="admin.php?page=Instituciones">
@@ -66,13 +67,17 @@ class InstitucionAgregarView
 	</tr>
 	
 	<tr>
-	<th><h3>&nbsp;Nombre Institucion: </h3></th>	<td><input type="text" value="'.$nombre.'" name="nombre" size=40 required maxlength="50"><span class="requerido"></span></td>
-	<th><h3>Telefono: </h3></th>					<td><input type="text" value="'.$telefono.'" name="telefono" maxlength="9" id="phone"></td>
+	<th><h3>&nbsp;Nombre Institucion: </h3></th>	<td><input type="text" value="'.$nombre.'" name="nombre" size=50 required maxlength="50"><span class="requerido"></span></td>
+	<th><h3>Telefono: </h3></th>					<td><input type="text" value="'.$telefono.'" name="telefono" size=9 maxlength="9" id="phone"></td>
 	</tr>
 	
 	<tr>
 	<th><h3>&nbsp;Descripcion: </h3></th>			<td><textarea rows="3" cols="50" name="descripcion">'.$descripcion.'</textarea></td>
 	<th> <h3>Url: </h3></th>						<td><input type="url" value="'.$url.'" name="url" required size=40 maxlength="50"><span class="requerido"></span></td>
+	</tr>
+
+	<tr>
+	<th><h3>&nbsp;Direccion: </h3></th>			<td><input type="text" value="'.$direccion.'" name="direccion" size=50 required maxlength="50"></td>
 	</tr>
 	
 	<tr>
@@ -100,6 +105,7 @@ class InstitucionAgregarView
     	$descripcion=$row->descripcionInstitucion;
     	$telefono=$row->telefonoInstitucion;
     	$url=$row->urlInstitucion;
+    	$direccion=$row->direccionInstitucion;
     }
 	echo '<h2>Editar Institucion</h2>
 	<div class="wrap">
@@ -117,6 +123,10 @@ class InstitucionAgregarView
 	<tr>
 	<th><h3>Descripcion: </h3></th>			<td><textarea rows="3" cols="50" name="descripcion">'.$descripcion.'</textarea></td>
 	<th> <h3>Url: </h3></th>				<td><input type="url" value="'.$url.'" name="url" required size=40 maxlength="50"><span class="requerido"></span></td>
+	</tr>
+	
+	<tr>
+	<th><h3>&nbsp;Direccion: </h3></th>			<td><input type="text" value="'.$direccion.'" name="direccion" size=50 required maxlength="50"></td>
 	</tr>
 
 	<th>

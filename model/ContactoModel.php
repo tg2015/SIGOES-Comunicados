@@ -1,40 +1,15 @@
 <?php
-class InstitucionModel
+class ContactoModel
 {
 
  protected $CRUD;
- protected $tabla='institucion';
+ protected $tabla='contacto';
  		function __Construct(){
             global $wpdb;
             $this->CRUD=$wpdb;
         }
 
-public function get_instituciones($nombre)
-{
-if(!is_null($nombre))
-{
-	$filtro="WHERE nombreInstitucion LIKE '%".$nombre."%'";
-}
-else
-{
-	$filtro="";
-}
-$resultados=$this->CRUD->get_results("SELECT *, 'Sin Comprobar' AS Estado, 'No Instalado' AS Plugin FROM ".$this->tabla." ".$filtro);
-return $resultados;
-}
-
-public function get_institucion($id)
-{
-
-if(!is_null($id))
-{
-$resultados=$this->CRUD->get_results("SELECT * FROM ".$this->tabla." WHERE idInstitucion=".$id);
-return $resultados;
-}
-
-}
-
-
+/*
 public function insert_institucion($nombreInstitucion, $descripcionInstitucion, $telefonoInstitucion, $urlInstitucion, $direccionInstitucion)
 {
     try {
@@ -68,15 +43,17 @@ public function update_institucion($id, $nombreInstitucion, $descripcionInstituc
         }
 }
 
-public function delete_institucion($id)
+*/
+
+public function delete_contacto($id)
 {
 	try{
-    $this->CRUD->query($this->CRUD->prepare('DELETE FROM `'.$this->tabla.'` WHERE idInstitucion = %d',$id));
-    return true;
+        $this->CRUD->query($this->CRUD->prepare('DELETE FROM `'.$this->tabla.'` WHERE idContacto = %d',$id));
+        return true;
     }
     catch (Exception $e)
     {
-    return false;
+        return false;
     }
 }
 
@@ -85,7 +62,7 @@ public function get_contactos($id)
 
     if(!is_null($id))
     {
-        $resultados=$this->CRUD->get_results("SELECT * FROM ".$this->stabla." WHERE idInstitucion=".$id);
+        $resultados=$this->CRUD->get_results("SELECT * FROM ".$this->tabla." WHERE idInstitucion=".$id."  ORDER BY idContacto ASC");
         return $resultados;
     }
 

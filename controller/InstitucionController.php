@@ -1,16 +1,32 @@
 <?php
 function Activar_Menu_Instituciones()
 {
-   add_menu_page('Instituciones', 'Instituciones', 'manage_options', 'Instituciones', 'MostrarInstituciones');
+   add_menu_page('Instituciones', 'Instituciones', 'manage_options', 'Instituciones', 'MostrarInstituciones', 'dashicons-building');
    add_submenu_page('Instituciones', 'Agregar Institucion', 'Agregar Institucion', 'manage_options', 'AgregarInstitucion', 'AgregarInstitucion');
+   add_submenu_page('null', 'Contactos', 'Contactos', 'manage_options', 'Contactos', 'MostrarContactos', 'Contactos');
 }
 add_action('admin_menu', 'Activar_Menu_Instituciones');
+
+add_action( 'admin_enqueue_scripts', 'registrar_css' );
+function registrar_css() 
+{
+    wp_register_style( 'estilos', plugins_url('SIGOES-Comunicados/includes/css/estilos.css'));
+    wp_enqueue_style( 'estilos' );     
+}
 
 function MostrarInstituciones()
 {
   require_once(SIGOES_PLUGIN_DIR.'view/InstitucionView.php');
   echo '<div class="wrap">';
   $vista=new InstitucionView;
+  echo '</div>';
+}
+
+function MostrarContactos()
+{
+  require_once(SIGOES_PLUGIN_DIR.'view/ContactoView.php');
+  echo '<div class="wrap">';
+  $vista=new ContactoView;
   echo '</div>';
 }
 
@@ -30,11 +46,21 @@ function registrar_jsmask()
     ?> 
     <script>
       jQuery(function($){
-      $("#date").mask("99/99/9999",{placeholder:"mm/dd/yyyy"});
+      $("#fecha_ini").mask("99-99-9999",{placeholder:"dd-mm-yyyy"});
+      $("#fecha_fin").mask("99-99-9999",{placeholder:"dd-mm-yyyy"});
       $("#phone").mask("9999-9999");
       $("#tin").mask("99-9999999");
       $("#ssn").mask("999-99-9999");
       });
+    </script>
+    <script type="text/javascript">
+                    $(document).ready(function (){
+                    $("#loading-div-background").css({ opacity: 1.0 });
+                    });
+
+                    function ShowProgressAnimation(){
+                    $("#loading-div-background").show();
+                    }
     </script>
     <?php
 }
@@ -88,21 +114,35 @@ class InstitucionController
     }
   }
 
-  function update_institucion($id, $nombre, $descripcion, $telefono, $url)
+  function update_institucion($id, $nombre, $descripcion, $telefono, $url, $direccion)
   {
     if(!is_null($id))
     {
     require_once(SIGOES_PLUGIN_DIR.'model/InstitucionModel.php');
     $model=new InstitucionModel;
-    return $model->update_institucion($id, $nombre, $descripcion, $telefono, $url);
+    return $model->update_institucion($id, $nombre, $descripcion, $telefono, $url, $direccion);
     }
   }
 
-  function insert_institucion($nombre, $descripcion, $telefono, $url)
+  function insert_institucion($nombre, $descripcion, $telefono, $url, $direccion)
   {
     require_once(SIGOES_PLUGIN_DIR.'model/InstitucionModel.php');
     $model=new InstitucionModel;
-    return $model->insert_institucion($nombre, $descripcion, $telefono, $url);
+    return $model->insert_institucion($nombre, $descripcion, $telefono, $url, $direccion);
+  }
+
+  function get_contactos($id)
+  {
+    require_once(SIGOES_PLUGIN_DIR.'model/ContactoModel.php');
+    $model=new ContactoModel;
+    return $model->get_contactos($id);
+  }
+
+  function delete_contacto($id)
+  {
+    require_once(SIGOES_PLUGIN_DIR.'model/ContactoModel.php');
+    $model=new ContactoModel;
+    return $model->delete_contacto($id);
   }
 
 }
