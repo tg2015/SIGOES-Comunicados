@@ -141,15 +141,17 @@ private function get_sql_results()
     $categoExportar = $_POST['ExportarCat']; // Categoria
     $rolExportar = $_POST['ExportarAutor'];       // Rol
     $nickExportar = $_POST['ExportarNick'];     // Nick 
-        
-    //$this->crearPDF($estadoExportar,$categoExportar,$rolExportar,$nickExportar,$fecha_ini,$fecha_fin,$array_results);
     
     require(SIGOES_PLUGIN_DIR.'/view/output.php'); 
     $output_new = new output('L','cm','Letter');
+    if($tipo=='pdf'){ 
+    $output_new->AliasNbPages();
     $output_new->AddPage();
-    $output_new->get_elementos($estadoExportar,$categoExportar,$rolExportar,$nickExportar,$fecha_ini,$fecha_fin,$array_results);
-    $output_new->Output();
-    
+    $output_new->CrearPDF($estadoExportar,$categoExportar,$rolExportar,$nickExportar,$fecha_ini,$fecha_fin,$array_results);
+    $output_new->Output();}
+    if($tipo=='csv'){ 
+      $output_new->CrearCSV($array_results);
+      }
     }
 
 if(isset($_POST['filtra_fecha'])){
