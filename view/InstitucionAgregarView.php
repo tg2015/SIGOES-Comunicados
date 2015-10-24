@@ -30,17 +30,23 @@ class InstitucionAgregarView
 		{
 		echo '<div class="updated highlight"><p>Institucion '.$nombre.' Borrada Exitosamente</p></div>
 		&nbsp;&nbsp;
+		<br/>
 		<input type="button" value="Regresar" class="button" onclick=location.href="admin.php?page=Instituciones">
 		';
 		}
 	}
 	else if($_POST['Guardar'])
 	{
-		if($institucionController->insert_institucion($nombre, $descripcion, $telefono, $url, $direccion))
+		$last_id=($institucionController->insert_institucion($nombre, $descripcion, $telefono, $url, $direccion));
 		echo '<div class="updated highlight"><p>Institucion Agregada Exitosamente</p></div>
 		&nbsp;&nbsp;
-		<input type="button" value="Regresar" class="button" onclick=location.href="admin.php?page=Instituciones">
-		';
+		<br/>
+		<table>
+		<tr>
+			<td><input type="button" value="Regresar" class="button-primary" onclick=location.href="admin.php?page=Instituciones"></td>
+			<td><form method="post"><input id="AgregarContacto" 	type="button"  	class="button" 			value="Agregar Contacto" 	onclick=location.href="admin.php?page=Contactos&id='.$last_id.'"></form></td>
+		</tr>
+		</table>';
 	}
 	else
 	{
@@ -63,7 +69,7 @@ class InstitucionAgregarView
 	<table class="form-table">
 	<form action="#" method="post">
 	<tr>
-	<th><h3>&nbsp;ID: </h3></th>					<td><input type="text" value="'.$id.'" name="id"  disabled></td>
+		<td><input type="hidden" value="'.$id.'" name="id"  disabled></td>
 	</tr>
 	
 	<tr>
@@ -72,12 +78,12 @@ class InstitucionAgregarView
 	</tr>
 	
 	<tr>
-	<th><h3>&nbsp;Descripcion: </h3></th>			<td><textarea rows="3" cols="50" name="descripcion">'.$descripcion.'</textarea></td>
+	<th><h3>&nbsp;Direccion: </h3></th>				<td><input type="text" value="'.$direccion.'" name="direccion" size=50 required maxlength="50"></td>
 	<th> <h3>Url: </h3></th>						<td><input type="url" value="'.$url.'" name="url" required size=40 maxlength="50"><span class="requerido"></span></td>
 	</tr>
 
 	<tr>
-	<th><h3>&nbsp;Direccion: </h3></th>			<td><input type="text" value="'.$direccion.'" name="direccion" size=50 required maxlength="50"></td>
+	<th><h3>&nbsp;Descripcion: </h3></th>			<td><textarea rows="3" cols="50" name="descripcion">'.$descripcion.'</textarea></td>
 	</tr>
 	
 	<tr>
@@ -121,19 +127,20 @@ class InstitucionAgregarView
 	</tr>
 	
 	<tr>
-	<th><h3>Descripcion: </h3></th>			<td><textarea rows="3" cols="50" name="descripcion">'.$descripcion.'</textarea></td>
+	<th><h3>&nbsp;Direccion: </h3></th>		<td><input type="text" value="'.$direccion.'" name="direccion" size=50 required maxlength="50"></td>
 	<th> <h3>Url: </h3></th>				<td><input type="url" value="'.$url.'" name="url" required size=40 maxlength="50"><span class="requerido"></span></td>
 	</tr>
 	
 	<tr>
-	<th><h3>&nbsp;Direccion: </h3></th>			<td><input type="text" value="'.$direccion.'" name="direccion" size=50 required maxlength="50"></td>
+	<th><h3>Descripcion: </h3></th>			<td><textarea rows="3" cols="50" name="descripcion">'.$descripcion.'</textarea></td>
 	</tr>
 
 	<th>
 	<td>';
 	?>
 	<input id="actualizar"	type="submit"	class="button-primary"  value="Actualizar"  name="Actualizar">&nbsp;&nbsp;
-	<input id="borrar"		type='submit' 	class='button'			value='Borrar'		name="Borrar"  onclick="return confirm('Esta Seguro que desea Borrar <?php echo $nombre; ?>')">
+	<input id="contacto" 	type="button"  	class="button" 			value="Agregar Contacto" 	onclick=location.href="admin.php?page=Contactos&id=<?php echo $id; ?>">
+	<input id="borrar"		type='submit' 	class='button'			value='Borrar'		name="Borrar"  onclick="return confirm('Esta Seguro que desea Borrar <?php echo $nombre; ?>')">&nbsp;&nbsp;
 	<input id="regresar" 	type="button"  	class="button" 			value="Regresar" 	onclick=location.href="admin.php?page=Instituciones">
 	</td> 
 	</th>

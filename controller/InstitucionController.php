@@ -4,14 +4,15 @@ function Activar_Menu_Instituciones()
    add_menu_page('Instituciones', 'Instituciones', 'manage_options', 'Instituciones', 'MostrarInstituciones', 'dashicons-building');
    add_submenu_page('Instituciones', 'Agregar Institucion', 'Agregar Institucion', 'manage_options', 'AgregarInstitucion', 'AgregarInstitucion');
    add_submenu_page('null', 'Contactos', 'Contactos', 'manage_options', 'Contactos', 'MostrarContactos', 'Contactos');
+   add_submenu_page('null', 'AgregarContacto', 'AgregarContacto', 'manage_options', 'AgregarContacto', 'AgregarContacto', 'Contactos');
 }
 add_action('admin_menu', 'Activar_Menu_Instituciones');
 
 add_action( 'admin_enqueue_scripts', 'registrar_css' );
 function registrar_css() 
 {
-    wp_register_style( 'estilos', plugins_url('SIGOES-Comunicados/includes/css/estilos.css'));
-    wp_enqueue_style( 'estilos' );     
+    wp_register_style( 'EstilosInstitucion', plugins_url('SIGOES-Comunicados/includes/css/EstilosInstitucion.css'));
+    wp_enqueue_style( 'EstilosInstitucion' );     
 }
 
 function MostrarInstituciones()
@@ -28,6 +29,13 @@ function MostrarContactos()
   echo '<div class="wrap">';
   $vista=new ContactoView;
   echo '</div>';
+}
+
+function AgregarContacto()
+{
+  require_once(SIGOES_PLUGIN_DIR.'view/ContactoAgregarView.php');
+  $vista=new ContactoAgregarView;
+  $vista->MostrarVista();
 }
 
 function AgregarInstitucion()
@@ -68,7 +76,7 @@ function registrar_jsmask()
 class InstitucionController
 {
 	function __Construct(){
-
+        
         }
 
   function get_instituciones($nombre)
@@ -87,6 +95,9 @@ class InstitucionController
 
   function comprobar_estado_instituciones($nombre)
   {
+    require_once(SIGOES_PLUGIN_DIR.'model/InstitucionModel.php');
+    $model=new InstitucionModel;
+
     $resultados=$this->get_instituciones($nombre);
     require_once(SIGOES_PLUGIN_DIR.'includes/Rss.php');
     $rss=new Rss;
@@ -95,11 +106,16 @@ class InstitucionController
       $url=$row->urlInstitucion;
       if($rss->chequearUrl($url.'/feed'))
         {
-          $row->Estado='Activo';
+          $row->estadoInstitucion='Accesible';
           if($rss->verificarPlugin($url.'/feed'))
-          {$row->Plugin='Instalado';}
+          {$row->estadoPlugin='Instalado';}
+          else
+          {$row->estadoPlugin='No Instalado';}
         }
-      else{$row->Estado='Inactivo';}
+      else{$row->estadoInstitucion='Inaccesible';
+            $row->estadoPlugin='Sin Comprobar';}
+      
+      $model->update_estadoConexion($row->idInstitucion, $row->estadoInstitucion, $row->estadoPlugin);
     }
     return $resultados;
   }
@@ -130,6 +146,10 @@ class InstitucionController
     $model=new InstitucionModel;
     return $model->insert_institucion($nombre, $descripcion, $telefono, $url, $direccion);
   }
+  
+  /*
+  *Funciones de Controlador utilizadas para realizar CRUD en contactos
+  */
 
   function get_contactos($id)
   {
@@ -138,11 +158,32 @@ class InstitucionController
     return $model->get_contactos($id);
   }
 
+  function get_contacto($id)
+  {
+    require_once(SIGOES_PLUGIN_DIR.'model/ContactoModel.php');
+    $model=new ContactoModel;
+    return $model->get_contacto($id);
+  }
+
   function delete_contacto($id)
   {
     require_once(SIGOES_PLUGIN_DIR.'model/ContactoModel.php');
     $model=new ContactoModel;
     return $model->delete_contacto($id);
+  }
+
+  function insert_contacto($idInstitucion, $nombre, $telefono, $email, $puesto)
+  {
+    require_once(SIGOES_PLUGIN_DIR.'model/ContactoModel.php');
+    $model=new ContactoModel;
+    return $model->insert_contacto($idInstitucion, $nombre, $telefono, $email, $puesto);
+  }
+
+  function update_contacto($id, $nombre, $telefono, $email, $puesto)
+  {
+    require_once(SIGOES_PLUGIN_DIR.'model/ContactoModel.php');
+    $model=new ContactoModel;
+    return $model->update_contacto($id, $nombre, $telefono, $email, $puesto);
   }
 
 }

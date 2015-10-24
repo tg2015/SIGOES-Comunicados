@@ -125,8 +125,8 @@ private $posts_per_page = 10;
                 'telefonoInstitucion' => __('Telefono'),
                 'urlInstitucion' => __('Url'),
                 'direccionInstitucion' => __('Direccion'),
-                'Estado' => __('Estado'),
-                'Plugin' => __('Plugin'),
+                'estadoInstitucion' => __('Estado'),
+                'estadoPlugin' => __('Plugin'),
                 'Contacto' => __('Contacto'),
                 'Editar' => __('Editar')              
             );

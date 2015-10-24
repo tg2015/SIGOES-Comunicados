@@ -1,6 +1,5 @@
 <?php
 require_once(ABSPATH.'wp-admin/includes/class-wp-list-table.php');
-
 class ContactoView extends WP_List_Table
 {
 
@@ -22,15 +21,23 @@ private $posts_per_page = 10;
 
     private function get_sql_results() 
     {
-    
 	$id=$_GET['id'];
     require_once(SIGOES_PLUGIN_DIR.'/controller/InstitucionController.php');
     $institucionController = new InstitucionController();
-    
-   
     $resultados=$institucionController->get_contactos($id);
-    
-    echo '<h2>Contactos&nbsp;&nbsp;<input id="agregar" class="add-new-h2" type="button" value="Agregar Nuevo" name="Agregar Nuevo" onclick=location.href="admin.php?page=AgregarInstitucion"></h2>';
+    $institucion=$institucionController->get_institucion($id);
+    foreach($institucion as $row)
+    {
+        $nombre=$row->nombreInstitucion;
+        $descripcion=$row->descripcionInstitucion;
+        $telefono=$row->telefonoInstitucion;
+        $url=$row->urlInstitucion;
+        $direccion=$row->direccionInstitucion;
+    }
+    echo '<h2>Contactos de '.$nombre.'&nbsp;&nbsp;<input id="agregar" class="add-new-h2" type="button" value="Agregar Nuevo" name="Agregar Nuevo" onclick=location.href="admin.php?page=AgregarContacto&idInstitucion='.$id.'"></h2>
+    <br/>
+    <input id="regresar"    type="button"   class="button-primary"          value="Regresar"    onclick=location.href="admin.php?page=Instituciones">
+    ';
     
 
     return $resultados;
@@ -88,8 +95,7 @@ private $posts_per_page = 10;
                 'telefonoContacto' => __('Telefono'),
                 'emailContacto' => __('Email'),
                 'puestoContacto' => __('Puesto'),
-                'Editar' => __('Editar'),
-                'Borrar' => __('Borrar')
+                'Editar' => __('Editar')
             );
             return $columns;
         }
@@ -150,8 +156,8 @@ private $posts_per_page = 10;
             $rows_array = array_intersect_key($rows, $range);
             # <<<< Pagination
             foreach ($rows_array as $key => $row) {
-                $row->Editar="<a href=admin.php?page=AgregarInstitucion&id=".$row->idContacto.">Editar</a>";
-                $row->Borrar="<a href=admin.php?page=Contactos&id=".$row->idContacto.">Borrar</a>";       
+                $row->Editar="<a href=admin.php?page=AgregarContacto&id=".$row->idContacto.">Editar</a>";
+                
              }
 
             $this->items = $rows_array;

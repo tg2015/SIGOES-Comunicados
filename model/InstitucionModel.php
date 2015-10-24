@@ -19,7 +19,7 @@ else
 {
 	$filtro="";
 }
-$resultados=$this->CRUD->get_results("SELECT *, 'Sin Comprobar' AS Estado, 'No Instalado' AS Plugin FROM ".$this->tabla." ".$filtro);
+$resultados=$this->CRUD->get_results("SELECT * FROM ".$this->tabla." ".$filtro);
 return $resultados;
 }
 
@@ -42,11 +42,12 @@ public function insert_institucion($nombreInstitucion, $descripcionInstitucion, 
         $this->tabla, //table
         array('nombreInstitucion' => $nombreInstitucion,'descripcionInstitucion' => $descripcionInstitucion, 'telefonoInstitucion' => $telefonoInstitucion, 'urlInstitucion' => $urlInstitucion, 'direccionInstitucion' => $direccionInstitucion), //data
         array('%s','%s', '%s','%s','%s'));
-        return  true;
+        $lastid = $this->CRUD->insert_id;
+            return  $lastid;
         }
         catch (Exception $e)
         {
-            return false;
+            return 0;
         }
 }
 
@@ -89,6 +90,24 @@ public function get_contactos($id)
         return $resultados;
     }
 
+}
+
+public function update_estadoConexion($id, $estadoInstitucion, $estadoPlugin)
+{
+    try
+        {
+        $this->CRUD->update(
+        $this->tabla, //table
+        array('estadoInstitucion' => $estadoInstitucion, 'estadoPlugin' => $estadoPlugin), //data
+        array( 'idInstitucion' => $id ), //where
+        array('%s', '%s'), //data format
+        array('%s')); //where format
+            return true;
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
 }
 
 }

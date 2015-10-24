@@ -50,24 +50,26 @@ register_activation_hook( __FILE__, 'crear_tablas_Institucion' );
 
 	/*
 	CREATE TABLE Institucion (
-	idInstitucion INT(6) UNSIGNED AUTO_INCREMENT,
-	nombreInstitucion VARCHAR(100) NOT NULL,
-	telefonoInstitucion VARCHAR(9),
-	descripcionInstitucion VARCHAR(300),
-	direccionInstitucion VARCHAR(100),
-	urlInstitucion	VARCHAR(100),
+	idInstitucion 			INT(6) UNSIGNED AUTO_INCREMENT,
+	nombreInstitucion 		VARCHAR(100) NOT NULL,
+	telefonoInstitucion 	VARCHAR(9),
+	descripcionInstitucion 	VARCHAR(300),
+	direccionInstitucion 	VARCHAR(100),
+	EstadoInstitucion 		VARCHAR(20) DEFAULT 'Sin Comprobar',
+	EstadoPlugin 	  		VARCHAR(20) DEFAULT 'Sin Comprobar',
+	urlInstitucion			VARCHAR(100),
 	CONSTRAINT PRIMARY KEY (idInstitucion) ON DELETE CASCADE ON UPDATE CASCADE
 	);
 
 	CREATE TABLE Contacto (
-	idContacto INT(6) UNSIGNED AUTO_INCREMENT,
-	idInstitucion INT(6) UNSIGNED,
-	nombreContacto VARCHAR(100) NOT NULL,
-	telefonoContacto VARCHAR(9),
-	emailContacto VARCHAR(50),
-	puestoContacto VARCHAR(100),
+	idContacto 			INT(6) UNSIGNED AUTO_INCREMENT,
+	idInstitucion 		INT(6) UNSIGNED,
+	nombreContacto 		VARCHAR(100) NOT NULL,
+	telefonoContacto 	VARCHAR(9),
+	emailContacto 		VARCHAR(100),
+	puestoContacto 		VARCHAR(100),
 	PRIMARY KEY (idContacto),
-	CONSTRAINT FK_INSTITUCION FOREIGN KEY (idInstitucion) REFERENCES Institucion(idInstitucion)
+	CONSTRAINT FK_INSTITUCION FOREIGN KEY (idInstitucion) REFERENCES Institucion(idInstitucion) ON DELETE CASCADE ON UPDATE CASCADE
 	);
 	*/
 
