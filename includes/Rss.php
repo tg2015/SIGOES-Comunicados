@@ -20,6 +20,17 @@ class Rss
 				$rss = new DOMDocument();
 				$rss->load($url);
 				libxml_clear_errors();
+
+				if (!$rss) {
+    				$errors = libxml_get_errors();
+
+    				foreach ($errors as $error) {
+        					echo display_xml_error($error, $xml);
+    						}
+
+    					libxml_clear_errors();
+					}
+
 			}
 			catch(Exception $e)
 			{
@@ -79,6 +90,7 @@ sudo apt-get install php5-curl*/
     	{
 		return false; 
     	}
+    	try{
     	$ch = curl_init($url);  
     	curl_setopt($ch, CURLOPT_TIMEOUT, 5);  
     	curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);  
@@ -86,6 +98,11 @@ sudo apt-get install php5-curl*/
     	$data = curl_exec($ch);  
     	$httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);  
     	curl_close($ch);  
+    	}
+    	catch (Exception $e)
+    	{
+    		return false;
+    	}
     	if($httpcode>=200 && $httpcode<304){  
         	return true; 
     	} else {  

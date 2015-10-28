@@ -5,6 +5,7 @@ function Activar_Menu_Instituciones()
    add_submenu_page('Instituciones', 'Agregar Institucion', 'Agregar Institucion', 'manage_options', 'AgregarInstitucion', 'AgregarInstitucion');
    add_submenu_page('null', 'Contactos', 'Contactos', 'manage_options', 'Contactos', 'MostrarContactos', 'Contactos');
    add_submenu_page('null', 'AgregarContacto', 'AgregarContacto', 'manage_options', 'AgregarContacto', 'AgregarContacto', 'Contactos');
+   add_submenu_page('null', 'ReporteXML', 'ReporteXML', 'manage_options', 'ReporteXML', 'ReporteXML', 'ReporteXML');
 }
 add_action('admin_menu', 'Activar_Menu_Instituciones');
 
@@ -43,6 +44,11 @@ function AgregarInstitucion()
   require_once(SIGOES_PLUGIN_DIR.'view/InstitucionAgregarView.php');
   $vista=new InstitucionAgregarView;
   $vista->MostrarVista();
+}
+
+function ReporteXML()
+{
+  require_once(SIGOES_PLUGIN_DIR.'includes/reportesXML/reporte.php');
 }
 
 add_action( 'in_admin_footer', 'registrar_jsmask' );

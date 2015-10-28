@@ -81,17 +81,6 @@ public function delete_institucion($id)
     }
 }
 
-public function get_contactos($id)
-{
-
-    if(!is_null($id))
-    {
-        $resultados=$this->CRUD->get_results("SELECT * FROM ".$this->stabla." WHERE idInstitucion=".$id);
-        return $resultados;
-    }
-
-}
-
 public function update_estadoConexion($id, $estadoInstitucion, $estadoPlugin)
 {
     try

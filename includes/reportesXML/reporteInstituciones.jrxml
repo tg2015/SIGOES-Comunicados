@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteInstituciones" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="acd9bf7d-eaad-46ee-a91c-ebfb57db0a9a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="PATH" class="java.lang.String"/>
+	<parameter name="idusuario" class="java.lang.String"/>
+	<parameter name="nombreusuario" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select * from institucion]]>
+	</queryString>
+	<field name="idInstitucion" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombreInstitucion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefonoInstitucion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descripcionInstitucion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="direccionInstitucion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="urlInstitucion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estadoInstitucion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estadoPlugin" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="145" splitType="Stretch">
+			<staticText>
+				<reportElement x="168" y="44" width="211" height="20" uuid="28a18551-1c37-4549-9e81-ad499a91e44f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE INSTITUCIONES]]></text>
+			</staticText>
+			<image onErrorType="Blank">
+				<reportElement key="Escudo" x="0" y="1" width="116" height="50" isRemoveLineWhenBlank="true" uuid="fa96566f-fe2f-4ddb-a387-1b24e6322acb"/>
+				<imageExpression><![CDATA[$P{PATH}+"/SIGOES-Comunicados/includes/img/gob.jpg"]]></imageExpression>
+			</image>
+			<textField pattern="EEE, d MMM yyyy HH:mm:ss ">
+				<reportElement x="440" y="63" width="132" height="20" uuid="35685866-ef1b-4c90-bcf9-b03317929a77"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<image onErrorType="Blank">
+				<reportElement x="386" y="0" width="186" height="50" isRemoveLineWhenBlank="true" uuid="81c8a920-cd2e-412b-b515-f9e87c40b090"/>
+				<imageExpression><![CDATA[$P{PATH}+"/SIGOES-Comunicados/includes/img/presidencia.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="64" width="103" height="19" uuid="ceef1e9a-7d2c-4e0c-b1e5-76298d9a2125"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[SIGOES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="357" y="63" width="83" height="20" uuid="ed7601d0-805c-49bb-8ae0-c8371356ac46"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[fecha reporte:  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="83" width="103" height="20" uuid="4cbb6858-1f4e-4a66-a334-4d22010d6fb1"/>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[Generado Por:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="123" width="103" height="20" uuid="1f0d4aeb-cf0b-4c8c-af8b-a5759d989e7a"/>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[ID Usuario:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="103" width="103" height="20" uuid="8738262e-c6f7-4816-a582-041f876717a4"/>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[Nombre Usuario:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="103" y="103" width="142" height="20" uuid="8a74dda5-56d6-48f6-babb-982c232dc5fa"/>
+				<textFieldExpression><![CDATA[$P{nombreusuario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="103" y="123" width="142" height="20" uuid="16489e04-13b4-457f-99ad-f0b86bc16505"/>
+				<textFieldExpression><![CDATA[$P{idusuario}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="19" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="3" width="100" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="d3cea294-c7bd-494d-a9fa-ba6c82b579b0"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="100" y="3" width="169" height="20" backcolor="#CCCCCC" uuid="82ef4e40-46ea-4300-a72d-68083df56380"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Institucion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="269" y="3" width="110" height="20" backcolor="#CCCCCC" uuid="e8786031-4e9a-4dfd-8116-fe39e32b2be7"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Telefono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="379" y="3" width="193" height="20" backcolor="#CCCCCC" uuid="77a8702a-0477-41cc-9e99-90221f0c0a23"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[URL]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="100" y="0" width="169" height="20" uuid="de3ec1f3-8703-483d-aa92-a73d5ef5b766"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nombreInstitucion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="269" y="0" width="110" height="20" uuid="c26f57dd-af5e-4765-ba9d-41f269668b0b"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{telefonoInstitucion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="379" y="0" width="193" height="20" uuid="3343b7df-ca4b-4ea8-8276-30f005cdcdb3"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{urlInstitucion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="e94ec229-ade5-467c-8109-19e850a49fa2"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{idInstitucion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="20">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="b7d8377f-a8d2-44dd-8d39-27956c836863"/>
+				<box topPadding="0">
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Instituciones]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="0" width="169" height="20" uuid="0f4ab646-e302-4e39-9405-f08c9d52333c"/>
+				<box topPadding="0">
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="394" y="0" width="106" height="20" uuid="1074f795-9b81-4c1a-a8e1-86590054bd37"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="521" y="0" width="40" height="20" uuid="a6a7f77c-aa11-473b-911b-6c5cdc8ff64c"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="357" y="0" width="37" height="20" uuid="e8b20567-d13a-4877-9802-96426833dd10"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pagina ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="0" width="21" height="20" uuid="adad0337-deb6-494e-bbb7-f55e7c46a326"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ de ]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

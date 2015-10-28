@@ -26,14 +26,21 @@ class ContactoAgregarView
 		}
 		else if($_POST['Borrar'])
 		{	
+			$contacto=$institucionController->get_contacto($id);
+			foreach($contacto as $row)
+    		{
+    			$idRegresar=$row->idInstitucion;
+    		}
+    		
 			if(!is_null($id) and $institucionController->delete_contacto($id))
 			{
 			echo '<div class="updated highlight"><p>Contacto '.$nombre.' Borrado Exitosamente</p></div>
 			&nbsp;&nbsp;
 			<br/>
-			<input type="button" value="Regresar" class="button" onclick=location.href="admin.php?page=Contactos&id='.$idInstitucion.'">
+			<input type="button" value="Regresar" class="button" onclick=location.href="admin.php?page=Contactos&id='.$idRegresar.'">
 			';
 			}
+			//<form method="post" action="admin.php?page=Contactos"><input type="submit" value="Regresar" class="button"><input type="hidden" value="'.$idInstitucion.'" name="id"></form>
 		}
 		else if($_POST['Guardar'])
 		{	
@@ -42,6 +49,7 @@ class ContactoAgregarView
 			&nbsp;&nbsp;
 			<input type="button" value="Regresar" class="button" onclick=location.href="admin.php?page=Contactos&id='.$idInstitucion.'">
 			';
+			//<form method="post" action="admin.php?page=Contactos"><input type="submit" value="Regresar" class="button"><input type="hidden" value="'.$idInstitucion.'" name="id"></form>			
 		}
 		else
 		{
@@ -104,7 +112,8 @@ class ContactoAgregarView
 	<table class="form-table">
 	<form action="#" method="post">
 	<input type="hidden" value="'.$id.'" name="id"  disabled>
-	<input type="hidden" value="'.$idInstitucion.'" name="idInstitucion"  disabled>
+	<input type="hidden" value="'.$idInstitucion.'" name="idRegresar"  disabled>
+	<input type="hidden" value="1000000000" name="posteado"  disabled>
 	<tr>
 	<th><h3>&nbsp;Nombre Contacto: </h3></th>	<td><input type="text" value="'.$nombre.'" name="nombre" size=50 required maxlength="50"><span class="requerido"></span></td>
 	<th><h3>Telefono: </h3></th>				<td><input type="tel" value="'.$telefono.'" name="telefono" size=9 maxlength="9" id="phone"><span class="requerido"></span></td>

@@ -22,6 +22,7 @@ private $posts_per_page = 10;
     private function get_sql_results() 
     {
 	$id=$_GET['id'];
+    //$id=$_POST['idInstitucion'];
     require_once(SIGOES_PLUGIN_DIR.'/controller/InstitucionController.php');
     $institucionController = new InstitucionController();
     $resultados=$institucionController->get_contactos($id);
@@ -38,7 +39,7 @@ private $posts_per_page = 10;
     <br/>
     <input id="regresar"    type="button"   class="button-primary"          value="Regresar"    onclick=location.href="admin.php?page=Instituciones">
     ';
-    
+    //<form method="post" action="admin.php?page=AgregarContacto"><input class="add-new-h2" type="submit" class="button" value="Agregar Nuevo" name="Agregar Nuevo"><input type="hidden" value="'.$id.'" name="idInstitucion"></form>
 
     return $resultados;
     }

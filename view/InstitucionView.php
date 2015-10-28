@@ -37,15 +37,26 @@ private $posts_per_page = 10;
     if(isset($_POST['Comprobar']))
     {
         $resultados=$institucionController->comprobar_estado_instituciones($nombre);
-        //echo '<script>alert("'.$comprobar.'")</script>';
     }
     else
     {
         $resultados=$institucionController->get_instituciones($nombre);
-        //echo '<script>alert("'.$comprobar.'")</script>';
     }
-    
+    //onclick=location.href="admin.php?page=ReporteDemo"
     echo '<h2>Instituciones&nbsp;&nbsp;<input id="agregar" class="add-new-h2" type="button" value="Agregar Nuevo" name="Agregar Nuevo" onclick=location.href="admin.php?page=AgregarInstitucion"></h2>
+    <br/>
+    <form method="post" action="admin.php?page=ReporteXML">
+    <input id="Exportar" type="submit" class="button-primary" value="Exportar" name="Exportar">
+    <input name="formato" type="radio" value="pdf" checked>PDF
+    <input name="formato" type="radio" value="csv">CSV
+
+     <select name="tipoReporte">
+        <option value="inaccesible">Sitios Web Inaccesibles</option>
+        <option value="parametros">Parametros de Conexion</option>
+        <option value="instituciones">Instituciones</option>
+    </select>
+    <label>Tipo de Reporte</label>
+    </form>
     <table class="fixed">
     <tr>
     <form action="#" method="post">
@@ -190,8 +201,16 @@ private $posts_per_page = 10;
             # <<<< Pagination
             foreach ($rows_array as $key => $row) {
                 $row->Editar="<a href=admin.php?page=AgregarInstitucion&id=".$row->idInstitucion.">Editar</a>";
+                //$row->Editar='<form method="post" action="admin.php?page=AgregarInstitucion"><input type="submit" class="button" value="Editar" name="Editar">
+                //<input type="hidden" value="'.$row->idInstitucion.'" name="id"></form>';
                 $row->Contacto="<a href=admin.php?page=Contactos&id=".$row->idInstitucion.">Ver Contacto</a>";
+                //$row->Contacto='<form method="post" action="admin.php?page=Contactos"><input type="submit" class="button-primary" value="Ver Contacto" name="Ver Contacto">
+                //<input type="hidden" value="'.$row->idInstitucion.'" name="idInstitucion"></form>';
                 $row->urlInstitucion="<a href=".$row->urlInstitucion."/feed target=blank >".$row->urlInstitucion."/feed</a>";
+                if($row->estadoInstitucion=='Inaccesible')
+                    {
+                    $row->estadoInstitucion='<span style="color:red">'.$row->estadoInstitucion.'</span>';
+                    }
              }
 
             $this->items = $rows_array;

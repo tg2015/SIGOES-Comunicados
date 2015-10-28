@@ -8,6 +8,7 @@ class InstitucionAgregarView
 	public function MostrarVista()
 	{
 	$id = $_GET["id"];
+	//$id = $_POST["id"];
 	$nombre=$_POST["nombre"];
 	$url=$_POST["url"];
 	$telefono=$_POST["telefono"];
@@ -37,16 +38,22 @@ class InstitucionAgregarView
 	}
 	else if($_POST['Guardar'])
 	{
-		$last_id=($institucionController->insert_institucion($nombre, $descripcion, $telefono, $url, $direccion));
-		echo '<div class="updated highlight"><p>Institucion Agregada Exitosamente</p></div>
+		$ultimo_id=($institucionController->insert_institucion($nombre, $descripcion, $telefono, $url, $direccion));
+		echo '<div class="updated highlight"><p>Institucion '.$nombre.' Agregada Exitosamente</p></div>
 		&nbsp;&nbsp;
 		<br/>
 		<table>
 		<tr>
 			<td><input type="button" value="Regresar" class="button-primary" onclick=location.href="admin.php?page=Instituciones"></td>
-			<td><form method="post"><input id="AgregarContacto" 	type="button"  	class="button" 			value="Agregar Contacto" 	onclick=location.href="admin.php?page=Contactos&id='.$last_id.'"></form></td>
+			<td><form method="post"><input id="AgregarContacto" 	type="button"  	class="button" 			value="Agregar Contacto" 	onclick=location.href="admin.php?page=Contactos&id='.$ultimo_id.'"></form></td>	
 		</tr>
 		</table>';
+		//<td><form method="post"><input id="AgregarContacto" 	type="button"  	class="button" 			value="Agregar Contacto" 	onclick=location.href="admin.php?page=Contactos&id='.$ultimo_id.'"></form></td>
+		/*<td>
+		<form method="post" action="admin.php?page=Contactos">
+		<input id="AgregarContacto" 	type="submit"  	class="button" 			value="Agregar Contacto" name="Agregar Contacto">
+		<input type="hidden" value="'.$ultimo_id.'" name="idInstitucion">
+		</form></td>*/
 	}
 	else
 	{
@@ -145,7 +152,10 @@ class InstitucionAgregarView
 	</td> 
 	</th>
 	</tr>
-	</form>
+	<!--</form>
+	<form method="post" action="admin.php?page=Contactos">
+	<input id="contacto" 	type="submit"  	class="button-primary" 			value="Agregar Contacto" name="Agregar Contacto"><input type="hidden" value="'.<?php echo $id; ?>.'" name="idInstitucion"> 
+	</form>-->	
 	</table>
 	</div>
 	<?php
