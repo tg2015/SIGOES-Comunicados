@@ -2,13 +2,15 @@ jQuery( document ).on( 'click', '#publish', function() {
 	//var post_id = jQuery(this).data('id');
 	var title_value = jQuery.trim(jQuery('#title').val());
 	alert("Titulo "+title_value);
+	var form_data = jQuery('#post').serializeArray();//Todo el post
 	var flag = null;
 	jQuery.ajax({
 		url : ajax_object.ajax_url,
 		type : 'post',
 		data : {
 			action : 'my_action',
-			titulo : title_value
+			titulo : title_value,
+			form_data: jQuery.param(form_data)
 		},
 		async:false,
 		success : function( response ) {

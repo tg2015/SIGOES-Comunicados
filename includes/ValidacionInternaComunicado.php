@@ -1810,44 +1810,18 @@ function my_enqueue($hook) {
 add_action( 'wp_ajax_my_action', 'my_action_callback' );
 function my_action_callback() {
   global $wpdb;
-$love = $_REQUEST['titulo'];
-  if ($love=='a') {
-    die('1');
+//$TituloPost = $_REQUEST['titulo'];
+parse_str( $_POST['form_data'], $vars );//Todos los elementos del post
+$tituloPost=$vars['post_title'];
+$TituloGlobal=$tituloPost;
+$retorno=deshoyganizar_comentarios_viejos($TituloGlobal);//Validando Comentarios
+
+  if (strcmp($tituloPost, $retorno) !== 0) {
+    die('0');
   }
   else{
-    die('0');}
-  //if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) { 
-  //echo $love." mas PHP";
+    die('1');}
   
-  //}
-  //else {
-    //wp_redirect( get_permalink( $_REQUEST['post_id'] ) );
-   // exit();
- // }
-  /*
-   $TituloGlobal;
-    $titulo = $_POST['titulo'];
-    $titulo2=$titulo;
-    $TituloGlobal=$titulo;//Steando al Global para acceder fuera
-    $retorno=deshoyganizar_comentarios_viejos($TituloGlobal);//Validando Comentarios
-  //////
-
-  ///
-  ///
-  
-  echo $titulo;    
-$valor=ValidarTitulo($titulo,$retorno);
-$valorHola=$valor;
-//require_once(SIGOES_PLUGIN_DIR.'/includes/ValidacionInternaComunicado.php');
-//turn $hola;
-$foo1 = new ValidacionComunicado($valorHola);
-$foo1->se_we_value($valorHola);
-$whatever = intval( $_POST['whatever'] );
-  $whatever += 100;
-        //echo $whatever;
-
-
-  wp_die();*/
 }
 //Fin Integrando Captura de Titulo
 function ValidarTitulo($titulo,$retorno){
