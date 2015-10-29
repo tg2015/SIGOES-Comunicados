@@ -1799,7 +1799,7 @@ function my_enqueue($hook) {
   return;
     }
         
-  wp_enqueue_script( 'ajax-script', plugins_url( '/js/ValidacionComunicado.js', __FILE__ ), array('jquery') );
+  wp_enqueue_script( 'ajax-script', plugins_url( '/js/ValidacionComunicado.js', __FILE__ ), array('jquery'), '1.0', true );
 
   // in JavaScript, object properties are accessed as ajax_object.ajax_url, ajax_object.we_value
   wp_localize_script( 'ajax-script', 'ajax_object',
@@ -1810,6 +1810,21 @@ function my_enqueue($hook) {
 add_action( 'wp_ajax_my_action', 'my_action_callback' );
 function my_action_callback() {
   global $wpdb;
+$love = $_REQUEST['titulo'];
+  if ($love=='a') {
+    die('1');
+  }
+  else{
+    die('0');}
+  //if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) { 
+  //echo $love." mas PHP";
+  
+  //}
+  //else {
+    //wp_redirect( get_permalink( $_REQUEST['post_id'] ) );
+   // exit();
+ // }
+  /*
    $TituloGlobal;
     $titulo = $_POST['titulo'];
     $titulo2=$titulo;
@@ -1832,7 +1847,7 @@ $whatever = intval( $_POST['whatever'] );
         //echo $whatever;
 
 
-  wp_die();
+  wp_die();*/
 }
 //Fin Integrando Captura de Titulo
 function ValidarTitulo($titulo,$retorno){

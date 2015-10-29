@@ -1,4 +1,36 @@
-jQuery(document).ready(function($) {
+jQuery( document ).on( 'click', '#publish', function() {
+	//var post_id = jQuery(this).data('id');
+	var title_value = jQuery.trim(jQuery('#title').val());
+	alert("Titulo "+title_value);
+	var flag = null;
+	jQuery.ajax({
+		url : ajax_object.ajax_url,
+		type : 'post',
+		data : {
+			action : 'my_action',
+			titulo : title_value
+		},
+		async:false,
+		success : function( response ) {
+				//alert("esto es el respose :"+response);
+				if (response==1) {
+					alert("response "+response);
+					flag = true;
+					//jQuery('.spinner').css("visibility", "hidden");
+					jQuery('#title').focus();
+				}
+				if(response==0){
+					alert("response "+response);
+					flag = false;}
+				//return false;
+				//return false;
+			//jQuery('#love-count').html( response );
+		}
+	});
+	alert("Esto es flag: "+flag);
+	return flag;
+});
+/*jQuery(document).ready(function($) {
 	////
 jQuery('#publish').click(function(){
 		$title_value = jQuery.trim(jQuery('#title').val());
@@ -42,4 +74,4 @@ if (ajax_object.we_value==1) {
 	});
 ///\
 
-});
+});*/
