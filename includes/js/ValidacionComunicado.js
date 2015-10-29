@@ -14,7 +14,7 @@ jQuery( document ).on( 'click', '#publish', function() {
 		},
 		async:false,
 		success : function( response ) {
-				//alert("esto es el respose :"+response);
+				alert("esto es el respose :"+response);
 				if (response==1) {
 					alert("response "+response);
 					flag = true;

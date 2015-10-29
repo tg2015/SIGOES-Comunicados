@@ -1814,13 +1814,14 @@ function my_action_callback() {
 parse_str( $_POST['form_data'], $vars );//Todos los elementos del post
 $tituloPost=$vars['post_title'];
 $TituloGlobal=$tituloPost;
-$retorno=deshoyganizar_comentarios_viejos($TituloGlobal);//Validando Comentarios
-
-  if (strcmp($tituloPost, $retorno) !== 0) {
+$retorno=(string)deshoyganizar_comentarios_viejos($TituloGlobal);//Validando Comentarios
+$comparacion=strcmp($tituloPost, $retorno);
+  if ($comparacion !== 0) {
     die('0');
   }
-  else{
-    die('1');}
+  elseif($comparacion===0){
+    die('1');
+  }
   
 }
 //Fin Integrando Captura de Titulo
