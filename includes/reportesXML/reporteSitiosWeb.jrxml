@@ -97,8 +97,10 @@
 						<bottomPen lineWidth="1.25"/>
 						<rightPen lineWidth="1.25"/>
 					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle"/>
-					<text><![CDATA[Estado Sitio Web]]></text>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Estado]]></text>
 				</staticText>
 				<staticText>
 					<reportElement mode="Opaque" x="413" y="30" width="100" height="20" backcolor="#CCCCCC" uuid="6bb6e51f-750b-4588-98e7-c80faaa7bb66"/>
@@ -109,8 +111,10 @@
 						<bottomPen lineWidth="1.25"/>
 						<rightPen lineWidth="1.25"/>
 					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle"/>
-					<text><![CDATA[Estado de Plugin]]></text>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Plugin]]></text>
 				</staticText>
 				<staticText>
 					<reportElement mode="Opaque" x="513" y="30" width="139" height="20" backcolor="#CCCCCC" uuid="6e63f817-7e86-4812-9b33-a76421a8d4c6"/>
@@ -127,20 +131,6 @@
 					<text><![CDATA[Contacto]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="652" y="30" width="100" height="20" backcolor="#CCCCCC" uuid="e51745a5-15fd-4447-8d36-ec4732f92795"/>
-					<box>
-						<pen lineWidth="1.25"/>
-						<topPen lineWidth="1.25"/>
-						<leftPen lineWidth="1.25"/>
-						<bottomPen lineWidth="1.25"/>
-						<rightPen lineWidth="1.25"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font isBold="true"/>
-					</textElement>
-					<text><![CDATA[Telefono Contacto]]></text>
-				</staticText>
-				<staticText>
 					<reportElement mode="Opaque" x="0" y="10" width="91" height="20" backcolor="#CCCCCC" uuid="98641e60-b396-4eed-b261-a47117005c60"/>
 					<box>
 						<pen lineWidth="1.25"/>
@@ -151,6 +141,18 @@
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle"/>
 					<text><![CDATA[Institucion]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="652" y="30" width="100" height="20" backcolor="#CCCCCC" uuid="19dfcbc1-7cd7-46cb-a380-384760630259"/>
+					<box>
+						<pen lineWidth="1.25"/>
+						<topPen lineWidth="1.25"/>
+						<leftPen lineWidth="1.25"/>
+						<bottomPen lineWidth="1.25"/>
+						<rightPen lineWidth="1.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Telefono]]></text>
 				</staticText>
 			</band>
 		</groupHeader>

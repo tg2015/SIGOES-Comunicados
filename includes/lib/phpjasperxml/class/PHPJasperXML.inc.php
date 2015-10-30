@@ -1314,7 +1314,7 @@ $font=$data->textElement->font["fontName"];
 //echo $data->textFieldExpression."///////".var_dump($this->grouplist)."<br/>";
 //echo $this->grouplist[2]["name"];
 
-
+        date_default_timezone_set('America/El_Salvador');
         switch ($data->textFieldExpression) {
             case 'new java.util.Date()':
 //### New: =>date("Y.m.d.",....

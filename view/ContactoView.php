@@ -1,4 +1,9 @@
 <?php
+/*
+*Nombre del módulo: ContactoView
+*Objetivo: Mostrar los contactos de cada institucion
+*Dirección física: /SIGOES-Comunicados/view/ContactoView.php
+*/
 require_once(ABSPATH.'wp-admin/includes/class-wp-list-table.php');
 class ContactoView extends WP_List_Table
 {
@@ -21,12 +26,12 @@ private $posts_per_page = 10;
 
     private function get_sql_results() 
     {
-	$id=$_GET['id'];
-    //$id=$_POST['idInstitucion'];
+	//$id=$_GET['id'];
+    $idInstitucion=$_POST['idInstitucion'];
     require_once(SIGOES_PLUGIN_DIR.'/controller/InstitucionController.php');
     $institucionController = new InstitucionController();
-    $resultados=$institucionController->get_contactos($id);
-    $institucion=$institucionController->get_institucion($id);
+    $resultados=$institucionController->get_contactos($idInstitucion);
+    $institucion=$institucionController->get_institucion($idInstitucion);
     foreach($institucion as $row)
     {
         $nombre=$row->nombreInstitucion;
@@ -35,12 +40,11 @@ private $posts_per_page = 10;
         $url=$row->urlInstitucion;
         $direccion=$row->direccionInstitucion;
     }
-    echo '<h2>Contactos de '.$nombre.'&nbsp;&nbsp;<input id="agregar" class="add-new-h2" type="button" value="Agregar Nuevo" name="Agregar Nuevo" onclick=location.href="admin.php?page=AgregarContacto&idInstitucion='.$id.'"></h2>
+    echo '<form method="post" action="admin.php?page=AgregarContacto"><h2>Contactos de '.$nombre.'&nbsp;&nbsp;<input class="add-new-h2" type="submit" class="button" value="Agregar Nuevo" name="Agregar Nuevo"><input type="hidden" value="'.$idInstitucion.'" name="idInstitucion"></form></h2>
     <br/>
-    <input id="regresar"    type="button"   class="button-primary"          value="Regresar"    onclick=location.href="admin.php?page=Instituciones">
+    <input id="regresar"    type="button"   class="button-primary"          value="<< Regresar"    onclick=location.href="admin.php?page=Instituciones">
     ';
-    //<form method="post" action="admin.php?page=AgregarContacto"><input class="add-new-h2" type="submit" class="button" value="Agregar Nuevo" name="Agregar Nuevo"><input type="hidden" value="'.$id.'" name="idInstitucion"></form>
-
+    //<h2>Contactos de '.$nombre.'&nbsp;&nbsp;<input id="agregar" class="add-new-h2" type="button" value="Agregar Nuevo" name="Agregar Nuevo" onclick=location.href="admin.php?page=AgregarContacto&idInstitucion='.$id.'"></h2>
     return $resultados;
     }
 
@@ -157,8 +161,8 @@ private $posts_per_page = 10;
             $rows_array = array_intersect_key($rows, $range);
             # <<<< Pagination
             foreach ($rows_array as $key => $row) {
-                $row->Editar="<a href=admin.php?page=AgregarContacto&id=".$row->idContacto.">Editar</a>";
-                
+                //$row->Editar="<a href=admin.php?page=AgregarContacto&id=".$row->idContacto.">Editar</a>";
+                $row->Editar='<form action="admin.php?page=AgregarContacto" method="post"><input class="button" type="submit" value="Editar" name="Editar"><input type="hidden" value="'.$row->idContacto.'" name="idContacto"></form>';
              }
 
             $this->items = $rows_array;

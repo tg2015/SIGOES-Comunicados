@@ -1,4 +1,9 @@
 <?php
+/*
+*Nombre del módulo: InstitucionModel
+*Objetivo: Model de de Institucion
+*Dirección física: /SIGOES-Comunicados/model/InstitucionModel.php
+*/
 class InstitucionModel
 {
 

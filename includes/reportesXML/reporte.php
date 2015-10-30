@@ -1,6 +1,8 @@
 <?php
 /*
-*Estructura de Reporte Instituciones
+*Nombre del módulo: reporte.php
+*Objetivo: Mostrar las instituciones que se encuentran implementando el plugin-sigoes
+*Dirección física: /SIGOES-Comunicados/includes/lib/reporte.php
 */
 
 include_once(SIGOES_PLUGIN_DIR.'includes/lib/phpjasperxml/class/tcpdf/tcpdf.php');

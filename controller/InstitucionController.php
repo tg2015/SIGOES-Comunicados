@@ -1,4 +1,9 @@
 <?php
+/*
+*Nombre del módulo: InstitucionController
+*Objetivo: Controlador para Institucion y Contacto
+*Dirección física: /SIGOES-Comunicados/controller/InstitucionController.php
+*/
 function Activar_Menu_Instituciones()
 {
    add_menu_page('Instituciones', 'Instituciones', 'manage_options', 'Instituciones', 'MostrarInstituciones', 'dashicons-building');
@@ -54,8 +59,8 @@ function ReporteXML()
 add_action( 'in_admin_footer', 'registrar_jsmask' );
 function registrar_jsmask()
 {       
-    wp_register_script( 'jmask', plugins_url('SIGOES-Comunicados/includes/js/jquery.maskedinput.js'), array( 'jquery' ) );
-    wp_enqueue_script( 'jmask' );
+    wp_register_script( 'ValidacionMascara', plugins_url('SIGOES-Comunicados/includes/js/ValidacionMascara.js'), array( 'jquery' ) );
+    wp_enqueue_script( 'ValidacionMascara' );
     
     ?> 
     <script>
@@ -154,7 +159,7 @@ class InstitucionController
   }
   
   /*
-  *Funciones de Controlador utilizadas para realizar CRUD en contactos
+  *Funciones de Controlador utilizadas para realizar CRUD de Contactos
   */
 
   function get_contactos($id)

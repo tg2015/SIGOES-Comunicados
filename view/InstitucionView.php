@@ -1,4 +1,9 @@
 <?php
+/*
+*Nombre del módulo: InstitucionView
+*Objetivo: Mostrar las instituciones que se encuentran implementando el plugin-sigoes
+*Dirección física: /SIGOES-Comunicados/view/InstitucionView.php
+*/
 require_once(ABSPATH.'wp-admin/includes/class-wp-list-table.php');
 if(isset($_POST['Comprobar']))
     {$comprobar = $_POST['Comprobar'];}
@@ -200,12 +205,13 @@ private $posts_per_page = 10;
             $rows_array = array_intersect_key($rows, $range);
             # <<<< Pagination
             foreach ($rows_array as $key => $row) {
-                $row->Editar="<a href=admin.php?page=AgregarInstitucion&id=".$row->idInstitucion.">Editar</a>";
-                //$row->Editar='<form method="post" action="admin.php?page=AgregarInstitucion"><input type="submit" class="button" value="Editar" name="Editar">
-                //<input type="hidden" value="'.$row->idInstitucion.'" name="id"></form>';
-                $row->Contacto="<a href=admin.php?page=Contactos&id=".$row->idInstitucion.">Ver Contacto</a>";
-                //$row->Contacto='<form method="post" action="admin.php?page=Contactos"><input type="submit" class="button-primary" value="Ver Contacto" name="Ver Contacto">
-                //<input type="hidden" value="'.$row->idInstitucion.'" name="idInstitucion"></form>';
+                //$row->Editar="<a href=admin.php?page=AgregarInstitucion&id=".$row->idInstitucion.">Editar</a>";
+                $row->Editar='<form method="post" action="admin.php?page=AgregarInstitucion"><input type="submit" class="button" value="Editar" name="Editar">
+                <input type="hidden" value="'.$row->idInstitucion.'" name="idInstitucion"></form>';
+                //$row->Contacto="<a href=admin.php?page=Contactos&id=".$row->idInstitucion.">Ver Contacto</a>";
+                $row->Contacto='<form method="post" action="admin.php?page=Contactos"><input type="submit" class="button-primary" value="Ver Contacto" name="Ver Contacto">
+                <input type="hidden" value="'.$row->idInstitucion.'" name="idInstitucion"></form>';
+                
                 $row->urlInstitucion="<a href=".$row->urlInstitucion."/feed target=blank >".$row->urlInstitucion."/feed</a>";
                 if($row->estadoInstitucion=='Inaccesible')
                     {

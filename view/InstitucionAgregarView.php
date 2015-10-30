@@ -1,4 +1,9 @@
 <?php
+/*
+*Nombre del módulo: InstitucionAgregarView
+*Objetivo: Agregar las instituciones que se encuentran implementando el plugin-sigoes
+*Dirección física: /SIGOES-Comunicados/view/InstitucionAgregarView.php
+*/
 class InstitucionAgregarView
 {
 	function __Construct(){
@@ -7,8 +12,7 @@ class InstitucionAgregarView
 
 	public function MostrarVista()
 	{
-	$id = $_GET["id"];
-	//$id = $_POST["id"];
+	$idInstitucion = $_POST["idInstitucion"];
 	$nombre=$_POST["nombre"];
 	$url=$_POST["url"];
 	$telefono=$_POST["telefono"];
@@ -20,14 +24,14 @@ class InstitucionAgregarView
 	if($_POST['Actualizar'])
 	{
 		echo '<div class="updated highlight"><p>'.$nombre.' Actualizado</p></div>';
-		if(!is_null($id) and $institucionController->update_institucion($id, $nombre, $descripcion, $telefono, $url, $direccion))
+		if(!is_null($idInstitucion) and $institucionController->update_institucion($idInstitucion, $nombre, $descripcion, $telefono, $url, $direccion))
 		{
-		$this->EditarBorrar($id);
+		$this->EditarBorrar($idInstitucion);
 		}
 	}
 	else if($_POST['Borrar'])
 	{	
-		if(!is_null($id) and $institucionController->delete_institucion($id))
+		if(!is_null($idInstitucion) and $institucionController->delete_institucion($idInstitucion))
 		{
 		echo '<div class="updated highlight"><p>Institucion '.$nombre.' Borrada Exitosamente</p></div>
 		&nbsp;&nbsp;
@@ -44,22 +48,16 @@ class InstitucionAgregarView
 		<br/>
 		<table>
 		<tr>
-			<td><input type="button" value="Regresar" class="button-primary" onclick=location.href="admin.php?page=Instituciones"></td>
-			<td><form method="post"><input id="AgregarContacto" 	type="button"  	class="button" 			value="Agregar Contacto" 	onclick=location.href="admin.php?page=Contactos&id='.$ultimo_id.'"></form></td>	
+			<td><input type="button" value="<< Regresar" class="button-primary" onclick=location.href="admin.php?page=Instituciones"></td>
+			<td><form action="admin.php?page=Contactos" method="post"><input id="AgregarContacto" 	type="submit"  	class="button" 	value="Agregar Contacto" name="Agregar Contacto"><input type="hidden" value="'.$idInstitucion.'" name="idInstitucion"></form></td>	
 		</tr>
 		</table>';
-		//<td><form method="post"><input id="AgregarContacto" 	type="button"  	class="button" 			value="Agregar Contacto" 	onclick=location.href="admin.php?page=Contactos&id='.$ultimo_id.'"></form></td>
-		/*<td>
-		<form method="post" action="admin.php?page=Contactos">
-		<input id="AgregarContacto" 	type="submit"  	class="button" 			value="Agregar Contacto" name="Agregar Contacto">
-		<input type="hidden" value="'.$ultimo_id.'" name="idInstitucion">
-		</form></td>*/
 	}
 	else
 	{
-		if(!is_null($id))
+		if(!is_null($idInstitucion))
 		{
-			$this->EditarBorrar($id);
+			$this->EditarBorrar($idInstitucion);
 		}
 		else
 		{
@@ -76,7 +74,7 @@ class InstitucionAgregarView
 	<table class="form-table">
 	<form action="#" method="post">
 	<tr>
-		<td><input type="hidden" value="'.$id.'" name="id"  disabled></td>
+		<td><input type="hidden" value="'.$idInstitucion.'" name="idInstitucion"  disabled></td>
 	</tr>
 	
 	<tr>
@@ -96,7 +94,7 @@ class InstitucionAgregarView
 	<tr>
 	<th>
 	<td><input id="guardar"  type="submit" value="Guardar"  class="button-primary" name="Guardar">&nbsp;&nbsp;
-	<input id="regresar" type="button" value="Regresar" class="button" onclick=location.href="admin.php?page=Instituciones"></td>
+	<input id="regresar" type="button" value="<< Regresar" class="button" name="<< Regresar" onclick=location.href="admin.php?page=Instituciones"></td>
 	</th>
 	</tr>
 	</form>
@@ -107,11 +105,11 @@ class InstitucionAgregarView
 	}
 
 
-	public function EditarBorrar($id)
+	public function EditarBorrar($idInstitucion)
 	{
 	require_once(SIGOES_PLUGIN_DIR.'/controller/InstitucionController.php');
     $institucionController = new InstitucionController();
-    $institucion=$institucionController->get_institucion($id);
+    $institucion=$institucionController->get_institucion($idInstitucion);
     foreach($institucion as $row)
     {
     	$nombre=$row->nombreInstitucion;
@@ -125,7 +123,7 @@ class InstitucionAgregarView
 	<table class="form-table">
 	<form action="#" method="post">
 	<tr>
-	<th><h3>ID: </h3></th>					<td><input type="text" value="'.$id.'" name="id"  disabled></td>
+	<td><input type="hidden" value="'.$idInstitucion.'" name="idInstitucion"></td>
 	</tr>
 	
 	<tr>
@@ -135,7 +133,7 @@ class InstitucionAgregarView
 	
 	<tr>
 	<th><h3>&nbsp;Direccion: </h3></th>		<td><input type="text" value="'.$direccion.'" name="direccion" size=50 required maxlength="50"></td>
-	<th> <h3>Url: </h3></th>				<td><input type="url" value="'.$url.'" name="url" required size=40 maxlength="50"><span class="requerido"></span></td>
+	<th><h3>Url: </h3></th>				<td><input type="url" value="'.$url.'" name="url" required size=40 maxlength="50"><span class="requerido"></span></td>
 	</tr>
 	
 	<tr>
@@ -145,17 +143,16 @@ class InstitucionAgregarView
 	<th>
 	<td>';
 	?>
-	<input id="actualizar"	type="submit"	class="button-primary"  value="Actualizar"  name="Actualizar">&nbsp;&nbsp;
-	<input id="contacto" 	type="button"  	class="button" 			value="Agregar Contacto" 	onclick=location.href="admin.php?page=Contactos&id=<?php echo $id; ?>">
+	<input id="actualizar"	type="submit"	class="button-primary"  value="Actualizar"  name="Actualizar">&nbsp;&nbsp;	
 	<input id="borrar"		type='submit' 	class='button'			value='Borrar'		name="Borrar"  onclick="return confirm('Esta Seguro que desea Borrar <?php echo $nombre; ?>')">&nbsp;&nbsp;
 	<input id="regresar" 	type="button"  	class="button" 			value="Regresar" 	onclick=location.href="admin.php?page=Instituciones">
 	</td> 
 	</th>
 	</tr>
-	<!--</form>
+	</form>
 	<form method="post" action="admin.php?page=Contactos">
-	<input id="contacto" 	type="submit"  	class="button-primary" 			value="Agregar Contacto" name="Agregar Contacto"><input type="hidden" value="'.<?php echo $id; ?>.'" name="idInstitucion"> 
-	</form>-->	
+	<input id="contacto" 	type="submit"  	class="button-primary" 			value="Agregar Contacto" name="Agregar Contacto"><input type="hidden" value="<?php echo $idInstitucion; ?>" name="idInstitucion"> 
+	</form>
 	</table>
 	</div>
 	<?php

@@ -1,4 +1,9 @@
 <?php
+/*
+*Nombre del módulo: ContactoModel
+*Objetivo: Model de de Conctato
+*Dirección física: /SIGOES-Comunicados/model/ContactoModel.php
+*/
 class ContactoModel
 {
 

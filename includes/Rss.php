@@ -9,7 +9,7 @@ class Rss
 {
 	public function __Construct()   
     {
-
+    	set_time_limit(20);
     }
 
 	public function verificarPlugin($url)
