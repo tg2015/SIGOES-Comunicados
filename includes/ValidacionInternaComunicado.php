@@ -149,7 +149,7 @@ function mh_admin_explicacion()
     <p>Tampoco es necesarios agregar palabras en Ingles con alguna de las siguientes terminaciones:</p>
     <p>s - ing - ed - es - ies</p>
     <p>Por ejemplo con solo agregar la palabra Fuck serán censuradas:</p>
-    <p>Fucks, Fucking, Fucked, Fuckies, Fuckes (Aunque las 2 ultimas no existen en Ingles xD)</p>
+    <p>Fucks, Fucking, Fucked, Fuckies, Fuckes (Aunque las 2 ultimas no existen en Ingles</p>
    </td>
   </tr>
  </table>
@@ -1094,9 +1094,13 @@ function cadena_sin_malas_palabras($word)
    {
     if ( substr($temp,-1)== 's' && strlen($temp) == strlen($palabra)+1 )
      $asteriscos=1;
+   else if ( substr($temp,-1)== 'e' && strlen($temp) == strlen($palabra)+1 )
+     $asteriscos=1;
     else if ( substr($temp,-1)== 'n' && strlen($temp) == strlen($palabra)+1 )
      $asteriscos=1;
     else if ( substr($temp,-2) == 'na' && strlen($temp) == strlen($palabra)+2 )
+     $asteriscos=1;
+    else if ( substr($temp,-2) == 'ar' && strlen($temp) == strlen($palabra)+2 )
      $asteriscos=1;
     else if ( substr($temp,-2) == 'da' && strlen($temp) == strlen($palabra)+2 )
      $asteriscos=1;
@@ -1111,7 +1115,7 @@ function cadena_sin_malas_palabras($word)
     else if ( substr($temp,-2) == 'an' && strlen($temp) == strlen($palabra)+2 )
      $asteriscos=1;
     else if ( substr($temp,-2) == 'te' && strlen($temp) == strlen($palabra)+2 )
-     $asteriscos=1;
+     $asteriscos=1;    
     else if ( substr($temp,-3) == 'mos' && strlen($temp) == strlen($palabra)+3 )
      $asteriscos=1;
     else if ( substr($temp,-3) == 'ies' && strlen($temp) == strlen($palabra)+3 )
@@ -1133,7 +1137,7 @@ function cadena_sin_malas_palabras($word)
     else if ( substr($temp,-4) == 'emos' && strlen($temp) == strlen($palabra)+4 )
      $asteriscos=1;
     else if ( substr($temp,-4) == 'adas' && strlen($temp) == strlen($palabra)+4 )
-     $asteriscos=1;
+     $asteriscos=1;   
     if($asteriscos==1)
      break;
    }
@@ -1817,10 +1821,10 @@ $TituloGlobal=$tituloPost;
 $retorno=(string)deshoyganizar_comentarios_viejos($TituloGlobal);//Validando Comentarios
 $comparacion=strcmp($tituloPost, $retorno);
   if ($comparacion !== 0) {
-    die('0');
+    die('@invalido@');
   }
   elseif($comparacion===0){
-    die('1');
+    die('@valido@');
   }
   
 }

@@ -14,22 +14,34 @@ jQuery( document ).on( 'click', '#publish', function() {
 		},
 		async:false,
 		success : function( response ) {
-				alert("esto es el respose :"+response);
-				if (response==1) {
+				//alert("esto es el respose :"+response);
+				if (response=='@valido@') {
 					alert("response "+response);
 					flag = true;
 					//jQuery('.spinner').css("visibility", "hidden");
 					jQuery('#title').focus();
-				}
-				if(response==0){
-					alert("response "+response);
-					flag = false;}
+				}else if(response=='@invalido@'){
+						alert("response "+response);
+						jQuery('.spinner').css("visibility", "hidden");
+						jQuery('#title').focus();
+						flag = false;}
+					else{
+						var n = response.search("@invalido@");
+						alert("valor n: "+n);
+						if (n!=-1) {
+							alert("response "+response);
+							jQuery('.spinner').css("visibility", "hidden");
+							jQuery('#title').focus();
+							flag = false;
+							}
+						else{flag=true;}	
+						}
 				//return false;
 				//return false;
 			//jQuery('#love-count').html( response );
 		}
 	});
-	alert("Esto es flag: "+flag);
+	//alert("Esto es flag: "+flag);
 	return flag;
 });
 /*jQuery(document).ready(function($) {
