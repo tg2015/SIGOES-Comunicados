@@ -8,7 +8,7 @@ class ReporteModel
             $this->CRUD=$wpdb;
         }
 
-public function get_reporte($estado, $cat, $autor, $nick, $fecha_ini, $fecha_fin)
+public function get_reporte($estado, $cat, $autor, $nick, $fecha_ini, $fecha_fin, $filtro_titulo)
 {
 
 $comilla = '"';
@@ -27,12 +27,22 @@ if( $fecha_ini == NULL && $fecha_fin == NULL){
     if($fecha_fin_format>$fecha_ini_format)
         {$filtro_fecha="AND post_date between '".$fecha_ini_format."' and '".$fecha_fin_format."'";}
     }
+}
+
+if(!is_null($filtro_titulo))
+{
+    $filtro=$filtro_titulo;
+}
+else
+{
+    $filtro="%";
 } 
 
 // Consulta Pantalla
         $resultados = $this->CRUD->get_results(
         " SELECT DISTINCT
         (@num:=@num+1) AS ID,
+        #count(*) AS ID,
         Post.post_title, 
         Post.post_type,  
         (CASE Post.post_status 
@@ -52,20 +62,22 @@ if( $fecha_ini == NULL && $fecha_fin == NULL){
         date_format(Post.post_date_gmt, '%d-%m-%Y %H:%m:%s') AS Fecha_Modificacion
         FROM  wp_posts AS Post, wp_usermeta AS User,
         (SELECT @num:=0) d
+        
         WHERE 
-        (user_id = post_author) AND
-        (post_status  like '".$estado."'  ) AND
-        (post_type    like '".$cat."'  ) AND 
-        (meta_value   like '%".$autor."%' ) AND
-        (meta_value   like '".$nick."')     AND
-        (post_status != 'trash')              AND
-        (post_status != 'auto-draft')         AND
-        (post_status != 'inherit')            AND  
-        (post_type != 'attachment')           AND
-        (post_type != 'page')                 AND
-        (post_type != 'post')                 AND
+        (post_title LIKE '%".$filtro_titulo."%') AND
+        (user_id = post_author)                  AND
+        (post_status  like '".$estado."'  )      AND
+        (post_type    like '".$cat."'  )         AND 
+        (meta_value   like '%".$autor."%' )      AND
+        (meta_value   like '".$nick."')          AND
+        (post_status != 'trash')                 AND
+        (post_status != 'auto-draft')            AND
+        (post_status != 'inherit')               AND  
+        (post_type != 'attachment')              AND
+        (post_type != 'page')                    AND
+        (post_type != 'post')                    AND
         (post_type != 'revision')  ".$filtro_fecha." 
-        #ORDER BY post_date DESC 
+        ORDER BY post_date DESC 
         ");
 
 return $resultados;
@@ -117,10 +129,10 @@ if( $fecha_ini == NULL && $fecha_fin == NULL){
         (SELECT @num:=0) d
         WHERE 
         (user_id = post_author) AND
-        (post_status  like '".$estado."'  ) AND
-        (post_type    like '".$cat."'  ) AND 
-        (meta_value   like '%".$autor."%' ) AND
-        (meta_value   like '".$nick."')     AND
+        (post_status  like '".$estado."'  )   AND
+        (post_type    like '".$cat."'  )      AND 
+        (meta_value   like '%".$autor."%' )   AND
+        (meta_value   like '".$nick."')       AND
         (post_status != 'trash')              AND
         (post_status != 'auto-draft')         AND
         (post_status != 'inherit')            AND  
@@ -128,7 +140,7 @@ if( $fecha_ini == NULL && $fecha_fin == NULL){
         (post_type != 'page')                 AND
         (post_type != 'post')                 AND
         (post_type != 'revision')  ".$filtro_fecha." 
-        #ORDER BY post_date DESC 
+        ORDER BY post_date DESC 
         ", ARRAY_A);
 
 return $resultados;

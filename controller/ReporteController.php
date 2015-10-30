@@ -39,11 +39,11 @@ public function get_sql_nickname_user()
     return $nick_array;
 }
 ////////////////// CONSULTAS PARA OBTENER REPORTE PANTALLA - ARCHIVO CSV
-public function get_sql_result_pantalla($estado, $cat, $autor, $nick, $fecha_ini, $fecha_fin)
+public function get_sql_result_pantalla($estado, $cat, $autor, $nick, $fecha_ini, $fecha_fin, $filtro_titulo)
 {
     require_once(SIGOES_PLUGIN_DIR.'/model/ReporteModel.php');
     $model_consulta = new ReporteModel();
-    $sql_result =  $model_consulta->get_reporte($estado, $cat, $autor, $nick, $fecha_ini, $fecha_fin); 
+    $sql_result =  $model_consulta->get_reporte($estado, $cat, $autor, $nick, $fecha_ini, $fecha_fin, $filtro_titulo); 
 
     return ($sql_result);
 }

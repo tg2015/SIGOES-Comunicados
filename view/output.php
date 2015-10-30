@@ -24,6 +24,13 @@ public function Footer()
 
 public function CrearPDF($estado_reporte,$catego_1,$autor_1,$nick_1,$fecha_ini,$fecha_fin,$array_results){
     
+// Autor
+    $this->SetAuthor('Rafael R.',true);
+    $this->SetCreator('SIGOES', true);    
+// Titulo
+    $this->SetTitle('Reporte de Comunicados', true); 
+    $this->SetSubject('Comunicados', true);
+    
 // fecha y hora del sistema
     $time = current_time( 'mysql' );
     // Variables utilizadas para definir ancho de las columnas
@@ -67,8 +74,8 @@ public function CrearPDF($estado_reporte,$catego_1,$autor_1,$nick_1,$fecha_ini,$
     $user_nick = $current_user->user_nicename;
     $this->SetFont('Arial','B',16);
     //Titulo
-    $this->Image(SIGOES_PLUGIN_DIR.'view/imagen/LogoGob.jpeg','01','0.5','5','2');
-    $this->Cell(0,0,'REPORTE SIGOES',0,'R','C');
+    $this->Image(SIGOES_PLUGIN_DIR.'includes/img/LogoGob.jpeg','01','0.5','5','2');
+    $this->Cell(0,0,'REPORTE DE COMUNICADOS',0,'R','C');
     $this->Ln(2);
     $this->SetFont('Arial','B',10);
     
@@ -116,13 +123,14 @@ public function CrearPDF($estado_reporte,$catego_1,$autor_1,$nick_1,$fecha_ini,$
     foreach ($array_results as $fila){
 
         $salto='no';
-        $this->SetAutoPageBreak(false,2);    // deshabilita salto de pagina automatico
+        //$this->SetAutoPageBreak(false,2);    // deshabilita salto de pagina automatico
         $yTupla=$this->GetY();
         if($yTupla+$Nfila>18){  $this->SetAutoPageBreak(true,2);} // habilita salto de pagina cuando se pasa del margen
         
         if($yTupla>18){$this->SetAutoPageBreak(true,3);}
         $this->SetXY($x1,$yTupla+$Nfila);
-        $this->Cell(1,1,utf8_decode($fila['ID']),'LTR','0','C','0');
+        //$this->Cell(1,1,utf8_decode($fila['ID']),'LTR','0','C','0');
+        $this->Cell(1,1,$contador+1,'LTR','0','C','0');
         $yTupla=$this->GetY(); 
         $Nfila = 0;
         $this->MultiCell($TCell+$W,1,utf8_decode($fila['post_title']),'LTR','0','C','0');
@@ -184,36 +192,47 @@ public function CrearPDF($estado_reporte,$catego_1,$autor_1,$nick_1,$fecha_ini,$
     $this->Cell(4,1,'Total Comunicados: ','1','0','C','1');
     $this->Cell(3,1,$contador,'1','0','C','1');
 
+//ob_clean();
 }
 public function CrearCSV($array_results){
-   
-    header('Content-Type: text/csv; charset=utf-8');
-    header('Content-Disposition: attachment; filename=Reporte_SIGOES.csv');
+ob_start();
+//ob_end_clean();
 
-    $fp= fopen('php://output', 'w');
-    $columnas = ["Post ID","Titulo","Categoria","Estado","Rol_Autor","Nombre_Autor","Apellido_Autor","Fecha_ini","Fecha_fin"];
-    fputcsv($fp, $columnas, ",");
+//ob_start();
+//header('Content-Description: File Transfer');
+//header('Content-Type: application/octet-stream');
+header('content-type:application/csv;charset=UTF-8');
+header('Content-Disposition: attachment; filename=Reporte_SIGOES.csv');
+//header('Content-Transfer-Encoding: binary');
+//header('Expires: 0');
+//header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+//header('Pragma: public');
+//echo "\xEF\xBB\xBF"; // UTF-8 BOM
+    /*
+    header('Content-Encoding: UTF-8');
+    header("content-type:application/csv;charset=UTF-8");
+    header("Content-Disposition:attachment;filename=\"Reporte_SIGOES.csv\"");
+    echo "\xEF\xBB\xBF"; // UTF-8 BOM
+    */
+    //$fp= fopen('php://output', 'w');
+    //ob_clean();
+    $fp = fopen('php://output', 'w+');
+    $columnas = ['No','Titulo',"Categoria","Estado","Rol_Autor","Nombre_Autor","Apellido_Autor","Fecha_ini","Fecha_fin"];
+    fputcsv($fp, $columnas, ',');
     foreach ($array_results as $valor) { // escribe tabla en archivo csv
-    fputcsv($fp, $valor, ",");
+    fputcsv($fp, $valor, ',');
     }
     rewind( $fp );    
     //$output = stream_get_contents( $fp );
     fclose($fp);
-    /*
-    header("Content-type:  text/csv; charset=utf-8");
-    header("Content-Disposition: attachment; filename=reporte".$extension);
-    //header('Content-Length: '. strlen($output) );    echo $output;
-    */
-    // cabeceras HTTP:
-    // tipo de archivo y codificación
-    //header('Content-Type: text/csv; charset=utf-8');
-    // forzar descarga del archivo con un nombre de archivo determinado
-    //header('Content-Disposition: attachment; filename=Reporte_SIGOES.csv' );
-    // indicar tamaño del archivo
-    //header('Content-Length: '. strlen($output) );
-    // enviar archivo
     echo $output;
     
     }// fin CrearCSV
+
+    
+// orden descendente en consulta 
+// guion en la fecha hora
+// csv
+    
 
 }

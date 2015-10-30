@@ -44,6 +44,11 @@ if(isset($_POST['Estado_Post'])){
                     $fecha_ini = $_POST['fecha_fin'];
                     }else{$fecha_fin = '%';}
 
+            if(isset($_POST['titulo'])){ 
+                    $fecha_ini = $_POST['titulo'];
+                    }else{$filtro_titulo = '%';}
+
+
 
 if (!class_exists('WP_List_Table')) {
     require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
@@ -114,7 +119,9 @@ private function get_sql_results()
                     $fecha_fin = $_POST['fecha_fin'];
                     }else{$fecha_fin = '%';}
 
-
+            if(isset($_POST['titulo'])){ 
+                    $fecha_ini = $_POST['titulo'];
+                    }else{$filtro_titulo = '%';}
 
    require_once(SIGOES_PLUGIN_DIR.'/controller/ReporteController.php');
    $reporteController = new ReporteController();
@@ -125,7 +132,7 @@ private function get_sql_results()
    $nicks       = $reporteController->get_sql_nickname_user();   
 
     //Obtiene la consulta presentada en pantalla
-    $sql_results = $reporteController->get_sql_result_pantalla($estado,$cat,$autor,$nick,$fecha_ini,$fecha_fin);
+    $sql_results = $reporteController->get_sql_result_pantalla($estado,$cat,$autor,$nick,$fecha_ini,$fecha_fin,$filtro_titulo);
 
     // Obtiene consulta para crear archivo csv
     $array_results = $reporteController->get_sql_result_csv($estado,$cat,$autor,$nick,$fecha_ini,$fecha_fin); 
@@ -133,7 +140,9 @@ private function get_sql_results()
     ///////////////// EXPORTAR ARCHIVOS PDF Y CSV    
     $fechaInExportar = $fecha_ini;
     $fechaFinExportar = $fecha_fin;
+
     $tipo = isset($_POST['tipo']) ? $_POST['tipo'] : 'pdf'; 
+    
     if(isset($_POST['Exportar']))
     {
     $arrayExportar = $array_results;
@@ -141,18 +150,59 @@ private function get_sql_results()
     $categoExportar = $_POST['ExportarCat']; // Categoria
     $rolExportar = $_POST['ExportarAutor'];       // Rol
     $nickExportar = $_POST['ExportarNick'];     // Nick 
+
     
+    if($tipo=='csv'){ 
+    ob_clean();
+    //$output_new->CrearCSV($array_results);
+    //ob_end_flush(); 
+    //ob_flush();   
+    header('content-type:application/csv;charset=UTF-8');
+    header('Content-Disposition: attachment; filename=Reporte_SIGOES.csv');
+
+    $fp = fopen('php://output', 'w+');
+    //$fp = fopen( SIGOES_PLUGIN_DIR.'/view/fichero.csv' , "w+" ); 
+    //$columnas = array();
+
+    $filas = count($array_results);
+    $columnas = array(
+                "No"=>"No",
+                "Titulo"=>"Titulo",
+                "Categoria"=>"Categoria",
+                "Estado"=>"Estado",
+                "Rol_Autor"=>"Rol",
+                "Nombre_Autor"=>"Nombre",
+                "Apellido_Autor"=>"Apellido",
+                "Fecha_ini"=>"Fecha_ini",
+                "Fecha_fin"=>"Fecha_fin");
+    
+    $columnas2 = ["No","Titulo","Categoria","Estado","Rol_Autor","Nombre_Autor","Apellido_Autor","Fecha_Creacion"];
+
+    //fputcsv($fp, split(',', $columnas2));
+    fputcsv($fp, $columnas, ",");
+     $array_results = $reporteController->get_sql_result_csv($estado,$cat,$autor,$nick,$fecha_ini,$fecha_fin); 
+    //ob_get_clean();
+    foreach ($array_results as $valor) { // escribe tabla en archivo csv
+    fputcsv($fp, $valor, ",");
+    fputcsv($fp, array_keys($valor));
+    }
+    fclose($fp);
+    
+    }// fin if $tipo == csv
+    
+    ob_clean();
     require(SIGOES_PLUGIN_DIR.'/view/output.php'); 
     $output_new = new output('L','cm','Letter');
+
     if($tipo=='pdf'){ 
+    
     $output_new->AliasNbPages();
     $output_new->AddPage();
     $output_new->CrearPDF($estadoExportar,$categoExportar,$rolExportar,$nickExportar,$fecha_ini,$fecha_fin,$array_results);
-    $output_new->Output();}
-    if($tipo=='csv'){ 
-      $output_new->CrearCSV($array_results);
-      }
-    }
+    $output_new->Close();
+    $output_new->Output('Reporte_SIGOES.pdf','I');
+    }// fin $tipo == pdf
+    }// fin if exportar
 
 if(isset($_POST['filtra_fecha'])){
     if (isset($_POST['fecha_ini']) && !isset($_POST['fecha_fin'])){
@@ -172,7 +222,7 @@ if(isset($_POST['filtra_fecha'])){
 <div class="tablenav top widefat fixed">
         <div class="alignleft actions bulkactions">
             <label class="screen-reader-text" for="bulk-action-selector-top">Filtrar por Estado</label>
-            <form action="#" method="post">
+            <form action="" method="post">
             <p>
             <input id="export" class="button button-primary" type="submit" value="Exportar" name="Exportar">
             <input name="tipo" type="radio" value="pdf" checked>PDF
@@ -185,7 +235,7 @@ if(isset($_POST['filtra_fecha'])){
             <input type="hidden" value="<?php echo $fecha_ini; ?>" name="ExportarFechaIni" />
             <input type="hidden" value="<?php echo $fecha_fin; ?>" name="ExportarFechaFin" />
       
-            <TABLE class="widefat">    
+            <TABLE class="widefat" >    
                 <TR>
                 <!--Filtro Estado de Publicacion-->  
                 <TD>
@@ -392,9 +442,9 @@ if(isset($_POST['filtra_fecha'])){
                 <?php
                    if(isset($_POST['fecha_ini'])){
                     $fecha_ini = $_POST['fecha_ini'];
-                    echo '<input type="date" id="fecha_ini" name = "fecha_ini" value = "'.$fecha_ini.'" class = "date" size=10>';
+                    echo '<input type="date" id="fecha_ini" name = "fecha_ini" value = "'.$fecha_ini.'" class = "date" size=10 min="01-01-2005 00:00:00">';
                    }else{
-                    echo '<input type="date" id="fecha_ini" name = "fecha_ini" class = "date" size=10> ';
+                    echo '<input type="date" id="fecha_ini" name = "fecha_ini" class = "date" size=10 min="01-01-2005 00:00:00">';
                    }
                 ?>           
                 </TD>
@@ -403,9 +453,9 @@ if(isset($_POST['filtra_fecha'])){
                 <?php
                    if(isset($_POST['fecha_fin'])){
                     $fecha_fin = $_POST['fecha_fin'];
-                    echo '<input type="date" id="fecha_fin" name = "fecha_fin" value = "'.$fecha_fin.'" class = "date" size=10>';
+                    echo '<input type="date" id="fecha_fin" name = "fecha_fin" value = "'.$fecha_fin.'" class = "date" size=10 min="01-01-2005 00:00:00">';
                    }else{
-                    echo '<input type="date" id="fecha_fin" name = "fecha_fin" class = "date" size=10> ';
+                    echo '<input type="date" id="fecha_fin" name = "fecha_fin" class = "date" size=10 min="01-01-2005 00:00:00"> ';
                    }
                 ?>   
                 </TD>
@@ -507,11 +557,11 @@ if(isset($_POST['filtra_fecha'])){
                 'Titulo' => array('post_title', true),
                 'Categoria' => array('post_type', true),
                 'Estado' => array('post_status', true),
-                'Rol_Autor' => array('Rol_Autor', true),  
+                //'Rol_Autor' => array('Rol_Autor', true),  
                 'ID_Usuario' => array('alias', true),
                 'Nombre' => array('nombre', true), 
-                'Fecha_Creacion' => array('Fecha_Creacion', true),                
-                'Fecha_Modificacion' => array('Fecha_Modificacion', true)
+                //'Fecha_Creacion' => array('Fecha_Creacion', true),                
+                //'Fecha_Modificacion' => array('Fecha_Modificacion', true)
             );
             return $sortable;
         }
@@ -537,7 +587,8 @@ if(isset($_POST['filtra_fecha'])){
             empty($posts) AND $posts = array();
 
             # >>>> Pagination
-            $per_page = $this->posts_per_page;
+            //$per_page = $this->posts_per_page; //  numero de post por pagina
+            $per_page = 50;
             $current_page = $this->get_pagenum();
             $total_items = count($posts);
             $this->set_pagination_args(array(
@@ -559,11 +610,15 @@ if(isset($_POST['filtra_fecha'])){
             # <<<< Pagination
             // Prepare the data
             $permalink = __('Edit:');
+            $No = 0;
             foreach ($posts_array as $key => $post) {
+                // calculo de numero de post por fila
+                $No = $No + 1;
+                $posts[$key]->ID = $No;
                 $link = get_edit_post_link($post->ID);
                 $no_title = __('Sin titulo');
                 $title = !$post->post_title ? "<em>{$no_title}</em>" : $post->post_title;
-                $posts[$key]->post_title = "<a title='{$permalink} {$title}' href='{$link}'>{$title}</a>";
+                //$posts[$key]->post_title = "<a title='{$permalink} {$title}' href='{$link}'>{$title}</a>";
              }
 
             $this->items = $posts_array;
