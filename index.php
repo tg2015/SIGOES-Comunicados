@@ -20,8 +20,6 @@ require_once(SIGOES_PLUGIN_DIR.'/includes/ImagenEnFeed.php');
 require_once(SIGOES_PLUGIN_DIR.'/includes/EstadoComunicado.php');
 //Configurar imagen
 require_once(SIGOES_PLUGIN_DIR.'/includes/ImagenRequerida.php');
-//Ordenar Comunicados
-//require_once(SIGOES_PLUGIN_DIR.'/includes/OrdenarComunicado.php');
 /*Espacio para los Includes de Rafel Romero*/
 require_once(SIGOES_PLUGIN_DIR.'/includes/GenerarReportes.php');
 require_once(SIGOES_PLUGIN_DIR.'/view/ReporteView.php');

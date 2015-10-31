@@ -54,6 +54,13 @@ echo '<style type="text/css">
 .requerido:after {
 content:" *"; 
 color: #e32;
+margin: 0px 0px 0px 5px; 
+font-size: large; 
+padding: 0 5px 0 0; }
+
+input:required:after {
+content:"*"; 
+color: #e32;
 position: absolute; 
 margin: 0px 0px 0px 5px; 
 font-size: large; 

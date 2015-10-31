@@ -1,8 +1,10 @@
+jQuery(document).ready(function() {
+	jQuery("#title").attr("required", "true");
 jQuery( document ).on( 'click', '#publish', function() {
 	//var post_id = jQuery(this).data('id');
 	var title_value = jQuery.trim(jQuery('#title').val());
 	alert("Titulo "+title_value);
-	var form_data = jQuery('#post').serializeArray();//Todo el post
+	var form_data2 = jQuery('#post').serializeArray();//Todo el post
 	var flag = null;
 	jQuery.ajax({
 		url : ajax_object.ajax_url,
@@ -10,7 +12,7 @@ jQuery( document ).on( 'click', '#publish', function() {
 		data : {
 			action : 'my_action',
 			titulo : title_value,
-			form_data: jQuery.param(form_data)
+			form_data: jQuery.param(form_data2)
 		},
 		async:false,
 		success : function( response ) {
@@ -43,6 +45,7 @@ jQuery( document ).on( 'click', '#publish', function() {
 	});
 	//alert("Esto es flag: "+flag);
 	return flag;
+});
 });
 /*jQuery(document).ready(function($) {
 	////
