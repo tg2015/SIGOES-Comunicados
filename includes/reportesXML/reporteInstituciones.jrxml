@@ -80,21 +80,16 @@
 				<text><![CDATA[Generado Por:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="123" width="103" height="20" uuid="1f0d4aeb-cf0b-4c8c-af8b-a5759d989e7a"/>
+				<reportElement x="0" y="103" width="103" height="20" uuid="1f0d4aeb-cf0b-4c8c-af8b-a5759d989e7a"/>
 				<textElement verticalAlignment="Top"/>
 				<text><![CDATA[ID Usuario:]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="0" y="103" width="103" height="20" uuid="8738262e-c6f7-4816-a582-041f876717a4"/>
-				<textElement verticalAlignment="Top"/>
-				<text><![CDATA[Nombre Usuario:]]></text>
-			</staticText>
 			<textField>
-				<reportElement x="103" y="103" width="142" height="20" uuid="8a74dda5-56d6-48f6-babb-982c232dc5fa"/>
+				<reportElement x="103" y="83" width="142" height="20" uuid="8a74dda5-56d6-48f6-babb-982c232dc5fa"/>
 				<textFieldExpression><![CDATA[$P{nombreusuario}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="103" y="123" width="142" height="20" uuid="16489e04-13b4-457f-99ad-f0b86bc16505"/>
+				<reportElement x="103" y="103" width="142" height="20" uuid="16489e04-13b4-457f-99ad-f0b86bc16505"/>
 				<textFieldExpression><![CDATA[$P{idusuario}]]></textFieldExpression>
 			</textField>
 		</band>

@@ -21,6 +21,21 @@ function registrar_css()
     wp_enqueue_style( 'EstilosInstitucion' );     
 }
 
+add_action( 'in_admin_header', 'registrar_encabezado' );
+function registrar_encabezado()
+{       
+    wp_register_style( 'EstilosAdmin', plugins_url('SIGOES-Comunicados/includes/css/EstilosAdmin.css'));
+    wp_enqueue_style( 'EstilosAdmin' );
+
+    echo '<img id="logo"    src="'.plugins_url().'/SIGOES-Comunicados/includes/img/gob.jpg">
+          <img id="escudo"  src="'.plugins_url().'/SIGOES-Comunicados/includes/img/presidencia.jpg">
+          <div class="titulo-sistema"><p>Sistema Informático para la Gestión de Gobierno Electrónico en la Innovación de Canales de Comunicación entre Casa Presidencial y Población Salvadoreña (SIGOES)</p></div>                    
+          
+          ';
+    //<img id="logo"    src="'.plugins_url().'/SIGOES-Comunicados/includes/img/gob.jpg">
+    //<img id="escudo"  src="'.plugins_url().'/SIGOES-Comunicados/includes/img/presidencia.jpg">  
+}
+
 function MostrarInstituciones()
 {
   require_once(SIGOES_PLUGIN_DIR.'view/InstitucionView.php');

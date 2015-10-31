@@ -73,7 +73,7 @@ class ContactoAgregarView
 
 	public function Agregar($idInstitucion)
 	{
-	echo '<h2>Agregar Contacto</h2>
+	echo '<h1>Agregar Contacto</h1>
 	<div class="wrap">
 	<table class="form-table">
 	<form action="#" method="post">
@@ -113,7 +113,7 @@ class ContactoAgregarView
     	$email=$row->emailContacto;
     	$puesto=$row->puestoContacto;
     }
-	echo '<h2>Editar Contacto</h2>
+	echo '<h1>Editar Contacto</h1>
 	<div class="wrap">
 	<table class="form-table">
 	<form action="admin.php?page=AgregarContacto" method="post">

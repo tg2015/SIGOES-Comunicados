@@ -91,6 +91,7 @@ sudo apt-get install php5-curl*/
 		return false; 
     	}
     	try{
+    	set_time_limit(20);
     	$ch = curl_init($url);  
     	curl_setopt($ch, CURLOPT_TIMEOUT, 5);  
     	curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);  

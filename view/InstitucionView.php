@@ -5,10 +5,7 @@
 *Dirección física: /SIGOES-Comunicados/view/InstitucionView.php
 */
 require_once(ABSPATH.'wp-admin/includes/class-wp-list-table.php');
-if(isset($_POST['Comprobar']))
-    {$comprobar = $_POST['Comprobar'];}
-if(isset($_POST['titulo']))
-    {$nombre = $_POST['titulo'];}
+
 class InstitucionView extends WP_List_Table
 {
 
@@ -30,8 +27,6 @@ private $posts_per_page = 10;
 
     private function get_sql_results() 
     {
-    if(isset($_POST['Comprobar']))
-    {$comprobar = $_POST['Comprobar'];}
     
     if(isset($_POST['titulo']))
     {$nombre = $_POST['titulo'];}
@@ -47,10 +42,10 @@ private $posts_per_page = 10;
     {
         $resultados=$institucionController->get_instituciones($nombre);
     }
-    //onclick=location.href="admin.php?page=ReporteDemo"
-    echo '<h2>Instituciones&nbsp;&nbsp;<input id="agregar" class="add-new-h2" type="button" value="Agregar Nuevo" name="Agregar Nuevo" onclick=location.href="admin.php?page=AgregarInstitucion"></h2>
+    
+    echo '<h1>Instituciones&nbsp;&nbsp;<input id="agregar" class="add-new-h2" type="button" value="Agregar Nuevo" name="Agregar Nuevo" onclick=location.href="admin.php?page=AgregarInstitucion"></h1>
     <br/>
-    <form method="post" action="admin.php?page=ReporteXML">
+    <form method="post" action="admin.php?page=ReporteXML" target="_blank">
     <input id="Exportar" type="submit" class="button-primary" value="Exportar" name="Exportar">
     <input name="formato" type="radio" value="pdf" checked>PDF
     <input name="formato" type="radio" value="csv">CSV

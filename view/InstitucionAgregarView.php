@@ -69,7 +69,7 @@ class InstitucionAgregarView
 
 	public function Agregar()
 	{
-	echo '<h2>Agregar Institucion</h2>
+	echo '<h1>Agregar Institucion</h1>
 	<div class="wrap">
 	<table class="form-table">
 	<form action="#" method="post">
@@ -84,7 +84,7 @@ class InstitucionAgregarView
 	
 	<tr>
 	<th><h3>&nbsp;Direccion: </h3></th>				<td><input type="text" value="'.$direccion.'" name="direccion" size=50 required maxlength="50"></td>
-	<th> <h3>Url: </h3></th>						<td><input type="url" value="'.$url.'" name="url" required size=40 maxlength="50"><span class="requerido"></span></td>
+	<th> <h3>Url: </h3></th>						<td><input type="url" value="'.$url.'" name="url" required size=40 maxlength="50" placeholder="http://www.institucion.gob.sv"><span class="requerido"></span></td>
 	</tr>
 
 	<tr>
@@ -118,7 +118,9 @@ class InstitucionAgregarView
     	$url=$row->urlInstitucion;
     	$direccion=$row->direccionInstitucion;
     }
-	echo '<h2>Editar Institucion</h2>
+	echo '<form method="post" action="admin.php?page=Contactos"><h1>Editar Institucion
+	<input id="contacto" 	type="submit"  	class="button-primary"			value="Agregar Contacto" name="Agregar Contacto"><input type="hidden" value="'.$idInstitucion.'" name="idInstitucion"> 
+	</h1></form>
 	<div class="wrap">
 	<table class="form-table">
 	<form action="#" method="post">
@@ -133,7 +135,7 @@ class InstitucionAgregarView
 	
 	<tr>
 	<th><h3>&nbsp;Direccion: </h3></th>		<td><input type="text" value="'.$direccion.'" name="direccion" size=50 required maxlength="50"></td>
-	<th><h3>Url: </h3></th>				<td><input type="url" value="'.$url.'" name="url" required size=40 maxlength="50"><span class="requerido"></span></td>
+	<th><h3>Url: </h3></th>				<td><input type="url" value="'.$url.'" name="url" required size=40 maxlength="50" placeholder="http://www.institucion.gob.sv"><span class="requerido"></span></td>
 	</tr>
 	
 	<tr>
@@ -145,14 +147,12 @@ class InstitucionAgregarView
 	?>
 	<input id="actualizar"	type="submit"	class="button-primary"  value="Actualizar"  name="Actualizar">&nbsp;&nbsp;	
 	<input id="borrar"		type='submit' 	class='button'			value='Borrar'		name="Borrar"  onclick="return confirm('Esta Seguro que desea Borrar <?php echo $nombre; ?>')">&nbsp;&nbsp;
-	<input id="regresar" 	type="button"  	class="button" 			value="Regresar" 	onclick=location.href="admin.php?page=Instituciones">
+	<input id="regresar" 	type="button"  	class="button" 			value="<< Regresar" 	onclick=location.href="admin.php?page=Instituciones">
 	</td> 
 	</th>
 	</tr>
 	</form>
-	<form method="post" action="admin.php?page=Contactos">
-	<input id="contacto" 	type="submit"  	class="button-primary" 			value="Agregar Contacto" name="Agregar Contacto"><input type="hidden" value="<?php echo $idInstitucion; ?>" name="idInstitucion"> 
-	</form>
+	
 	</table>
 	</div>
 	<?php

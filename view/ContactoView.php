@@ -40,7 +40,7 @@ private $posts_per_page = 10;
         $url=$row->urlInstitucion;
         $direccion=$row->direccionInstitucion;
     }
-    echo '<form method="post" action="admin.php?page=AgregarContacto"><h2>Contactos de '.$nombre.'&nbsp;&nbsp;<input class="add-new-h2" type="submit" class="button" value="Agregar Nuevo" name="Agregar Nuevo"><input type="hidden" value="'.$idInstitucion.'" name="idInstitucion"></form></h2>
+    echo '<form method="post" action="admin.php?page=AgregarContacto"><h1>Contactos de '.$nombre.'&nbsp;&nbsp;<input class="add-new-h2" type="submit" class="button" value="Agregar Nuevo" name="Agregar Nuevo"><input type="hidden" value="'.$idInstitucion.'" name="idInstitucion"></form></h1>
     <br/>
     <input id="regresar"    type="button"   class="button-primary"          value="<< Regresar"    onclick=location.href="admin.php?page=Instituciones">
     ';

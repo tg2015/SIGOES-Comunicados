@@ -37,21 +37,10 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="130" splitType="Stretch">
-			<staticText>
-				<reportElement x="152" y="30" width="354" height="29" forecolor="#000000" uuid="336ca77b-ce9c-452c-bae5-94ef71a93a5a"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="16" isBold="true"/>
-				</textElement>
-				<text><![CDATA[REPORTE DE PARAMETROS DE CONEXION]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="50" width="103" height="19" uuid="65c229a4-87e5-436f-b3f2-a552eb9423f7"/>
-				<textElement>
-					<font size="10" isBold="false"/>
-				</textElement>
-				<text><![CDATA[SIGOES]]></text>
-			</staticText>
+		<band height="23" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="133">
 			<image onErrorType="Blank">
 				<reportElement key="Logo" x="550" y="0" width="186" height="50" isRemoveLineWhenBlank="true" uuid="818df3fb-eeda-4650-8752-e2a8f89078e2"/>
 				<imageExpression><![CDATA[$P{PATH}+"/SIGOES-Comunicados/includes/img/presidencia.jpg"]]></imageExpression>
@@ -60,51 +49,60 @@
 				<reportElement key="Escudo" x="0" y="0" width="116" height="50" isRemoveLineWhenBlank="true" uuid="e6da7882-3782-46ff-ac40-027fc99b5960"/>
 				<imageExpression><![CDATA[$P{PATH}+"/SIGOES-Comunicados/includes/img/gob.jpg"]]></imageExpression>
 			</image>
-			<textField pattern="EEE, d MMM yyyy HH:mm:ss ">
-				<reportElement x="611" y="59" width="125" height="20" uuid="0efed324-16b1-4b94-9885-24b6e61441b9"/>
-				<textElement verticalAlignment="Top">
-					<font size="10" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement x="528" y="59" width="83" height="20" uuid="62de8559-9207-4b65-b556-e55b88458e06"/>
-				<textElement verticalAlignment="Top">
-					<font isBold="true"/>
+				<reportElement x="183" y="21" width="354" height="29" forecolor="#000000" uuid="336ca77b-ce9c-452c-bae5-94ef71a93a5a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
 				</textElement>
-				<text><![CDATA[fecha reporte:]]></text>
+				<text><![CDATA[REPORTE DE PARAMETROS DE CONEXION]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="110" width="103" height="20" uuid="018c35fd-200c-4ad1-8818-b938f0a12dc0"/>
+				<reportElement x="0" y="62" width="103" height="19" uuid="65c229a4-87e5-436f-b3f2-a552eb9423f7"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[SIGOES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="101" width="103" height="20" uuid="018c35fd-200c-4ad1-8818-b938f0a12dc0"/>
 				<textElement verticalAlignment="Top"/>
 				<text><![CDATA[ID Usuario:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="90" width="103" height="20" uuid="9f37e811-60dc-4cdd-947d-5ba267af0ece"/>
-				<textElement verticalAlignment="Top"/>
-				<text><![CDATA[Nombre Usuario:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="69" width="103" height="20" uuid="70b5d563-f384-49fd-bc68-f7efceaf10dd"/>
+				<reportElement x="0" y="81" width="103" height="20" uuid="70b5d563-f384-49fd-bc68-f7efceaf10dd"/>
 				<textElement verticalAlignment="Top"/>
 				<text><![CDATA[Generado Por:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="103" y="110" width="211" height="20" uuid="bc6b63d5-b264-42c2-a25d-46c757ba5f42"/>
+				<reportElement x="103" y="101" width="211" height="20" uuid="bc6b63d5-b264-42c2-a25d-46c757ba5f42"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{idusuario}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="103" y="90" width="211" height="20" uuid="17c18fbf-4fa3-4580-8baf-a28b93cf23c7"/>
+				<reportElement x="103" y="81" width="211" height="20" uuid="17c18fbf-4fa3-4580-8baf-a28b93cf23c7"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{nombreusuario}]]></textFieldExpression>
 			</textField>
+			<textField pattern="EEE, d MMM yyyy HH:mm:ss ">
+				<reportElement x="608" y="62" width="125" height="20" uuid="0efed324-16b1-4b94-9885-24b6e61441b9"/>
+				<textElement verticalAlignment="Top">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="525" y="62" width="83" height="20" uuid="62de8559-9207-4b65-b556-e55b88458e06"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[fecha reporte:]]></text>
+			</staticText>
 		</band>
-	</title>
+	</pageHeader>
 	<columnHeader>
 		<band height="30" splitType="Stretch">
 			<staticText>
