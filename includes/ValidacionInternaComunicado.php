@@ -1792,7 +1792,25 @@ function showAdminMessages()
  }
 }
 add_action('admin_notices', 'showAdminMessages');
-//Integrando Captura de Titulo
+//Deshabilitar boton publicar hasta que cargue el form de nuevo evento, streaming
+add_action( 'post_submitbox_misc_actions', 'my_post_submitbox_misc_actions2' );
+function my_post_submitbox_misc_actions2(){
+
+global $post;
+
+//only when editing a post
+if( $post->post_type == 'evento' ||$post->post_type == 'streaming'||$post->post_type == 'otros'  ){
+       
+    //echo "Boton Publicar Deshabilitado sino hay imagen destacada";
+    echo '<script>
+    jQuery(document).ready(function($){
+      $("#publish").attr("disabled","disabled");
+    });
+    </script>';
+
+   }//Fin If ( $post->post_type == 'proyecto' )
+ 
+}// Fin my_post_submitbox_misc_actions2
 
 //Regresar cuando funcionaba
 //

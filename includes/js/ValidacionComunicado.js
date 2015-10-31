@@ -1,7 +1,25 @@
 jQuery(document).ready(function() {
+jQuery("#post").submit(function(e) {
+    if (e.originalEvent.explicitOriginalTarget.id == "submit") {
+        // let the form submit
+        return true;
+    }
+    else {
+        //Prevent the submit event and remain on the screen
+        e.preventDefault();
+        return false;
+    }
+});
+
+jQuery("#title").keypress(function(){
+        jQuery("#publish").removeAttr('disabled');
+    });
 	jQuery("#title").attr("required", "true");
+	//jQuery( "#publish" ).removeClass( "button-primary" ).addClass('button');
+	//jQuery("#submitdiv").click(function(){alert("Click")});
 jQuery( document ).on( 'click', '#publish', function() {
-	//var post_id = jQuery(this).data('id');
+	//var post_id = jQuery(this).data('id')
+	//jQuery("#submitdiv").trigger('click');
 	var title_value = jQuery.trim(jQuery('#title').val());
 	alert("Titulo "+title_value);
 	var form_data2 = jQuery('#post').serializeArray();//Todo el post
@@ -15,6 +33,7 @@ jQuery( document ).on( 'click', '#publish', function() {
 			form_data: jQuery.param(form_data2)
 		},
 		async:false,
+		beforesend :function(){},
 		success : function( response ) {
 				//alert("esto es el respose :"+response);
 				if (response=='@valido@') {
