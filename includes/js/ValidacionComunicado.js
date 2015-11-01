@@ -1,23 +1,11 @@
 jQuery(document).ready(function() {
-jQuery("#post").submit(function(e) {
-    if (e.originalEvent.explicitOriginalTarget.id == "submit") {
-        // let the form submit
-        return true;
-    }
-    else {
-        //Prevent the submit event and remain on the screen
-        e.preventDefault();
-        return false;
-    }
-});
 
-jQuery("#title").keypress(function(){
-        jQuery("#publish").removeAttr('disabled');
-    });
-	jQuery("#title").attr("required", "true");
-	//jQuery( "#publish" ).removeClass( "button-primary" ).addClass('button');
-	//jQuery("#submitdiv").click(function(){alert("Click")});
-jQuery( document ).on( 'click', '#publish', function() {
+	jQuery("#title").attr("required", "true");//Titulo requrido
+	//Deshabilitar envio submit por Enter (13)
+	jQuery('form input').on('keypress', function(e) {
+    return e.which !== 13;
+});
+	jQuery( document ).on( 'click', '#publish', function() {
 	//var post_id = jQuery(this).data('id')
 	//jQuery("#submitdiv").trigger('click');
 	var title_value = jQuery.trim(jQuery('#title').val());
@@ -33,14 +21,11 @@ jQuery( document ).on( 'click', '#publish', function() {
 			form_data: jQuery.param(form_data2)
 		},
 		async:false,
-		beforesend :function(){},
 		success : function( response ) {
 				//alert("esto es el respose :"+response);
 				if (response=='@valido@') {
 					alert("response "+response);
 					flag = true;
-					//jQuery('.spinner').css("visibility", "hidden");
-					jQuery('#title').focus();
 				}else if(response=='@invalido@'){
 						alert("response "+response);
 						jQuery('.spinner').css("visibility", "hidden");
@@ -57,14 +42,12 @@ jQuery( document ).on( 'click', '#publish', function() {
 							}
 						else{flag=true;}	
 						}
-				//return false;
-				//return false;
-			//jQuery('#love-count').html( response );
+				
 		}
 	});
-	//alert("Esto es flag: "+flag);
+	alert("Esto es flag: "+flag);
 	return flag;
-});
+})
 });
 /*jQuery(document).ready(function($) {
 	////
@@ -110,4 +93,6 @@ if (ajax_object.we_value==1) {
 	});
 ///\
 
-});*/
+});
+//jQuery( "#publish" ).removeClass( "button-primary" ).addClass('button');
+	//jQuery("#submitdiv").click(function(){alert("Click")});*/

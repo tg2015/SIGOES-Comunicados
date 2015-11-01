@@ -34,7 +34,7 @@ public function se_we_value( $new_we_value )
 ///Fin Classe
 define('MH_BADWORDS','sexo,porno,pornografia,pornografica,xxx,desnudar,desnudo,desnuda,culear,culea,culeo,puta,puto,marica,gay,teta,pipi,picha,monda,verga,chucha,chocho,orto,culo,trola,marica,colla,hijodeputa,hijueputa,maricon,vergon,chuchon,pendejo,pendeja,imbecil,idiota,pija,nalga,mierda,caga,cagon,cagona,pelotudo,pelotuda,boluda,boludo,mamar,mamaron,perra,tarado,bobo,tonto,tarada,boba,tonta,careverga,caremonda,giripolla,gilipolla,gonorrea,cojon,ano,estupido,estupida,poronga,feo,fea,perdedor,perdedora,maldito,maldita,pene,cerote,fuck');
 
-define('MH_GRINGAS_K','kiss,nokia,pokemon,katy,take,karspesky,kelly,keane,ke$ha,kesha,kid,drake,nike');
+define('MH_GRINGAS_K','kiss,nokia,pokemon,katy,take,karspesky,kelly,keane,ke$ha,kesha,kid,drake,nike,ksanchez');
 
 define('MH_GRINGAS_DOBLE','twitter,kiss,rihanna,message,messenger,wordpress,blogger,full,hanna,madonna,look,leer,creer,cree,facebook,google,good,badoo,book,cool,foo,teen,see,queen,apple,notebook,ericsson,green,free,office,app,blood,dell,battle,emma,potter,harry,bell,http,messi,www,att');
 
@@ -930,7 +930,7 @@ function deszezear($word)
 
  if (preg_match("/(z)/",$lword))
  {
-  $exceptions = array('arroz', 'feliz', 'zorr', 'azul', 'azucar', 'azúcar', 'conoz', 'fuerza', 'voz', 'vez', 'pez', 'cabeza','razon','raza','paz','oz');
+  $exceptions = array('arroz', 'feliz', 'zorr', 'azul', 'azucar', 'azúcar', 'conoz', 'fuerza', 'voz', 'vez', 'pez', 'cabeza','razon','raza','paz','oz','sanchez');
   foreach ($exceptions as $a)
   {
    if (preg_match("/".$a."/", $lword))
@@ -1160,19 +1160,19 @@ function cadena_sin_malas_palabras($word)
 
 function eliminar_lenguaje_HOYGAN($palabra)
 {
- $result = dessimbolizar($palabra);
- $result = deleet($result);
- $result = desalternar($result);
- $result = desmultiplicar($result);
- $result = desms($result);
- $result = desestupidizar($result);
+ //$result = dessimbolizar($palabra);
+ //$result = deleet($result);
+ //$result = desalternar($palabra);
+ $result = desmultiplicar($palabra);
+ //$result = desms($result);
+ //$result = desestupidizar($result);
 
- $result = desk($result);
- $result = deszezear($result);
- $result = deshachear($result);
- $result = desporteniar($result);
+ //$result = desk($result);
+ //$result = deszezear($result);
+ //$result = deshachear($result);
+ //$result = desporteniar($result);
 
- $result = fixmissingvowels($result);
+ //$result = fixmissingvowels($result);
 
  return $result;
 }
@@ -1529,7 +1529,7 @@ function transformar_comentarios($words)
        $result = eliminar_lenguaje_grosero($result);
      }
      else
-      $result = strtolower($palabra);
+      $result =$palabra;// strtolower($palabra);
     }
     else
      $result = $palabra;
@@ -1804,7 +1804,12 @@ if( $post->post_type == 'evento' ||$post->post_type == 'streaming'||$post->post_
     //echo "Boton Publicar Deshabilitado sino hay imagen destacada";
     echo '<script>
     jQuery(document).ready(function($){
+     
       $("#publish").attr("disabled","disabled");
+      
+      jQuery("#title").keypress(function(){
+        jQuery("#publish").removeAttr("disabled");
+    });
     });
     </script>';
 
@@ -1835,9 +1840,10 @@ function my_action_callback() {
 //$TituloPost = $_REQUEST['titulo'];
 parse_str( $_POST['form_data'], $vars );//Todos los elementos del post
 $tituloPost=$vars['post_title'];
-$TituloGlobal=$tituloPost;
+$TituloGlobal=(string)$tituloPost;
 $retorno=(string)deshoyganizar_comentarios_viejos($TituloGlobal);//Validando Comentarios
-$comparacion=strcmp($tituloPost, $retorno);
+//$tituloMinuscula=strtolower($TituloGlobal);
+$comparacion=strnatcmp($TituloGlobal, $retorno);
   if ($comparacion !== 0) {
     die('@invalido@');
   }
