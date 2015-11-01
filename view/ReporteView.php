@@ -222,11 +222,11 @@ if(isset($_POST['filtra_fecha'])){
 <div class="tablenav top widefat fixed">
         <div class="alignleft actions bulkactions">
             <label class="screen-reader-text" for="bulk-action-selector-top">Filtrar por Estado</label>
-            <form action="" method="post">
+            <form action="admin.php?page=ReporteComunicados" method="post" target="_blank">
             <p>
             <input id="export" class="button button-primary" type="submit" value="Exportar" name="Exportar">
-            <input name="tipo" type="radio" value="pdf" checked>PDF
-            <input name="tipo" type="radio" value="csv">CSV
+            <input name="formato" type="radio" value="pdf" checked>PDF
+            <input name="formato" type="radio" value="xls">XLS
             </p>
             <input type="hidden" value="<?php echo $estado; ?>" name="ExportarEstado" />
             <input type="hidden" value="<?php echo $cat; ?>" name="ExportarCat" />
@@ -234,7 +234,8 @@ if(isset($_POST['filtra_fecha'])){
             <input type="hidden" value="<?php echo $nick; ?>" name="ExportarNick" />
             <input type="hidden" value="<?php echo $fecha_ini; ?>" name="ExportarFechaIni" />
             <input type="hidden" value="<?php echo $fecha_fin; ?>" name="ExportarFechaFin" />
-      
+            </form>
+            <form action="" method="post">      
             <TABLE class="widefat" >    
                 <TR>
                 <!--Filtro Estado de Publicacion-->  

@@ -27,6 +27,13 @@ class PHPJasperXML {
     private $offsetposition=0;
     private $detailbandqty=0;
     public $arraysqltable=array();
+    public $Parametros;
+
+    //Funcion para setear los parametros para la SQL
+    public function SetParametros($arrayParametros)
+    {
+        $this->Parametros=$arrayParametros;
+    }
     
 	private $report_count=0;		//### New declaration (variable exists in original too)
 	private $group_count = array(); //### New declaration
@@ -260,16 +267,33 @@ class PHPJasperXML {
       //  $this->arrayParameter[$xml_path["name"].'']=$defaultValueExpression;
       // else
         $this->arrayParameter[$xml_path["name"].''];        
-
     }
 
-    public function queryString_handler($xml_path) {
+    /*public function queryString_handler($xml_path) {
         $this->sql =$xml_path;
         if(isset($this->arrayParameter)) {
             foreach($this->arrayParameter as  $v => $a) {
+                //$this->sql = str_replace('$P{estado}', "'publish'", $this->sql);
                 $this->sql = str_replace('$P{'.$v.'}', $a, $this->sql);
             }
         }
+        print_r($this->Parametros);
+        echo $this->sql;
+        echo 'arreglo seteado';
+    }*/
+
+    /*FUNCION PERSONALIZADA PARA QUE ACEPTE LOS PARAMETROS*/
+    public function queryString_handler($xml_path) {
+        $this->sql =$xml_path;
+        if(isset($this->Parametros)) {
+            foreach($this->Parametros as  $v => $a) {
+                if($v=='filtro_fecha')
+                    {$this->sql=$this->sql.$a;}
+                $this->sql = str_replace('$P{'.$v.'}', "'".$a."'", $this->sql);
+            }
+        }
+        print_r($this->Parametros);
+        print_r($this->sql);
     }
 
     public function field_handler($xml_path) {
@@ -2970,10 +2994,6 @@ foreach($this->arrayVariable as $name=>$value){
 
 }
 
-
-//print_r($this->arrayparameter);
-
-
 //variable not yet implemented
      return $sql;
 
@@ -3592,7 +3612,7 @@ foreach($this->arrayVariable as $name=>$value){
         
 					$this->global_pointer--;
         }else {
-            echo "No data found";
+            echo "Datos No Encontrados";
             exit(0);
         }
  

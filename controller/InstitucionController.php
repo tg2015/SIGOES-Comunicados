@@ -27,13 +27,12 @@ function registrar_encabezado()
     wp_register_style( 'EstilosAdmin', plugins_url('SIGOES-Comunicados/includes/css/EstilosAdmin.css'));
     wp_enqueue_style( 'EstilosAdmin' );
 
-    echo '<img id="logo"    src="'.plugins_url().'/SIGOES-Comunicados/includes/img/gob.jpg">
+    echo '<div class="encabezado">
+          <img id="logo"    src="'.plugins_url().'/SIGOES-Comunicados/includes/img/gob.jpg">
           <img id="escudo"  src="'.plugins_url().'/SIGOES-Comunicados/includes/img/presidencia.jpg">
-          <div class="titulo-sistema"><p>Sistema Informático para la Gestión de Gobierno Electrónico en la Innovación de Canales de Comunicación entre Casa Presidencial y Población Salvadoreña (SIGOES)</p></div>                    
-          
+          <div class="titulo-sistema"><br/><p>Sistema Informático para la Gestión de Gobierno Electrónico en la Innovación de Canales de Comunicación entre Casa Presidencial y Población Salvadoreña (SIGOES)</p><br/></div>                    
+          </div>
           ';
-    //<img id="logo"    src="'.plugins_url().'/SIGOES-Comunicados/includes/img/gob.jpg">
-    //<img id="escudo"  src="'.plugins_url().'/SIGOES-Comunicados/includes/img/presidencia.jpg">  
 }
 
 function MostrarInstituciones()

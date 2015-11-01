@@ -28,11 +28,13 @@
 
 .titulo-sistema{
 	display: inline;
-	vertical-align: 40%;
 	margin-left: 20px;
-	margin-top:20px;
 	text-align: center;
 	width:40%;
 	font-size: 18px;
 	font-weight: bold;
+}
+
+.encabezado{
+	background-color: white;
 }

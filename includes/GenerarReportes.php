@@ -10,7 +10,15 @@ function Activar_Reporte_Sigoes()
     'manage_options', //capability
     'output', //menu slug
     'GenerarReporte');
+    
+    add_submenu_page('null', 'ReporteComunicados', 'ReporteComunicados', 'manage_options', 'ReporteComunicados', 'ReporteComunicados', 'ReporteComunicados');
 }
+
+function ReporteComunicados()
+{
+  require_once(SIGOES_PLUGIN_DIR.'includes/reportesXML/reporteComunicados.php');
+}
+
 
 add_action('admin_menu', 'Activar_Reporte_Sigoes');
 

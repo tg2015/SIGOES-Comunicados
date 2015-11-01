@@ -75,7 +75,7 @@ private $posts_per_page = 10;
     </table>
     <div id="loading-div-background">
         <div id="loading-div" class="ui-corner-all">
-            <img style="height:60%;width:55%;margin:10px;"src="'.plugins_url().'/SIGOES-Comunicados/includes/img/cargando.gif" alt="Procesando.."/><br>Procesando. Porfavor Espere...
+            <img style="height:60%;width:55%;margin:10px;"src="'.plugins_url().'/SIGOES-Comunicados/includes/img/cargando.gif" alt="Comprobando.."/><br>Comprobando. Porfavor Espere...
         </div>
     </div>
     ';
