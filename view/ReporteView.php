@@ -120,7 +120,7 @@ private function get_sql_results()
                     }else{$fecha_fin = '%';}
 
             if(isset($_POST['titulo'])){ 
-                    $fecha_ini = $_POST['titulo'];
+                    $filtro_titulo = $_POST['titulo'];
                     }else{$filtro_titulo = '%';}
 
    require_once(SIGOES_PLUGIN_DIR.'/controller/ReporteController.php');
@@ -214,11 +214,7 @@ if(isset($_POST['filtra_fecha'])){
 
 
 <!--  Vista HTML -->        
-<p class="search-box" >
-<label class="screen-reader-text" for="post-search-input">Buscar por Titulo:</label>
-<input id="post-search-input" type="search" value="" name="titulo">
-<input id="search-submit" class="button" type="submit" value="Buscar por Titulo">
-</p>
+
 <div class="tablenav top widefat fixed">
         <div class="alignleft actions bulkactions">
             <label class="screen-reader-text" for="bulk-action-selector-top">Filtrar por Estado</label>
@@ -469,6 +465,14 @@ if(isset($_POST['filtra_fecha'])){
                 <br/>
                 <input type="button" class="button" value="Reestablecer" onclick="window.location.href='admin.php?page=Reporte_SIGOES'" action=$_SERVER['PHP_SELF']>
                 </TD>
+                <TD>
+
+                  <br/>
+                  <label class="screen-reader-text" for="post-search-input">Buscar por Titulo:</label>
+                  <input id="post-search-input" type="search" value="" name="titulo">
+                  <input id="search-submit" class="button" type="submit" value="Buscar por Titulo">
+                  
+                </TD> 
         </form>
         
        
