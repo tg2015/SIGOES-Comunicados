@@ -241,7 +241,7 @@
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[ID]]></text>
+				<text><![CDATA[No]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="200" y="1" width="83" height="20" backcolor="#999999" uuid="ad44b61e-31c5-4937-8568-23903618b7bb">
@@ -332,21 +332,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="27" splitType="Stretch">
-			<textField>
-				<reportElement x="0" y="0" width="23" height="22" uuid="412341c2-823b-4a85-8448-4eb372af1b05"/>
-				<box rightPadding="0">
-					<pen lineWidth="1.25"/>
-					<topPen lineWidth="1.25"/>
-					<leftPen lineWidth="1.25"/>
-					<bottomPen lineWidth="1.25"/>
-					<rightPen lineWidth="1.25"/>
-				</box>
-				<textElement textAlignment="Right">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{ID}]]></textFieldExpression>
-			</textField>
+		<band height="24" splitType="Stretch">
 			<textField>
 				<reportElement x="200" y="0" width="83" height="22" uuid="a454b777-217d-4b2a-b81f-82a2c034d464"/>
 				<box rightPadding="0">
@@ -439,6 +425,20 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{post_title}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="23" height="22" uuid="17582025-352b-4181-a099-6c1c144e0c23"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
@@ -475,6 +475,9 @@
 					<bottomPen lineWidth="1.25"/>
 					<rightPen lineWidth="1.25"/>
 				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Total de Comunicados]]></text>
 			</staticText>
 		</band>

@@ -8,10 +8,12 @@ class InstitucionModel
 {
 
  protected $CRUD;
+ protected $usuario;
  protected $tabla='institucion';
  		function __Construct(){
             global $wpdb;
             $this->CRUD=$wpdb;
+            $this->usuario=wp_get_current_user();
         }
 
 public function get_instituciones($nombre)
@@ -45,8 +47,8 @@ public function insert_institucion($nombreInstitucion, $descripcionInstitucion, 
     try {
         $this->CRUD->insert(
         $this->tabla, //table
-        array('nombreInstitucion' => $nombreInstitucion,'descripcionInstitucion' => $descripcionInstitucion, 'telefonoInstitucion' => $telefonoInstitucion, 'urlInstitucion' => $urlInstitucion, 'direccionInstitucion' => $direccionInstitucion), //data
-        array('%s','%s', '%s','%s','%s'));
+        array('nombreInstitucion' => $nombreInstitucion,'descripcionInstitucion' => $descripcionInstitucion, 'telefonoInstitucion' => $telefonoInstitucion, 'urlInstitucion' => $urlInstitucion, 'direccionInstitucion' => $direccionInstitucion, 'idUsuario' => $this->usuario->ID), //data
+        array('%s','%s', '%s','%s','%s', '%s'));
         $lastid = $this->CRUD->insert_id;
             return  $lastid;
         }
@@ -62,7 +64,7 @@ public function update_institucion($id, $nombreInstitucion, $descripcionInstituc
         {
         $this->CRUD->update(
         $this->tabla, //table
-        array('nombreInstitucion' => $nombreInstitucion,'descripcionInstitucion' => $descripcionInstitucion, 'telefonoInstitucion' => $telefonoInstitucion, 'urlInstitucion' => $urlInstitucion, 'direccionInstitucion' => $direccionInstitucion), //data
+        array('nombreInstitucion' => $nombreInstitucion,'descripcionInstitucion' => $descripcionInstitucion, 'telefonoInstitucion' => $telefonoInstitucion, 'urlInstitucion' => $urlInstitucion, 'direccionInstitucion' => $direccionInstitucion, 'idUsuario' => $this->usuario->ID), //data
         array( 'idInstitucion' => $id ), //where
         array('%s', '%s', '%s', '%s', '%s'), //data format
         array('%s')); //where format

@@ -1,16 +1,15 @@
 <?php
 /*
-*Nombre del módulo: reporte.php
+*Nombre del módulo: reporteInstituciones.php
 *Objetivo: Mostrar las instituciones que se encuentran implementando el plugin-sigoes
-*Dirección física: /SIGOES-Comunicados/includes/reportesXML/reporte.php
+*Dirección física: /SIGOES-Comunicados/includes/reportesXML/reporteInstituciones.php
 */
 
 include_once(SIGOES_PLUGIN_DIR.'includes/lib/phpjasperxml/class/tcpdf/tcpdf.php');
 include_once(SIGOES_PLUGIN_DIR.'includes/lib/phpjasperxml/class/PHPJasperXML.inc.php');
 include_once(SIGOES_PLUGIN_DIR.'includes/setting.php');
 
-ob_end_clean();
-ob_start();
+$formato    =$_POST['formato'];
 $tipoReporte=$_POST['tipoReporte'];
 switch ($tipoReporte) {
     case 'inaccesible':
@@ -23,19 +22,26 @@ switch ($tipoReporte) {
         $reporte='reporteInstituciones.jrxml';
         break;
 }
-
+ob_end_clean();
+ob_start();
 $usuario=wp_get_current_user();
 $nombreCompleto=$usuario->user_firstname." ".$usuario->user_lastname;
 $xml = simplexml_load_file(SIGOES_PLUGIN_DIR.'includes/reportesXML/'.$reporte.'');
-$PHPJasperXML = new PHPJasperXML();
-//$PHPJasperXML = new PHPJasperXML("en","XLS");
+if($formato=='pdf')
+	{$PHPJasperXML = new PHPJasperXML();}
+else
+	{$PHPJasperXML = new PHPJasperXML("en","XLS");}
 $PHPJasperXML->debugsql=false;
 $PHPJasperXML->xml_dismantle($xml);
-//$nombre=$_GET['nombre'];
+
 $PATH=plugins_url();
+ob_end_clean();
+ob_start();
 $PHPJasperXML->arrayParameter=array("PATH"=>$PATH, "idusuario"=>$usuario->user_login, "nombreusuario" =>$nombreCompleto);
 $PHPJasperXML->transferDBtoArray($server,$user,$pass,$db);
-$PHPJasperXML->outpage("I");
-//$PHPJasperXML->outpage("I","sample9.xls");
+if($formato=='pdf')
+	{$PHPJasperXML->outpage("I");}
+else
+	{$PHPJasperXML->outpage("I","ReporteInstituciones.xls");}
 
 ?>

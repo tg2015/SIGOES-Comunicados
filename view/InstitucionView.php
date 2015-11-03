@@ -45,11 +45,14 @@ private $posts_per_page = 10;
     
     echo '<h1>Instituciones&nbsp;&nbsp;<input id="agregar" class="add-new-h2" type="button" value="Agregar Nuevo" name="Agregar Nuevo" onclick=location.href="admin.php?page=AgregarInstitucion"></h1>
     <br/>
+    <table width="100%">
+    <tr>
+    <td>
     <form method="post" action="admin.php?page=ReporteXML" target="_blank">
     <input id="Exportar" type="submit" class="button-primary" value="Exportar" name="Exportar">
     <input name="formato" type="radio" value="pdf" checked>PDF
     <input name="formato" type="radio" value="csv">CSV
-
+    &nbsp;&nbsp;&nbsp;&nbsp;
      <select name="tipoReporte">
         <option value="inaccesible">Sitios Web Inaccesibles</option>
         <option value="parametros">Parametros de Conexion</option>
@@ -57,20 +60,23 @@ private $posts_per_page = 10;
     </select>
     <label>Tipo de Reporte</label>
     </form>
-    <table class="fixed">
-    <tr>
+    </td>
+    
     <form action="#" method="post">
     <td>
-    <div class="tablenav top">   
-    <label class="screen-reader-text" for="post-search-input">Buscar por Nombre:</label>
-    <input id="post-search-input" type="search" value="'.$nombre.'" name="titulo"></td>
-    <td><input id="search-submit" class="button" type="submit" value="Buscar por Nombre" name="Buscar"></td>
-    <td><input id="comprobar"     class="button" type="submit" value="Comprobar" name="Comprobar" onclick="ShowProgressAnimation();"></td>    
+    <div class="table-nav-top">   
+        <label class="screen-reader-text" for="post-search-input">Buscar por Nombre:</label>
+        <input id="post-search-input" type="search" value="'.$nombre.'" name="titulo">
+        <input id="search-submit" class="button" type="submit" value="Buscar por Nombre" name="Buscar">
+    <input id="comprobar"     class="button" type="submit" value="Comprobar" name="Comprobar" onclick="ShowProgressAnimation();">
     </div>
+    </td>    
     </form>
+
     <form action="#" method="post">
     <td><input id="reestablecer" class="button" type="submit" value="Reestablecer" name="Reestablecer"></td>
     </form>
+    
     </tr>
     </table>
     <div id="loading-div-background">

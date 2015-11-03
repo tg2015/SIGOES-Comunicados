@@ -9,6 +9,7 @@ Author URI: http://modulos.egob.sv
 Text Domain: SIGOES-Comunicados
 */
 define('SIGOES_PLUGIN_DIR', plugin_dir_path(__FILE__));
+define('INDEX', __FILE__);
 require_once(SIGOES_PLUGIN_DIR.'/includes/SoloUnaCategoria.php');
 require_once(SIGOES_PLUGIN_DIR.'/controller/ProyectoController.php');
 require_once(SIGOES_PLUGIN_DIR.'/controller/EventoController.php');
@@ -30,3 +31,4 @@ require_once(SIGOES_PLUGIN_DIR.'/includes/ValidacionInternaComunicado.php');
 
 /*Espacio para los Includes de Christian Ayala*/
 require_once(SIGOES_PLUGIN_DIR.'/controller/InstitucionController.php');
+require_once(SIGOES_PLUGIN_DIR.'/includes/CrearTablas.php');

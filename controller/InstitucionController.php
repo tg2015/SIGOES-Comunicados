@@ -14,25 +14,55 @@ function Activar_Menu_Instituciones()
 }
 add_action('admin_menu', 'Activar_Menu_Instituciones');
 
-add_action( 'admin_enqueue_scripts', 'registrar_css' );
-function registrar_css() 
+add_action( 'admin_enqueue_scripts', 'registrar_EstilosInstitucion' );
+function registrar_EstilosInstitucion() 
 {
     wp_register_style( 'EstilosInstitucion', plugins_url('SIGOES-Comunicados/includes/css/EstilosInstitucion.css'));
     wp_enqueue_style( 'EstilosInstitucion' );     
 }
 
-add_action( 'in_admin_header', 'registrar_encabezado' );
-function registrar_encabezado()
+add_action( 'in_admin_header', 'registrar_EstilosAdmin' );
+function registrar_EstilosAdmin()
 {       
     wp_register_style( 'EstilosAdmin', plugins_url('SIGOES-Comunicados/includes/css/EstilosAdmin.css'));
     wp_enqueue_style( 'EstilosAdmin' );
 
-    echo '<div class="encabezado">
-          <img id="logo"    src="'.plugins_url().'/SIGOES-Comunicados/includes/img/gob.jpg">
-          <img id="escudo"  src="'.plugins_url().'/SIGOES-Comunicados/includes/img/presidencia.jpg">
-          <div class="titulo-sistema"><br/><p>Sistema Informático para la Gestión de Gobierno Electrónico en la Innovación de Canales de Comunicación entre Casa Presidencial y Población Salvadoreña (SIGOES)</p><br/></div>                    
+    echo '<div class="wrap">
+          <div class="encabezado">
+            <img id="logo"    src="'.plugins_url().'/SIGOES-Comunicados/includes/img/gob.jpg">
+            <img id="escudo"  src="'.plugins_url().'/SIGOES-Comunicados/includes/img/presidencia.jpg">
+            <div class="titulo-sistema"><br/><p>Sistema Informático para la Gestión de Gobierno Electrónico en la Innovación de Canales de Comunicación entre Casa Presidencial y Población Salvadoreña (SIGOES)</p><br/></div>                    
+          </div>
           </div>
           ';
+}
+
+add_action( 'in_admin_footer', 'registrar_ValidacionMascara' );
+function registrar_ValidacionMascara()
+{       
+    wp_register_script( 'ValidacionMascara', plugins_url('SIGOES-Comunicados/includes/js/ValidacionMascara.js'), array( 'jquery' ) );
+    wp_enqueue_script( 'ValidacionMascara' );
+    
+    ?> 
+    <script>
+      jQuery(function($){
+      $("#fecha_ini").mask("99-99-9999",{placeholder:"dd-mm-yyyy"});
+      $("#fecha_fin").mask("99-99-9999",{placeholder:"dd-mm-yyyy"});
+      $("#phone").mask("9999-9999");
+      $("#tin").mask("99-9999999");
+      $("#ssn").mask("999-99-9999");
+      });
+    </script>
+    <script type="text/javascript">
+                    $(document).ready(function (){
+                    $("#loading-div-background").css({ opacity: 1.0 });
+                    });
+
+                    function ShowProgressAnimation(){
+                    $("#loading-div-background").show();
+                    }
+    </script>
+    <?php
 }
 
 function MostrarInstituciones()
@@ -67,42 +97,18 @@ function AgregarInstitucion()
 
 function ReporteXML()
 {
-  require_once(SIGOES_PLUGIN_DIR.'includes/reportesXML/reporte.php');
+  require_once(SIGOES_PLUGIN_DIR.'includes/reportesXML/reporteInstituciones.php');
 }
 
-add_action( 'in_admin_footer', 'registrar_jsmask' );
-function registrar_jsmask()
-{       
-    wp_register_script( 'ValidacionMascara', plugins_url('SIGOES-Comunicados/includes/js/ValidacionMascara.js'), array( 'jquery' ) );
-    wp_enqueue_script( 'ValidacionMascara' );
-    
-    ?> 
-    <script>
-      jQuery(function($){
-      $("#fecha_ini").mask("99-99-9999",{placeholder:"dd-mm-yyyy"});
-      $("#fecha_fin").mask("99-99-9999",{placeholder:"dd-mm-yyyy"});
-      $("#phone").mask("9999-9999");
-      $("#tin").mask("99-9999999");
-      $("#ssn").mask("999-99-9999");
-      });
-    </script>
-    <script type="text/javascript">
-                    $(document).ready(function (){
-                    $("#loading-div-background").css({ opacity: 1.0 });
-                    });
-
-                    function ShowProgressAnimation(){
-                    $("#loading-div-background").show();
-                    }
-    </script>
-    <?php
-}
-
+/*Clase Institucion Controller*/
 class InstitucionController
 {
 	function __Construct(){
         
         }
+  /*
+  *Funciones de Controlador utilizadas para realizar CRUD de Instituciones
+  */ 
 
   function get_instituciones($nombre)
 	{
