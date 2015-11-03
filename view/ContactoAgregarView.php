@@ -92,6 +92,7 @@ class ContactoAgregarView
 	<th>
 	<td><input id="guardar"  type="submit" value="Guardar"  class="button-primary" name="Guardar">&nbsp;&nbsp;</td>
 	</th>
+	<th><span class="requeridoNota">* Campos Requeridos</span></th>			<td></td>
 	</tr>
 	</form>
 	<form action="admin.php?page=Contactos" method="post"><input id="regresar" type="submit" value="<< Regresar" name="<< Regresar" class="button-primary"><input type="hidden" value="'.$idInstitucion.'" name="idInstitucion"></form>
@@ -137,6 +138,7 @@ class ContactoAgregarView
 	<input id="borrar"		type='submit' 	class='button'			value='Borrar'		name="Borrar"  onclick="return confirm('Esta Seguro que desea borrar a: <?php echo $nombre; ?>')">&nbsp;&nbsp;	
 	</td> 
 	</th>
+	<th><span class="requeridoNota">* Campos Requeridos</span></th>			<td></td>
 	</tr>
 	</form>
 	<form action="admin.php?page=Contactos" method="post"><input type="hidden" value="<?php echo $idInstitucion;?>" name="idInstitucion"><input id="regresar" 	type="submit"  	class="button-primary" 	value="<< Regresar" name="<< Regresar"></form>

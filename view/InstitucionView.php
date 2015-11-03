@@ -216,7 +216,7 @@ private $posts_per_page = 10;
                 $row->urlInstitucion="<a href=".$row->urlInstitucion."/feed target=blank >".$row->urlInstitucion."/feed</a>";
                 if($row->estadoInstitucion=='Inaccesible')
                     {
-                    $row->estadoInstitucion='<span style="color:red">'.$row->estadoInstitucion.'</span>';
+                    $row->estadoInstitucion='<span style="color:#e32;">'.$row->estadoInstitucion.'</span>';
                     }
              }
 

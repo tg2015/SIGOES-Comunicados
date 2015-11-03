@@ -38,3 +38,10 @@
 .encabezado{
 	background-color: white;
 }
+
+.requeridoNota
+{
+font-size: 14px;
+font-weight: bold;
+color:#e32;	
+}

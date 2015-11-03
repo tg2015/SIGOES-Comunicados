@@ -96,6 +96,7 @@ class InstitucionAgregarView
 	<td><input id="guardar"  type="submit" value="Guardar"  class="button-primary" name="Guardar">&nbsp;&nbsp;
 	<input id="regresar" type="button" value="<< Regresar" class="button" name="<< Regresar" onclick=location.href="admin.php?page=Instituciones"></td>
 	</th>
+	<th><span class="requeridoNota">* Campos Requeridos</span></th>			<td></td>
 	</tr>
 	</form>
 	</table>
@@ -150,6 +151,7 @@ class InstitucionAgregarView
 	<input id="regresar" 	type="button"  	class="button" 			value="<< Regresar" 	onclick=location.href="admin.php?page=Instituciones">
 	</td> 
 	</th>
+	<th><span class="requeridoNota">* Campos Requeridos</span></th>			<td></td>
 	</tr>
 	</form>
 	
