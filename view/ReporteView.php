@@ -50,10 +50,10 @@ if(isset($_POST['Estado_Post'])){
 
 
 
-if (!class_exists('WP_List_Table')) {
+//if (!class_exists('WP_List_Table')) {
     require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 
-    class FT_WP_Table extends WP_List_Table
+    class ReporteView extends WP_List_Table
     {
 
         private $order;
@@ -673,7 +673,7 @@ if(isset($_POST['filtra_fecha'])){
             $this->views();
         }
 
-    }
+    //}
 
 }
 

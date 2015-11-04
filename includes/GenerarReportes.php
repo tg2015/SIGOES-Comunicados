@@ -1,15 +1,8 @@
 <?php
 function Activar_Reporte_Sigoes()
 {
-    add_menu_page('Reporte SIGOES', 'Reporte SIGOES', 'manage_options', 'Reporte_SIGOES', 'MostrarReporte');
+    add_menu_page('Reporte SIGOES', 'Reporte SIGOES', 'manage_options', 'Reporte_SIGOES', 'MostrarReporte', 'dashicons-welcome-write-blog');
     //this submenu is HIDDEN, however, we need to add it anyways
-
-    add_submenu_page('null', //parent slug
-    'Modificar Estudiante', //page title
-    'Modificar Estudiante', //menu title
-    'manage_options', //capability
-    'output', //menu slug
-    'GenerarReporte');
     
     add_submenu_page('null', 'ReporteComunicados', 'ReporteComunicados', 'manage_options', 'ReporteComunicados', 'ReporteComunicados', 'ReporteComunicados');
 }
@@ -22,17 +15,12 @@ function ReporteComunicados()
 
 add_action('admin_menu', 'Activar_Reporte_Sigoes');
 
-function GenerarReporte()
-{
-  require_once(SIGOES_PLUGIN_DIR.'view/output.php');
-}
-
 // Muestra reporte en pantalla
 function MostrarReporte()
 {
-    echo '<div class="wrap"><h1>'. __('Reporte SIGOES') .'</h1>';
-    $ftList = new FT_WP_Table();
-    echo '</div>';
+    //echo '<div class="wrap"><h1>'. __('Reporte SIGOES') .'</h1>';
+    $vista = new ReporteView();
+    //echo '</div>';
 }
 
 add_action( 'admin_enqueue_scripts', 'rgistro_de_archivos_js' );

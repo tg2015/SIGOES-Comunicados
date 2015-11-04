@@ -22,8 +22,8 @@ require_once(SIGOES_PLUGIN_DIR.'/includes/EstadoComunicado.php');
 //Configurar imagen
 require_once(SIGOES_PLUGIN_DIR.'/includes/ImagenRequerida.php');
 /*Espacio para los Includes de Rafel Romero*/
-require_once(SIGOES_PLUGIN_DIR.'/includes/GenerarReportes.php');
-require_once(SIGOES_PLUGIN_DIR.'/view/ReporteView.php');
+//require_once(SIGOES_PLUGIN_DIR.'/includes/GenerarReportes.php');
+//require_once(SIGOES_PLUGIN_DIR.'/view/ReporteView.php');
 require_once(SIGOES_PLUGIN_DIR.'/controller/ReporteController.php');
 
 /*Espacio para los Includes de Gabriel Lopez*/
@@ -32,3 +32,4 @@ require_once(SIGOES_PLUGIN_DIR.'/includes/ValidacionInternaComunicado.php');
 /*Espacio para los Includes de Christian Ayala*/
 require_once(SIGOES_PLUGIN_DIR.'/controller/InstitucionController.php');
 require_once(SIGOES_PLUGIN_DIR.'/includes/CrearTablas.php');
+require_once(SIGOES_PLUGIN_DIR.'/includes/Admin.php');

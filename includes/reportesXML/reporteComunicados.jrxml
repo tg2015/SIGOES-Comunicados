@@ -49,7 +49,7 @@
         (post_type != 'revision')	     AND
 	(post_status LIKE $P{estado})	AND
         	(post_type    LIKE $P{cat}  )	AND
-        	(meta_value   like '%'||$P{autor}||'%' ) ORDER BY Post.post_date DESC]]>
+        	(meta_value   like '%'||$P{autor}||'%' )]]>
 	</queryString>
 	<field name="ID" class="java.math.BigInteger">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -68,6 +68,7 @@
 	<field name="nombre" class="java.lang.String"/>
 	<field name="Fecha_Creacion" class="java.lang.String"/>
 	<field name="Fecha_Modificacion" class="java.lang.String"/>
+	<sortField name="Fecha_Creacion" order="Descending"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>

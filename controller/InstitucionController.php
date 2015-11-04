@@ -21,29 +21,28 @@ function registrar_EstilosInstitucion()
     wp_enqueue_style( 'EstilosInstitucion' );     
 }
 
-add_action( 'in_admin_header', 'registrar_EstilosAdmin' );
-function registrar_EstilosAdmin()
-{       
-    wp_register_style( 'EstilosAdmin', plugins_url('SIGOES-Comunicados/includes/css/EstilosAdmin.css'));
-    wp_enqueue_style( 'EstilosAdmin' );
-
-    echo '<div class="wrap">
-          <div class="encabezado">
-            <img id="logo"    src="'.plugins_url().'/SIGOES-Comunicados/includes/img/gob.jpg">
-            <img id="escudo"  src="'.plugins_url().'/SIGOES-Comunicados/includes/img/presidencia.jpg">
-            <div class="titulo-sistema"><br/><p>Sistema Informático para la Gestión de Gobierno Electrónico en la Innovación de Canales de Comunicación entre Casa Presidencial y Población Salvadoreña (SIGOES)</p><br/></div>                    
-          </div>
-          </div>
-          ';
+add_action( 'admin_enqueue_scripts', 'registrar_ValidacionMascara' );
+function registrar_ValidacionMascara()
+{   
+    $pagina = $_GET["page"];
+    if("AgregarContacto"==$pagina OR "AgregarInstitucion"==$pagina OR "Reporte_SIGOES"==$pagina)
+    {
+      //echo '<script type="text/javascript">alert("'.$pagina.'");</script>';
+      EncolarValidacionMascara();
+    }
+    
 }
 
-add_action( 'in_admin_footer', 'registrar_ValidacionMascara' );
-function registrar_ValidacionMascara()
-{       
-    wp_register_script( 'ValidacionMascara', plugins_url('SIGOES-Comunicados/includes/js/ValidacionMascara.js'), array( 'jquery' ) );
-    wp_enqueue_script( 'ValidacionMascara' );
-    
-    ?> 
+function EncolarValidacionMascara()
+{
+  wp_register_script( 'ValidacionMascara', plugins_url('SIGOES-Comunicados/includes/js/ValidacionMascara.js'), array( 'jquery' ) );
+  wp_enqueue_script( 'ValidacionMascara' );    
+}
+
+add_action( 'in_admin_footer', 'registrar_ValidacionMascaraScript' );
+function registrar_ValidacionMascaraScript()
+{
+  ?> 
     <script>
       jQuery(function($){
       $("#fecha_ini").mask("99-99-9999",{placeholder:"dd-mm-yyyy"});
