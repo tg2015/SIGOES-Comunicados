@@ -1,37 +1,5 @@
 <?php
-//////Inicio Clase
-class ValidacionComunicado
-{
-  private $holaClass;
-  function __construct($valorHola)
-  {
-    # code...
-  add_action( 'admin_enqueue_scripts', array( $this, 'set_we_value' ) );
-    
 
-    //add_action( 'wp_ajax_my_action', array( $this, 'my_action_callback' ));
-
-  }//Fin Construct
-public function set_we_value(){
-  function setearJS(){
-    $this->holaClass;
-    global $hola;
-    wp_enqueue_script( 'ajax-script', plugins_url( '/js/ValidacionComunicado.js', __FILE__ ), array('jquery') );
-  wp_localize_script( 'ajax-script', 'ajax_object',
-          array( 'ajax_url' => admin_url( 'admin-ajax.php' ),'we_value' => $hola) );
-  }
-  add_action( 'admin_enqueue_scripts', 'setearJS' );
-  
-}
-public function se_we_value( $new_we_value )
-        {
-            $this->holaClass = $new_we_value;
-        }
- 
-}//Fin class ValidacionComunicado
-
-///
-///Fin Classe
 define('MH_BADWORDS','sexo,porno,pornografia,pornografica,xxx,desnudar,desnudo,desnuda,culear,culea,culeo,puta,puto,marica,gay,teta,pipi,picha,monda,verga,chucha,chocho,orto,culo,trola,marica,colla,hijodeputa,hijueputa,maricon,vergon,chuchon,pendejo,pendeja,imbecil,idiota,pija,nalga,mierda,caga,cagon,cagona,pelotudo,pelotuda,boluda,boludo,mamar,mamaron,perra,tarado,bobo,tonto,tarada,boba,tonta,careverga,caremonda,giripolla,gilipolla,gonorrea,cojon,ano,estupido,estupida,poronga,feo,fea,perdedor,perdedora,maldito,maldita,pene,cerote,fuck');
 
 define('MH_GRINGAS_K','kiss,nokia,pokemon,katy,take,karspesky,kelly,keane,ke$ha,kesha,kid,drake,nike,ksanchez');
@@ -1845,30 +1813,12 @@ $retorno=(string)deshoyganizar_comentarios_viejos($TituloGlobal);//Validando Com
 //$tituloMinuscula=strtolower($TituloGlobal);
 $comparacion=strnatcmp($TituloGlobal, $retorno);
   if ($comparacion !== 0) {
-    die('@invalido@');
+    ob_clean();
+    die('@invalido@');    
   }
   elseif($comparacion===0){
+    ob_clean();
     die('@valido@');
   }
   
-}
-//Fin Integrando Captura de Titulo
-function ValidarTitulo($titulo,$retorno){
- // $foo1 = new ValidacionComunicado;
- global $hola;
-if (strcmp($titulo, $retorno) !== 0) {
-    echo '$var1 no es igual a $var2 en una comparación que considera mayúsculas y minúsculas';
-    return $hola=1;
-
-   // $foo1->set_we_value($hola);
-  }
-else {
-  return $hola=0;
-  //$foo1->set_we_value($hola);
-}
-//setear JS
-///Inicio fuera clase archivo
-//global $valorHola;
-//$foo1 = new ValidacionComunicado($valorHola);
-//$foo1->set_we_value();
-}//Fin Validar Titulo
+}s

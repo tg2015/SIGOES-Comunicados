@@ -21,6 +21,7 @@ jQuery(document).ready(function() {
 			form_data: jQuery.param(form_data2)
 		},
 		async:false,
+		cache:false,
 		success : function( response ) {
 				//alert("esto es el respose :"+response);
 				if (response=='@valido@') {
