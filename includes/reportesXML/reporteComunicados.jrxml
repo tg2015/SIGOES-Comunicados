@@ -14,7 +14,8 @@
 	<parameter name="idusuario" class="java.lang.String"/>
 	<parameter name="cat" class="java.lang.String"/>
 	<parameter name="autor" class="java.lang.String"/>
-	<parameter name="filtro_fecha" class="java.lang.String"/>
+	<parameter name="fecha_ini" class="java.lang.String"/>
+	<parameter name="fecha_fin" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT DISTINCT
         Post.ID,
@@ -49,7 +50,7 @@
         (post_type != 'revision')	     AND
 	(post_status LIKE $P{estado})	AND
         	(post_type    LIKE $P{cat}  )	AND
-        	(meta_value   LIKE $P{autor} )]]>
+        	(meta_value   LIKE $P{autor} ) AND (Post.post_date>=$P{fecha_ini} OR $P{fecha_ini}='') AND (Post.post_date<=$P{fecha_fin} OR $P{fecha_fin}='')]]>
 	</queryString>
 	<field name="ID" class="java.math.BigInteger">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -104,19 +105,19 @@
 				<text><![CDATA[fecha reporte:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="59" width="103" height="19" uuid="8895ef18-8cbb-4861-980a-7b3b801820fd"/>
+				<reportElement x="0" y="59" width="74" height="19" uuid="8895ef18-8cbb-4861-980a-7b3b801820fd"/>
 				<textElement>
 					<font size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[SIGOES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="78" width="103" height="20" uuid="d9c613f5-8ead-4cbc-9f28-7212a9a9dce4"/>
+				<reportElement x="0" y="78" width="74" height="20" uuid="d9c613f5-8ead-4cbc-9f28-7212a9a9dce4"/>
 				<textElement verticalAlignment="Top"/>
 				<text><![CDATA[Generado Por:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="98" width="103" height="20" uuid="0a653c7e-0f81-4bcf-9bf3-2c256f665c07"/>
+				<reportElement x="0" y="98" width="74" height="20" uuid="0a653c7e-0f81-4bcf-9bf3-2c256f665c07"/>
 				<textElement verticalAlignment="Top"/>
 				<text><![CDATA[ID Usuario:]]></text>
 			</staticText>
@@ -135,14 +136,14 @@
 				<textFieldExpression><![CDATA[$P{estado}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="103" y="98" width="211" height="20" uuid="3489c3af-8867-4151-bcfc-4b387e4af118"/>
+				<reportElement x="74" y="98" width="211" height="20" uuid="3489c3af-8867-4151-bcfc-4b387e4af118"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{idusuario}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="103" y="78" width="211" height="20" uuid="11b14c87-8c97-4cec-bc89-4696c14c91bd"/>
+				<reportElement x="74" y="78" width="211" height="20" uuid="11b14c87-8c97-4cec-bc89-4696c14c91bd"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="true"/>
 				</textElement>

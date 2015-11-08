@@ -44,7 +44,7 @@ else
 {$PHPJasperXML = new PHPJasperXML("en","XLS");}
 /*PARAMETROS PARA SQL*/
 $autorPost='%'.$autor.'%';
-$arrayParametros=["estado" => $estado, "cat"=>$cat, "autor"=>$autorPost, "filtro_fecha"=>$filtro_fecha];
+$arrayParametros=["estado" => $estado, "cat"=>$cat, "autor"=>$autorPost, "fecha_ini"=>$fecha_ini_format, "fecha_fin"=>$fecha_fin_format];
 $PHPJasperXML->SetParametros($arrayParametros);
 
 $PHPJasperXML->debugsql=false;

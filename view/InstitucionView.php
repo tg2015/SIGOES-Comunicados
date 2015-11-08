@@ -48,7 +48,7 @@ private $posts_per_page = 10;
     <table width="100%">
     <tr>
     <td>
-    <form method="post" action="admin.php?page=ReporteXML" target="_blank">
+    <form method="post" action="admin.php?page=ReporteInstituciones" target="_blank">
     <input id="Exportar" type="submit" class="button-primary" value="Exportar" name="Exportar">
     <input name="formato" type="radio" value="pdf" checked>PDF
     <input name="formato" type="radio" value="xls">XLS

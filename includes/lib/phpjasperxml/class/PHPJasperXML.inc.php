@@ -287,8 +287,8 @@ class PHPJasperXML {
         $this->sql =$xml_path;
         if(isset($this->Parametros)) {
             foreach($this->Parametros as  $v => $a) {
-                if($v=='filtro_fecha')
-                    {$this->sql=$this->sql.$a;}
+                //if($v=='filtro_fecha')
+                    //{$this->sql=$this->sql.$a;}
                 $this->sql = str_replace('$P{'.$v.'}', "'".$a."'", $this->sql);
             }
         }
