@@ -24,9 +24,15 @@ function MostrarReporte()
 }
 
 add_action( 'admin_enqueue_scripts', 'rgistro_de_archivos_js' );
+
 function rgistro_de_archivos_js( ) {
-wp_register_script( 'jquery-1.9.1-js', plugins_url('SIGOES-Comunicados/includes/js/Calendario/jquery-1.9.1.js'), array( 'jquery' ) );
-wp_enqueue_script( 'jquery-1.9.1-js' );
+
+if( !is_admin()){
+   wp_deregister_script('jquery');    
+   wp_register_script( 'jquery', plugins_url('SIGOES-Comunicados/includes/js/Calendario/jquery-1.9.1.js'), false,'1.9.1',true );
+   wp_enqueue_script( 'jquery' );
+}
+
 
 wp_register_script( 'jquery-ui-js', plugins_url('SIGOES-Comunicados/includes/js/Calendario/jquery-ui.js'), array( 'jquery' ) );
 wp_enqueue_script( 'jquery-ui-js' );

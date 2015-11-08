@@ -390,44 +390,43 @@ if(isset($_POST['filtra_fecha'])){
                     <link rel="stylesheet" href=<?php echo SIGOES_PLUGIN_DIR.'/js/Calendario/jquery-ui.css'?>>
                     <script src=<?php echo SIGOES_PLUGIN_DIR.'/js/Calendario/jquery-1.9.1.js'?>></script>
                     <script src=<?php echo SIGOES_PLUGIN_DIR.'/js/Calendario/jquery-ui.js' ?>></script> 
-
-                <script>
-                        $(function() {
-                        $( '#fecha_ini' ).datepicker({dateFormat: 'dd-mm-yy',
-                                                      timeFormat: 'HH:mm:ss', 
+                    <script>
+                        jQuery(document).ready(function() {
+                        jQuery( '#fecha_ini' ).datepicker({dateFormat: 'dd-mm-yy',
+                                                      timeFormat: 'HH:mm:ss',
                                                                     firstDay: 1,
                                                                 changeYear: true,
                                                                 changeMonth: true,
                                                                 
                                                                 dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
                                                                 dayNamesShort: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
-                                                monthNames: 
+                                                monthNames:
                                                                 ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
                                                                 "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
-                                                monthNamesShort: 
+                                                monthNamesShort:
                                                                 ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
-                                                                "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"], 
+                                                                "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
 
                                                                 onSelect: function(dateText, inst) {
-                                                        var lockDate1 = new Date($('#fecha_ini').datepicker('getDate'));
+                                                        var lockDate1 = new Date(jQuery('#fecha_ini').datepicker('getDate'));
                                                                 //lockDate.setDate(lockDate.getDate() + 1);
-                                                                $('input#fecha_fin').datepicker('option', 'minDate', lockDate1);
+                                                                jQuery('input#fecha_fin').datepicker('option', 'minDate', lockDate1);
                                                                 }
                                                                 });
 
 
 
                         
-                        $( '#fecha_fin' ).datepicker({dateFormat: 'dd-mm-yy', 
+                        jQuery( '#fecha_fin' ).datepicker({dateFormat: 'dd-mm-yy',
                                                                     firstDay: 1,
                                                                     changeMonth: true,
                                                                     changeYear: true,
                                                                 dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
                                                                 dayNamesShort: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
-                                                monthNames: 
+                                                monthNames:
                                                                 ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
                                                                 "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
-                                                monthNamesShort: 
+                                                monthNamesShort:
                                                                 ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
                                                                 "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
                                                                 changeYear: true,
@@ -435,7 +434,8 @@ if(isset($_POST['filtra_fecha'])){
                         
                         });
 
-                </script>
+                </script>                    
+
                 <?php
                    if(isset($_POST['fecha_ini'])){
                     $fecha_ini = $_POST['fecha_ini'];
