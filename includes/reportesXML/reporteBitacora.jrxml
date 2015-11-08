@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteComunicados" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="53c09eb1-a4e3-4ee4-9b23-f5d84f9cf132">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="PATH" class="java.lang.String"/>
+	<parameter name="idusuario" class="java.lang.String"/>
+	<parameter name="nombreusuario" class="java.lang.String"/>
+	<parameter name="userID" class="java.lang.String"/>
+	<parameter name="connector" class="java.lang.String"/>
+	<parameter name="action" class="java.lang.String"/>
+	<parameter name="fecha_ini" class="java.lang.String"/>
+	<parameter name="fecha_fin" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT DISTINCT DATE_FORMAT(CONVERT_TZ(T1.created,'+00:00','-06:00'), '%d-%m-%Y %h:%i %s') AS created, T1.summary, T1.user_role, T1.user_id,
+ (SELECT T21.meta_value FROM wp_stream_meta T21 WHERE T21.meta_key = "display_name" AND T21.record_id = T2.record_id) AS usuario,
+ T1.connector, T1.context, T1.action, T1.ip
+FROM wp_stream AS T1 LEFT JOIN wp_stream_meta AS T2 ON T1.id = T2.record_id
+WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.connector = $P{connector} OR $P{connector}='') AND (T1.action = $P{action} OR $P{action}='') AND (T1.created >= $P{fecha_ini} OR $P{fecha_ini}='') AND (T1.created<= $P{fecha_fin} OR $P{fecha_fin}='')]]>
+	</queryString>
+	<field name="created" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="summary" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="user_role" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="user_id" class="java.math.BigInteger">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="usuario" class="java.lang.String"/>
+	<field name="connector" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="context" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="action" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ip" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="142" splitType="Stretch">
+			<staticText>
+				<reportElement x="184" y="29" width="354" height="29" forecolor="#000000" uuid="34cdff1c-c0ee-4651-92f7-455ff67ceb64"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE BITÁCORA]]></text>
+			</staticText>
+			<image onErrorType="Blank">
+				<reportElement key="Escudo" x="0" y="0" width="116" height="50" isRemoveLineWhenBlank="true" uuid="2f93745c-119b-4c5f-b210-80bf6a019e2e"/>
+				<imageExpression><![CDATA[$P{PATH}+"/SIGOES-Comunicados/includes/img/gob.jpg"]]></imageExpression>
+			</image>
+			<image onErrorType="Blank">
+				<reportElement key="Logo" x="566" y="0" width="186" height="50" isRemoveLineWhenBlank="true" uuid="8e003d9a-ccd8-48f5-b7c3-05a2d3458a3d"/>
+				<imageExpression><![CDATA[$P{PATH}+"/SIGOES-Comunicados/includes/img/presidencia.jpg"]]></imageExpression>
+			</image>
+			<textField pattern="EEE, d MMM yyyy HH:mm:ss ">
+				<reportElement x="627" y="58" width="125" height="20" uuid="ef8572bb-c959-4e31-b2fb-8f97851bfbd8"/>
+				<textElement verticalAlignment="Top">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="544" y="58" width="83" height="20" uuid="62e5a86f-a995-4482-8464-87bc340ecf7c"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[fecha reporte:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="79" width="103" height="19" uuid="e0fafabe-ae25-4309-805d-7e00a8d61208"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[SIGOES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="118" width="103" height="20" uuid="92bae262-3855-493d-ac09-6fdea3d050a9"/>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[ID Usuario:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="98" width="103" height="20" uuid="c94c2540-1a27-4240-b39f-2aa800f7a476"/>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[Generado Por:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="109" y="98" width="100" height="20" uuid="c6a81f4d-b121-45af-915b-f55c90ca3f1d"/>
+				<textFieldExpression><![CDATA[$P{idusuario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="109" y="118" width="100" height="20" uuid="92c90dfe-60d0-4fb7-980a-3a99f2bdae25"/>
+				<textFieldExpression><![CDATA[$P{nombreusuario}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="2" y="2" width="89" height="20" backcolor="#999999" uuid="a6c453aa-800f-47b1-9eed-702c2639ce45"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="90" y="2" width="118" height="20" backcolor="#999999" uuid="6f96933f-9181-4b80-a0e3-0347180b9896"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<text><![CDATA[Actividad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="208" y="2" width="214" height="20" backcolor="#999999" uuid="2aebcfec-ba9a-4a58-a098-c962526cabf8"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<text><![CDATA[Usuario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="422" y="2" width="227" height="20" backcolor="#999999" uuid="ae555a52-d5e8-4d2c-8e7e-41a8bb039c73"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<text><![CDATA[Contexto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="649" y="2" width="100" height="20" backcolor="#999999" uuid="758a8777-0fff-4494-bc8f-e881dff82432"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<text><![CDATA[Acción]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="2" y="2" width="89" height="20" uuid="5ddf84e8-4995-415e-8768-d65b18d7e67e"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{created}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="2" width="118" height="20" uuid="e51e2492-1a96-4cee-b702-6a6f24f3255a"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{summary}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToTallestObject" x="208" y="2" width="102" height="20" uuid="00bca2e9-81f7-40bc-88a0-284e11c9219a"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{user_role}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="422" y="2" width="106" height="20" uuid="1ce16ef3-da8a-4a48-ba38-527e0f00b3f6"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{connector}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="528" y="2" width="121" height="20" uuid="0da2011e-afa4-46c5-8b68-6736b2682bac"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{context}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="649" y="2" width="100" height="20" uuid="add032bd-0324-46de-b31d-8f07daca4d72"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{action}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="310" y="2" width="112" height="20" uuid="89078979-a101-43df-b211-7119d60992c7"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{usuario}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="520" y="0" width="192" height="20" uuid="b1c8c7bc-552b-4b06-903c-9caf6ebb879c"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="712" y="0" width="40" height="20" uuid="16a0519a-f8ad-4320-a513-54c74423c6a3"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="116" y="0" width="106" height="20" uuid="e58b6bef-5ad3-43b2-9fc8-08c8f67eb279"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="116" height="20" uuid="21f5160f-f145-4331-998a-2212d9e88dd0"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<text><![CDATA[Total de Acciones:]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -28,6 +28,7 @@ require_once(SIGOES_PLUGIN_DIR.'/controller/ReporteController.php');
 
 /*Espacio para los Includes de Gabriel Lopez*/
 require_once(SIGOES_PLUGIN_DIR.'/includes/ValidacionInternaComunicado.php');
+require_once(SIGOES_PLUGIN_DIR.'/controller/BitacoraController.php');
 
 /*Espacio para los Includes de Christian Ayala*/
 require_once(SIGOES_PLUGIN_DIR.'/controller/InstitucionController.php');
