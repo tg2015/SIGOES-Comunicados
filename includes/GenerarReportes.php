@@ -32,9 +32,16 @@ if( !is_admin()){
    wp_enqueue_script( 'jquery' );
 }
 
-
-wp_register_script( 'jquery-ui-js', plugins_url('SIGOES-Comunicados/includes/js/Calendario/jquery-ui.js'), array( 'jquery' ) );
-wp_enqueue_script( 'jquery-ui-js' );
+if(isset($_GET["page"]))
+  {
+    $pagina = $_GET["page"];
+    if("Reporte_SIGOES"==$pagina)
+    {
+  
+    wp_register_script( 'jquery-ui-js', plugins_url('SIGOES-Comunicados/includes/js/Calendario/jquery-ui.js'), array( 'jquery' ) );
+    wp_enqueue_script( 'jquery-ui-js' );
+    }
+  }    
 
 }        
 add_action( 'admin_enqueue_scripts', 'register_plugin_styles' );
@@ -46,9 +53,16 @@ function register_plugin_styles() {
 add_action( 'wp_enqueue_scripts', 'registrar_js' );
 function registrar_js()
 {    
-    
+    if(isset($_GET["page"]))
+  {
+    $pagina = $_GET["page"];
+    if("Reporte_SIGOES"==$pagina)
+    {
+
     wp_register_script( 'jquery-ui', plugins_url(SIGOES_PLUGIN_DIR.'/js/Calendario/jquery-ui.js') );
     wp_enqueue_script( 'jquery-ui' );
+    }
+  }
 }
 
 add_action('init', 'do_output_buffer');
