@@ -17,7 +17,7 @@ function crear_tablaInstitucion() {
 	estadoPlugin 	  		VARCHAR(20) DEFAULT 'Sin Comprobar',
 	urlInstitucion			VARCHAR(100),
 	CONSTRAINT PRIMARY KEY (idInstitucion),
-	CONSTRAINT FK_TIENE FOREIGN KEY (idUsuario) REFERENCES wp_users(ID)
+	CONSTRAINT FK_ADMINISTRA FOREIGN KEY (idUsuario) REFERENCES wp_users(ID)
 	)$charset_collate;
 	";
 

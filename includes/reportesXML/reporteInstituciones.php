@@ -22,26 +22,29 @@ switch ($tipoReporte) {
         $reporte='reporteInstituciones.jrxml';
         break;
 }
-ob_end_clean();
-ob_start();
+
 $usuario=wp_get_current_user();
 $nombreCompleto=$usuario->user_firstname." ".$usuario->user_lastname;
+ob_end_clean();
+ob_start();
+
 $xml = simplexml_load_file(SIGOES_PLUGIN_DIR.'includes/reportesXML/'.$reporte.'');
 if($formato=='pdf')
 	{$PHPJasperXML = new PHPJasperXML();}
 else
 	{$PHPJasperXML = new PHPJasperXML("en","XLS");}
+
 $PHPJasperXML->debugsql=false;
 $PHPJasperXML->xml_dismantle($xml);
 
 $PATH=plugins_url();
 ob_end_clean();
 ob_start();
+/*PARAMETROS PARA ENCABEZADO*/
 $PHPJasperXML->arrayParameter=array("PATH"=>$PATH, "idusuario"=>$usuario->user_login, "nombreusuario" =>$nombreCompleto);
 $PHPJasperXML->transferDBtoArray($server,$user,$pass,$db);
 if($formato=='pdf')
 	{$PHPJasperXML->outpage("I");}
 else
-	{$PHPJasperXML->outpage("I","ReporteInstituciones.xls");}
-
+	{$PHPJasperXML->outpage("I","Instituciones.xls");}
 ?>

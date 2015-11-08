@@ -24,13 +24,15 @@ function registrar_EstilosInstitucion()
 add_action( 'admin_enqueue_scripts', 'registrar_ValidacionMascara' );
 function registrar_ValidacionMascara()
 {   
-    $pagina = $_GET["page"];
-    if("AgregarContacto"==$pagina OR "AgregarInstitucion"==$pagina OR "Reporte_SIGOES"==$pagina)
-    {
-      //echo '<script type="text/javascript">alert("'.$pagina.'");</script>';
-      EncolarValidacionMascara();
-    }
-    
+      if(isset($_GET["page"]))
+      {
+      $pagina = $_GET["page"];
+      if("AgregarContacto"==$pagina OR "AgregarInstitucion"==$pagina OR "Reporte_SIGOES"==$pagina)
+        {
+        //echo '<script type="text/javascript">alert("'.$pagina.'");</script>';
+        EncolarValidacionMascara();
+        }
+      }
 }
 
 function EncolarValidacionMascara()
@@ -42,26 +44,33 @@ function EncolarValidacionMascara()
 add_action( 'in_admin_footer', 'registrar_ValidacionMascaraScript' );
 function registrar_ValidacionMascaraScript()
 {
+  if(isset($_GET["page"]))
+  {
+  $pagina = $_GET["page"];
+  if("AgregarContacto"==$pagina OR "AgregarInstitucion"==$pagina OR "Reporte_SIGOES"==$pagina)
+  {
   ?> 
     <script>
-      jQuery(function($){
+      (function ($) {
       $("#fecha_ini").mask("99-99-9999",{placeholder:"dd-mm-yyyy"});
       $("#fecha_fin").mask("99-99-9999",{placeholder:"dd-mm-yyyy"});
       $("#phone").mask("9999-9999");
       $("#tin").mask("99-9999999");
       $("#ssn").mask("999-99-9999");
-      });
+      }(jQuery));
     </script>
     <script type="text/javascript">
-                    $(document).ready(function (){
-                    $("#loading-div-background").css({ opacity: 1.0 });
+                    jQuery(document).ready(function (){
+                    jQuery("#loading-div-background").css({ opacity: 1.0 });
                     });
 
                     function ShowProgressAnimation(){
-                    $("#loading-div-background").show();
+                    jQuery("#loading-div-background").show();
                     }
     </script>
     <?php
+    }
+    }
 }
 
 function MostrarInstituciones()

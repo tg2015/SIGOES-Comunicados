@@ -36,9 +36,6 @@
 	<background>
 		<band splitType="Stretch"/>
 	</background>
-	<title>
-		<band height="23" splitType="Stretch"/>
-	</title>
 	<pageHeader>
 		<band height="133">
 			<image onErrorType="Blank">

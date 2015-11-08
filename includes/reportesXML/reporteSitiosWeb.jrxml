@@ -163,9 +163,6 @@
 	<background>
 		<band splitType="Stretch"/>
 	</background>
-	<title>
-		<band height="17" splitType="Stretch"/>
-	</title>
 	<pageHeader>
 		<band height="114">
 			<staticText>

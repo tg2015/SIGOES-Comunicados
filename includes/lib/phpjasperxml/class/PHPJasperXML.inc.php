@@ -292,8 +292,8 @@ class PHPJasperXML {
                 $this->sql = str_replace('$P{'.$v.'}', "'".$a."'", $this->sql);
             }
         }
-        print_r($this->Parametros);
-        print_r($this->sql);
+        //print_r($this->Parametros);
+        //print_r($this->sql);
     }
 
     public function field_handler($xml_path) {
@@ -1760,9 +1760,10 @@ $font=$data->textElement->font["fontName"];
 
             
                  include dirname(__FILE__)."/ExportXLS.inc.php";
+                //echo $filename;
+                //print_r($this);
                 $xls= new ExportXLS($this,$filename, 'Excel5',$out_method);
                 die;
-
 
             }elseif($this->pdflib == 'CSV'){
                 

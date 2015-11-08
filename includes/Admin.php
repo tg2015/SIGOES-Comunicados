@@ -11,15 +11,47 @@ function TituloSigoes() {
 }
 add_filter( 'login_headertitle', 'TituloSigoes' );
 
-/*Logo para Login SIGOES*/
+/*URL Titulo para login SIGOES*/
+function URLtituloSigoes() {
+    return admin_url();
+}
+add_filter( 'login_headerurl', 'URLtituloSigoes' );
+
+/*Login Form SIGOES*/
 add_action( 'login_enqueue_scripts', 'Logo_SIGOES' );
 function Logo_SIGOES() { ?>
     <style type="text/css">
         body.login div#login h1 a {
-            background-image: url(<?php echo plugins_url() ?>/SIGOES-Comunicados/includes/img/logo.png);
-            !important; background-size: 323px 89px !important; height: 89px !important; width: 323px !important;
-            padding-bottom: 15px;
+            background-image: url(<?php echo plugins_url(); ?>/SIGOES-Comunicados/includes/img/logo-sigoes.png);
+            !important; background-size: 393px 89px !important; height: 89px !important; width: 343px !important;
+            padding-bottom: 10px;
             background-position:relative;
+        }
+
+        .login label {
+            font-size: 16px;
+            color: #555555;
+        }
+        
+        .login body{
+            background-color: gray;
+        }
+        
+        .login .button-primary {
+        width: 120px;
+        float:right;
+        background-color:#17a8e3 !important;
+        background: -webkit-linear-gradient(#17a8e3, #17a8e3);
+        background: -o-linear-gradient(#17a8e3, #17a8e3);
+        background: linear-gradient(#17a8e3, #17a8e3);
+        background-image: -ms-linear-gradient(top, #17a8e3 0%, #17a8e3 100%);
+        color: #ffffff;
+        -webkit-border-radius: 4px;
+        border: 1px solid #0d9ed9;
+        }
+
+        p#backtoblog {
+        display: none;
         }
     </style>
 <?php }

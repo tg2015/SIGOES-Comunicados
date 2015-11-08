@@ -135,7 +135,7 @@ class ExportXLS{
                         $this->lastPageFooter();                  
                         $this->maxrow--;
                      }
-                     $printsummary=false;
+                     $printsummary=true;
 
                  }
                 elseif($band["name"]== "group"){
@@ -475,8 +475,10 @@ class ExportXLS{
                              $rows[]=array(0,$myband[0]['height']+0,"band");
                              
                if($debug==true){
+                   print_r($myband); echo "<hr>";
                    echo "row:";print_r($rows);echo "<hr>";
                    echo "pos:"; print_r($pos);echo "<hr>";
+                   //echo print_r($myband);
              //      die;
                 }
              
@@ -612,7 +614,7 @@ $r=0;
         $this->currentband='groupHeader';
 
         
-        if($printgroupfooter==false)
+        if($printgroupfooter==true)
             $this->showGroupFooter();
         else
             $this->groupnochange=-1;
