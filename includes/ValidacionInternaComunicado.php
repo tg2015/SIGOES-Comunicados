@@ -1821,4 +1821,4 @@ $comparacion=strnatcmp($TituloGlobal, $retorno);
     die('@valido@');
   }
   
-}s
+}
