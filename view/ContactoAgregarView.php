@@ -13,16 +13,22 @@ class ContactoAgregarView
 
 	public function MostrarVista()
 	{
-		$idInstitucion = $_POST["idInstitucion"];
-		$idContacto = $_POST["idContacto"];
-		$nombre=$_POST["nombre"];
-		$telefono=$_POST["telefono"];
-		$email=$_POST["email"];
-		$puesto=$_POST["puesto"];
+		if(isset($_POST["idInstitucion"]))
+			{$idInstitucion = $_POST["idInstitucion"];}
+		if(isset($_POST["idContacto"]))
+			{$idContacto = $_POST["idContacto"];}
+		if(isset($_POST["nombre"]))
+			{$nombre=$_POST["nombre"];}
+		if(isset($_POST["telefono"]))
+			{$telefono=$_POST["telefono"];}
+		if(isset($_POST["email"]))
+			{$email=$_POST["email"];}
+		if(isset($_POST["puesto"]))
+			{$puesto=$_POST["puesto"];}
 		require_once(SIGOES_PLUGIN_DIR.'/controller/InstitucionController.php');
     	$institucionController = new InstitucionController();
     	
-    	if($_POST['Actualizar'])
+    	if(isset($_POST['Actualizar']))
 		{
 		echo '<div class="updated highlight"><p>'.$nombre.' Actualizado</p></div>';
 		if(!is_null($idContacto) and $institucionController->update_contacto($idContacto, $nombre, $telefono, $email, $puesto))
@@ -30,7 +36,7 @@ class ContactoAgregarView
 			$this->EditarBorrar($idContacto);
 			}
 		}
-		else if($_POST['Borrar'])
+		else if(isset($_POST['Borrar']))
 		{	
 			$contacto=$institucionController->get_contacto($idContacto);
 			foreach($contacto as $row)
@@ -48,7 +54,7 @@ class ContactoAgregarView
 			}
 			//<input type="button" value="Regresar" class="button" onclick=location.href="admin.php?page=Contactos&id='.$idRegresar.'">
 		}
-		else if($_POST['Guardar'])
+		else if(isset($_POST['Guardar']))
 		{	
 			if($institucionController->insert_contacto($idInstitucion, $nombre, $telefono, $email, $puesto))
 			echo '<div class="updated highlight"><p>Contacto Agregado Exitosamente</p></div>
@@ -59,12 +65,13 @@ class ContactoAgregarView
 		}
 		else
 		{
-			if(!is_null($idContacto))
+			//if(!is_null($idContacto))
+			if(isset($_POST["idContacto"]))
 			{
 				$this->EditarBorrar($idContacto);
 			}
 			else
-			{
+			{	
 				$this->Agregar($idInstitucion);
 			}
 		}
@@ -73,6 +80,9 @@ class ContactoAgregarView
 
 	public function Agregar($idInstitucion)
 	{
+	$nombre 		=''; $telefono 		=''; 
+	$email 			=''; $puesto 		='';
+
 	echo '<h1>Agregar Contacto</h1>
 	<div class="wrap">
 	<table class="form-table">

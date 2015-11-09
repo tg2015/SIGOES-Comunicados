@@ -12,16 +12,22 @@ class InstitucionAgregarView
 
 	public function MostrarVista()
 	{
-	$idInstitucion = $_POST["idInstitucion"];
-	$nombre=$_POST["nombre"];
-	$url=$_POST["url"];
-	$telefono=$_POST["telefono"];
-	$descripcion=$_POST["descripcion"];
-	$direccion=$_POST["direccion"];
+	if(isset($_POST["idInstitucion"]))
+		{$idInstitucion = $_POST["idInstitucion"];}
+	if(isset($_POST["nombre"]))
+		{$nombre=$_POST["nombre"];}
+	if(isset($_POST["url"]))
+		{$url=$_POST["url"];}
+	if(isset($_POST["telefono"]))
+		{$telefono=$_POST["telefono"];}
+	if(isset($_POST["descripcion"]))
+		{$descripcion=$_POST["descripcion"];}
+	if(isset($_POST["direccion"]))
+		{$direccion=$_POST["direccion"];}
 	require_once(SIGOES_PLUGIN_DIR.'/controller/InstitucionController.php');
     $institucionController = new InstitucionController();
 
-	if($_POST['Actualizar'])
+	if(isset($_POST['Actualizar']))
 	{
 		echo '<div class="updated highlight"><p>'.$nombre.' Actualizado</p></div>';
 		if(!is_null($idInstitucion) and $institucionController->update_institucion($idInstitucion, $nombre, $descripcion, $telefono, $url, $direccion))
@@ -29,7 +35,7 @@ class InstitucionAgregarView
 		$this->EditarBorrar($idInstitucion);
 		}
 	}
-	else if($_POST['Borrar'])
+	else if(isset($_POST['Borrar']))
 	{	
 		if(!is_null($idInstitucion) and $institucionController->delete_institucion($idInstitucion))
 		{
@@ -40,9 +46,9 @@ class InstitucionAgregarView
 		';
 		}
 	}
-	else if($_POST['Guardar'])
+	else if(isset($_POST['Guardar']))
 	{
-		$ultimo_id=($institucionController->insert_institucion($nombre, $descripcion, $telefono, $url, $direccion));
+		$idInstitucion=($institucionController->insert_institucion($nombre, $descripcion, $telefono, $url, $direccion));
 		echo '<div class="updated highlight"><p>Institucion '.$nombre.' Agregada Exitosamente</p></div>
 		&nbsp;&nbsp;
 		<br/>
@@ -55,7 +61,8 @@ class InstitucionAgregarView
 	}
 	else
 	{
-		if(!is_null($idInstitucion))
+		//if(!is_null($idInstitucion))
+		if(isset($_POST["idInstitucion"]))
 		{
 			$this->EditarBorrar($idInstitucion);
 		}
@@ -69,6 +76,9 @@ class InstitucionAgregarView
 
 	public function Agregar()
 	{
+		$idInstitucion	=''; $nombre 		='';
+		$telefono 		=''; $direccion 	='';
+		$url 			=''; $descripcion 	='';
 	echo '<h1>Agregar Institucion</h1>
 	<div class="wrap">
 	<table class="form-table">
@@ -78,17 +88,17 @@ class InstitucionAgregarView
 	</tr>
 	
 	<tr>
-	<th><h3>&nbsp;Nombre Institucion: </h3></th>	<td><input type="text" value="'.$nombre.'" name="nombre" size=50 required maxlength="50"><span class="requerido"></span></td>
+	<th><h3>&nbsp;Nombre Institucion: </h3></th>	<td><input type="text" value="'.$nombre.'" name="nombre" size=45 required maxlength="50"><span class="requerido"></span></td>
 	<th><h3>Telefono: </h3></th>					<td><input type="text" value="'.$telefono.'" name="telefono" size=9 maxlength="9" id="phone"></td>
 	</tr>
 	
 	<tr>
-	<th><h3>&nbsp;Direccion: </h3></th>				<td><input type="text" value="'.$direccion.'" name="direccion" size=50 required maxlength="50"></td>
+	<th><h3>&nbsp;Direccion: </h3></th>				<td><input type="text" value="'.$direccion.'" name="direccion" size=45 required maxlength="50"></td>
 	<th> <h3>Url: </h3></th>						<td><input type="url" value="'.$url.'" name="url" required size=40 maxlength="50" placeholder="http://www.institucion.gob.sv"><span class="requerido"></span></td>
 	</tr>
 
 	<tr>
-	<th><h3>&nbsp;Descripcion: </h3></th>			<td><textarea rows="3" cols="50" name="descripcion">'.$descripcion.'</textarea></td>
+	<th><h3>&nbsp;Descripcion: </h3></th>			<td><textarea rows="3" cols="45" name="descripcion">'.$descripcion.'</textarea></td>
 	</tr>
 	
 	<tr>
@@ -135,12 +145,12 @@ class InstitucionAgregarView
 	</tr>
 	
 	<tr>
-	<th><h3>&nbsp;Direccion: </h3></th>		<td><input type="text" value="'.$direccion.'" name="direccion" size=50 required maxlength="50"></td>
+	<th><h3>&nbsp;Direccion: </h3></th>		<td><input type="text" value="'.$direccion.'" name="direccion" size=40 required maxlength="50"></td>
 	<th><h3>Url: </h3></th>				<td><input type="url" value="'.$url.'" name="url" required size=40 maxlength="50" placeholder="http://www.institucion.gob.sv"><span class="requerido"></span></td>
 	</tr>
 	
 	<tr>
-	<th><h3>Descripcion: </h3></th>			<td><textarea rows="3" cols="50" name="descripcion">'.$descripcion.'</textarea></td>
+	<th><h3>Descripcion: </h3></th>			<td><textarea rows="3" cols="45" name="descripcion">'.$descripcion.'</textarea></td>
 	</tr>
 
 	<th>
