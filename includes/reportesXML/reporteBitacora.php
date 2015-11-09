@@ -31,8 +31,9 @@ if(isset($_POST['fecha_fin']))
 }
     
 $user_id    =$_POST['user_id'];
-$connector  =$_POST['connector'];
+$context    =$_POST['context'];
 $action     =$_POST['action'];
+$connector  =$_POST['connector'];
 
 //echo $fecha_ini, $fecha_fin, $user_id, $connector, $action;
 $usuario=wp_get_current_user();
@@ -46,7 +47,7 @@ if($formato=='pdf')
 else
 	{$PHPJasperXML = new PHPJasperXML("en","XLS");}
 
-$arrayParametros=["userID" => $user_id, "connector"=>$connector, "action"=>$action, "fecha_fin"=>$fecha_fin_format, "fecha_ini"=>$fecha_ini_format];
+$arrayParametros=["userID" => $user_id, "context"=>$context, "connector"=>$connector, "action"=>$action, "fecha_fin"=>$fecha_fin_format, "fecha_ini"=>$fecha_ini_format];
 $PHPJasperXML->SetParametros($arrayParametros);
 
 $PHPJasperXML->debugsql=false;

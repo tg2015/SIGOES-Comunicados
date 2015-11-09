@@ -7,16 +7,17 @@
 	<parameter name="idusuario" class="java.lang.String"/>
 	<parameter name="nombreusuario" class="java.lang.String"/>
 	<parameter name="userID" class="java.lang.String"/>
-	<parameter name="connector" class="java.lang.String"/>
+	<parameter name="context" class="java.lang.String"/>
 	<parameter name="action" class="java.lang.String"/>
 	<parameter name="fecha_ini" class="java.lang.String"/>
 	<parameter name="fecha_fin" class="java.lang.String"/>
+	<parameter name="connector" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT DISTINCT DATE_FORMAT(CONVERT_TZ(T1.created,'+00:00','-06:00'), '%d-%m-%Y %h:%i %s') AS created, T1.summary, T1.user_role, T1.user_id,
  (SELECT T21.meta_value FROM wp_stream_meta T21 WHERE T21.meta_key = "display_name" AND T21.record_id = T2.record_id) AS usuario,
  T1.connector, T1.context, T1.action, T1.ip
 FROM wp_stream AS T1 LEFT JOIN wp_stream_meta AS T2 ON T1.id = T2.record_id
-WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.connector = $P{connector} OR $P{connector}='') AND (T1.action = $P{action} OR $P{action}='') AND (T1.created >= $P{fecha_ini} OR $P{fecha_ini}='') AND (T1.created<= $P{fecha_fin} OR $P{fecha_fin}='')]]>
+WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.context = $P{context} OR $P{context}='') AND (T1.connector = $P{connector} OR $P{connector}='') AND (T1.action = $P{action} OR $P{action}='') AND (T1.created >= $P{fecha_ini} OR $P{fecha_ini}='') AND (T1.created<= $P{fecha_fin} OR $P{fecha_fin}='')]]>
 	</queryString>
 	<field name="created" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
