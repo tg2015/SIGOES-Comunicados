@@ -47,7 +47,7 @@ function registrar_ValidacionMascaraScript()
   if(isset($_GET["page"]))
   {
   $pagina = $_GET["page"];
-  if("AgregarContacto"==$pagina OR "AgregarInstitucion"==$pagina OR "Reporte_SIGOES"==$pagina)
+  if("AgregarContacto"==$pagina OR "AgregarInstitucion"==$pagina OR "Reporte_SIGOES"==$pagina OR "Instituciones"==$pagina)
   {
   ?> 
     <script>
