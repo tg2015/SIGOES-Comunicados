@@ -12,6 +12,7 @@ class ContactoModel
  		function __Construct(){
             global $wpdb;
             $this->CRUD=$wpdb;
+            $this->tabla=$wpdb->prefix.$this->tabla;
         }
 
 public function update_contacto($id, $nombreContacto, $telefonoContacto, $emailContacto, $puestoContacto)

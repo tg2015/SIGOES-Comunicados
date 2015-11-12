@@ -4,9 +4,9 @@ function crear_tablaInstitucion() {
    	$charset_collate = $wpdb->get_charset_collate();
    	
    	/*CREAR TABLA INSTITUCION*/
-   	$table_name = $wpdb->prefix.'institucion'; 
-	
-	$sql = "CREATE TABLE IF NOT EXISTS institucion (
+   	$tablaInstitucion 	= $wpdb->prefix.'institucion'; 
+	$tablaUsuario		= $wpdb->prefix.'users';
+	$sql = "CREATE TABLE IF NOT EXISTS $tablaInstitucion (
 	idInstitucion 			INT(6) UNSIGNED AUTO_INCREMENT,
 	idUsuario 				BIGINT(20) UNSIGNED,
 	nombreInstitucion 		VARCHAR(100) NOT NULL,
@@ -17,7 +17,7 @@ function crear_tablaInstitucion() {
 	estadoPlugin 	  		VARCHAR(20) DEFAULT 'Sin Comprobar',
 	urlInstitucion			VARCHAR(100),
 	CONSTRAINT PRIMARY KEY (idInstitucion),
-	CONSTRAINT FK_ADMINISTRA FOREIGN KEY (idUsuario) REFERENCES wp_users(ID)
+	CONSTRAINT FK_ADMINISTRA FOREIGN KEY (idUsuario) REFERENCES $tablaUsuario(ID)
 	)$charset_collate;
 	";
 
@@ -32,9 +32,10 @@ function crear_tablaContacto() {
    	$charset_collate = $wpdb->get_charset_collate();
 
 	/*CREAR TABLA CONTACTO*/
-	$table_name = $wpdb->prefix.'contacto';
+	$tablaContacto = $wpdb->prefix.'contacto';
+	$tablaInstitucion = $wpdb->prefix.'institucion';
 	
-	$sql = "CREATE TABLE IF NOT EXISTS contacto (
+	$sql = "CREATE TABLE IF NOT EXISTS $tablaContacto (
 	idContacto 			INT(6) UNSIGNED AUTO_INCREMENT,
 	idInstitucion 		INT(6) UNSIGNED,
 	nombreContacto 		VARCHAR(100) NOT NULL,
@@ -42,7 +43,7 @@ function crear_tablaContacto() {
 	emailContacto 		VARCHAR(100),
 	puestoContacto 		VARCHAR(100),
 	PRIMARY KEY (idContacto),
-	CONSTRAINT FK_POSEE FOREIGN KEY (idInstitucion) REFERENCES institucion(idInstitucion) ON DELETE CASCADE ON UPDATE CASCADE
+	CONSTRAINT FK_POSEE FOREIGN KEY (idInstitucion) REFERENCES $tablaInstitucion(idInstitucion) ON DELETE CASCADE ON UPDATE CASCADE
 	)$charset_collate;";
 	
 	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
@@ -54,7 +55,10 @@ function borrar_tablas()
 {
 //drop a custom db table
 global $wpdb;
-$wpdb->query( "DROP TABLE IF EXISTS contacto" );
-$wpdb->query( "DROP TABLE IF EXISTS institucion" );
+$tablaInstitucion = $wpdb->prefix.'institucion';
+$tablaContacto 	  = $wpdb->prefix.'contacto';
+
+$wpdb->query( "DROP TABLE IF EXISTS $tablaContacto" );
+$wpdb->query( "DROP TABLE IF EXISTS $tablaInstitucion" );
 }
 register_uninstall_hook( INDEX, 'borrar_tablas' );

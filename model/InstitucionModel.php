@@ -14,6 +14,7 @@ class InstitucionModel
             global $wpdb;
             $this->CRUD=$wpdb;
             $this->usuario=wp_get_current_user();
+            $this->tabla=$wpdb->prefix.$this->tabla;
         }
 
 public function get_instituciones($nombre)
