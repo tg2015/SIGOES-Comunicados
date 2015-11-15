@@ -68,6 +68,35 @@ function registrar_ValidacionMascaraScript()
                     jQuery("#loading-div-background").show();
                     }
     </script>
+    <script>
+      function soloLetras(e) {
+      key = e.keyCode || e.which;
+      tecla = String.fromCharCode(key).toLowerCase();
+      letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+      especiales = [8, 37, 39, 46];
+
+      tecla_especial = false
+      for(var i in especiales) {
+        if(key == especiales[i]) {
+            tecla_especial = true;
+            break;
+        }
+      }
+
+      if(letras.indexOf(tecla) == -1 && !tecla_especial)
+        return false;
+      }
+
+    function limpia() {
+      var val = document.getElementById("miInput").value;
+      var tam = val.length;
+      for(i = 0; i < tam; i++) {
+          if(!isNaN(val[i]))
+            document.getElementById("miInput").value = '';
+        }
+      }
+    </script>
+
     <?php
     }
     }
@@ -185,6 +214,101 @@ class InstitucionController
     $model=new InstitucionModel;
     return $model->insert_institucion($nombre, $descripcion, $telefono, $url, $direccion);
   }
+
+  public function AgregarInstitucionForm()
+  {
+    $idInstitucion  =''; $nombre    ='';
+    $telefono     =''; $direccion   ='';
+    $url      =''; $descripcion   ='';
+  echo '<h1>Agregar Institucion</h1>
+  <div class="wrap">
+  <table class="form-table">
+  <form action="#" method="post">
+  <tr>
+    <td><input type="hidden" value="'.$idInstitucion.'" name="idInstitucion"  disabled></td>
+  </tr>
+  
+  <tr>
+  <th><h3>&nbsp;Nombre Institucion: </h3></th>  <td><input type="text" value="'.$nombre.'" name="nombre" size=37 required maxlength="50" onkeypress="return soloLetras(event)"><span class="requerido"></span></td>
+  <th><h3>Telefono: </h3></th>          <td><input type="text" value="'.$telefono.'" name="telefono" size=9 maxlength="9" id="phone"></td>
+  </tr>
+  
+  <tr>
+  <th><h3>&nbsp;Direccion: </h3></th>       <td><input type="text" value="'.$direccion.'" name="direccion" size=37 required maxlength="50"></td>
+  <th><h3>Url: </h3></th>           <td><input type="url" value="'.$url.'" name="url" required size=37 maxlength="50" placeholder="http://www.institucion.gob.sv"><span class="requerido"></span></td>
+  </tr>
+
+  <tr>
+  <th><h3>&nbsp;Descripcion: </h3></th>     <td><textarea rows="3" cols="40" name="descripcion">'.$descripcion.'</textarea></td>
+  </tr>
+  
+  <tr>
+  <th>
+  <td><input id="guardar"  type="submit" value="Guardar"  class="button-primary" name="Guardar">&nbsp;&nbsp;
+  <input id="regresar" type="button" value="<< Regresar" class="button" name="<< Regresar" onclick=location.href="admin.php?page=Instituciones"></td>
+  </th>
+  <th><span class="requeridoNota">* Campos Requeridos</span></th>     <td></td>
+  </tr>
+  </form>
+  </table>
+  </div>
+  ';
+
+  }
+
+  public function EditarBorrar($idInstitucion)
+  {
+  //require_once(SIGOES_PLUGIN_DIR.'/controller/InstitucionController.php');
+    //$institucionController = new InstitucionController();
+    $institucion=$this->get_institucion($idInstitucion);
+    foreach($institucion as $row)
+    {
+      $nombre=$row->nombreInstitucion;
+      $descripcion=$row->descripcionInstitucion;
+      $telefono=$row->telefonoInstitucion;
+      $url=$row->urlInstitucion;
+      $direccion=$row->direccionInstitucion;
+    }
+  echo '<form method="post" action="admin.php?page=Contactos"><h1>Editar Institucion
+  <input id="contacto"  type="submit"   class="button-primary"      value="Agregar Contacto" name="Agregar Contacto"><input type="hidden" value="'.$idInstitucion.'" name="idInstitucion"> 
+  </h1></form>
+  <div class="wrap">
+  <table class="form-table">
+  <form action="#" method="post">
+  <tr>
+  <td><input type="hidden" value="'.$idInstitucion.'" name="idInstitucion"></td>
+  </tr>
+  
+  <tr>
+  <th><h3>Nombre Institucion: </h3></th>  <td><input type="text" value="'.$nombre.'" name="nombre"  size=40 required maxlength="50" onkeypress="return soloLetras(event)"><span class="requerido"></span></td>
+  <th><h3>Telefono: </h3></th>      <td><input type="tel" value="'.$telefono.'" name="telefono" maxlength="9" id="phone"></td>
+  </tr>
+  
+  <tr>
+  <th><h3>&nbsp;Direccion: </h3></th>   <td><input type="text" value="'.$direccion.'" name="direccion" size=40 required maxlength="50"></td>
+  <th><h3>Url: </h3></th>       <td><input type="url" value="'.$url.'" name="url" required size=40 maxlength="50" placeholder="http://www.institucion.gob.sv"><span class="requerido"></span></td>
+  </tr>
+  
+  <tr>
+  <th><h3>Descripcion: </h3></th>     <td><textarea rows="3" cols="40" name="descripcion">'.$descripcion.'</textarea></td>
+  </tr>
+
+  <th>
+  <td>';
+  ?>
+  <input id="actualizar"  type="submit" class="button-primary"  value="Actualizar"  name="Actualizar">&nbsp;&nbsp;  
+  <input id="borrar"    type='submit'   class='button'      value='Borrar'    name="Borrar"  onclick="return confirm('Esta Seguro que desea Borrar <?php echo $nombre; ?>')">&nbsp;&nbsp;
+  <input id="regresar"  type="button"   class="button"      value="<< Regresar"   onclick=location.href="admin.php?page=Instituciones">
+  </td> 
+  </th>
+  <th><span class="requeridoNota">* Campos Requeridos</span></th>     <td></td>
+  </tr>
+  </form>
+  
+  </table>
+  </div>
+  <?php
+  }
   
   /*
   *Funciones de Controlador utilizadas para realizar CRUD de Contactos
@@ -224,6 +348,87 @@ class InstitucionController
     $model=new ContactoModel;
     return $model->update_contacto($id, $nombre, $telefono, $email, $puesto);
   }
+
+  public function AgregarContactoForm($idInstitucion)
+  {
+  $nombre     =''; $telefono    =''; 
+  $email      =''; $puesto    ='';
+
+  echo '<h1>Agregar Contacto</h1>
+  <div class="wrap">
+  <table class="form-table">
+  <form action="#" method="post">
+  <td><input type="hidden" value="'.$idInstitucion.'" name="idInstitucion"></td>
+  <tr>
+  <th><h3>&nbsp;Nombre Contacto: </h3></th> <td><input type="text" value="'.$nombre.'" name="nombre" size=50 required maxlength="50" onkeypress="return soloLetras(event)"><span class="requerido"></span></td>
+  <th><h3>Telefono: </h3></th>        <td><input type="tel" value="'.$telefono.'" name="telefono" size=9 maxlength="9" id="phone"><span class="requerido"></span></td>
+  </tr>
+  
+  <tr>
+  <th><h3>&nbsp;Email: </h3></th>       <td><input type="email" value="'.$email.'" name="email" size=50 required maxlength="50"><span class="requerido"></span></td>
+  <th><h3>Puesto: </h3></th>          <td><input type="text" value="'.$puesto.'" name="puesto" size=30></td>
+  </tr>
+
+  <tr>
+  <th>
+  <td><input id="guardar"  type="submit" value="Guardar"  class="button-primary" name="Guardar">&nbsp;&nbsp;</td>
+  </th>
+  <th><span class="requeridoNota">* Campos Requeridos</span></th>     <td></td>
+  </tr>
+  </form>
+  <form action="admin.php?page=Contactos" method="post"><input id="regresar" type="submit" value="<< Regresar" name="<< Regresar" class="button-primary"><input type="hidden" value="'.$idInstitucion.'" name="idInstitucion"></form>
+  </table>
+  </div>
+    ';
+  }
+
+  public function EditarBorrarContacto($idContacto)
+  {
+  require_once(SIGOES_PLUGIN_DIR.'/controller/InstitucionController.php');
+    $institucionController = new InstitucionController();
+    $contacto=$institucionController->get_contacto($idContacto);
+    foreach($contacto as $row)
+    {
+      $idInstitucion=$row->idInstitucion;
+      $nombre=$row->nombreContacto;
+      $telefono=$row->telefonoContacto;
+      $email=$row->emailContacto;
+      $puesto=$row->puestoContacto;
+    }
+  echo '<h1>Editar Contacto</h1>
+  <div class="wrap">
+  <table class="form-table">
+  <form action="admin.php?page=AgregarContacto" method="post">
+  <input type="hidden" value="'.$idContacto.'" name="idContacto"  >
+  <input type="hidden" value="'.$idInstitucion.'" name="idRegresar">
+  <tr>
+  <th><h3>&nbsp;Nombre Contacto: </h3></th> <td><input type="text" value="'.$nombre.'" name="nombre" size=50 required maxlength="50" onkeypress="return soloLetras(event)"><span class="requerido"></span></td>
+  <th><h3>Telefono: </h3></th>        <td><input type="tel" value="'.$telefono.'" name="telefono" size=9 maxlength="9" id="phone"><span class="requerido"></span></td>
+  </tr>
+  
+  <tr>
+  <th><h3>&nbsp;Email: </h3></th>       <td><input type="email" value="'.$email.'" name="email" size=50 required maxlength="50"><span class="requerido"></span></td>
+  <th><h3>Puesto: </h3></th>          <td><input type="text" value="'.$puesto.'" name="puesto" size=30></td>
+  </tr>
+
+  <tr>
+  <th>
+  <td>';
+  ?>
+  <input id="actualizar"  type="submit" class="button-primary"  value="Actualizar"  name="Actualizar">&nbsp;&nbsp;
+  <input id="borrar"    type='submit'   class='button'      value='Borrar'    name="Borrar"  onclick="return confirm('Esta Seguro que desea borrar a: <?php echo $nombre; ?>')">&nbsp;&nbsp;  
+  </td> 
+  </th>
+  <th><span class="requeridoNota">* Campos Requeridos</span></th>     <td></td>
+  </tr>
+  </form>
+  <form action="admin.php?page=Contactos" method="post"><input type="hidden" value="<?php echo $idInstitucion;?>" name="idInstitucion"><input id="regresar"   type="submit"   class="button-primary"  value="<< Regresar" name="<< Regresar"></form>
+  </table>
+  </div>
+  <?php
+    
+  }
+
 
 }
 ?>

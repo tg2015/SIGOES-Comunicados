@@ -35,8 +35,8 @@
         CONCAT(
         (SELECT meta_value FROM wp_usermeta WHERE user_id = post_author AND meta_key = 'first_name') , ' ',
         (SELECT meta_value FROM wp_usermeta WHERE user_id = post_author AND meta_key = 'last_name') ) nombre,
-        date_format(Post.post_date, '%d-%m-%Y %H:%m:%s') AS Fecha_Creacion,
-        date_format(Post.post_date_gmt, '%d-%m-%Y %H:%m:%s') AS Fecha_Modificacion
+        date_format(Post.post_date, '%d-%m-%Y / %H:%m') AS Fecha_Creacion,
+        date_format(Post.post_date_gmt, '%d-%m-%Y / %H:%m') AS Fecha_Modificacion
         FROM  wp_posts AS Post, wp_usermeta AS User,
         (SELECT @num:=0) d
         WHERE
@@ -50,7 +50,7 @@
         (post_type != 'revision')	     AND
 	(post_status LIKE $P{estado})	AND
         	(post_type    LIKE $P{cat}  )	AND
-        	(meta_value   LIKE $P{autor} ) AND (Post.post_date>=$P{fecha_ini} OR $P{fecha_ini}='') AND (Post.post_date<=$P{fecha_fin} OR $P{fecha_fin}='')]]>
+        	(meta_value   LIKE $P{autor} ) AND (Post.post_date>=$P{fecha_ini} OR $P{fecha_ini}='') AND (Post.post_date<=$P{fecha_fin} OR $P{fecha_fin}='') order by Post.post_date DESC]]>
 	</queryString>
 	<field name="ID" class="java.math.BigInteger">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -102,7 +102,7 @@
 				<textElement verticalAlignment="Top">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[fecha reporte:]]></text>
+				<text><![CDATA[Fecha reporte:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="59" width="74" height="19" uuid="8895ef18-8cbb-4861-980a-7b3b801820fd"/>
@@ -114,7 +114,7 @@
 			<staticText>
 				<reportElement x="0" y="78" width="74" height="20" uuid="d9c613f5-8ead-4cbc-9f28-7212a9a9dce4"/>
 				<textElement verticalAlignment="Top"/>
-				<text><![CDATA[Generado Por:]]></text>
+				<text><![CDATA[Generado por:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="98" width="74" height="20" uuid="0a653c7e-0f81-4bcf-9bf3-2c256f665c07"/>
@@ -136,14 +136,14 @@
 				<textFieldExpression><![CDATA[$P{estado}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="74" y="98" width="211" height="20" uuid="3489c3af-8867-4151-bcfc-4b387e4af118"/>
+				<reportElement x="74" y="98" width="240" height="20" uuid="3489c3af-8867-4151-bcfc-4b387e4af118"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{idusuario}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="74" y="78" width="211" height="20" uuid="11b14c87-8c97-4cec-bc89-4696c14c91bd"/>
+				<reportElement x="74" y="78" width="240" height="20" uuid="11b14c87-8c97-4cec-bc89-4696c14c91bd"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="true"/>
 				</textElement>
@@ -229,7 +229,7 @@
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Titulo]]></text>
+				<text><![CDATA[Título]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="0" y="1" width="23" height="20" backcolor="#999999" uuid="475607b9-76da-43af-9b17-e5ce85ad949b"/>
@@ -243,7 +243,7 @@
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[No]]></text>
+				<text><![CDATA[No.]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="200" y="1" width="83" height="20" backcolor="#999999" uuid="ad44b61e-31c5-4937-8568-23903618b7bb">
@@ -259,7 +259,7 @@
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Categoria]]></text>
+				<text><![CDATA[Categoría]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="283" y="1" width="100" height="20" backcolor="#999999" uuid="6a45c52f-19d9-488a-b28a-a6b5ba313a85"/>
@@ -315,7 +315,7 @@
 				<textElement textAlignment="Center">
 					<font size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Fecha Creacion]]></text>
+				<text><![CDATA[Fecha Creación  Fecha / Hora]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="666" y="1" width="86" height="20" backcolor="#999999" uuid="6ec3e2af-94c5-493b-b1d7-39bd9f152788"/>
@@ -329,14 +329,14 @@
 				<textElement textAlignment="Center">
 					<font size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Fecha Modificacion]]></text>
+				<text><![CDATA[Fecha Modificación Fecha / Hora]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="24" splitType="Stretch">
-			<textField>
-				<reportElement x="200" y="0" width="83" height="22" uuid="a454b777-217d-4b2a-b81f-82a2c034d464"/>
+		<band height="31" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="200" y="0" width="83" height="30" uuid="a454b777-217d-4b2a-b81f-82a2c034d464"/>
 				<box rightPadding="0">
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -349,8 +349,8 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{post_type}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="283" y="0" width="100" height="22" uuid="f0490e0d-5b94-4603-a6ed-ca2e13c373af"/>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="283" y="0" width="100" height="30" uuid="f0490e0d-5b94-4603-a6ed-ca2e13c373af"/>
 				<box rightPadding="0">
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -361,8 +361,8 @@
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{post_status}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="383" y="0" width="100" height="22" uuid="4bfd6913-2092-4dfe-977c-dec61d84540b"/>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="383" y="0" width="100" height="30" uuid="4bfd6913-2092-4dfe-977c-dec61d84540b"/>
 				<box rightPadding="0">
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -373,8 +373,8 @@
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{Rol_Autor}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="483" y="0" width="100" height="22" uuid="e0b23ef3-0428-44dc-8342-4172fd4090f9"/>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="483" y="0" width="100" height="30" uuid="e0b23ef3-0428-44dc-8342-4172fd4090f9"/>
 				<box rightPadding="0">
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -385,8 +385,8 @@
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="583" y="0" width="83" height="22" uuid="35fbd1f8-0a15-4d5e-adea-600f765b74ae"/>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="583" y="0" width="83" height="30" uuid="35fbd1f8-0a15-4d5e-adea-600f765b74ae"/>
 				<box rightPadding="0">
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -399,8 +399,8 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Fecha_Creacion}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="666" y="0" width="86" height="22" uuid="6ac86499-bd3b-491c-b940-555a24281478"/>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="666" y="0" width="86" height="30" uuid="6ac86499-bd3b-491c-b940-555a24281478"/>
 				<box rightPadding="0">
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -413,8 +413,8 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Fecha_Modificacion}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="23" y="0" width="177" height="22" uuid="2f3cec7f-8f7c-4a0c-a508-fa2d48a68a5d"/>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="23" y="0" width="177" height="30" uuid="2f3cec7f-8f7c-4a0c-a508-fa2d48a68a5d"/>
 				<box rightPadding="0">
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -427,8 +427,8 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{post_title}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="0" y="0" width="23" height="22" uuid="17582025-352b-4181-a099-6c1c144e0c23"/>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="23" height="30" uuid="17582025-352b-4181-a099-6c1c144e0c23"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -482,6 +482,25 @@
 				</textElement>
 				<text><![CDATA[Total de Comunicados]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="239" y="10" width="22" height="20" uuid="80bafd79-71db-4746-85b5-380756c73eb7"/>
+				<box topPadding="5"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[f.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="239" y="9" width="271" height="1" uuid="9ef6ce14-1e89-45d8-b362-ce531b93d3f4"/>
+			</line>
+			<textField>
+				<reportElement x="261" y="10" width="222" height="20" uuid="731addca-860a-44c4-ab4b-519337dd528f"/>
+				<box topPadding="5"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombreusuario}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageFooter>
 	<summary>

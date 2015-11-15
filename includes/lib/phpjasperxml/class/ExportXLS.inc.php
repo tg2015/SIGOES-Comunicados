@@ -541,7 +541,7 @@ foreach($this->arraytitle as $out){
        
       $this->maxrow=$this->headerrowcount;
         foreach($this->arraypageHeader as $out){
-            $this->display($out,0);
+            //$this->display($out,0);
             
         }
         

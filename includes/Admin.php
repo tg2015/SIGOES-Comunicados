@@ -65,7 +65,7 @@ add_action('admin_menu', 'admin_pages');
             remove_menu_page('link-manager.php'); // Enlaces
             remove_menu_page('edit.php?post_type=page'); // Páginas
             remove_menu_page('edit-comments.php'); // Comentarios
-            remove_menu_page('themes.php'); // Apariencia
+            //remove_menu_page('themes.php'); // Apariencia
             //remove_menu_page('plugins.php'); // Plugins
             //remove_menu_page('users.php'); // Usuarios
             remove_menu_page('tools.php'); // Herramientas

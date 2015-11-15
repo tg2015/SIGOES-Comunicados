@@ -46,6 +46,7 @@ if($formato=='pdf')
 	{$PHPJasperXML = new PHPJasperXML();}
 else
 	{$PHPJasperXML = new PHPJasperXML("en","XLS");}
+$PHPJasperXML->SetPrefijo($pfrpt);
 
 $arrayParametros=["userID" => $user_id, "context"=>$context, "connector"=>$connector, "action"=>$action, "fecha_fin"=>$fecha_fin_format, "fecha_ini"=>$fecha_ini_format];
 $PHPJasperXML->SetParametros($arrayParametros);
