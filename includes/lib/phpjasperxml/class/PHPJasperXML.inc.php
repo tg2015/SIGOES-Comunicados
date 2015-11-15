@@ -28,11 +28,16 @@ class PHPJasperXML {
     private $detailbandqty=0;
     public $arraysqltable=array();
     public $Parametros;
-
+    public $Prefijo;
     //Funcion para setear los parametros para la SQL
     public function SetParametros($arrayParametros)
     {
         $this->Parametros=$arrayParametros;
+    }
+
+    public function SetPrefijo($prefix)
+    {
+        $this->Prefijo=$prefix;
     }
     
 	private $report_count=0;		//### New declaration (variable exists in original too)
@@ -292,8 +297,9 @@ class PHPJasperXML {
                 $this->sql = str_replace('$P{'.$v.'}', "'".$a."'", $this->sql);
             }
         }
-        //print_r($this->Parametros);
-        //print_r($this->sql);
+        if(!is_null($this->Prefijo)){
+        $this->sql = str_replace('wp_', $this->Prefijo, $this->sql);
+        }
     }
 
     public function field_handler($xml_path) {
@@ -1342,7 +1348,7 @@ $font=$data->textElement->font["fontName"];
         switch ($data->textFieldExpression) {
             case 'new java.util.Date()':
 //### New: =>date("Y.m.d.",....
-                $this->pointer[]=array ("type"=>"MultiCell","width"=>$data->reportElement["width"],"height"=>$height,"txt"=>date("d-M-Y H:i:s a"),"border"=>$border,"align"=>$align,"fill"=>$fill,"hidden_type"=>"date","soverflow"=>$stretchoverflow,"poverflow"=>$printoverflow,"link"=>$data->hyperlinkReferenceExpression,"valign"=>$valign,
+                $this->pointer[]=array ("type"=>"MultiCell","width"=>$data->reportElement["width"],"height"=>$height,"txt"=>date("d-M-Y / H:i:s"),"border"=>$border,"align"=>$align,"fill"=>$fill,"hidden_type"=>"date","soverflow"=>$stretchoverflow,"poverflow"=>$printoverflow,"link"=>$data->hyperlinkReferenceExpression,"valign"=>$valign,
                     "x"=>$data->reportElement["x"]+0,"y"=>$data->reportElement["y"]+0);
 //### End of modification				
                 break;

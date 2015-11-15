@@ -42,6 +42,8 @@ if($formato=='pdf')
 {$PHPJasperXML = new PHPJasperXML();}
 else 
 {$PHPJasperXML = new PHPJasperXML("en","XLS");}
+$PHPJasperXML->SetPrefijo($pfrpt);
+
 /*PARAMETROS PARA SQL*/
 $autorPost='%'.$autor.'%';
 $arrayParametros=["estado" => $estado, "cat"=>$cat, "autor"=>$autorPost, "fecha_ini"=>$fecha_ini_format, "fecha_fin"=>$fecha_fin_format];

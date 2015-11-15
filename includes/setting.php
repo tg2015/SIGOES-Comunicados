@@ -2,8 +2,9 @@
 
 global $wpdb;
 
-$server	="localhost";
-$user	="tg2015";
-$pass	="tesis2015";
+$server	=DB_HOST;
+$user 	=DB_USER;
+$pass 	=DB_PASSWORD;
 $db 	=$wpdb->dbname;
+$pfrpt	=$wpdb->prefix;
 ?>

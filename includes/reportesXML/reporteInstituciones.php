@@ -34,6 +34,7 @@ if($formato=='pdf')
 else
 	{$PHPJasperXML = new PHPJasperXML("en","XLS");}
 
+$PHPJasperXML->SetPrefijo($pfrpt);
 $PHPJasperXML->debugsql=false;
 $PHPJasperXML->xml_dismantle($xml);
 

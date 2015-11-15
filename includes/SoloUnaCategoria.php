@@ -56,7 +56,7 @@ echo '<style type="text/css">
 .requerido:after {
 content:" *"; 
 color: #e32;
-margin: 0px 0px 0px 5px; 
+margin: 0px 0px 0px 2px; 
 font-size: large; 
 padding: 0 5px 0 0; }
 
@@ -96,8 +96,8 @@ add_filter( 'post_row_actions', 'remove_row_actions', 10, 2 );//10-> prioridad, 
 function remove_row_actions( $actions, $post )
 {
   global $current_screen;
-   // if( $current_screen->post_type != 'proyecto'&& $current_screen->post_type != 'evento' && $current_screen->post_type != 'streaming'  ) return $actions;
-   // unset( $actions['edit'] );
+   //if( $current_screen->post_type != 'proyecto'&& $current_screen->post_type != 'evento' && $current_screen->post_type != 'streaming'  ) return $actions;
+    //unset( $actions['edit'] );
     //unset( $actions['view'] );
     //unset( $actions['trash'] );
     unset( $actions['inline hide-if-no-js'] );//Edicion Rapida
