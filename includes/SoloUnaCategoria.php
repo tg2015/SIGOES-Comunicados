@@ -21,7 +21,20 @@ echo '<style type="text/css">#category-add-toggle {
 }
     </style>';
     // Desactivar Actualizacion de AAM
- 
+ echo '<style type="text/css">
+    #advanced-access-manager-update {
+    display: none;
+    visibility: hidden;
+}
+    </style>';
+
+  //Desactivar Actualizacion de Bitacora
+ echo '<style type="text/css">
+    #stream-update {
+    display: none;
+    visibility: hidden;
+}
+    </style>';
 
       ///Ocultar div de Autor.  
     echo '<style type="text/css">
