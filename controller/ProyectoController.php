@@ -63,32 +63,32 @@ public function ProyectoInit()
 			$args = array(
 			'labels'             => $labels,
 	        'description'        => __( 'Descripcion.', 'SIGOES-Comunicados' ),
-			'public'             => true,
-			'publicly_queryable' => true,
+			'public'             => true,//Si el Post aparecera publico en el sitio
+			'publicly_queryable' => true,//Si el Post aparece en la Busqueda del sitio
 			'show_ui'            => true,
-			'show_in_menu'       => true,
+			'show_in_menu'       => true,//Si se muestra en el menu de administracion
 			'query_var'          => true,
-			'rewrite'            => array( 'slug' => 'proyecto' ),
-			'capability_type'    => 'post',
-			'has_archive'        => true,
+			'rewrite'            => array( 'slug' => 'proyecto' ),//ID del CPT
+			'capability_type'    => 'post',//De donde deriba el CPT, Existen otros tipos como Admon de media etc
+			'has_archive'        => true,// Si se puede agregar un archico el CPT
 			'hierarchical'       => false,
-			'menu_position'      => null,
+			'menu_position'      => null,//Posicion del Menu en el Admin menu
+			//las caracteristicas esenciales a la hora de agregar un nuevo Proyecto
+										// titulo, editor, autor, imgen destacada	,categoria, campos personalizads
 			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'category'/*,'custom-fields'*/ ),
-			'taxonomies' => array( 'category'),
-			'menu_icon' => 'dashicons-groups'
+			'taxonomies' => array( 'category'),//Categoria del proyecto
+			'menu_icon' => 'dashicons-groups'//Icono del CPT
 						);
 			///Registrar Nuestro CTP (Custom Type Post)
-				register_post_type( 'proyecto', $args ); 
+				register_post_type( 'proyecto', $args ); //ID dep CPT
 		}/// fin Funcion ProyectoCTP
-
-
 
 //********************Configuraciones extras*******************************************//
 		//Hook init para agregar CPT al menu de Administracion.
 		add_action( 'init', 'ProyectoCTP' );
 		//Quitar botón agregar multimedia del editor
 			function RemoverAddMediaButtons()
-				{//if ( !current_user_can( 'level_10' ) ) {//DE SER NECESARIO VALIDAR USUARIO.
+				{//
         		 remove_action( 'media_buttons', 'media_buttons' ); //}
         		}
 		//hook para Remover boton de objeto
@@ -105,7 +105,6 @@ public function ProyectoInit()
     	    	 remove_submenu_page( 'edit.php?post_type=evento', 'edit-tags.php?taxonomy=category&amp;post_type=evento' );
     	    	 remove_submenu_page( 'edit.php?post_type=proyecto', 'edit-tags.php?taxonomy=category&amp;post_type=proyecto' );
     	    	 remove_submenu_page( 'edit.php?post_type=streaming', 'edit-tags.php?taxonomy=category&amp;post_type=streaming' );
-    	    	 //NOTA FALTA OTROS
     	    	 remove_submenu_page( 'edit.php?post_type=otros', 'edit-tags.php?taxonomy=category&amp;post_type=otros' );
 
     	    	}
@@ -137,11 +136,11 @@ public function ProyectoInit()
 				return $query;
 			    }
 			}
-
+		//MVC para Ayuda de Wordpress con respecto a CPT wordpress
 		require_once(SIGOES_PLUGIN_DIR.'/view/ComunicadoVista.php');
 		$varAyudaProyecto= new ComunicadoVista();
 		$varAyudaProyecto->RenderAyudaComunicado( );//Funcion que se encuentra en el archivo requirido.
-
+		//Ordenar Visualmente los Comunicados
 		require_once(SIGOES_PLUGIN_DIR.'/model/OrdenarComunicadoModel.php');
 		$scporder = new OrdenarComunicadoModel();
 
@@ -159,10 +158,9 @@ function add_googleanalytics() { ?>
 
 </script>
 <?php
-}//fin add_googleanalytics
-	}////fin Funcion ProyectoInit
+	}//fin add_googleanalytics
+}////fin Funcion ProyectoInit
 /********************Fin Configuraciones extras*******************************************/
-
 
 }//fin class ComunicadoController.
 //Instaciar la clase para que los Proyectos se Desplieguen en la Admin Bar
