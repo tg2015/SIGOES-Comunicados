@@ -95,7 +95,7 @@ private $posts_per_page = 10;
         public function get_columns()
         {
             $columns = array(  
-                'idContacto' => __('Id'),
+                'idContacto' => __('No'),
                 'nombreContacto' => __('Nombre'),
                 'telefonoContacto' => __('Telefono'),
                 'emailContacto' => __('Email'),

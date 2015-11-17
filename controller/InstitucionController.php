@@ -47,7 +47,7 @@ function registrar_ValidacionMascaraScript()
   if(isset($_GET["page"]))
   {
   $pagina = $_GET["page"];
-  if("AgregarContacto"==$pagina OR "AgregarInstitucion"==$pagina OR "Reporte_SIGOES"==$pagina OR "Instituciones"==$pagina)
+  if("AgregarContacto"==$pagina || "AgregarInstitucion"==$pagina || "Reporte_SIGOES"==$pagina || "Instituciones"==$pagina)
   {
   ?> 
     <script>
@@ -59,21 +59,12 @@ function registrar_ValidacionMascaraScript()
       $("#ssn").mask("999-99-9999");
       }(jQuery));
     </script>
-    <script type="text/javascript">
-                    jQuery(document).ready(function (){
-                    jQuery("#loading-div-background").css({ opacity: 1.0 });
-                    });
-
-                    function ShowProgressAnimation(){
-                    jQuery("#loading-div-background").show();
-                    }
-    </script>
     <script>
       function soloLetras(e) {
       key = e.keyCode || e.which;
       tecla = String.fromCharCode(key).toLowerCase();
       letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
-      especiales = [8, 37, 39, 46];
+      especiales = [8, 9, 44, 46];
 
       tecla_especial = false
       for(var i in especiales) {
@@ -95,10 +86,56 @@ function registrar_ValidacionMascaraScript()
             document.getElementById("miInput").value = '';
         }
       }
+
+    
+    jQuery(document).ready(function() {
+      jQuery( document ).on( 'click', '#guardar', function(){
+        var nombre = jQuery.trim(jQuery('#nombre').val());
+        var direccion = jQuery.trim(jQuery('#direccion').val());
+        if (nombre == null || nombre.trim() == ""){
+          alert("Debe llenar el campo nombre");
+          return false;
+          }
+        if (direccion == null || direccion.trim()=="")
+          {
+            alert("Debe llenar el campo dirección");
+            return false;
+          }
+
+      });
+
+      jQuery( document ).on( 'click', '#actualizar', function(){
+        var nombre = jQuery.trim(jQuery('#nombre').val());
+        var direccion = jQuery.trim(jQuery('#direccion').val());
+        if (nombre == null || nombre.trim() == ""){
+          alert("Debe llenar el campo nombre");
+          return false;
+          }
+        if (direccion == null || direccion.trim()==""){
+            alert("Debe llenar el campo dirección");
+            return false;
+          }
+      });
+
+    });  
     </script>
 
     <?php
     }
+    elseif ("Instituciones"==$pagina) {
+      ?>
+      <script type="text/javascript">
+                    jQuery(document).ready(function (){
+                    jQuery("#loading-div-background").css({ opacity: 1.0 });
+                    });
+
+                    function ShowProgressAnimation(){
+                    jQuery("#loading-div-background").show();
+                    }
+      </script>
+      <?php
+    }
+
     }
 }
 
@@ -220,7 +257,7 @@ class InstitucionController
     $idInstitucion  =''; $nombre    ='';
     $telefono     =''; $direccion   ='';
     $url      =''; $descripcion   ='';
-  echo '<h1>Agregar Institucion</h1>
+  echo '<h1>Agregar Institución</h1>
   <div class="wrap">
   <table class="form-table">
   <form action="#" method="post">
@@ -229,17 +266,17 @@ class InstitucionController
   </tr>
   
   <tr>
-  <th><h3>&nbsp;Nombre Institucion: </h3></th>  <td><input type="text" value="'.$nombre.'" name="nombre" size=37 required maxlength="50" onkeypress="return soloLetras(event)"><span class="requerido"></span></td>
-  <th><h3>Telefono: </h3></th>          <td><input type="text" value="'.$telefono.'" name="telefono" size=9 maxlength="9" id="phone"></td>
+  <th><h3>&nbsp;Nombre Institución: </h3></th>  <td><input type="text" value="'.$nombre.'" name="nombre" id="nombre" size=37 required maxlength="100" onkeypress="return soloLetras(event)"><span class="requerido"></span></td>
+  <th><h3>Teléfono: </h3></th>          <td><input type="text" value="'.$telefono.'" name="telefono" size=9 maxlength="9" id="phone"></td>
   </tr>
   
   <tr>
-  <th><h3>&nbsp;Direccion: </h3></th>       <td><input type="text" value="'.$direccion.'" name="direccion" size=37 required maxlength="50"></td>
-  <th><h3>Url: </h3></th>           <td><input type="url" value="'.$url.'" name="url" required size=37 maxlength="50" placeholder="http://www.institucion.gob.sv"><span class="requerido"></span></td>
+  <th><h3>&nbsp;Dirección: </h3></th>       <td><input type="text" value="'.$direccion.'" name="direccion" id="direccion" size=37 required maxlength="100"></td>
+  <th><h3>Url: </h3></th>           <td><input type="url" value="'.$url.'" name="url" required size=37 maxlength="100" placeholder="http://www.institucion.gob.sv"><span class="requerido"></span></td>
   </tr>
 
   <tr>
-  <th><h3>&nbsp;Descripcion: </h3></th>     <td><textarea rows="3" cols="40" name="descripcion">'.$descripcion.'</textarea></td>
+  <th><h3>&nbsp;Descripción: </h3></th>     <td><textarea rows="3" cols="40" name="descripcion">'.$descripcion.'</textarea></td>
   </tr>
   
   <tr>
@@ -269,28 +306,28 @@ class InstitucionController
       $url=$row->urlInstitucion;
       $direccion=$row->direccionInstitucion;
     }
-  echo '<form method="post" action="admin.php?page=Contactos"><h1>Editar Institucion
+  echo '<form method="post" action="admin.php?page=Contactos"><h1>Editar Institución
   <input id="contacto"  type="submit"   class="button-primary"      value="Agregar Contacto" name="Agregar Contacto"><input type="hidden" value="'.$idInstitucion.'" name="idInstitucion"> 
   </h1></form>
   <div class="wrap">
   <table class="form-table">
-  <form action="#" method="post">
+  <form action="#" method="post" onSubmit="return validateForm(this)">
   <tr>
   <td><input type="hidden" value="'.$idInstitucion.'" name="idInstitucion"></td>
   </tr>
   
   <tr>
-  <th><h3>Nombre Institucion: </h3></th>  <td><input type="text" value="'.$nombre.'" name="nombre"  size=40 required maxlength="50" onkeypress="return soloLetras(event)"><span class="requerido"></span></td>
-  <th><h3>Telefono: </h3></th>      <td><input type="tel" value="'.$telefono.'" name="telefono" maxlength="9" id="phone"></td>
+  <th><h3>Nombre Institución: </h3></th>  <td><input type="text" value="'.$nombre.'" name="nombre" id="nombre" size=40 required maxlength="100" onkeypress="return soloLetras(event)"><span class="requerido"></span></td>
+  <th><h3>Teléfono: </h3></th>      <td><input type="tel" value="'.$telefono.'" name="telefono" maxlength="9" id="phone"></td>
   </tr>
   
   <tr>
-  <th><h3>&nbsp;Direccion: </h3></th>   <td><input type="text" value="'.$direccion.'" name="direccion" size=40 required maxlength="50"></td>
-  <th><h3>Url: </h3></th>       <td><input type="url" value="'.$url.'" name="url" required size=40 maxlength="50" placeholder="http://www.institucion.gob.sv"><span class="requerido"></span></td>
+  <th><h3>&nbsp;Dirección: </h3></th>   <td><input type="text" value="'.$direccion.'" name="direccion" id="direccion" size=40 required maxlength="100"></td>
+  <th><h3>Url: </h3></th>       <td><input type="url" value="'.$url.'" name="url" required size=40 maxlength="100" placeholder="http://www.institucion.gob.sv"><span class="requerido"></span></td>
   </tr>
   
   <tr>
-  <th><h3>Descripcion: </h3></th>     <td><textarea rows="3" cols="40" name="descripcion">'.$descripcion.'</textarea></td>
+  <th><h3>Descripción: </h3></th>     <td><textarea rows="3" cols="40" name="descripcion">'.$descripcion.'</textarea></td>
   </tr>
 
   <th>
@@ -360,12 +397,12 @@ class InstitucionController
   <form action="#" method="post">
   <td><input type="hidden" value="'.$idInstitucion.'" name="idInstitucion"></td>
   <tr>
-  <th><h3>&nbsp;Nombre Contacto: </h3></th> <td><input type="text" value="'.$nombre.'" name="nombre" size=50 required maxlength="50" onkeypress="return soloLetras(event)"><span class="requerido"></span></td>
-  <th><h3>Telefono: </h3></th>        <td><input type="tel" value="'.$telefono.'" name="telefono" size=9 maxlength="9" id="phone"><span class="requerido"></span></td>
+  <th><h3>&nbsp;Nombre Contacto: </h3></th> <td><input type="text" value="'.$nombre.'" id="nombre" name="nombre" size=50 required maxlength="50" onkeypress="return soloLetras(event)"><span class="requerido"></span></td>
+  <th><h3>Teléfono: </h3></th>        <td><input type="tel" value="'.$telefono.'" name="telefono" size=9 maxlength="9" id="phone"><span class="requerido"></span></td>
   </tr>
   
   <tr>
-  <th><h3>&nbsp;Email: </h3></th>       <td><input type="email" value="'.$email.'" name="email" size=50 required maxlength="50"><span class="requerido"></span></td>
+  <th><h3>&nbsp;Email: </h3></th>       <td><input type="email" value="'.$email.'" id="email" name="email" size=50 required maxlength="50"><span class="requerido"></span></td>
   <th><h3>Puesto: </h3></th>          <td><input type="text" value="'.$puesto.'" name="puesto" size=30></td>
   </tr>
 
@@ -403,7 +440,7 @@ class InstitucionController
   <input type="hidden" value="'.$idInstitucion.'" name="idRegresar">
   <tr>
   <th><h3>&nbsp;Nombre Contacto: </h3></th> <td><input type="text" value="'.$nombre.'" name="nombre" size=50 required maxlength="50" onkeypress="return soloLetras(event)"><span class="requerido"></span></td>
-  <th><h3>Telefono: </h3></th>        <td><input type="tel" value="'.$telefono.'" name="telefono" size=9 maxlength="9" id="phone"><span class="requerido"></span></td>
+  <th><h3>Teléfono: </h3></th>        <td><input type="tel" value="'.$telefono.'" name="telefono" size=9 maxlength="9" id="phone"><span class="requerido"></span></td>
   </tr>
   
   <tr>

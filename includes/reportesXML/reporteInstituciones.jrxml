@@ -121,7 +121,7 @@
 				<text><![CDATA[No.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="44" y="3" width="201" height="20" backcolor="#CCCCCC" uuid="82ef4e40-46ea-4300-a72d-68083df56380"/>
+				<reportElement mode="Opaque" x="44" y="3" width="247" height="20" backcolor="#CCCCCC" uuid="82ef4e40-46ea-4300-a72d-68083df56380"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -135,7 +135,7 @@
 				<text><![CDATA[Institución]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="245" y="3" width="110" height="20" backcolor="#CCCCCC" uuid="e8786031-4e9a-4dfd-8116-fe39e32b2be7"/>
+				<reportElement mode="Opaque" x="291" y="3" width="64" height="20" backcolor="#CCCCCC" uuid="e8786031-4e9a-4dfd-8116-fe39e32b2be7"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -165,9 +165,9 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="26" splitType="Stretch">
+		<band height="30" splitType="Stretch">
 			<textField isStretchWithOverflow="true">
-				<reportElement stretchType="RelativeToTallestObject" x="44" y="0" width="201" height="25" uuid="de3ec1f3-8703-483d-aa92-a73d5ef5b766"/>
+				<reportElement stretchType="RelativeToTallestObject" x="44" y="0" width="247" height="28" uuid="de3ec1f3-8703-483d-aa92-a73d5ef5b766"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -179,7 +179,7 @@
 				<textFieldExpression><![CDATA[$F{nombreInstitucion}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement stretchType="RelativeToTallestObject" x="245" y="0" width="110" height="25" uuid="c26f57dd-af5e-4765-ba9d-41f269668b0b"/>
+				<reportElement stretchType="RelativeToTallestObject" x="291" y="0" width="64" height="28" uuid="c26f57dd-af5e-4765-ba9d-41f269668b0b"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -191,7 +191,7 @@
 				<textFieldExpression><![CDATA[$F{telefonoInstitucion}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement stretchType="RelativeToTallestObject" x="355" y="0" width="217" height="25" uuid="3343b7df-ca4b-4ea8-8276-30f005cdcdb3"/>
+				<reportElement stretchType="RelativeToTallestObject" x="355" y="0" width="217" height="28" uuid="3343b7df-ca4b-4ea8-8276-30f005cdcdb3"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -203,7 +203,7 @@
 				<textFieldExpression><![CDATA[$F{urlInstitucion}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="44" height="25" uuid="e94ec229-ade5-467c-8109-19e850a49fa2"/>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="44" height="28" uuid="e94ec229-ade5-467c-8109-19e850a49fa2"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -289,7 +289,7 @@
 					<bottomPen lineWidth="1.25"/>
 					<rightPen lineWidth="1.25"/>
 				</box>
-				<textElement verticalAlignment="Top">
+				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Total Instituciones:]]></text>

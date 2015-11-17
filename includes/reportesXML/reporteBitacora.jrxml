@@ -230,7 +230,7 @@ WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.context = $P{context} O
 	<detail>
 		<band height="29" splitType="Stretch">
 			<textField>
-				<reportElement stretchType="RelativeToTallestObject" x="36" y="0" width="89" height="25" uuid="5ddf84e8-4995-415e-8768-d65b18d7e67e"/>
+				<reportElement stretchType="RelativeToTallestObject" x="36" y="0" width="89" height="28" uuid="5ddf84e8-4995-415e-8768-d65b18d7e67e"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -244,7 +244,7 @@ WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.context = $P{context} O
 				<textFieldExpression><![CDATA[$F{created}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement stretchType="RelativeToTallestObject" x="125" y="0" width="149" height="25" uuid="e51e2492-1a96-4cee-b702-6a6f24f3255a"/>
+				<reportElement stretchType="RelativeToTallestObject" x="125" y="0" width="149" height="28" uuid="e51e2492-1a96-4cee-b702-6a6f24f3255a"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -258,7 +258,7 @@ WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.context = $P{context} O
 				<textFieldExpression><![CDATA[$F{summary}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement stretchType="RelativeToTallestObject" x="274" y="0" width="91" height="25" uuid="00bca2e9-81f7-40bc-88a0-284e11c9219a"/>
+				<reportElement stretchType="RelativeToTallestObject" x="274" y="0" width="91" height="28" uuid="00bca2e9-81f7-40bc-88a0-284e11c9219a"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -270,7 +270,7 @@ WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.context = $P{context} O
 				<textFieldExpression><![CDATA[$F{user_role}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement stretchType="RelativeToTallestObject" x="488" y="0" width="106" height="25" uuid="1ce16ef3-da8a-4a48-ba38-527e0f00b3f6"/>
+				<reportElement stretchType="RelativeToTallestObject" x="488" y="0" width="106" height="28" uuid="1ce16ef3-da8a-4a48-ba38-527e0f00b3f6"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -282,7 +282,7 @@ WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.context = $P{context} O
 				<textFieldExpression><![CDATA[$F{connector}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement stretchType="RelativeToTallestObject" x="594" y="0" width="83" height="25" uuid="0da2011e-afa4-46c5-8b68-6736b2682bac"/>
+				<reportElement stretchType="RelativeToTallestObject" x="594" y="0" width="83" height="28" uuid="0da2011e-afa4-46c5-8b68-6736b2682bac"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -294,7 +294,7 @@ WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.context = $P{context} O
 				<textFieldExpression><![CDATA[$F{context}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement stretchType="RelativeToTallestObject" x="677" y="0" width="72" height="25" uuid="add032bd-0324-46de-b31d-8f07daca4d72"/>
+				<reportElement stretchType="RelativeToTallestObject" x="677" y="0" width="72" height="28" uuid="add032bd-0324-46de-b31d-8f07daca4d72"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -306,7 +306,7 @@ WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.context = $P{context} O
 				<textFieldExpression><![CDATA[$F{action}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToTallestObject" x="365" y="0" width="123" height="25" uuid="89078979-a101-43df-b211-7119d60992c7"/>
+				<reportElement stretchType="RelativeToTallestObject" x="365" y="0" width="123" height="28" uuid="89078979-a101-43df-b211-7119d60992c7"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -318,7 +318,7 @@ WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.context = $P{context} O
 				<textFieldExpression><![CDATA[$F{usuario}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="36" height="25" uuid="51165897-f1d2-41b9-993d-62250239e057"/>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="36" height="28" uuid="51165897-f1d2-41b9-993d-62250239e057"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -417,6 +417,7 @@ WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.context = $P{context} O
 					<bottomPen lineWidth="1.25"/>
 					<rightPen lineWidth="1.25"/>
 				</box>
+				<textElement textAlignment="Center"/>
 				<text><![CDATA[Total de Acciones:]]></text>
 			</staticText>
 			<textField evaluationTime="Report">
