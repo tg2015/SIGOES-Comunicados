@@ -88,10 +88,19 @@ if ( in_array( $pagenow, array( 'post-new.php' ) ) )
      jQuery(document).ready(function($){
      $("#post_status").find("option[value=cancelado]").remove();  
      });
-     </script>
-            ';
-    }
+     </script>';
+   }
    
 }// Fin my_post_submitbox_misc_actions
-
+//Ocultar escritorio del Dashboard
+function Eliminar_Escritorio() {
+    global $menu;
+    $restricted = array(__('Dashboard'));
+     end($menu);
+    while(prev($menu)){
+        $value = explode(' ',$menu[key($menu)][0]);
+        if(in_array($value[0]!= NULL?$value[0]:'',$restricted)){unset($menu[key($menu)]);}
+    }
+}
+add_action('admin_menu','Eliminar_Escritorio');
 ?>

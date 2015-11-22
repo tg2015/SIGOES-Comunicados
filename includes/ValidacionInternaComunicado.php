@@ -1723,43 +1723,6 @@ function gSpell($searchterm, $lang = 'es')
  }
 }
 
-function initAdminMessages()
-{
- if ( isset($_GET['ocultar_mensaje']) && '0' == $_GET['ocultar_mensaje'])
- {
-  update_option('mensaje_ocultado','false');
- }
-}
-add_action('admin_init', 'initAdminMessages');
-
-function MostrarMensajes($message, $errormsg = false)
-{
- if ($errormsg)
- {
-  echo '</pre><div id="message" class="error"><p>';
- }
- else
- {
-  echo '<div id="message" class="updated fade"><p>';
- }
- echo $message;
- printf(__(' | <a href="%1$s">Ocultar Mensaje</a></p></div>'), '?ocultar_mensaje=0');
-}
-
-function showAdminMessages()
-{
- if (is_admin())
- {
-  if (get_option('mensaje_ocultado')=='true')
-  {
-   if(get_option('mh_ultimo_comentario')==0)
-    MostrarMensajes("No se realizo la validación");
-   else
-    MostrarMensajes("Validación de comunicados terminada" .get_option('mh_ultimo_comentario'));
-  }
- }
-}
-add_action('admin_notices', 'showAdminMessages');
 //Deshabilitar boton publicar hasta que cargue el form de nuevo evento, streaming
 add_action( 'post_submitbox_misc_actions', 'my_post_submitbox_misc_actions2' );
 function my_post_submitbox_misc_actions2(){
@@ -1772,12 +1735,15 @@ if( $post->post_type == 'evento' ||$post->post_type == 'streaming'||$post->post_
     //echo "Boton Publicar Deshabilitado sino hay imagen destacada";
     echo '<script>
     jQuery(document).ready(function($){
-     
+     jQuery("#title").attr("required", "true");
       $("#publish").attr("disabled","disabled");
       
       jQuery("#title").keypress(function(){
         jQuery("#publish").removeAttr("disabled");
-    });
+      });
+     jQuery("#content").keypress(function(){
+        jQuery("#publish").removeAttr("disabled");
+        });
     });
     </script>';
 
@@ -1789,7 +1755,7 @@ if( $post->post_type == 'evento' ||$post->post_type == 'streaming'||$post->post_
 //
 add_action( 'admin_enqueue_scripts', 'my_enqueue' );
 function my_enqueue($hook) {
-    if( /*'index.php' != $hook ||quite un */'post-new.php' != $hook /*||'post.php' != $hook || 'edit.php' != $hook quite un*/) {
+    if( /*'index.php' != $hook ||quite un */'post-new.php' != $hook &&'post.php' != $hook /*|| 'edit.php' != $hook quite un*/) {
   // Only applies to dashboard panel
   return;
     }
@@ -1806,8 +1772,8 @@ add_action( 'wp_ajax_my_action', 'my_action_callback' );
 function my_action_callback() {
   global $wpdb;
 //$TituloPost = $_REQUEST['titulo'];
-parse_str( $_POST['form_data'], $vars );//Todos los elementos del post
-$tituloPost=$vars['post_title'];
+//parse_str( $_POST['form_data'], $vars );//Todos los elementos del post
+$tituloPost=$_POST['titulo'];
 $TituloGlobal=(string)$tituloPost;
 $retorno=(string)deshoyganizar_comentarios_viejos($TituloGlobal);//Validando Comentarios
 //$tituloMinuscula=strtolower($TituloGlobal);
@@ -1822,3 +1788,10 @@ $comparacion=strnatcmp($TituloGlobal, $retorno);
   }
   
 }
+//Deshabilitar el Borrador Automatico
+function hacky_autosave_disabler( $src, $handle ) {
+    if( 'autosave' != $handle )
+        return $src;
+    return '';
+}
+add_filter( 'script_loader_src', 'hacky_autosave_disabler', 10, 2 );

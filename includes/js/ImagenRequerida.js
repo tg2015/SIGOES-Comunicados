@@ -23,6 +23,7 @@ jQuery(document).ready(function($) {
 
 	function clearWarningAndEnablePublish() {
 		$('#nofeature-message').remove();
+		$('#msjDestacada1').remove();
 		$('#publish').removeAttr('disabled');
 		//jQuery(':input#publish').attr('value', 'Publicar');
 

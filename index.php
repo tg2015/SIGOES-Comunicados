@@ -32,3 +32,5 @@ require_once(SIGOES_PLUGIN_DIR.'/controller/BitacoraController.php');
 require_once(SIGOES_PLUGIN_DIR.'/controller/InstitucionController.php');
 require_once(SIGOES_PLUGIN_DIR.'/includes/CrearTablas.php');
 require_once(SIGOES_PLUGIN_DIR.'/includes/Admin.php');
+//Mensajes
+require_once(SIGOES_PLUGIN_DIR.'/includes/MensajeComunicados.php');

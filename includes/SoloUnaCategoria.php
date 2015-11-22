@@ -36,6 +36,13 @@ echo '<style type="text/css">#category-add-toggle {
 }
     </style>';
 
+//Ocultar Filtro de todas las categorias en filtrar por categoria
+echo '<style type="text/css">
+    #cat {
+    display: none;
+    visibility: hidden;
+}
+    </style>';
       ///Ocultar div de Autor.  
     echo '<style type="text/css">
     #authordiv {
@@ -53,6 +60,13 @@ echo '<style type="text/css">
  //Ocultar opcion quitar imagen 
 echo '<style type="text/css">
     #remove-post-thumbnail {
+    display: none;
+    visibility: hidden;
+}
+    </style>';
+  //Ocultar vista previa
+echo '<style type="text/css">
+    #post-preview {
     display: none;
     visibility: hidden;
 }
