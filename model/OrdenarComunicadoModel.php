@@ -460,7 +460,9 @@ function scporder_uninstall_db() {
 add_filter('posts_orderby', 'CPTOrderPosts2');
     function CPTOrderPosts2($orderBy) 
         {//cambiar prefijo
-        $orderBy = "wp_posts.menu_order, wp_posts.post_date DESC";
+        global $wpdb;  
+        $prefijo = $wpdb->prefix;
+        $orderBy = "".$prefijo."posts.menu_order, ".$prefijo."posts.post_date DESC";
          return $orderBy;
         }   
 ?>
