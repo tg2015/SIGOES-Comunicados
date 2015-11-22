@@ -1,7 +1,7 @@
 <?php
 function Activar_Reporte_Sigoes()
 {
-    add_menu_page('Reporte SIGOES', 'Reporte SIGOES', 'manage_options', 'Reporte_SIGOES', 'MostrarReporte', 'dashicons-welcome-write-blog');
+    add_menu_page('Reporte SIGOES', 'Reporte SIGOES', 'manage_options', 'Reporte_SIGOES', 'MostrarReporte', 'dashicons-welcome-write-blog', 51);
     //this submenu is HIDDEN, however, we need to add it anyways
     add_submenu_page('null', 'ReporteComunicados', 'ReporteComunicados', 'manage_options', 'ReporteComunicados', 'ReporteComunicados', 'ReporteComunicados');
 }
