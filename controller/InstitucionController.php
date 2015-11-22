@@ -6,7 +6,7 @@
 */
 function Activar_Menu_Instituciones()
 {
-   add_menu_page('Instituciones', 'Instituciones', 'manage_options', 'Instituciones', 'MostrarInstituciones', 'dashicons-building');
+   add_menu_page('Instituciones', 'Instituciones', 'manage_options', 'Instituciones', 'MostrarInstituciones', 'dashicons-building', 50);
    add_submenu_page('Instituciones', 'Agregar Institucion', 'Agregar Institucion', 'manage_options', 'AgregarInstitucion', 'AgregarInstitucion');
    add_submenu_page('null', 'Contactos', 'Contactos', 'manage_options', 'Contactos', 'MostrarContactos', 'Contactos');
    add_submenu_page('null', 'AgregarContacto', 'AgregarContacto', 'manage_options', 'AgregarContacto', 'AgregarContacto', 'Contactos');
@@ -119,6 +119,15 @@ function registrar_ValidacionMascaraScript()
 
     });  
     </script>
+    <script type="text/javascript">
+                    jQuery(document).ready(function (){
+                    jQuery("#loading-div-background").css({ opacity: 1.0 });
+                    });
+
+                    function ShowProgressAnimation(){
+                    jQuery("#loading-div-background").show();
+                    }
+      </script>
 
     <?php
     }
@@ -439,7 +448,7 @@ class InstitucionController
   <input type="hidden" value="'.$idContacto.'" name="idContacto"  >
   <input type="hidden" value="'.$idInstitucion.'" name="idRegresar">
   <tr>
-  <th><h3>&nbsp;Nombre Contacto: </h3></th> <td><input type="text" value="'.$nombre.'" name="nombre" size=50 required maxlength="50" onkeypress="return soloLetras(event)"><span class="requerido"></span></td>
+  <th><h3>&nbsp;Nombre Contacto: </h3></th> <td><input type="text" value="'.$nombre.'" id="nombre" name="nombre" size=50 required maxlength="50" onkeypress="return soloLetras(event)"><span class="requerido"></span></td>
   <th><h3>Teléfono: </h3></th>        <td><input type="tel" value="'.$telefono.'" name="telefono" size=9 maxlength="9" id="phone"><span class="requerido"></span></td>
   </tr>
   
