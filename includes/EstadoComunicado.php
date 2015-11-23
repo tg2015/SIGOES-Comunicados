@@ -108,4 +108,15 @@ function login_redirect( $redirect_to, $request, $user ){
     return admin_url('edit.php?post_type=proyecto');//Pendiente pag blaco
 }
 add_filter('login_redirect','login_redirect',10,3);
+function annointed_admin_bar_remove() {
+        global $wp_admin_bar;
+
+        /* Remove their stuff */
+        $wp_admin_bar->remove_menu('wp-logo');
+        $wp_admin_bar->remove_menu('comments');
+        $wp_admin_bar->remove_menu('new-content');
+        $wp_admin_bar->remove_menu('updates');
+}
+
+add_action('wp_before_admin_bar_render', 'annointed_admin_bar_remove', 0);
 ?>
