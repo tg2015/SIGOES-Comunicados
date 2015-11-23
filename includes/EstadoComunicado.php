@@ -103,4 +103,9 @@ function Eliminar_Escritorio() {
     }
 }
 add_action('admin_menu','Eliminar_Escritorio');
+//Mostrar directamente al usuario la opc
+function login_redirect( $redirect_to, $request, $user ){
+    return admin_url('edit.php?post_type=proyecto');//Pendiente pag blaco
+}
+add_filter('login_redirect','login_redirect',10,3);
 ?>

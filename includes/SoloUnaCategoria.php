@@ -71,6 +71,41 @@ echo '<style type="text/css">
     visibility: hidden;
 }
     </style>';
+//Ocultar Visibilidad publico
+echo '<style type="text/css">
+    #visibility {
+    display: none;
+    visibility: hidden;
+}
+    </style>';
+//Ocultar Mover papelera nuevo post
+echo '<style type="text/css">
+    #delete-action {
+    display: none;
+    visibility: hidden;
+}
+    </style>';
+ //Ocultar Mover papelera nuevo post
+echo '<style type="text/css">
+    .edit-slug {
+    display: none;
+    visibility: hidden;
+}
+    </style>';
+//Ocultar Mover papelera nuevo post
+echo '<style type="text/css">
+    #edit-slug-box {
+    display: none;
+    visibility: hidden;
+}
+    </style>';
+//Ocultar Mover papelera nuevo post
+echo '<style type="text/css">
+    #show-settings-link {
+    display: none;
+    visibility: hidden;
+}
+    </style>';
 
 
 //requiridos
