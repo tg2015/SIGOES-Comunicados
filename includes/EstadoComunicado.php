@@ -102,11 +102,12 @@ function Eliminar_Escritorio() {
         if(in_array($value[0]!= NULL?$value[0]:'',$restricted)){unset($menu[key($menu)]);}
     }
 }
-add_action('admin_menu','Eliminar_Escritorio');
+//add_action('admin_menu','Eliminar_Escritorio');
 //Mostrar directamente al usuario la opc
 function login_redirect( $redirect_to, $request, $user ){
     return admin_url('edit.php?post_type=proyecto');//Pendiente pag blaco
 }
+//Eliminar iconos admin bar
 add_filter('login_redirect','login_redirect',10,3);
 function annointed_admin_bar_remove() {
         global $wp_admin_bar;
@@ -119,4 +120,40 @@ function annointed_admin_bar_remove() {
 }
 
 add_action('wp_before_admin_bar_render', 'annointed_admin_bar_remove', 0);
+//Eliminar Opciones del Escritorio
+function example_remove_dashboard_widgets() {
+            remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
+            remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'side' );       
+            remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );     
+            remove_meta_box( 'dashboard_secondary', 'dashboard', 'side' );               
+            remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' );
+            remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'normal' );
+            remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );   
+            remove_meta_box( 'dashboard_plugins', 'dashboard', 'normal' ); 
+            remove_meta_box( 'dashboard_browser_nag', 'dashboard', 'normal' );   
+            remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' );                   
+    } 
+ 
+    add_action('wp_dashboard_setup', 'example_remove_dashboard_widgets' ); 
+//Solo una columna en el escritorio     
+function so_screen_layout_columns( $columns ) {
+        $columns['dashboard'] = 1;
+        return $columns;    }
+add_filter( 'screen_layout_columns', 'so_screen_layout_columns' );
+ 
+    function so_screen_layout_dashboard() {
+        return 1;
+    }
+add_filter( 'get_user_option_screen_layout_dashboard', 'so_screen_layout_dashboard' );    
+//Personalizar Escritorio
+function st_welcome_panel() {
+echo
+'<div class="Bienvenido-al-SIGOES">'
+.'<h1>Bienvenido al SIGOES</h1>'
+.'</div>';
+echo '<center> <img src='.plugins_url().'/SIGOES-Comunicados/includes/img/logo-sigoes.png></center> ';
+}
+
+remove_action('welcome_panel','wp_welcome_panel');
+add_action('welcome_panel','st_welcome_panel'); 
 ?>
