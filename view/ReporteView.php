@@ -546,8 +546,8 @@ if(isset($_POST['filtra_fecha'])){
                 'Rol_Autor' =>__('Rol_Autor'),
                 'alias' => __('ID_Usuario'),  
                 'nombre' => __('Nombre'), 
-                'Fecha_Creacion' => __('Fecha_Creado'),
-                'Fecha_Modificacion' =>__('Fecha_Modificacdo')                
+                'Fecha_Creacion' => __('Fecha/hora Creado'),
+                'Fecha_Modificacion' =>__('Fecha/hora Modificado')                
             );
             return $columns;
         }
@@ -620,11 +620,23 @@ if(isset($_POST['filtra_fecha'])){
                 // calculo de numero de post por fila
                 $No = $No + 1;
                 $posts[$key]->ID = $No;
-                $link = get_edit_post_link($post->ID);
+                
                 $no_title = __('Sin titulo');
-                $title = !$post->post_title ? "<em>{$no_title}</em>" : $post->post_title;
-                //$posts[$key]->post_title = "<a title='{$permalink} {$title}' href='{$link}'>{$title}</a>";
+                if($posts[$key]->post_title == NULL)
+                {$posts[$key]->post_title = "<em>{$no_title}</em>";}
+                
+                $FC = $posts[$key]->Fecha_Creacion;
+                $FC_br1 = substr( $FC, -8);
+                $FC_br2 = substr( $FC, 0, 10);
+                $posts[$key]->Fecha_Creacion = "".$FC_br2."<br />".$FC_br1;
+
+                $FM = $posts[$key]->Fecha_Modificacion;
+                $FM_br1 = substr( $FM, -8);
+                $FM_br2 = substr( $FM, 0, 10);
+                $posts[$key]->Fecha_Modificacion = "".$FM_br2."<br />".$FM_br1;
+                
              }
+
 
             $this->items = $posts_array;
 
