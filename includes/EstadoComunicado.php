@@ -93,22 +93,7 @@ if ( in_array( $pagenow, array( 'post-new.php' ) ) )
    
 }// Fin my_post_submitbox_misc_actions
 //Ocultar escritorio del Dashboard
-function Eliminar_Escritorio() {
-    global $menu;
-    $restricted = array(__('Dashboard'));
-     end($menu);
-    while(prev($menu)){
-        $value = explode(' ',$menu[key($menu)][0]);
-        if(in_array($value[0]!= NULL?$value[0]:'',$restricted)){unset($menu[key($menu)]);}
-    }
-}
-//add_action('admin_menu','Eliminar_Escritorio');
-//Mostrar directamente al usuario la opc
-function login_redirect( $redirect_to, $request, $user ){
-    return admin_url('edit.php?post_type=proyecto');//Pendiente pag blaco
-}
-//Eliminar iconos admin bar
-add_filter('login_redirect','login_redirect',10,3);
+
 function annointed_admin_bar_remove() {
         global $wp_admin_bar;
 
@@ -156,4 +141,11 @@ echo '<center> <img src='.plugins_url().'/SIGOES-Comunicados/includes/img/logo-s
 
 remove_action('welcome_panel','wp_welcome_panel');
 add_action('welcome_panel','st_welcome_panel'); 
+//Quitar actualizaciones menu
+function edit_admin_menus() {  
+global $submenu;  
+unset($submenu['index.php'][10]);
+return $submenu;
+}  
+add_action( 'admin_menu', 'edit_admin_menus' ); 
 ?>
