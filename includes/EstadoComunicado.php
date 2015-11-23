@@ -145,6 +145,7 @@ add_action('welcome_panel','st_welcome_panel');
 function edit_admin_menus() {  
 global $submenu;  
 unset($submenu['index.php'][10]);
+unset($submenu['options-general.php'][25]); // Discussion
 return $submenu;
 }  
 add_action( 'admin_menu', 'edit_admin_menus' ); 
