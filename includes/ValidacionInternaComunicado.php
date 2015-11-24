@@ -1730,7 +1730,7 @@ function my_post_submitbox_misc_actions2(){
 global $post;
 
 //only when editing a post
-if( $post->post_type == 'evento' ||$post->post_type == 'streaming'||$post->post_type == 'otros'  ){
+if( $post->post_type == 'evento' ||$post->post_type == 'streaming'||$post->post_type == 'otros' ||$post->post_type == 'proyecto' ){
        
     //echo "Boton Publicar Deshabilitado sino hay imagen destacada";
     echo '<script>
@@ -1755,7 +1755,7 @@ if( $post->post_type == 'evento' ||$post->post_type == 'streaming'||$post->post_
 //
 add_action( 'admin_enqueue_scripts', 'my_enqueue' );
 function my_enqueue($hook) {
-    if( /*'index.php' != $hook ||quite un */'post-new.php' != $hook &&'post.php' != $hook /*|| 'edit.php' != $hook quite un*/) {
+    if( /*'index.php' != $hook ||quite un */'post-new.php' != $hook && 'post.php' != $hook /*|| 'edit.php' != $hook quite un*/) {
   // Only applies to dashboard panel
   return;
     }
