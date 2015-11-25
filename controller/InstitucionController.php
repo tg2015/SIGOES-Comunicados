@@ -6,7 +6,7 @@
 */
 function Activar_Menu_Instituciones()
 {
-   add_menu_page('Instituciones', 'Instituciones', 'manage_options', 'Instituciones', 'MostrarInstituciones', 'dashicons-building', 50);
+   add_menu_page('Parametros de Conexión', 'Parametros de Conexión', 'manage_options', 'Instituciones', 'MostrarInstituciones', 'dashicons-building', 50);
    add_submenu_page('Instituciones', 'Agregar Institucion', 'Agregar Institucion', 'manage_options', 'AgregarInstitucion', 'AgregarInstitucion');
    add_submenu_page('null', 'Contactos', 'Contactos', 'manage_options', 'Contactos', 'MostrarContactos', 'Contactos');
    add_submenu_page('null', 'AgregarContacto', 'AgregarContacto', 'manage_options', 'AgregarContacto', 'AgregarContacto', 'Contactos');
@@ -91,30 +91,23 @@ function registrar_ValidacionMascaraScript()
     jQuery(document).ready(function() {
       jQuery( document ).on( 'click', '#guardar', function(){
         var nombre = jQuery.trim(jQuery('#nombre').val());
-        var direccion = jQuery.trim(jQuery('#direccion').val());
+        /*var direccion = jQuery.trim(jQuery('#direccion').val());*/
         if (nombre == null || nombre.trim() == ""){
           alert("Debe llenar el campo nombre");
           return false;
           }
-        if (direccion == null || direccion.trim()=="")
-          {
-            alert("Debe llenar el campo dirección");
-            return false;
-          }
+        
 
       });
 
       jQuery( document ).on( 'click', '#actualizar', function(){
         var nombre = jQuery.trim(jQuery('#nombre').val());
-        var direccion = jQuery.trim(jQuery('#direccion').val());
+        /*var direccion = jQuery.trim(jQuery('#direccion').val());*/
         if (nombre == null || nombre.trim() == ""){
           alert("Debe llenar el campo nombre");
           return false;
           }
-        if (direccion == null || direccion.trim()==""){
-            alert("Debe llenar el campo dirección");
-            return false;
-          }
+        
       });
 
     });  
