@@ -16,7 +16,7 @@ $messages[$post_type] = array(
 3 => __('Campo personalizado borrado.'),
 4 => __($singular.' updated.'),
 5 => isset($_GET['revision']) ? sprintf( __($singular.' revision restaurada de %s'), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
-6 => sprintf( __($singular.' publicado. <a href="%s">Ver '.strtolower($singular).'</a>'), esc_url( get_permalink($post_ID) ) ),
+6 => sprintf( __($singular.' publicado. <a href="%s">Comprobar publicación '.strtolower($singular).'</a>'), esc_url(  site_url().'/wp-admin/admin.php?page=Instituciones' ) ),
 7 => __('Page saved.'),
 8 => sprintf( __($singular.' enviado. <a target="_blank" href="%s">Vista previa del '.strtolower($singular).'</a>'), esc_url( add_query_arg( 'preview', 'true', get_permalink($post_ID) ) ) ),
 9 => sprintf( __($singular.' programado para: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Vista previa del '.strtolower($singular).'</a>'), date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ), esc_url( get_permalink($post_ID) ) ),

@@ -1741,6 +1741,10 @@ if( $post->post_type == 'evento' ||$post->post_type == 'streaming'||$post->post_
       jQuery("#title").keypress(function(){
         jQuery("#publish").removeAttr("disabled");
       });
+      
+  jQuery( document ).on( "click",".save-post-status", function() {
+        jQuery("#publish").removeAttr("disabled");
+      });
      jQuery("#content").keypress(function(){
         jQuery("#publish").removeAttr("disabled");
         });
