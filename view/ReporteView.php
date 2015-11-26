@@ -386,11 +386,7 @@ if(isset($_POST['filtra_fecha'])){
                     <TD>
                     <label class="screen-reader-text" for="filter-by-date"> Filtrar por fecha</label>
                     <h3>Fecha inicio</h3>
-
-                    <link rel="stylesheet" href=<?php echo SIGOES_PLUGIN_DIR.'/js/Calendario/jquery-ui.css'?>>
-                    <script src=<?php echo SIGOES_PLUGIN_DIR.'/js/Calendario/jquery-1.9.1.js'?>></script>
-                    <script src=<?php echo SIGOES_PLUGIN_DIR.'/js/Calendario/jquery-ui.js' ?>></script> 
-                    <script>
+                      <script>
                         jQuery(document).ready(function() {
                         jQuery( '#fecha_ini' ).datepicker({dateFormat: 'dd-mm-yy',
                                                       timeFormat: 'HH:mm:ss',
