@@ -24,8 +24,8 @@ if(isset($_POST['Estado_Post'])){
             }else{$post_status = '%';
                   $estado = '%';}
 
-            if(isset($_POST['cat'])){ 
-                    $cat = $_POST['cat']; 
+            if(isset($_POST['Reportecat'])){ 
+                    $cat = $_POST['Reportecat']; 
                     }else{$cat = '%';}
 
             if(isset($_POST['Autor_post'])){ 
@@ -99,8 +99,8 @@ private function get_sql_results()
             }else{$post_status = '%';
                   $estado = '%';}
 
-            if(isset($_POST['cat'])){ 
-                    $cat = $_POST['cat']; 
+            if(isset($_POST['Reportecat'])){ 
+                    $cat = $_POST['Reportecat']; 
                     }else{$cat = '%';}
 
             if(isset($_POST['Autor_post'])){ 
@@ -271,18 +271,18 @@ if(isset($_POST['filtra_fecha'])){
                  </TD>
                  <!--Filtro Categorias de Publicacion-->  
                 <TD>
-                <label class="screen-reader-text" for="cat">Filtrar por categoría</label>
+                <label class="screen-reader-text" for="Reportecat">Filtrar por categoría</label>
                 <h3>Categoria</h3>
-                <select id="cat" class="postform" name="cat" onchange = "javascript: submit()">
+                <select id="Reportecat" class="postform" name="Reportecat" onchange = "javascript: submit()">
                     <option value="%">Todas las categorías</option>
                     <?php
                     
                     foreach ( $categorias as $key =>$value) 
                     {
                         $catFiltro=$value['post_type'];
-                        if(isset($_POST['cat']))
+                        if(isset($_POST['Reportecat']))
                         {
-                            if($catFiltro==$_POST['cat'])
+                            if($catFiltro==$_POST['Reportecat'])
                             {
                             echo '<option value= "'.$catFiltro.'" selected>';
                              echo $catFiltro;
