@@ -77,7 +77,7 @@ if($cat=='%')
 {$cat='Todos';}
 if($autor=='%')
 {$autor='Todos';}
-$PHPJasperXML->arrayParameter=array("PATH"=>$PATH, "idusuario"=>$usuario->user_login, "nombreusuario"=>$nombreCompleto, "estado"=>$estado, "autor"=>$autor, "cat"=>$cat, "filtro_fecha"=>$filtro_fecha);
+$PHPJasperXML->arrayParameter=array("PATH"=>$PATH, "idusuario"=>$usuario->user_login, "nombreusuario"=>$nombreCompleto, "estado"=>$estado, "autor"=>$autor, "cat"=>$cat, "fecha_ini"=>$fecha_ini_format, "fecha_fin"=>$fecha_fin_format);
 $PHPJasperXML->transferDBtoArray($server,$user,$pass,$db);
 if($formato=='pdf')
 {$PHPJasperXML->outpage("I");}
