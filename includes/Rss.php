@@ -50,8 +50,7 @@ class Rss
 			'link' => $node->getElementsByTagName('link')->item(0)->nodeValue,
 			'date' => $node->getElementsByTagName('pubDate')->item(0)->nodeValue,
 			'category' => $node->getElementsByTagName('category')->item(0)->nodeValue,
-			'content' => $node->getElementsByTagName('encoded')->item(0)->nodeValue,
-			'orden' => $node->getElementsByTagName('orden')->item(0)->nodeValue, 
+			'content' => $node->getElementsByTagName('encoded')->item(0)->nodeValue
 			);
 			array_push($feed, $item);
 			}
@@ -63,7 +62,6 @@ class Rss
 		$link = $feed[$x]['link'];
 		$description = $feed[$x]['desc'];
 		$category = $feed[$x]['category'];
-		$orden = $feed[$x]['orden'];
 		$date = date('l F d, Y', strtotime($feed[$x]['date']));
 		if($title == 'plugin-sigoes')
 			{

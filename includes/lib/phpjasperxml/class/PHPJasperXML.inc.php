@@ -3619,7 +3619,11 @@ foreach($this->arrayVariable as $name=>$value){
         
 					$this->global_pointer--;
         }else {
-            echo "Datos No Encontrados";
+            //echo "Datos No Encontrados";
+            echo '<script type="text/javascript">
+                    alert("Datos No Encontrados");
+                    window.close();
+                 </script>';
             exit(0);
         }
  
