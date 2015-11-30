@@ -18,11 +18,11 @@ class ComunicadoVista
       if ( in_array( $pagenow, array( 'post.php' ))&& $screen->id=='proyecto'  )
       {
         $contextual_help =
-          '<p>' . __('Editar Proyecto.', 'your_text_domain') . '</p>' ;
+          '<p>' . __('Editar Proyecto: Elija las opciones que presenta el SIGOES.', 'your_text_domain') . '</p>' ;
       }elseif (in_array( $pagenow, array( 'post-new.php' ))&& $screen->id=='proyecto') {
           //Ayuda Para Nuevo Proyecto.
           $contextual_help =
-          '<p>' . __('Nuevo Proyecto.', 'your_text_domain') . '</p>' ;        
+          '<p>' . __('Nuevo Proyecto: Opcion de publicar un proyecto.', 'your_text_domain') . '</p>' ;        
       }
       return $contextual_help;
     break;
@@ -31,11 +31,36 @@ class ComunicadoVista
         {
           //Ayuda Para Lista Proyecto.
         $contextual_help =
-          '<p>' . __('Lista Proyecto.', 'your_text_domain') . '</p>' ;
+          '<p>' . __('Lista Proyecto: Consultar todos los tipos de proyectos.', 'your_text_domain') . '</p>' ;
+      }
+      return $contextual_help;
+    break;
+///////////////////////////////////////////////////////////////////////////////////
+ case 'evento':
+       //Ayuda Para Editar un Proyecto
+      if ( in_array( $pagenow, array( 'post.php' ))&& $screen->id=='evento'  )
+      {
+        $contextual_help =
+          '<p>' . __('Editar evento: Elija las opciones que presenta el SIGOES.', 'your_text_domain') . '</p>' ;
+      }elseif (in_array( $pagenow, array( 'post-new.php' ))&& $screen->id=='evento') {
+          //Ayuda Para Nuevo Proyecto.
+          $contextual_help =
+          '<p>' . __('Nuevo evento: Opcion de publicar un evento.', 'your_text_domain') . '</p>' ;        
+      }
+      return $contextual_help;
+    break;
+    case 'edit-evento':
+      if ( in_array( $pagenow, array( 'edit.php' ) ) && $screen->id=='edit-evento')
+        {
+          //Ayuda Para Lista Proyecto.
+        $contextual_help =
+          '<p>' . __('Lista evento: Consultar todos los tipos de eventos.', 'your_text_domain') . '</p>' ;
       }
       return $contextual_help;
     break;
     
+///////////////////////////////////////////////////////////////////////////////////
+
     default:
     # code...
     break;

@@ -21,8 +21,28 @@ echo '<style type="text/css">#category-add-toggle {
 }
     </style>';
     // Desactivar Actualizacion de AAM
- 
+ echo '<style type="text/css">
+    #advanced-access-manager-update {
+    display: none;
+    visibility: hidden;
+}
+    </style>';
 
+  //Desactivar Actualizacion de Bitacora
+ echo '<style type="text/css">
+    #stream-update {
+    display: none;
+    visibility: hidden;
+}
+    </style>';
+
+//Ocultar Filtro de todas las categorias en filtrar por categoria
+echo '<style type="text/css">
+    #cat {
+    display: none;
+    visibility: hidden;
+}
+    </style>';
       ///Ocultar div de Autor.  
     echo '<style type="text/css">
     #authordiv {
@@ -44,6 +64,56 @@ echo '<style type="text/css">
     visibility: hidden;
 }
     </style>';
+  //Ocultar vista previa
+echo '<style type="text/css">
+    #post-preview {
+    display: none;
+    visibility: hidden;
+}
+    </style>';
+//Ocultar Visibilidad publico
+echo '<style type="text/css">
+    #visibility {
+    display: none;
+    visibility: hidden;
+}
+    </style>';
+//Ocultar Mover papelera nuevo post
+echo '<style type="text/css">
+    #delete-action {
+    display: none;
+    visibility: hidden;
+}
+    </style>';
+ //Ocultar Mover papelera nuevo post
+echo '<style type="text/css">
+    .edit-slug {
+    display: none;
+    visibility: hidden;
+}
+    </style>';
+//Ocultar elemtntos de nuevo post
+echo '<style type="text/css">
+    #edit-slug-box {
+    display: none;
+    visibility: hidden;
+}
+    </style>';
+//Ocultar elementos de crear nuevo
+echo '<style type="text/css">
+    #show-settings-link {
+    display: none;
+    visibility: hidden;
+}
+    </style>';
+//Ocultar Unistall de Bitacora
+echo '<style type="text/css">
+    #wp_stream_uninstall {
+    display: none;
+    visibility: hidden;
+}
+    </style>';
+
 
 
 //requiridos

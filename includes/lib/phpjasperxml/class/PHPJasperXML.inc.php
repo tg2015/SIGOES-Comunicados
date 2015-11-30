@@ -1353,7 +1353,7 @@ $font=$data->textElement->font["fontName"];
 //### End of modification				
                 break;
             case '"Page "+$V{PAGE_NUMBER}+" of"':
-                $this->pointer[]=array("type"=>"MultiCell","width"=>$data->reportElement["width"],"height"=>$height,"txt"=>'Page $this->PageNo() of',"border"=>$border,"align"=>$align,"fill"=>$fill,"hidden_type"=>"pageno","soverflow"=>$stretchoverflow,"poverflow"=>$printoverflow,"link"=>$data->hyperlinkReferenceExpression,"pattern"=>$data["pattern"],"valign"=>$valign,
+                $this->pointer[]=array("type"=>"MultiCell","width"=>$data->reportElement["width"],"height"=>$height,"txt"=>'Página $this->PageNo() de',"border"=>$border,"align"=>$align,"fill"=>$fill,"hidden_type"=>"pageno","soverflow"=>$stretchoverflow,"poverflow"=>$printoverflow,"link"=>$data->hyperlinkReferenceExpression,"pattern"=>$data["pattern"],"valign"=>$valign,
                     "x"=>$data->reportElement["x"]+0,"y"=>$data->reportElement["y"]+0);
                 break;
             case '$V{PAGE_NUMBER}':
@@ -3619,7 +3619,11 @@ foreach($this->arrayVariable as $name=>$value){
         
 					$this->global_pointer--;
         }else {
-            echo "Datos No Encontrados";
+            //echo "Datos No Encontrados";
+            echo '<script type="text/javascript">
+                    alert("Datos No Encontrados");
+                    window.close();
+                 </script>';
             exit(0);
         }
  

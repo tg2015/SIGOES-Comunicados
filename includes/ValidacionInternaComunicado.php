@@ -49,9 +49,9 @@ function mh_admin_deactivation()
 
 function mh_admin_update_options()
 {
- update_option( 'mh_HOYGAN', $_POST['HOYGAN'] );
- update_option ( 'mh_censura', $_POST['Censura'] );
- update_option ( 'mh_SEO', $_POST['SEO'] );
+ update_option( 'mh_HOYGAN', isset($_POST['HOYGAN']) );
+ update_option ( 'mh_censura', isset($_POST['Censura']) );
+ update_option ( 'mh_SEO', isset($_POST['SEO']) );
 
  update_option ( 'mh_palabras_censuradas', trim( $_POST['palabras_censuradas'], ' ,.' ) );
  update_option ( 'mh_no_corregir_doble', trim( $_POST['no_corregir_doble'], ' ,.' ) );
@@ -82,21 +82,7 @@ function mh_admin_print_title()
 function mh_admin_print_header()
 {
  ?>
- <div>
-  <p><strong>IMPORTANTE</strong>: Los campos llamados "Excepciones" son para agregar las palabras que estan bien escritas pero que por uno u otro motivo el Plugin las toma como palabras HOYGANS y trata de transformarlas, un ejemplo son algunas palabras en ingles como: Good, Twitter, Market, Special, etc.
-Si ves que alguna palabra que esta bien escrita es transformada debes agregarla a los campos "Excepciones".</p>
-<p><strong>Excepciones con repetición de letras</strong>: En este campo agregamos las palabras que tienen 2 letras iguales juntas, ejemplo: Google, Badoo, Twitter.</p>
-<p><strong>Excepciones palabras con K</strong>: En este campo agregamos las palabras que tienen la letra "K", ejemplo: Kelly, Pokemon.</p>
-<p>El Plugin reconoce automaticamente algunas <strong>palabras con K en Ingles</strong> para que no pierdas tu tiempo agregando palabras con "K" a las Excepciones.</p>
-<p>Las palabras en Ingles reconocidas siguen estos patrones:</p>
-<ul>
-<li>1. Si la palabra tiene "ck", "nk" o "ky", Ejemplo: Chicken, Skype, Funky.</li>
-<li>2. Si la palabra termina en "k", "ks", "king", "ked", "kes", "kies", "ker", "ki", Ejemplo: Book, Books, Looking, Marked, Cakes, Mckies, Maker.</li>
-<li>3. Si la palabra inicia con "kn", Ejemplo: Know.</li>
-<ul/>
 
-<p><strong>Excepciones palabras terminan con T y empiezan con SP o ST</strong>: En este campo agregamos las palabras que terminan con "T" y empiezan con "SP" o "ST".</p>
- </div>
  <?php
 }
 
@@ -116,9 +102,7 @@ function mh_admin_explicacion()
    <td>
     <p>Tampoco es necesarios agregar palabras en Ingles con alguna de las siguientes terminaciones:</p>
     <p>s - ing - ed - es - ies</p>
-    <p>Por ejemplo con solo agregar la palabra Fuck serán censuradas:</p>
-    <p>Fucks, Fucking, Fucked, Fuckies, Fuckes (Aunque las 2 ultimas no existen en Ingles</p>
-   </td>
+    </td>
   </tr>
  </table>
  <?php
@@ -169,7 +153,7 @@ function mh_admin_print_admin_page()
         <table class="mh-table">
          <tr>
           <td width="450px">
-           <label>Corregir Lenguaje HOYGAN:</label>
+           <label>Validar letras repetidas:</label>
           </td>
           <td>
 	   <input type="checkbox" <?php if( 1 == get_option('mh_HOYGAN') ){ echo 'checked'; }; ?> value="1" name="HOYGAN"/>
@@ -184,14 +168,7 @@ function mh_admin_print_admin_page()
           </td>
 	 </tr>
 	 </tr>
-         <tr>
-          <td width="450px">
-           <label>Resaltar palabras claves:</label>
-          </td>
-          <td>
-	   <input type="checkbox" <?php if( 1 == get_option('mh_SEO') ){ echo 'checked'; }; ?> value="1" name="SEO"/><label> Funciona solo si usas <strong>All in ONE SEO</strong> en el Blog</label>
-          </td>
-	 </tr>
+        
 
 	 <tr>
           <td valign="top" style="padding-top:10px;">
@@ -240,12 +217,7 @@ function mh_admin_print_admin_page()
            if (is_admin())
            {
           ?>
-   	  <td>
-           <br />
-           <span class="submit" style="margin-top:14px;">
-            <input class="button-primary" type = "submit" name="submit2" value="Transformar Comentarios viejos" />
-           </span>
-	  </td>
+   	 
           <?php 
            }
           ?>
@@ -306,7 +278,7 @@ function mh_admin_menu_hook()
 {
  if (function_exists('add_options_page'))
  {
- add_options_page('Validación','Validación','manage_options','validacion','mh_create_admin_menu');
+ add_options_page('Validación Titulo ','Validación de Titulo','manage_options','validacion','mh_create_admin_menu');
  //Con la siguiente opcion se puede integrar al menu de proyecto atraves del slug de CTP
  //add_submenu_page( 'edit.php?post_type=proyecto','Validación','Validación','manage_options','validacion','mh_create_admin_menu'); 
  }
@@ -1723,43 +1695,6 @@ function gSpell($searchterm, $lang = 'es')
  }
 }
 
-function initAdminMessages()
-{
- if ( isset($_GET['ocultar_mensaje']) && '0' == $_GET['ocultar_mensaje'])
- {
-  update_option('mensaje_ocultado','false');
- }
-}
-add_action('admin_init', 'initAdminMessages');
-
-function MostrarMensajes($message, $errormsg = false)
-{
- if ($errormsg)
- {
-  echo '</pre><div id="message" class="error"><p>';
- }
- else
- {
-  echo '<div id="message" class="updated fade"><p>';
- }
- echo $message;
- printf(__(' | <a href="%1$s">Ocultar Mensaje</a></p></div>'), '?ocultar_mensaje=0');
-}
-
-function showAdminMessages()
-{
- if (is_admin())
- {
-  if (get_option('mensaje_ocultado')=='true')
-  {
-   if(get_option('mh_ultimo_comentario')==0)
-    MostrarMensajes("No se realizo la validación");
-   else
-    MostrarMensajes("Validación de comunicados terminada" .get_option('mh_ultimo_comentario'));
-  }
- }
-}
-add_action('admin_notices', 'showAdminMessages');
 //Deshabilitar boton publicar hasta que cargue el form de nuevo evento, streaming
 add_action( 'post_submitbox_misc_actions', 'my_post_submitbox_misc_actions2' );
 function my_post_submitbox_misc_actions2(){
@@ -1767,17 +1702,24 @@ function my_post_submitbox_misc_actions2(){
 global $post;
 
 //only when editing a post
-if( $post->post_type == 'evento' ||$post->post_type == 'streaming'||$post->post_type == 'otros'  ){
+if( $post->post_type == 'evento' ||$post->post_type == 'streaming'||$post->post_type == 'otros' ||$post->post_type == 'proyecto' ){
        
     //echo "Boton Publicar Deshabilitado sino hay imagen destacada";
     echo '<script>
     jQuery(document).ready(function($){
-     
+     jQuery("#title").attr("required", "true");
       $("#publish").attr("disabled","disabled");
       
       jQuery("#title").keypress(function(){
         jQuery("#publish").removeAttr("disabled");
-    });
+      });
+      
+  jQuery( document ).on( "click",".save-post-status", function() {
+        jQuery("#publish").removeAttr("disabled");
+      });
+     jQuery("#content").keypress(function(){
+        jQuery("#publish").removeAttr("disabled");
+        });
     });
     </script>';
 
@@ -1789,7 +1731,7 @@ if( $post->post_type == 'evento' ||$post->post_type == 'streaming'||$post->post_
 //
 add_action( 'admin_enqueue_scripts', 'my_enqueue' );
 function my_enqueue($hook) {
-    if( /*'index.php' != $hook ||quite un */'post-new.php' != $hook /*||'post.php' != $hook || 'edit.php' != $hook quite un*/) {
+    if( /*'index.php' != $hook ||quite un */'post-new.php' != $hook && 'post.php' != $hook /*|| 'edit.php' != $hook quite un*/) {
   // Only applies to dashboard panel
   return;
     }
@@ -1806,8 +1748,8 @@ add_action( 'wp_ajax_my_action', 'my_action_callback' );
 function my_action_callback() {
   global $wpdb;
 //$TituloPost = $_REQUEST['titulo'];
-parse_str( $_POST['form_data'], $vars );//Todos los elementos del post
-$tituloPost=$vars['post_title'];
+//parse_str( $_POST['form_data'], $vars );//Todos los elementos del post
+$tituloPost=$_POST['titulo'];
 $TituloGlobal=(string)$tituloPost;
 $retorno=(string)deshoyganizar_comentarios_viejos($TituloGlobal);//Validando Comentarios
 //$tituloMinuscula=strtolower($TituloGlobal);
@@ -1822,3 +1764,10 @@ $comparacion=strnatcmp($TituloGlobal, $retorno);
   }
   
 }
+//Deshabilitar el Borrador Automatico
+function hacky_autosave_disabler( $src, $handle ) {
+    if( 'autosave' != $handle )
+        return $src;
+    return '';
+}
+add_filter( 'script_loader_src', 'hacky_autosave_disabler', 10, 2 );

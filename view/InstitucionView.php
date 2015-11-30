@@ -66,7 +66,7 @@ private $posts_per_page = 10;
     <td>
     <div class="table-nav-top">   
         <label class="screen-reader-text" for="post-search-input">Buscar por Nombre:</label>
-        <input id="post-search-input" type="search" value="'.$nombre.'" name="titulo">
+        <input id="post-search-input" type="search" value="'.$nombre.'" name="titulo" onkeypress="return soloLetras(event)">
         <input id="search-submit" class="button-primary" type="submit" value="Buscar por Nombre" name="Buscar">
     <input id="comprobar"     class="button" type="submit" value="Comprobar" name="Comprobar" onclick="ShowProgressAnimation();">
     </div>

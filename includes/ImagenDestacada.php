@@ -14,7 +14,7 @@ function wpds_check_thumbnail($post_id) {
         // desengancha la funcion para evitar un look infinito
         remove_action('save_post', 'wpds_check_thumbnail');
         // actualiza la entrada y la pone como borrador
-        wp_update_post(array('ID' => $post_id, 'post_status' => 'draft'));
+        //wp_update_post(array('ID' => $post_id, 'post_status' => 'draft'));
         add_action('save_post', 'wpds_check_thumbnail');
     } else {
         delete_transient( "has_post_thumbnail" );

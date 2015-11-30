@@ -44,7 +44,7 @@ public function StreamingInit()
 			'singular_name'      => _x( 'Streaming', 'post type nombre Singular', 'SIGOES-Comunicados' ),
 			'menu_name'          => _x( 'Streaming', 'admin menu', 'SIGOES-Comunicados' ),
 			'name_admin_bar'     => _x( 'Streaming', 'add new on admin bar', 'SIGOES-Comunicados' ),
-			'add_new'            => _x( 'Agregar Streaming', 'streaming', 'SIGOES-Comunicados' ),
+			'add_new'            => _x( 'Agregar Nuevo', 'streaming', 'SIGOES-Comunicados' ),
 			'add_new_item'       => __( 'Agregar Nuevo Streaming', 'SIGOES-Comunicados' ),
 			'new_item'           => __( 'Nuevo Streaming', 'SIGOES-Comunicados' ),
 			'edit_item'          => __( 'Editar Streaming', 'SIGOES-Comunicados' ),

@@ -209,7 +209,7 @@ WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.context = $P{context} O
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Area]]></text>
+				<text><![CDATA[Área]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="0" y="2" width="36" height="20" backcolor="#999999" uuid="15ad38aa-7a38-4d3e-95ab-0813fde5ac51"/>
@@ -230,7 +230,7 @@ WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.context = $P{context} O
 	<detail>
 		<band height="29" splitType="Stretch">
 			<textField>
-				<reportElement stretchType="RelativeToTallestObject" x="36" y="0" width="89" height="25" uuid="5ddf84e8-4995-415e-8768-d65b18d7e67e"/>
+				<reportElement stretchType="RelativeToTallestObject" x="36" y="0" width="89" height="28" uuid="5ddf84e8-4995-415e-8768-d65b18d7e67e"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -244,7 +244,7 @@ WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.context = $P{context} O
 				<textFieldExpression><![CDATA[$F{created}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement stretchType="RelativeToTallestObject" x="125" y="0" width="149" height="25" uuid="e51e2492-1a96-4cee-b702-6a6f24f3255a"/>
+				<reportElement stretchType="RelativeToTallestObject" x="125" y="0" width="149" height="28" uuid="e51e2492-1a96-4cee-b702-6a6f24f3255a"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -258,7 +258,7 @@ WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.context = $P{context} O
 				<textFieldExpression><![CDATA[$F{summary}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement stretchType="RelativeToTallestObject" x="274" y="0" width="91" height="25" uuid="00bca2e9-81f7-40bc-88a0-284e11c9219a"/>
+				<reportElement stretchType="RelativeToTallestObject" x="274" y="0" width="91" height="28" uuid="00bca2e9-81f7-40bc-88a0-284e11c9219a"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -270,7 +270,7 @@ WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.context = $P{context} O
 				<textFieldExpression><![CDATA[$F{user_role}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement stretchType="RelativeToTallestObject" x="488" y="0" width="106" height="25" uuid="1ce16ef3-da8a-4a48-ba38-527e0f00b3f6"/>
+				<reportElement stretchType="RelativeToTallestObject" x="488" y="0" width="106" height="28" uuid="1ce16ef3-da8a-4a48-ba38-527e0f00b3f6"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -282,7 +282,7 @@ WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.context = $P{context} O
 				<textFieldExpression><![CDATA[$F{connector}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement stretchType="RelativeToTallestObject" x="594" y="0" width="83" height="25" uuid="0da2011e-afa4-46c5-8b68-6736b2682bac"/>
+				<reportElement stretchType="RelativeToTallestObject" x="594" y="0" width="83" height="28" uuid="0da2011e-afa4-46c5-8b68-6736b2682bac"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -294,7 +294,7 @@ WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.context = $P{context} O
 				<textFieldExpression><![CDATA[$F{context}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="677" y="0" width="72" height="25" uuid="add032bd-0324-46de-b31d-8f07daca4d72"/>
+				<reportElement stretchType="RelativeToTallestObject" x="677" y="0" width="72" height="28" uuid="add032bd-0324-46de-b31d-8f07daca4d72"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -306,7 +306,7 @@ WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.context = $P{context} O
 				<textFieldExpression><![CDATA[$F{action}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToTallestObject" x="365" y="0" width="123" height="25" uuid="89078979-a101-43df-b211-7119d60992c7"/>
+				<reportElement stretchType="RelativeToTallestObject" x="365" y="0" width="123" height="28" uuid="89078979-a101-43df-b211-7119d60992c7"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -318,7 +318,7 @@ WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.context = $P{context} O
 				<textFieldExpression><![CDATA[$F{usuario}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="0" y="0" width="36" height="25" uuid="51165897-f1d2-41b9-993d-62250239e057"/>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="36" height="28" uuid="51165897-f1d2-41b9-993d-62250239e057"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -337,18 +337,68 @@ WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.context = $P{context} O
 		<band height="45" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch">
+		<band height="50" splitType="Stretch">
 			<textField>
-				<reportElement x="520" y="0" width="192" height="20" uuid="b1c8c7bc-552b-4b06-903c-9caf6ebb879c"/>
+				<reportElement x="594" y="30" width="118" height="20" uuid="b1c8c7bc-552b-4b06-903c-9caf6ebb879c"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
-				<reportElement x="712" y="0" width="40" height="20" uuid="16a0519a-f8ad-4320-a513-54c74423c6a3"/>
+				<reportElement x="712" y="30" width="40" height="20" uuid="16a0519a-f8ad-4320-a513-54c74423c6a3"/>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="394" y="12" width="15" height="18" uuid="d4e88cd8-b830-4b43-99b1-146d547a8bfc"/>
+				<box topPadding="5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[f.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="10" width="185" height="20" uuid="dee3409f-b9f4-4950-a52b-600cd7a30e44"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Generado por]]></text>
+			</staticText>
+			<line>
+				<reportElement x="169" y="8" width="200" height="1" uuid="c7e0250b-62c8-4ee9-ba96-c9ca411ef69c"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="169" y="9" width="15" height="19" uuid="bf8d3c95-e33e-409f-9014-ecbf32e6fdc9"/>
+				<box topPadding="5"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[f.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="409" y="10" width="185" height="20" uuid="fe8587db-d7e3-4ab0-88a2-183a8bc798d7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Recibido por]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="184" y="28" width="183" height="20" uuid="394a9f57-9b6a-4e84-807d-87984c101231"/>
+				<box topPadding="5"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombreusuario}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="394" y="9" width="200" height="1" uuid="fe6a69d8-04f7-4935-8add-be320ef6150b"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="65">
 			<textField>
-				<reportElement x="116" y="0" width="106" height="20" uuid="e58b6bef-5ad3-43b2-9fc8-08c8f67eb279"/>
+				<reportElement x="116" y="0" width="50" height="20" uuid="e58b6bef-5ad3-43b2-9fc8-08c8f67eb279"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -367,30 +417,64 @@ WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.context = $P{context} O
 					<bottomPen lineWidth="1.25"/>
 					<rightPen lineWidth="1.25"/>
 				</box>
+				<textElement textAlignment="Center"/>
 				<text><![CDATA[Total de Acciones:]]></text>
 			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement x="712" y="45" width="40" height="20" uuid="ee7cfcd5-7964-46d1-a72d-31bb371b0a34"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
 			<textField>
-				<reportElement x="261" y="11" width="222" height="20" uuid="83fc01c6-cde3-4840-886c-e910c86663ac"/>
+				<reportElement x="594" y="45" width="118" height="20" uuid="9cd458a6-bd26-458a-86e0-a574ea9d6f0d"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="390" y="27" width="15" height="18" uuid="728609ed-41ca-4848-ad05-ab86a65b3579"/>
 				<box topPadding="5"/>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{nombreusuario}]]></textFieldExpression>
-			</textField>
+				<text><![CDATA[f.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="25" width="185" height="20" uuid="3e17c141-1dc2-4041-a636-4a62b5ddd5d6"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Generado por]]></text>
+			</staticText>
 			<line>
-				<reportElement x="239" y="10" width="271" height="1" uuid="043aa69f-74ac-42f5-8b73-89546690effa"/>
+				<reportElement x="165" y="23" width="200" height="1" uuid="8de1e109-67fc-4faa-9e1a-c471d7a1be8d"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement x="239" y="11" width="22" height="20" uuid="fde29300-efaf-4629-a2b2-f82bc489acba"/>
+				<reportElement x="165" y="24" width="15" height="19" uuid="4a006e31-e7de-41b5-84d9-9080a34a3019"/>
 				<box topPadding="5"/>
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[f.]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="405" y="25" width="185" height="20" uuid="8c19f737-ea15-4e8c-9914-7578414f475c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Recibido por]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="180" y="43" width="183" height="20" uuid="44918ec6-b45e-4841-a7d0-2676d41bd5cb"/>
+				<box topPadding="5"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombreusuario}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="390" y="24" width="200" height="1" uuid="a652908a-c3b3-4185-af29-c493d4e67eb8"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
 		</band>
-	</pageFooter>
-	<summary>
-		<band height="42" splitType="Stretch"/>
-	</summary>
+	</lastPageFooter>
 </jasperReport>

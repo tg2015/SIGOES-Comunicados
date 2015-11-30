@@ -24,8 +24,8 @@ if(isset($_POST['Estado_Post'])){
             }else{$post_status = '%';
                   $estado = '%';}
 
-            if(isset($_POST['cat'])){ 
-                    $cat = $_POST['cat']; 
+            if(isset($_POST['Reportecat'])){ 
+                    $cat = $_POST['Reportecat']; 
                     }else{$cat = '%';}
 
             if(isset($_POST['Autor_post'])){ 
@@ -99,8 +99,8 @@ private function get_sql_results()
             }else{$post_status = '%';
                   $estado = '%';}
 
-            if(isset($_POST['cat'])){ 
-                    $cat = $_POST['cat']; 
+            if(isset($_POST['Reportecat'])){ 
+                    $cat = $_POST['Reportecat']; 
                     }else{$cat = '%';}
 
             if(isset($_POST['Autor_post'])){ 
@@ -135,7 +135,7 @@ private function get_sql_results()
     $sql_results = $reporteController->get_sql_result_pantalla($estado,$cat,$autor,$nick,$fecha_ini,$fecha_fin,$filtro_titulo);
 
     // Obtiene consulta para crear archivo csv
-    $array_results = $reporteController->get_sql_result_csv($estado,$cat,$autor,$nick,$fecha_ini,$fecha_fin); 
+    //$array_results = $reporteController->get_sql_result_csv($estado,$cat,$autor,$nick,$fecha_ini,$fecha_fin); 
     
     ///////////////// EXPORTAR ARCHIVOS PDF Y CSV    
     $fechaInExportar = $fecha_ini;
@@ -152,56 +152,7 @@ private function get_sql_results()
     $nickExportar = $_POST['ExportarNick'];     // Nick 
 
     
-    if($tipo=='csv'){ 
-    ob_clean();
-    //$output_new->CrearCSV($array_results);
-    //ob_end_flush(); 
-    //ob_flush();   
-    header('content-type:application/csv;charset=UTF-8');
-    header('Content-Disposition: attachment; filename=Reporte_SIGOES.csv');
-
-    $fp = fopen('php://output', 'w+');
-    //$fp = fopen( SIGOES_PLUGIN_DIR.'/view/fichero.csv' , "w+" ); 
-    //$columnas = array();
-
-    $filas = count($array_results);
-    $columnas = array(
-                "No"=>"No",
-                "Titulo"=>"Titulo",
-                "Categoria"=>"Categoria",
-                "Estado"=>"Estado",
-                "Rol_Autor"=>"Rol",
-                "Nombre_Autor"=>"Nombre",
-                "Apellido_Autor"=>"Apellido",
-                "Fecha_ini"=>"Fecha_ini",
-                "Fecha_fin"=>"Fecha_fin");
     
-    $columnas2 = ["No","Titulo","Categoria","Estado","Rol_Autor","Nombre_Autor","Apellido_Autor","Fecha_Creacion"];
-
-    //fputcsv($fp, split(',', $columnas2));
-    fputcsv($fp, $columnas, ",");
-     $array_results = $reporteController->get_sql_result_csv($estado,$cat,$autor,$nick,$fecha_ini,$fecha_fin); 
-    //ob_get_clean();
-    foreach ($array_results as $valor) { // escribe tabla en archivo csv
-    fputcsv($fp, $valor, ",");
-    fputcsv($fp, array_keys($valor));
-    }
-    fclose($fp);
-    
-    }// fin if $tipo == csv
-    
-    ob_clean();
-    require(SIGOES_PLUGIN_DIR.'/view/output.php'); 
-    $output_new = new output('L','cm','Letter');
-
-    if($tipo=='pdf'){ 
-    
-    $output_new->AliasNbPages();
-    $output_new->AddPage();
-    $output_new->CrearPDF($estadoExportar,$categoExportar,$rolExportar,$nickExportar,$fecha_ini,$fecha_fin,$array_results);
-    $output_new->Close();
-    $output_new->Output('Reporte_SIGOES.pdf','I');
-    }// fin $tipo == pdf
     }// fin if exportar
 
 if(isset($_POST['filtra_fecha'])){
@@ -271,18 +222,18 @@ if(isset($_POST['filtra_fecha'])){
                  </TD>
                  <!--Filtro Categorias de Publicacion-->  
                 <TD>
-                <label class="screen-reader-text" for="cat">Filtrar por categoría</label>
+                <label class="screen-reader-text" for="Reportecat">Filtrar por categoría</label>
                 <h3>Categoria</h3>
-                <select id="cat" class="postform" name="cat" onchange = "javascript: submit()">
+                <select id="Reportecat" class="postform" name="Reportecat" onchange = "javascript: submit()">
                     <option value="%">Todas las categorías</option>
                     <?php
                     
                     foreach ( $categorias as $key =>$value) 
                     {
                         $catFiltro=$value['post_type'];
-                        if(isset($_POST['cat']))
+                        if(isset($_POST['Reportecat']))
                         {
-                            if($catFiltro==$_POST['cat'])
+                            if($catFiltro==$_POST['Reportecat'])
                             {
                             echo '<option value= "'.$catFiltro.'" selected>';
                              echo $catFiltro;
@@ -386,11 +337,7 @@ if(isset($_POST['filtra_fecha'])){
                     <TD>
                     <label class="screen-reader-text" for="filter-by-date"> Filtrar por fecha</label>
                     <h3>Fecha inicio</h3>
-
-                    <link rel="stylesheet" href=<?php echo SIGOES_PLUGIN_DIR.'/js/Calendario/jquery-ui.css'?>>
-                    <script src=<?php echo SIGOES_PLUGIN_DIR.'/js/Calendario/jquery-1.9.1.js'?>></script>
-                    <script src=<?php echo SIGOES_PLUGIN_DIR.'/js/Calendario/jquery-ui.js' ?>></script> 
-                    <script>
+                      <script>
                         jQuery(document).ready(function() {
                         jQuery( '#fecha_ini' ).datepicker({dateFormat: 'dd-mm-yy',
                                                       timeFormat: 'HH:mm:ss',
@@ -546,8 +493,8 @@ if(isset($_POST['filtra_fecha'])){
                 'Rol_Autor' =>__('Rol_Autor'),
                 'alias' => __('ID_Usuario'),  
                 'nombre' => __('Nombre'), 
-                'Fecha_Creacion' => __('Fecha_Creado'),
-                'Fecha_Modificacion' =>__('Fecha_Modificacdo')                
+                'Fecha_Creacion' => __('Fecha/hora Creado'),
+                'Fecha_Modificacion' =>__('Fecha/hora Modificado')                
             );
             return $columns;
         }
@@ -620,11 +567,23 @@ if(isset($_POST['filtra_fecha'])){
                 // calculo de numero de post por fila
                 $No = $No + 1;
                 $posts[$key]->ID = $No;
-                $link = get_edit_post_link($post->ID);
+                
                 $no_title = __('Sin titulo');
-                $title = !$post->post_title ? "<em>{$no_title}</em>" : $post->post_title;
-                //$posts[$key]->post_title = "<a title='{$permalink} {$title}' href='{$link}'>{$title}</a>";
+                if($posts[$key]->post_title == NULL)
+                {$posts[$key]->post_title = "<em>{$no_title}</em>";}
+                
+                $FC = $posts[$key]->Fecha_Creacion;
+                $FC_br1 = substr( $FC, -8);
+                $FC_br2 = substr( $FC, 0, 10);
+                $posts[$key]->Fecha_Creacion = "".$FC_br2."<br />".$FC_br1;
+
+                $FM = $posts[$key]->Fecha_Modificacion;
+                $FM_br1 = substr( $FM, -8);
+                $FM_br2 = substr( $FM, 0, 10);
+                $posts[$key]->Fecha_Modificacion = "".$FM_br2."<br />".$FM_br1;
+                
              }
+
 
             $this->items = $posts_array;
 
