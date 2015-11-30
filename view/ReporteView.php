@@ -135,7 +135,7 @@ private function get_sql_results()
     $sql_results = $reporteController->get_sql_result_pantalla($estado,$cat,$autor,$nick,$fecha_ini,$fecha_fin,$filtro_titulo);
 
     // Obtiene consulta para crear archivo csv
-    $array_results = $reporteController->get_sql_result_csv($estado,$cat,$autor,$nick,$fecha_ini,$fecha_fin); 
+    //$array_results = $reporteController->get_sql_result_csv($estado,$cat,$autor,$nick,$fecha_ini,$fecha_fin); 
     
     ///////////////// EXPORTAR ARCHIVOS PDF Y CSV    
     $fechaInExportar = $fecha_ini;
@@ -152,56 +152,7 @@ private function get_sql_results()
     $nickExportar = $_POST['ExportarNick'];     // Nick 
 
     
-    if($tipo=='csv'){ 
-    ob_clean();
-    //$output_new->CrearCSV($array_results);
-    //ob_end_flush(); 
-    //ob_flush();   
-    header('content-type:application/csv;charset=UTF-8');
-    header('Content-Disposition: attachment; filename=Reporte_SIGOES.csv');
-
-    $fp = fopen('php://output', 'w+');
-    //$fp = fopen( SIGOES_PLUGIN_DIR.'/view/fichero.csv' , "w+" ); 
-    //$columnas = array();
-
-    $filas = count($array_results);
-    $columnas = array(
-                "No"=>"No",
-                "Titulo"=>"Titulo",
-                "Categoria"=>"Categoria",
-                "Estado"=>"Estado",
-                "Rol_Autor"=>"Rol",
-                "Nombre_Autor"=>"Nombre",
-                "Apellido_Autor"=>"Apellido",
-                "Fecha_ini"=>"Fecha_ini",
-                "Fecha_fin"=>"Fecha_fin");
     
-    $columnas2 = ["No","Titulo","Categoria","Estado","Rol_Autor","Nombre_Autor","Apellido_Autor","Fecha_Creacion"];
-
-    //fputcsv($fp, split(',', $columnas2));
-    fputcsv($fp, $columnas, ",");
-     $array_results = $reporteController->get_sql_result_csv($estado,$cat,$autor,$nick,$fecha_ini,$fecha_fin); 
-    //ob_get_clean();
-    foreach ($array_results as $valor) { // escribe tabla en archivo csv
-    fputcsv($fp, $valor, ",");
-    fputcsv($fp, array_keys($valor));
-    }
-    fclose($fp);
-    
-    }// fin if $tipo == csv
-    
-    ob_clean();
-    require(SIGOES_PLUGIN_DIR.'/view/output.php'); 
-    $output_new = new output('L','cm','Letter');
-
-    if($tipo=='pdf'){ 
-    
-    $output_new->AliasNbPages();
-    $output_new->AddPage();
-    $output_new->CrearPDF($estadoExportar,$categoExportar,$rolExportar,$nickExportar,$fecha_ini,$fecha_fin,$array_results);
-    $output_new->Close();
-    $output_new->Output('Reporte_SIGOES.pdf','I');
-    }// fin $tipo == pdf
     }// fin if exportar
 
 if(isset($_POST['filtra_fecha'])){

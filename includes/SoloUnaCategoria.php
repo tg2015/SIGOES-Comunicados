@@ -92,20 +92,28 @@ echo '<style type="text/css">
     visibility: hidden;
 }
     </style>';
-//Ocultar Mover papelera nuevo post
+//Ocultar elemtntos de nuevo post
 echo '<style type="text/css">
     #edit-slug-box {
     display: none;
     visibility: hidden;
 }
     </style>';
-//Ocultar Mover papelera nuevo post
+//Ocultar elementos de crear nuevo
 echo '<style type="text/css">
     #show-settings-link {
     display: none;
     visibility: hidden;
 }
     </style>';
+//Ocultar Unistall de Bitacora
+echo '<style type="text/css">
+    #wp_stream_uninstall {
+    display: none;
+    visibility: hidden;
+}
+    </style>';
+
 
 
 //requiridos
