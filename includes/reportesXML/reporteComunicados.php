@@ -48,7 +48,7 @@ $PHPJasperXML->SetPrefijo($pfrpt);
 $autorPost='%'.$autor.'%';
 $arrayParametros=["estado" => $estado, "cat"=>$cat, "autor"=>$autorPost, "fecha_ini"=>$fecha_ini_format, "fecha_fin"=>$fecha_fin_format];
 $PHPJasperXML->SetParametros($arrayParametros);
-
+/*Para debugar la SQL del reporte*/
 $PHPJasperXML->debugsql=false;
 $PHPJasperXML->xml_dismantle($xml);
 $PATH=plugins_url();
