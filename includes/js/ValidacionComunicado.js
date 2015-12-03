@@ -33,7 +33,7 @@ jQuery(document).ready(function() {
 							flag = false;}
 						else{
 							var n = response.search("@invalido@");
-							alert("valor n: "+n);
+							//alert("valor n: "+n);
 							if (n!=-1) {
 								//alert("response "+response);
 								alert("Titulo no permitido");
@@ -79,7 +79,7 @@ jQuery(document).ready(function() {
 							flag = false;}
 						else{
 							var n = response.search("@invalido@");
-							alert("valor n: "+n);
+							//alert("valor n: "+n);
 							if (n!=-1) {
 								//alert("response "+response);
 								alert("Titulo no permitido");

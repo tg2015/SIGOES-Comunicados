@@ -109,6 +109,54 @@ WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.context = $P{context} O
 				</textElement>
 				<textFieldExpression><![CDATA[$P{nombreusuario}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="444" y="118" width="100" height="20" uuid="808f589e-9a82-4f55-90a9-779354d6e15b"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{fecha_ini}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="646" y="118" width="103" height="20" uuid="87687900-1cfc-42d7-8d90-aa4bccbcb0b9"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{fecha_fin}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="544" y="118" width="103" height="20" backcolor="#999999" uuid="bcf39c54-1490-4943-94f0-b57941d186e2"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[fecha hasta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="344" y="118" width="100" height="20" backcolor="#999999" uuid="20be6400-70d5-4759-bc11-a8e491d427cd"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[fecha desde]]></text>
+			</staticText>
 		</band>
 	</pageHeader>
 	<columnHeader>
