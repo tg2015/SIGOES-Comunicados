@@ -259,7 +259,7 @@ if(isset($_POST['filtra_fecha'])){
                 </TD>
                 <TD>
                 <!--Filtro Rol de Usuario-->  
-                <label class="screen-reader-text" for="cat">Filtrar por Rol</label>
+                <!--<label class="screen-reader-text" for="cat">Filtrar por Rol</label>
                     <h3>Rol</h3>
                     <select id="Autor_post" class="postform" name="Autor_post" onchange = "javascript: submit()">
                         <option value="%">Todos los Roles</option>
@@ -295,8 +295,9 @@ if(isset($_POST['filtra_fecha'])){
                    
                     </select>
                 </TD>
+              -->
                 <!--Filtro Usuario de SIGOES-->  
-               <!-- <TD>
+                <TD>
                 <label class="screen-reader-text" for="cat">Filtrar por Nickname</label>
                     <h3>Usuario</h3>
                     <select id="Nick_user" class="postform" name="Nick_user" onchange = "javascript: submit()">
@@ -333,7 +334,7 @@ if(isset($_POST['filtra_fecha'])){
                    
                     </select>
                     </TD>
-                    -->
+                    
                     <TD>
                     <label class="screen-reader-text" for="filter-by-date"> Filtrar por fecha</label>
                     <h3>Fecha inicio</h3>
