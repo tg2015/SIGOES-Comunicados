@@ -58,7 +58,7 @@ $PATH=plugins_url();
 ob_end_clean();
 ob_start();
 /*PARAMETROS PARA ENCABEZADO*/
-$PHPJasperXML->arrayParameter=array("PATH"=>$PATH, "idusuario"=>$usuario->user_login, "nombreusuario" =>$nombreCompleto);
+$PHPJasperXML->arrayParameter=array("PATH"=>$PATH, "idusuario"=>$usuario->user_login, "nombreusuario" =>$nombreCompleto, "fecha_ini" =>$fecha_ini_format, "fecha_fin" =>$fecha_fin_format);
 $PHPJasperXML->transferDBtoArray($server,$user,$pass,$db);
 if($formato=='pdf')
 	{$PHPJasperXML->outpage("I");}
