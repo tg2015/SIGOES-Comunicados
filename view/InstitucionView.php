@@ -51,7 +51,6 @@ private $posts_per_page = 10;
     <form method="post" action="admin.php?page=ReporteInstituciones" target="_blank">
     <input id="Exportar" type="submit" class="button-primary" value="Exportar" name="Exportar">
     <input name="formato" type="radio" value="pdf" checked>PDF
-    <input name="formato" type="radio" value="xls">XLS
     &nbsp;&nbsp;&nbsp;&nbsp;
      <select name="tipoReporte">
         <option value="inaccesible">Sitios Web Inaccesibles</option>
@@ -85,7 +84,7 @@ private $posts_per_page = 10;
         </div>
     </div>
     ';
-
+    //echo '<input name="formato" type="radio" value="xls">XLS';
     return $resultados;
     }
 
