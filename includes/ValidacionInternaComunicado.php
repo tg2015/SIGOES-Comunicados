@@ -1702,7 +1702,7 @@ function my_post_submitbox_misc_actions2(){
 global $post;
 
 //only when editing a post
-if( $post->post_type == 'evento' ||$post->post_type == 'streaming'||$post->post_type == 'otros' ||$post->post_type == 'proyecto' ){
+if( $post->post_type == 'evento' ||$post->post_type == 'streaming'||$post->post_type == 'otros'){
        
     //echo "Boton Publicar Deshabilitado sino hay imagen destacada";
     echo '<script>
@@ -1725,6 +1725,22 @@ if( $post->post_type == 'evento' ||$post->post_type == 'streaming'||$post->post_
 
    }//Fin If ( $post->post_type == 'proyecto' )
  
+if($post->post_type == 'proyecto' ){
+    echo '<script>
+      jQuery(document).ready(function($){
+       jQuery("#title").attr("required", "true");
+        jQuery("#publish").attr("disabled","disabled");
+                  
+    jQuery( document ).on( "click",".save-post-status", function() {
+          jQuery("#publish").removeAttr("disabled");
+        });
+      
+      });
+    </script>';
+
+}
+
+
 }// Fin my_post_submitbox_misc_actions2
 
 //Regresar cuando funcionaba
