@@ -12,6 +12,7 @@ include_once(SIGOES_PLUGIN_DIR.'includes/setting.php');
 $estado		=$_POST["ExportarEstado"];
 $cat		=$_POST['ExportarCat'];
 $autor		=$_POST['ExportarAutor'];
+$nick      =$_POST['ExportarNick'];
 $fecha_ini	=$_POST['ExportarFechaIni'];
 $fecha_fin	=$_POST['ExportarFechaFin'];
 $formato    =$_POST['formato'];
@@ -45,8 +46,8 @@ else
 $PHPJasperXML->SetPrefijo($pfrpt);
 
 /*PARAMETROS PARA SQL*/
-$autorPost='%'.$autor.'%';
-$arrayParametros=["estado" => $estado, "cat"=>$cat, "autor"=>$autorPost, "fecha_ini"=>$fecha_ini_format, "fecha_fin"=>$fecha_fin_format];
+$autorPost='%'.$autor.'%';                          //"autor"=>$autorPost
+$arrayParametros=["estado" => $estado, "cat"=>$cat, "nick"=>$nick, "fecha_ini"=>$fecha_ini_format, "fecha_fin"=>$fecha_fin_format];
 $PHPJasperXML->SetParametros($arrayParametros);
 /*Para debugar la SQL del reporte*/
 $PHPJasperXML->debugsql=false;
@@ -77,7 +78,9 @@ if($cat=='%')
 {$cat='Todos';}
 if($autor=='%')
 {$autor='Todos';}
-$PHPJasperXML->arrayParameter=array("PATH"=>$PATH, "idusuario"=>$usuario->user_login, "nombreusuario"=>$nombreCompleto, "estado"=>$estado, "autor"=>$autor, "cat"=>$cat, "fecha_ini"=>$fecha_ini_format, "fecha_fin"=>$fecha_fin_format);
+if($nick=='%')
+{$nick='Todos';}
+$PHPJasperXML->arrayParameter=array("PATH"=>$PATH, "idusuario"=>$usuario->user_login, "nombreusuario"=>$nombreCompleto, "estado"=>$estado, "nick"=>$nick, "cat"=>$cat, "fecha_ini"=>$fecha_ini_format, "fecha_fin"=>$fecha_fin_format);
 $PHPJasperXML->transferDBtoArray($server,$user,$pass,$db);
 if($formato=='pdf')
 {$PHPJasperXML->outpage("I");}
