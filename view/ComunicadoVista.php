@@ -22,7 +22,10 @@ class ComunicadoVista
       }elseif (in_array( $pagenow, array( 'post-new.php' ))&& $screen->id=='proyecto') {
           //Ayuda Para Nuevo Proyecto.
           $contextual_help =
-          '<p>' . __('Nuevo Proyecto: Opcion de publicar un proyecto.', 'your_text_domain') . '</p>' ;        
+          '<p>' . __('Nuevo Proyecto: Opcion de publicar un proyecto.', 'your_text_domain') . '</p>'.
+          '<ul>' . __('Guardar Borrador: guarda el proyecto como borrador sin publicarlo.', 'your_text_domain') . '</ul>'.
+          '<li>' . __('Guardar Borrador: guarda el proyecto como borrador sin publicarlo.', 'your_text_domain') . '</li>'
+           ;        
       }
       return $contextual_help;
     break;
