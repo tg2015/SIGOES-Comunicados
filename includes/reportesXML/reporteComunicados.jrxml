@@ -131,7 +131,7 @@
 					<bottomPen lineWidth="1.25"/>
 					<rightPen lineWidth="1.25"/>
 				</box>
-				<textElement verticalAlignment="Top">
+				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{estado}]]></textFieldExpression>
@@ -183,7 +183,7 @@
 					<bottomPen lineWidth="1.25"/>
 					<rightPen lineWidth="1.25"/>
 				</box>
-				<textElement verticalAlignment="Top">
+				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{cat}]]></textFieldExpression>
@@ -197,7 +197,7 @@
 					<bottomPen lineWidth="1.25"/>
 					<rightPen lineWidth="1.25"/>
 				</box>
-				<textElement verticalAlignment="Top">
+				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{nick}]]></textFieldExpression>
@@ -247,6 +247,7 @@
 					<bottomPen lineWidth="1.25"/>
 					<rightPen lineWidth="1.25"/>
 				</box>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$P{fecha_ini}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -258,6 +259,7 @@
 					<bottomPen lineWidth="1.25"/>
 					<rightPen lineWidth="1.25"/>
 				</box>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$P{fecha_fin}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -265,7 +267,7 @@
 	<columnHeader>
 		<band height="24" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Opaque" x="23" y="1" width="147" height="20" backcolor="#999999" uuid="7768fc7f-e093-4f12-be01-526c8a6604a5"/>
+				<reportElement mode="Opaque" x="23" y="1" width="160" height="20" backcolor="#999999" uuid="7768fc7f-e093-4f12-be01-526c8a6604a5"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -293,7 +295,7 @@
 				<text><![CDATA[No.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="170" y="1" width="83" height="20" backcolor="#999999" uuid="ad44b61e-31c5-4937-8568-23903618b7bb">
+				<reportElement mode="Opaque" x="184" y="1" width="81" height="20" backcolor="#999999" uuid="ad44b61e-31c5-4937-8568-23903618b7bb">
 					<printWhenExpression><![CDATA[$P{cat}!="Todos"]]></printWhenExpression>
 				</reportElement>
 				<box>
@@ -309,7 +311,7 @@
 				<text><![CDATA[Categoría]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="253" y="1" width="86" height="20" backcolor="#999999" uuid="6a45c52f-19d9-488a-b28a-a6b5ba313a85"/>
+				<reportElement mode="Opaque" x="265" y="1" width="74" height="20" backcolor="#999999" uuid="6a45c52f-19d9-488a-b28a-a6b5ba313a85"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -395,7 +397,7 @@
 	<detail>
 		<band height="31" splitType="Stretch">
 			<textField isStretchWithOverflow="true">
-				<reportElement stretchType="RelativeToTallestObject" x="253" y="0" width="86" height="30" uuid="f0490e0d-5b94-4603-a6ed-ca2e13c373af"/>
+				<reportElement stretchType="RelativeToTallestObject" x="265" y="0" width="74" height="30" uuid="f0490e0d-5b94-4603-a6ed-ca2e13c373af"/>
 				<box rightPadding="0">
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -459,7 +461,7 @@
 				<textFieldExpression><![CDATA[$F{Fecha_Modificacion}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement stretchType="RelativeToTallestObject" x="23" y="0" width="147" height="30" uuid="2f3cec7f-8f7c-4a0c-a508-fa2d48a68a5d"/>
+				<reportElement stretchType="RelativeToTallestObject" x="23" y="0" width="160" height="30" uuid="2f3cec7f-8f7c-4a0c-a508-fa2d48a68a5d"/>
 				<box rightPadding="0">
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -487,7 +489,7 @@
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement stretchType="RelativeToTallestObject" x="170" y="0" width="83" height="30" uuid="a454b777-217d-4b2a-b81f-82a2c034d464"/>
+				<reportElement stretchType="RelativeToTallestObject" x="184" y="0" width="81" height="30" uuid="a454b777-217d-4b2a-b81f-82a2c034d464"/>
 				<box rightPadding="0">
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>

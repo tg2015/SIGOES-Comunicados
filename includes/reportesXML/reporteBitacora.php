@@ -34,7 +34,8 @@ $user_id    =$_POST['user_id'];
 $context    =$_POST['context'];
 $action     =$_POST['action'];
 $connector  =$_POST['connector'];
-
+$search     =$_POST['search'];
+$search     ='%'.$search.'%';
 //echo $fecha_ini, $fecha_fin, $user_id, $connector, $action;
 $usuario=wp_get_current_user();
 $nombreCompleto=$usuario->user_firstname." ".$usuario->user_lastname;
@@ -48,7 +49,7 @@ else
 	{$PHPJasperXML = new PHPJasperXML("en","XLS");}
 $PHPJasperXML->SetPrefijo($pfrpt);
 
-$arrayParametros=["userID" => $user_id, "context"=>$context, "connector"=>$connector, "action"=>$action, "fecha_fin"=>$fecha_fin_format, "fecha_ini"=>$fecha_ini_format];
+$arrayParametros=["userID" => $user_id, "context"=>$context, "connector"=>$connector, "action"=>$action, "fecha_fin"=>$fecha_fin_format, "fecha_ini"=>$fecha_ini_format, "search"=>$search];
 $PHPJasperXML->SetParametros($arrayParametros);
 
 $PHPJasperXML->debugsql=false;
@@ -58,6 +59,12 @@ $PATH=plugins_url();
 ob_end_clean();
 ob_start();
 /*PARAMETROS PARA ENCABEZADO*/
+if($fecha_ini == NULL OR $fecha_ini == "%")
+{$fecha_ini_format   = 'Todas';}
+
+if($fecha_fin == NULL OR $fecha_fin == "%")
+{$fecha_fin_format   = 'Todas';}
+
 $PHPJasperXML->arrayParameter=array("PATH"=>$PATH, "idusuario"=>$usuario->user_login, "nombreusuario" =>$nombreCompleto, "fecha_ini" =>$fecha_ini_format, "fecha_fin" =>$fecha_fin_format);
 $PHPJasperXML->transferDBtoArray($server,$user,$pass,$db);
 if($formato=='pdf')

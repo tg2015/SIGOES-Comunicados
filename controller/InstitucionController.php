@@ -91,20 +91,27 @@ function registrar_ValidacionMascaraScript()
     jQuery(document).ready(function() {
       jQuery( document ).on( 'click', '#guardar', function(){
         var nombre = jQuery.trim(jQuery('#nombre').val());
-        /*var direccion = jQuery.trim(jQuery('#direccion').val());*/
+        var telefono = jQuery.trim(jQuery('#phone').val());
         if (nombre == null || nombre.trim() == ""){
           alert("Debe llenar el campo nombre");
           return false;
           }
+        if (telefono == null || telefono.length < 9){
+          alert("el campo telefono debe tener 8 digitos");
+          return false;
+          }
         
-
       });
 
       jQuery( document ).on( 'click', '#actualizar', function(){
         var nombre = jQuery.trim(jQuery('#nombre').val());
-        /*var direccion = jQuery.trim(jQuery('#direccion').val());*/
+        var telefono = jQuery.trim(jQuery('#phone').val());
         if (nombre == null || nombre.trim() == ""){
           alert("Debe llenar el campo nombre");
+          return false;
+          }
+        if (telefono == null || telefono.length < 9){
+          alert("el campo telefono debe tener 8 digitos");
           return false;
           }
         
@@ -399,12 +406,12 @@ class InstitucionController
   <form action="#" method="post">
   <td><input type="hidden" value="'.$idInstitucion.'" name="idInstitucion"></td>
   <tr>
-  <th><h3>&nbsp;Nombre Contacto: </h3></th> <td><input type="text" value="'.$nombre.'" id="nombre" name="nombre" size=50 required maxlength="50" onkeypress="return soloLetras(event)"><span class="requerido"></span></td>
+  <th><h3>&nbsp;Nombre Contacto: </h3></th> <td><input type="text" value="'.$nombre.'" id="nombre" name="nombre" size=40 required maxlength="50" onkeypress="return soloLetras(event)"><span class="requerido"></span></td>
   <th><h3>Teléfono: </h3></th>        <td><input type="tel" value="'.$telefono.'" name="telefono" size=9 maxlength="9" id="phone"><span class="requerido"></span></td>
   </tr>
   
   <tr>
-  <th><h3>&nbsp;Email: </h3></th>       <td><input type="email" value="'.$email.'" id="email" name="email" size=50 required maxlength="50"><span class="requerido"></span></td>
+  <th><h3>&nbsp;Email: </h3></th>       <td><input type="email" value="'.$email.'" id="email" name="email" size=40 required maxlength="50"><span class="requerido"></span></td>
   <th><h3>Puesto: </h3></th>          <td><input type="text" value="'.$puesto.'" name="puesto" size=30></td>
   </tr>
 
@@ -441,12 +448,12 @@ class InstitucionController
   <input type="hidden" value="'.$idContacto.'" name="idContacto"  >
   <input type="hidden" value="'.$idInstitucion.'" name="idRegresar">
   <tr>
-  <th><h3>&nbsp;Nombre Contacto: </h3></th> <td><input type="text" value="'.$nombre.'" id="nombre" name="nombre" size=50 required maxlength="50" onkeypress="return soloLetras(event)"><span class="requerido"></span></td>
+  <th><h3>&nbsp;Nombre Contacto: </h3></th> <td><input type="text" value="'.$nombre.'" id="nombre" name="nombre" size=40 required maxlength="50" onkeypress="return soloLetras(event)"><span class="requerido"></span></td>
   <th><h3>Teléfono: </h3></th>        <td><input type="tel" value="'.$telefono.'" name="telefono" size=9 maxlength="9" id="phone"><span class="requerido"></span></td>
   </tr>
   
   <tr>
-  <th><h3>&nbsp;Email: </h3></th>       <td><input type="email" value="'.$email.'" name="email" size=50 required maxlength="50"><span class="requerido"></span></td>
+  <th><h3>&nbsp;Email: </h3></th>       <td><input type="email" value="'.$email.'" name="email" size=40 required maxlength="50"><span class="requerido"></span></td>
   <th><h3>Puesto: </h3></th>          <td><input type="text" value="'.$puesto.'" name="puesto" size=30></td>
   </tr>
 

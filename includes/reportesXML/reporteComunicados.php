@@ -12,16 +12,16 @@ include_once(SIGOES_PLUGIN_DIR.'includes/setting.php');
 $estado		=$_POST["ExportarEstado"];
 $cat		=$_POST['ExportarCat'];
 $autor		=$_POST['ExportarAutor'];
-$nick      =$_POST['ExportarNick'];
+$nick       =$_POST['ExportarNick'];
 $fecha_ini	=$_POST['ExportarFechaIni'];
 $fecha_fin	=$_POST['ExportarFechaFin'];
 $formato    =$_POST['formato'];
 
 
 if( $fecha_ini == NULL && $fecha_fin == NULL){
-    $filtro_fecha = " ";
+        //$filtro_fecha       = " ";
 }else{ if( $fecha_ini=="%" && $fecha_fin=="%" ) {
-       $filtro_fecha = " ";
+       //$filtro_fecha    = " ";
     }
     else
     { 
@@ -29,8 +29,8 @@ if( $fecha_ini == NULL && $fecha_fin == NULL){
     $fecha_fin=strtotime($fecha_fin.' 23:59:59');
     $fecha_ini_format=date('Y-m-d H:i:s', $fecha_ini);
     $fecha_fin_format=date('Y-m-d H:i:s', $fecha_fin);
-    if($fecha_fin_format>$fecha_ini_format)
-        {$filtro_fecha=" AND post_date between '".$fecha_ini_format."' and '".$fecha_fin_format."'";}
+    //if($fecha_fin_format>$fecha_ini_format)
+        //{$filtro_fecha=" AND post_date between '".$fecha_ini_format."' and '".$fecha_fin_format."'";}
     }
 }
 
@@ -80,6 +80,12 @@ if($autor=='%')
 {$autor='Todos';}
 if($nick=='%')
 {$nick='Todos';}
+if( $fecha_ini == NULL OR $fecha_ini == "%"){
+    $fecha_ini_format = "Todas";
+}
+if( $fecha_fin == NULL OR $fecha_fin == "%" ) {
+    $fecha_fin_format = "Todas";
+    }
 $PHPJasperXML->arrayParameter=array("PATH"=>$PATH, "idusuario"=>$usuario->user_login, "nombreusuario"=>$nombreCompleto, "estado"=>$estado, "nick"=>$nick, "cat"=>$cat, "fecha_ini"=>$fecha_ini_format, "fecha_fin"=>$fecha_fin_format);
 $PHPJasperXML->transferDBtoArray($server,$user,$pass,$db);
 if($formato=='pdf')

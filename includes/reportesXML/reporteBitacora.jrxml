@@ -12,12 +12,13 @@
 	<parameter name="fecha_ini" class="java.lang.String"/>
 	<parameter name="fecha_fin" class="java.lang.String"/>
 	<parameter name="connector" class="java.lang.String"/>
+	<parameter name="search" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT DISTINCT DATE_FORMAT(CONVERT_TZ(T1.created,'+00:00','-06:00'), '%d-%m-%Y / %h:%i') AS created, T1.summary, T1.user_role, T1.user_id,
  (SELECT T21.meta_value FROM wp_stream_meta T21 WHERE T21.meta_key = "display_name" AND T21.record_id = T2.record_id) AS usuario,
  T1.connector, T1.context, T1.action, T1.ip
 FROM wp_stream AS T1 LEFT JOIN wp_stream_meta AS T2 ON T1.id = T2.record_id
-WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.context = $P{context} OR $P{context}='') AND (T1.connector = $P{connector} OR $P{connector}='') AND (T1.action = $P{action} OR $P{action}='') AND (DATE_SUB(T1.created,INTERVAL 6 HOUR) >= $P{fecha_ini} OR $P{fecha_ini}='') AND (DATE_SUB(T1.created,INTERVAL 6 HOUR)<= $P{fecha_fin} OR $P{fecha_fin}='') order by created desc]]>
+WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.context = $P{context} OR $P{context}='') AND (T1.connector = $P{connector} OR $P{connector}='') AND (T1.action = $P{action} OR $P{action}='') AND (DATE_SUB(T1.created,INTERVAL 6 HOUR) >= $P{fecha_ini} OR $P{fecha_ini}='') AND (DATE_SUB(T1.created,INTERVAL 6 HOUR)<= $P{fecha_fin} OR $P{fecha_fin}='') AND (T1.summary LIKE $P{search} OR $P{search}='') order by EXTRACT(MONTH FROM created) DESC, EXTRACT(DAY FROM created) DESC, EXTRACT(YEAR FROM created) DESC, EXTRACT(HOUR FROM created) DESC]]>
 	</queryString>
 	<field name="created" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -79,38 +80,38 @@ WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.context = $P{context} O
 				<text><![CDATA[Fecha reporte:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="6" y="79" width="84" height="19" uuid="e0fafabe-ae25-4309-805d-7e00a8d61208"/>
+				<reportElement x="0" y="79" width="84" height="19" uuid="e0fafabe-ae25-4309-805d-7e00a8d61208"/>
 				<textElement>
 					<font size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[SIGOES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="6" y="118" width="84" height="20" uuid="92bae262-3855-493d-ac09-6fdea3d050a9"/>
+				<reportElement x="0" y="118" width="84" height="20" uuid="92bae262-3855-493d-ac09-6fdea3d050a9"/>
 				<textElement verticalAlignment="Top"/>
 				<text><![CDATA[ID Usuario:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="6" y="98" width="84" height="20" uuid="c94c2540-1a27-4240-b39f-2aa800f7a476"/>
+				<reportElement x="0" y="98" width="84" height="20" uuid="c94c2540-1a27-4240-b39f-2aa800f7a476"/>
 				<textElement verticalAlignment="Top"/>
 				<text><![CDATA[Generado por:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="91" y="118" width="219" height="20" uuid="c6a81f4d-b121-45af-915b-f55c90ca3f1d"/>
+				<reportElement x="84" y="118" width="219" height="20" uuid="c6a81f4d-b121-45af-915b-f55c90ca3f1d"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{idusuario}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="91" y="98" width="219" height="20" uuid="92c90dfe-60d0-4fb7-980a-3a99f2bdae25"/>
+				<reportElement x="84" y="98" width="219" height="20" uuid="92c90dfe-60d0-4fb7-980a-3a99f2bdae25"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{nombreusuario}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="444" y="118" width="100" height="20" uuid="808f589e-9a82-4f55-90a9-779354d6e15b"/>
+				<reportElement x="465" y="118" width="100" height="20" uuid="808f589e-9a82-4f55-90a9-779354d6e15b"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -134,7 +135,7 @@ WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.context = $P{context} O
 				<textFieldExpression><![CDATA[$P{fecha_fin}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Opaque" x="544" y="118" width="103" height="20" backcolor="#999999" uuid="bcf39c54-1490-4943-94f0-b57941d186e2"/>
+				<reportElement mode="Opaque" x="565" y="118" width="81" height="20" backcolor="#999999" uuid="bcf39c54-1490-4943-94f0-b57941d186e2"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -142,11 +143,11 @@ WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.context = $P{context} O
 					<bottomPen lineWidth="1.25"/>
 					<rightPen lineWidth="1.25"/>
 				</box>
-				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[fecha hasta]]></text>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Fecha Hasta: ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="344" y="118" width="100" height="20" backcolor="#999999" uuid="20be6400-70d5-4759-bc11-a8e491d427cd"/>
+				<reportElement mode="Opaque" x="384" y="118" width="81" height="20" backcolor="#999999" uuid="20be6400-70d5-4759-bc11-a8e491d427cd"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -154,8 +155,8 @@ WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.context = $P{context} O
 					<bottomPen lineWidth="1.25"/>
 					<rightPen lineWidth="1.25"/>
 				</box>
-				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[fecha desde]]></text>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Fecha Desde: ]]></text>
 			</staticText>
 		</band>
 	</pageHeader>

@@ -145,11 +145,11 @@ private function get_sql_results()
     
     if(isset($_POST['Exportar']))
     {
-    $arrayExportar = $array_results;
+    $arrayExportar  = $array_results;
     $estadoExportar = $_POST['ExportarEstado']; // Estado
     $categoExportar = $_POST['ExportarCat']; // Categoria
-    $rolExportar = $_POST['ExportarAutor'];       // Rol
-    $nickExportar = $_POST['ExportarNick'];     // Nick 
+    $rolExportar    = $_POST['ExportarAutor'];       // Rol
+    $nickExportar   = $_POST['ExportarNick'];     // Nick 
 
     
     
