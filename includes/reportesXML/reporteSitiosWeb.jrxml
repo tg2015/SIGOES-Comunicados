@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteSitiosWeb" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="873ed200-dd69-4c4d-814c-b68ac8ebc76a">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="48"/>
 	<parameter name="PATH" class="java.lang.String"/>
 	<parameter name="usuario" class="java.lang.String"/>
 	<parameter name="nombreusuario" class="java.lang.String"/>
@@ -37,9 +37,9 @@
 	<group name="Institucion">
 		<groupExpression><![CDATA[$F{nombreInstitucion}]]></groupExpression>
 		<groupHeader>
-			<band height="50">
+			<band height="40">
 				<textField>
-					<reportElement x="91" y="10" width="308" height="20" uuid="1748e016-0c78-4d88-a6e7-886a193832ef"/>
+					<reportElement x="91" y="0" width="308" height="20" uuid="1748e016-0c78-4d88-a6e7-886a193832ef"/>
 					<box>
 						<pen lineWidth="1.25"/>
 						<topPen lineWidth="1.25"/>
@@ -51,7 +51,7 @@
 					<textFieldExpression><![CDATA[$F{nombreInstitucion}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement mode="Opaque" x="0" y="30" width="66" height="20" backcolor="#CCCCCC" uuid="9b466253-bd2e-4b71-be4e-d136c3cbf459"/>
+					<reportElement mode="Opaque" x="0" y="20" width="66" height="20" backcolor="#CCCCCC" uuid="9b466253-bd2e-4b71-be4e-d136c3cbf459"/>
 					<box>
 						<pen lineWidth="1.25"/>
 						<topPen lineWidth="1.25"/>
@@ -65,7 +65,7 @@
 					<text><![CDATA[No]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="66" y="30" width="83" height="20" backcolor="#CCCCCC" uuid="841d2b40-bdb5-445f-8109-9a0e9fc7b0ce"/>
+					<reportElement mode="Opaque" x="66" y="20" width="83" height="20" backcolor="#CCCCCC" uuid="841d2b40-bdb5-445f-8109-9a0e9fc7b0ce"/>
 					<box>
 						<pen lineWidth="1.25"/>
 						<topPen lineWidth="1.25"/>
@@ -79,7 +79,7 @@
 					<text><![CDATA[Teléfono]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="149" y="30" width="150" height="20" backcolor="#CCCCCC" uuid="a0000f99-5bfc-468a-a4df-34895f3b4349"/>
+					<reportElement mode="Opaque" x="149" y="20" width="150" height="20" backcolor="#CCCCCC" uuid="a0000f99-5bfc-468a-a4df-34895f3b4349"/>
 					<box>
 						<pen lineWidth="1.25"/>
 						<topPen lineWidth="1.25"/>
@@ -93,7 +93,7 @@
 					<text><![CDATA[URL]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="299" y="30" width="100" height="20" backcolor="#CCCCCC" uuid="7228aae8-5f6f-4e6a-b0fd-c6180c9e983d"/>
+					<reportElement mode="Opaque" x="299" y="20" width="100" height="20" backcolor="#CCCCCC" uuid="7228aae8-5f6f-4e6a-b0fd-c6180c9e983d"/>
 					<box>
 						<pen lineWidth="1.25"/>
 						<topPen lineWidth="1.25"/>
@@ -107,7 +107,7 @@
 					<text><![CDATA[Estado]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="399" y="30" width="100" height="20" backcolor="#CCCCCC" uuid="6bb6e51f-750b-4588-98e7-c80faaa7bb66"/>
+					<reportElement mode="Opaque" x="399" y="20" width="100" height="20" backcolor="#CCCCCC" uuid="6bb6e51f-750b-4588-98e7-c80faaa7bb66"/>
 					<box>
 						<pen lineWidth="1.25"/>
 						<topPen lineWidth="1.25"/>
@@ -121,7 +121,7 @@
 					<text><![CDATA[Plugin]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="499" y="30" width="139" height="20" backcolor="#CCCCCC" uuid="6e63f817-7e86-4812-9b33-a76421a8d4c6"/>
+					<reportElement mode="Opaque" x="499" y="20" width="139" height="20" backcolor="#CCCCCC" uuid="6e63f817-7e86-4812-9b33-a76421a8d4c6"/>
 					<box>
 						<pen lineWidth="1.25"/>
 						<topPen lineWidth="1.25"/>
@@ -135,7 +135,7 @@
 					<text><![CDATA[Contacto]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="0" y="10" width="91" height="20" backcolor="#CCCCCC" uuid="98641e60-b396-4eed-b261-a47117005c60"/>
+					<reportElement mode="Opaque" x="0" y="0" width="91" height="20" backcolor="#CCCCCC" uuid="98641e60-b396-4eed-b261-a47117005c60"/>
 					<box>
 						<pen lineWidth="1.25"/>
 						<topPen lineWidth="1.25"/>
@@ -149,7 +149,7 @@
 					<text><![CDATA[Institución]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="638" y="30" width="114" height="20" backcolor="#CCCCCC" uuid="19dfcbc1-7cd7-46cb-a380-384760630259"/>
+					<reportElement mode="Opaque" x="638" y="20" width="114" height="20" backcolor="#CCCCCC" uuid="19dfcbc1-7cd7-46cb-a380-384760630259"/>
 					<box>
 						<pen lineWidth="1.25"/>
 						<topPen lineWidth="1.25"/>
@@ -236,7 +236,7 @@
 		</band>
 	</pageHeader>
 	<detail>
-		<band height="30" splitType="Stretch">
+		<band height="29" splitType="Stretch">
 			<textField isStretchWithOverflow="true">
 				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="66" height="28" uuid="d26d41d0-efb0-4562-ba42-39801880b23d"/>
 				<box>

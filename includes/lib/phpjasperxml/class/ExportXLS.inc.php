@@ -103,8 +103,8 @@ class ExportXLS{
                  elseif($band["name"]== "pageHeader"){
                     
                   if($raw->arraypageHeader[0]["height"]>0){
-                        $this->pageHeader();
-                  $this->maxrow--;
+                        //$this->pageHeader();
+                  //$this->maxrow--;
                   }
                  }
                  elseif($band["name"]== "detail"){
@@ -121,19 +121,19 @@ class ExportXLS{
                  elseif($band["name"]== "pageFooter"){
                 
                      if($raw->arraylastPageFooter[0]["height"]==0 && $raw->arraypageFooter[0]["height"]>0){
-                        $this->pageFooter();
-                       $this->maxrow--;
+                        //$this->pageFooter();
+                       //$this->maxrow--;
                      }
                  }
                  elseif(($band["name"]== "lastPageFooter" || $band["name"]== "summary" ) && $printsummary==false){
            
                      if($raw->arraysummary[0]["height"]>0){
-                        $this->summary();                  
-                        $this->maxrow--;
+                        //$this->summary();                  
+                        //$this->maxrow--;
                      }
                      if($raw->arraylastPageFooter[0]["height"]>0){
-                        $this->lastPageFooter();                  
-                        $this->maxrow--;
+                        //$this->lastPageFooter();                  
+                        //$this->maxrow--;
                      }
                      $printsummary=true;
 
@@ -209,7 +209,7 @@ class ExportXLS{
             $cx=intval($out['x']);
             
             }
-            if($out['type']=="Cell" ||$out['type']=="MultiCell"){
+            if($out['type']=="Cell" || $out['type']=="MultiCell"){
                 $cols[]=intval($out['width'] + $cx);
                // echo $out['width']." + $cx <hr>";
             }
@@ -227,8 +227,9 @@ class ExportXLS{
 
             }
             
-           if($out['type']=="Cell" ||$out['type']=="MultiCell"){
+           if($out['type']=="Cell" /*|| $out['type']=="MultiCell"*/){
                 $cols[]=intval($out['width'] + $cx);
+                //$cols[]=intval($out['width']);
                 //echo $out['width']." + $cx <hr>";
             }
             // echo $i.".".$out['type']."=",$out['x'].$out['txt'].":";     print_r($cols);echo "<hr>";
