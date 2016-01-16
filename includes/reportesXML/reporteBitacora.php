@@ -66,7 +66,10 @@ if($fecha_ini == NULL OR $fecha_ini == "%")
 if($fecha_fin == NULL OR $fecha_fin == "%")
 {$fecha_fin_format   = 'Todas';}
 
-$PHPJasperXML->arrayParameter=array("PATH"=>$PATH, "idusuario"=>$usuario->user_login, "nombreusuario" =>$nombreCompleto, "fecha_ini" =>$fecha_ini_format, "fecha_fin" =>$fecha_fin_format);
+if($ip == NULL OR $ip == "%")
+{$ip   = 'Todas';}
+
+$PHPJasperXML->arrayParameter=array("PATH"=>$PATH, "idusuario"=>$usuario->user_login, "nombreusuario" =>$nombreCompleto, "fecha_ini" =>$fecha_ini_format, "fecha_fin" =>$fecha_fin_format, "ip" =>$ip);
 $PHPJasperXML->transferDBtoArray($server,$user,$pass,$db);
 if($formato=='pdf')
 	{$PHPJasperXML->outpage("I");}

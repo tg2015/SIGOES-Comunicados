@@ -159,6 +159,30 @@ WHERE (T1.user_id = $P{userID} OR $P{userID}='') AND (T1.context = $P{context} O
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Fecha Desde: ]]></text>
 			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="565" y="98" width="81" height="20" backcolor="#999999" uuid="823fadb5-aaf3-4071-8c0d-d249fe753811"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[IP:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="647" y="98" width="102" height="20" uuid="f720c814-4543-40f6-a6e0-875565a76b86"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{ip}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
