@@ -134,9 +134,6 @@ private function get_sql_results()
     //Obtiene la consulta presentada en pantalla
     $sql_results = $reporteController->get_sql_result_pantalla($estado,$cat,$autor,$nick,$fecha_ini,$fecha_fin,$filtro_titulo);
 
-    // Obtiene consulta para crear archivo csv
-    //$array_results = $reporteController->get_sql_result_csv($estado,$cat,$autor,$nick,$fecha_ini,$fecha_fin); 
-    
     ///////////////// EXPORTAR ARCHIVOS PDF Y CSV    
     $fechaInExportar = $fecha_ini;
     $fechaFinExportar = $fecha_fin;
@@ -259,7 +256,7 @@ if(isset($_POST['filtra_fecha'])){
                 </TD>
                 <TD>
                 <!--Filtro Rol de Usuario-->  
-                <!--<label class="screen-reader-text" for="cat">Filtrar por Rol</label>
+                <label class="screen-reader-text" for="cat">Filtrar por Rol</label>
                     <h3>Rol</h3>
                     <select id="Autor_post" class="postform" name="Autor_post" onchange = "javascript: submit()">
                         <option value="%">Todos los Roles</option>
@@ -295,9 +292,8 @@ if(isset($_POST['filtra_fecha'])){
                    
                     </select>
                 </TD>
-              -->
                 <!--Filtro Usuario de SIGOES-->  
-                <TD>
+               <!-- <TD>
                 <label class="screen-reader-text" for="cat">Filtrar por Nickname</label>
                     <h3>Usuario</h3>
                     <select id="Nick_user" class="postform" name="Nick_user" onchange = "javascript: submit()">
@@ -334,7 +330,7 @@ if(isset($_POST['filtra_fecha'])){
                    
                     </select>
                     </TD>
-                    
+                    -->
                     <TD>
                     <label class="screen-reader-text" for="filter-by-date"> Filtrar por fecha</label>
                     <h3>Fecha inicio</h3>
@@ -494,6 +490,7 @@ if(isset($_POST['filtra_fecha'])){
                 'Rol_Autor' =>__('Rol_Autor'),
                 'alias' => __('ID_Usuario'),  
                 'nombre' => __('Nombre'), 
+                'Institucion' => __('Institucion'), 
                 'Fecha_Creacion' => __('Fecha/hora Creado'),
                 'Fecha_Modificacion' =>__('Fecha/hora Modificado')                
             );
@@ -513,6 +510,7 @@ if(isset($_POST['filtra_fecha'])){
                 //'Rol_Autor' => array('Rol_Autor', true),  
                 'ID_Usuario' => array('alias', true),
                 'Nombre' => array('nombre', true), 
+                //'Institucion' => array('Institucion', true), 
                 //'Fecha_Creacion' => array('Fecha_Creacion', true),                
                 //'Fecha_Modificacion' => array('Fecha_Modificacion', true)
             );
