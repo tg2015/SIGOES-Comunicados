@@ -35,6 +35,7 @@ $context    =$_POST['context'];
 $action     =$_POST['action'];
 $connector  =$_POST['connector'];
 $search     =$_POST['search'];
+$ip         =$_POST['ip'];
 $search     ='%'.$search.'%';
 //echo $fecha_ini, $fecha_fin, $user_id, $connector, $action;
 $usuario=wp_get_current_user();
@@ -49,7 +50,7 @@ else
 	{$PHPJasperXML = new PHPJasperXML("en","XLS");}
 $PHPJasperXML->SetPrefijo($pfrpt);
 
-$arrayParametros=["userID" => $user_id, "context"=>$context, "connector"=>$connector, "action"=>$action, "fecha_fin"=>$fecha_fin_format, "fecha_ini"=>$fecha_ini_format, "search"=>$search];
+$arrayParametros=["userID" => $user_id, "context"=>$context, "connector"=>$connector, "action"=>$action, "fecha_fin"=>$fecha_fin_format, "fecha_ini"=>$fecha_ini_format, "search"=>$search, "ip"=>$ip];
 $PHPJasperXML->SetParametros($arrayParametros);
 
 $PHPJasperXML->debugsql=false;
