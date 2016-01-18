@@ -269,13 +269,13 @@ class InstitucionController
   echo '<h1>Agregar Institución</h1>
   <div class="wrap">
   <table class="form-table">
-  <form action="#" method="post">
+  <form action="#" method="post">  
   <tr>
     <td><input type="hidden" value="'.$idInstitucion.'" name="idInstitucion"  disabled></td>
   </tr>
   
   <tr>
-  <th><h3>&nbsp;Nombre Institución: </h3></th>  <td><input type="text" value="'.$nombre.'" name="nombre" id="nombre" size=37 required maxlength="100" onkeypress="return soloLetras(event)"><span class="requerido"></span></td>
+  <th><h3>&nbsp;Nombre Institución: <span class="description">(requerido)</span></h3></th>  <td><input type="text" value="'.$nombre.'" name="nombre" id="nombre" size=37 required maxlength="100" onkeypress="return soloLetras(event)"><span class="requerido"></span></td>
   <th><h3>Teléfono: </h3></th>          <td><input type="text" value="'.$telefono.'" name="telefono" size=9 maxlength="9" id="phone"></td>
   </tr>
   

@@ -45,6 +45,55 @@ function Activar_Reporte_Sigoes()
 add_action('admin_menu', 'Activar_Reporte_Sigoes');
 
 
+add_action( 'in_admin_footer', 'registrar_CamposRequeridos' );
+function registrar_CamposRequeridos()
+{
+  ?>
+    <script>
+      (function ($) {
+        $('#first_name').prop('required',true);
+        $('#last_name').prop('required',true);
+      }(jQuery));
+    </script>
+
+    <script>
+      jQuery(document).ready(function() {
+        jQuery( document ).on( 'click', '#createusersub', function(){
+          var nombre = jQuery.trim(jQuery('#first_name').val());
+          var apellido = jQuery.trim(jQuery('#last_name').val());
+        if (nombre == null || nombre.trim() == ""){
+          alert("Debe llenar el campo nombre");
+          document.getElementById('first_name').focus()
+          return false;
+          }
+        if (apellido == null || apellido.trim() == ""){
+          alert("Debe llenar el campo apellido");
+          document.getElementById('last_name').focus()
+          return false;
+          }  
+      });
+
+      jQuery( document ).on( 'click', '#submit', function(){
+          var nombre = jQuery.trim(jQuery('#first_name').val());
+          var apellido = jQuery.trim(jQuery('#last_name').val());
+        if (nombre == null || nombre.trim() == ""){
+          alert("Debe llenar el campo nombre");
+          document.getElementById('first_name').focus()
+          return false;
+          }
+        if (apellido == null || apellido.trim() == ""){
+          alert("Debe llenar el campo apellido");
+          document.getElementById('last_name').focus()
+          return false;
+          }  
+      });
+
+    }); 
+    </script>
+  <?php
+}
+
+
 function ReporteComunicados()
 {
   require_once(SIGOES_PLUGIN_DIR.'includes/reportesXML/reporteComunicados.php');
