@@ -51,6 +51,8 @@ function crear_tablaContacto() {
 }
 register_activation_hook( INDEX, 'crear_tablaContacto' );
 
+
+// SETEO DE ROLES
 function ingresar_roles() {     
    	global $wpdb;
    	$charset_collate = $wpdb->get_charset_collate();
@@ -67,7 +69,6 @@ $where_format = array( '%d' );
 
 $wpdb->update( $table_name, $data, $where, $format,$where_format );
 
-///////
 	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 	dbDelta( $sql );
 
