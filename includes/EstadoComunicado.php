@@ -58,6 +58,33 @@ function my_post_submitbox_misc_actions(){
 
 global $post;
 
+echo '<script>
+   jQuery(document).ready(function() {
+  // publish button validation
+  jQuery("#publish").click(function(){
+    $title_value = jQuery.trim(jQuery("#title").val());
+    if($title_value == 0 && $title_value != " "){
+      alert("Titulo no valido");
+      jQuery(".spinner").css("visibility", "hidden");
+      jQuery("#title").focus();
+      return false;
+    }
+  });
+  // draft button validation
+  jQuery("#save-post").click(function(){
+    $title_value = jQuery.trim(jQuery("#title").val());
+    if($title_value == 0 && $title_value != " "){
+      alert("Titulo no valido");
+      jQuery(".spinner").css("visibility", "hidden");
+      jQuery("#title").focus();
+      return false;
+    }
+  });
+});
+    </script>';
+
+
+
 //only when editing a post
 ////Agregar un nuevo CPT al if ejemplo ||$post->post_type == 'evento2'
 if( $post->post_type == 'proyecto' ||$post->post_type == 'evento' ||$post->post_type == 'streaming'||$post->post_type == 'otros'  ){
