@@ -35,7 +35,7 @@ class ComunicadoVista
            '<p><strong>Publicar inmediatamente: </strong> programar publicacion automatica en la fecha y hora seleccionada.</p>'.
            '<p><strong>Publicar: </strong> Opcion de publicar un proyecto.</p>'.
            '<p><strong>Asigmar imagen destacada: </strong> permite asignar una imagen para el proyecto (obligatoria).</p>'.
-           '<p><strong>Contenido: </strong>Debe ingredar la direccion url a la que sera redireccionado el visitante y que contiene la informacion del proyecto.</p>'
+           '<p><strong>Contenido: </strong>Debe ingresar la direccion url a la que sera redireccionado el visitante y que contiene la informacion del proyecto.</p>'
            ;        
       }
       return $contextual_help;
@@ -81,7 +81,7 @@ class ComunicadoVista
            '<p><strong>Estado: </strong>cambiar el estado de la publicacion del evento.</p>'.
            '<p><strong>Publicar inmediatamente: </strong> programar publicacion automatica en la fecha y hora seleccionada.</p>'.
            '<p><strong>Publicar: </strong> Opcion de publicar un evento.</p>'.
-           '<p><strong>Contenido: </strong>Debe ingredar la direccion url a la que sera redireccionado el visitante y que contiene la informacion del evento.</p>'
+           '<p><strong>Contenido: </strong>Debe ingresar la direccion url a la que sera redireccionado el visitante y que contiene la informacion del evento.</p>'
            ;            
       }
       return $contextual_help;
@@ -126,7 +126,7 @@ case 'streaming':
            '<p><strong>Estado: </strong>cambiar el estado de la publicacion del streaming.</p>'.
            '<p><strong>Publicar inmediatamente: </strong> programar publicacion automatica en la fecha y hora seleccionada.</p>'.
            '<p><strong>Publicar: </strong> Opcion de publicar un streaming.</p>'.
-           '<p><strong>Contenido: </strong>Debe ingredar la direccion url a la que sera redireccionado el visitante y que contiene la informacion del streaming.</p>'
+           '<p><strong>Contenido: </strong>Debe ingresar la direccion url a la que sera redireccionado el visitante y que contiene la informacion del streaming.</p>'
            ;            
       }
       return $contextual_help;
@@ -175,7 +175,7 @@ case 'otros':
            '<p><strong>Publicar inmediatamente: </strong> programar publicacion automatica en la fecha y hora seleccionada.</p>'.
            '<p><strong>Publicar: </strong> Opcion de publicar un proyecto.</p>'.
            '<p><strong>Asigmar imagen destacada: </strong> permite asignar una imagen para el proyecto (opcional).</p>'.
-           '<p><strong>Contenido: </strong>Debe ingredar la direccion url a la que sera redireccionado el visitante y que contiene la informacion del proyecto.</p>'
+           '<p><strong>Contenido: </strong>Debe ingresar la direccion url a la que sera redireccionado el visitante y que contiene la informacion del proyecto.</p>'
            ;        
       }
       return $contextual_help;
@@ -207,23 +207,33 @@ case 'dashboard':
         {
           //Ayuda Para Lista Proyecto.
          $screen->remove_help_tabs();
-          $contextual_help = "";
-       $contextual_help =
-           '<p><strong>Escritorio: </strong>guardar el proyecto como borrador sin publicarlo.</p>'.
-           '<p><strong>Proyectos: </strong>cambiar el estado de la publicacion del proyecto.</p>'.
-           '<p><strong>Eventos Coyunturales: </strong> programar publicacion automatica en la fecha y hora seleccionada.</p>'.
-           '<p><strong>Streaming: </strong> Opcion de publicar un proyecto.</p>'.
-           '<p><strong>Otros Proyectos: </strong> permite asignar una imagen para el proyecto (opcional).</p>'.
-           '<p><strong>Parametros de Conexion: </strong>Debe ingredar la direccion url a la que sera redireccionado el visitante y que contiene la informacion del proyecto.</p>'.
-           '<p><strong>Reporte SIGOES: </strong>guardar el proyecto como borrador sin publicarlo.</p>'.
-           '<p><strong>Asignar Rol-Usuarios: </strong>cambiar el estado de la publicacion del proyecto.</p>'.
-           '<p><strong>Bitacora: </strong> programar publicacion automatica en la fecha y hora seleccionada.</p>'.
-           '<p><strong>Apariencia: </strong> Opcion de publicar un proyecto.</p>'.
-           '<p><strong>Plugins: </strong> permite asignar una imagen para el proyecto (opcional).</p>'.
-           '<p><strong>Usuarios: </strong>Debe ingredar la direccion url a la que sera redireccionado el visitante y que contiene la informacion del proyecto.</p>'.
+         if ( !current_user_can('delete_others_posts')) {
+             $contextual_help =
+           '<p><strong>Escritorio: </strong>pantalla principal del SIGOES.</p>'.
+           '<p><strong>Comunicados: </strong>Accede a publicar comunicados segun rol.</p>'.
+           '<p><strong>Perfil: </strong> gestionar opciones de credenciales.</p>'
+           ;
+          } else {
+            $contextual_help = "";
+          $contextual_help =
+           '<p><strong>Escritorio: </strong>pantalla principal del SIGOES.</p>'.
+           '<p><strong>Proyectos: </strong>gestionar la publicacion de proyectos de Gobierno.</p>'.
+           '<p><strong>Eventos Coyunturales: </strong> gestionar la publicacion de eventos cuyunturales que afecten nuestro pais.</p>'.
+           '<p><strong>Streaming: </strong>gestionar la transmision de streaming.</p>'.
+           '<p><strong>Otros Proyectos: </strong> gestionar la publicacion de proyectos de Gobierno.</p>'.
+           '<p><strong>Parametros de Conexion: </strong> gestionar las instituciones en las que se publicaran los comunicados.</p>'.
+           '<p><strong>Reporte SIGOES: </strong> generar reportes de los comunicados que publica CAPRES.</p>'.
+           '<p><strong>Asignar Rol-Usuarios: </strong>gestionar los usuarios y permisos del SIGOES.</p>'.
+           '<p><strong>Bitacora: </strong> obtener las acciones que realizan los usuarios en el SIGOES.</p>'.
+           '<p><strong>Apariencia: </strong> configurar opciones heredadas de Wordpress.</p>'.
+           '<p><strong>Plugins: </strong> agregar nuevas caracteristicas al sistema por medio de plugins.</p>'.
+           '<p><strong>Usuarios: </strong> gestionar usuarios y roles.</p>'.
            '<p><strong>Publicar: </strong> Opcion de publicar un proyecto.</p>'.
-           '<p><strong>Ajustes: </strong> permite asignar una imagen para el proyecto (opcional).</p>'
+           '<p><strong>Ajustes: </strong> activar validacion de titulo de comunicados y gestionar opciones heredadas de Wordpress .</p>'
            ;   
+          }
+
+         
       }
       return $contextual_help;
     break;
@@ -234,15 +244,14 @@ case 'toplevel_page_Instituciones':
          $screen->remove_help_tabs();
           $contextual_help = "";
         $contextual_help =
-           '<p><strong>Exportar: </strong>Agregar una nueva institucion.</p>'.
-           '<p><strong>Estado: </strong>exportar PDF o Excel.</p>'.
-           '<p><strong>Categoria: </strong> programar publicacion automatica en la fecha y hora seleccionada.</p>'.
-           '<p><strong>Rol: </strong> Opcion de publicar un proyecto.</p>'.
-           '<p><strong>Fecha Inicio: </strong> permite asignar una imagen para el proyecto (opcional).</p>'.
-           '<p><strong>Fecha Fin: </strong>Debe ingredar la direccion url a la que sera redireccionado el visitante y que contiene la informacion del proyecto.</p>'.
-           '<p><strong>Filtrar po fecha: </strong> permite asignar una imagen para el proyecto (opcional).</p>'.
-           '<p><strong>Restablecer: </strong> permite asignar una imagen para el proyecto (opcional).</p>'.
-           '<p><strong>Buscar por Titulo: </strong> permite asignar una imagen para el proyecto (opcional).</p>'
+           '<p><strong>Agregar Nuevo: </strong>Agregar una nueva institucion.</p>'.
+           '<p><strong>Exportar: </strong>exportar PDF o Excel.</p>'.
+           '<p><strong>Tipo de Reporte: </strong>Elegir el tipo de reporte.</p>'.
+           '<p><strong>Buscar por Nombre: </strong> bucar institucion por nombre.</p>'.
+           '<p><strong>Comprobar: </strong> comprobar si una institucion esta disponible y si tiene instalado el plugin de publicacion.</p>'.
+           '<p><strong>Restablecer: </strong> restablecer los filtros de busqueda.</p>'.           
+           '<p><strong>Ver Contanto: </strong> obtener los datos de contacto de una institucion.</p>'.
+           '<p><strong>Editar: </strong> editar los datos de una institucion.</p>'
            ;   
       }
       return $contextual_help;
@@ -254,12 +263,13 @@ case 'toplevel_page_Reporte_SIGOES':
          $screen->remove_help_tabs();
           $contextual_help = "";
         $contextual_help =
-           '<p><strong>Guardar Borrador: </strong>guardar el proyecto como borrador sin publicarlo.</p>'.
-           '<p><strong>Estado: </strong>cambiar el estado de la publicacion del proyecto.</p>'.
-           '<p><strong>Publicar inmediatamente: </strong> programar publicacion automatica en la fecha y hora seleccionada.</p>'.
-           '<p><strong>Publicar: </strong> Opcion de publicar un proyecto.</p>'.
-           '<p><strong>Asigmar imagen destacada: </strong> permite asignar una imagen para el proyecto (opcional).</p>'.
-           '<p><strong>Contenido: </strong>Debe ingredar la direccion url a la que sera redireccionado el visitante y que contiene la informacion del proyecto.</p>'
+           '<p><strong>Exportar: </strong>exportar PDF.</p>'.
+           '<p><strong>Estado: </strong>filtrar reporte por estado.</p>'.
+           '<p><strong>Categoria: </strong> filtrar reporte por categoria.</p>'.
+           '<p><strong>Rol: </strong>filtrar reporte por rol de usuario.</p>'.
+           '<p><strong>Fecha inicio y fin: </strong> filtrar reporte por fecha.</p>'.
+           '<p><strong>Buscar por titulo: </strong>filtrar reporte por contenido de titulo.</p>'.
+            '<p><strong>Restablecer: </strong>restablecer los filtros de busqueda.</p>'
            ;   
       }
       return $contextual_help;
@@ -271,13 +281,11 @@ case 'toplevel_page_aam':
         // $screen->remove_help_tabs();
           $contextual_help = "";
         $contextual_help =
-           '<p><strong>Guardar Borrador: </strong>guardar el proyecto como borrador sin publicarlo.</p>'.
-           '<p><strong>Estado: </strong>cambiar el estado de la publicacion del proyecto.</p>'.
-           '<p><strong>Publicar inmediatamente: </strong> programar publicacion automatica en la fecha y hora seleccionada.</p>'.
-           '<p><strong>Publicar: </strong> Opcion de publicar un proyecto.</p>'.
-           '<p><strong>Asigmar imagen destacada: </strong> permite asignar una imagen para el proyecto (opcional).</p>'.
-           '<p><strong>Contenido: </strong>Debe ingredar la direccion url a la que sera redireccionado el visitante y que contiene la informacion del proyecto.</p>'
-           ;   
+           '<p><strong>Menu Administracion : </strong>Configurar los elementos de acceso por rol de usuario.</p>'.
+           '<p><strong>Capacidades: </strong>acciones que puede realizar un usuario segun rol establecido .</p>'.
+           '<p><strong>Panel de control: </strong> Guardar los cambios realizados a un rol.</p>'.
+           '<p><strong>Panel de Administracion: </strong>Gestion de roles y usuarios.</p>'
+            ;   
       }
       return $contextual_help;
     break; 
@@ -288,12 +296,15 @@ case 'toplevel_page_wp_stream':
          $screen->remove_help_tabs();
           $contextual_help = "";
         $contextual_help =
-           '<p><strong>Guardar Borrador: </strong>guardar el proyecto como borrador sin publicarlo.</p>'.
-           '<p><strong>Estado: </strong>cambiar el estado de la publicacion del proyecto.</p>'.
-           '<p><strong>Publicar inmediatamente: </strong> programar publicacion automatica en la fecha y hora seleccionada.</p>'.
-           '<p><strong>Publicar: </strong> Opcion de publicar un proyecto.</p>'.
-           '<p><strong>Asigmar imagen destacada: </strong> permite asignar una imagen para el proyecto (opcional).</p>'.
-           '<p><strong>Contenido: </strong>Debe ingredar la direccion url a la que sera redireccionado el visitante y que contiene la informacion del proyecto.</p>'
+           '<p><strong>Exportar: </strong>exportar PDF.</p>'.
+           '<p><strong>Todas las fechas: </strong>filtrar bitacora por fecha.</p>'.
+           '<p><strong>Filtrar por users: </strong>filtrar bitacora por usuario.</p>'.
+           '<p><strong>Filtrar por contexts: </strong>filtrar bitacora por lugar de modificacion.</p>'.
+           '<p><strong>Filtrar por actions: </strong> filtrar bitacora por accione realizada en el SIGOES.</p>'.
+           '<p><strong>Filtrar por IP: </strong>filtrar bitacora por IP.</p>'.
+           '<p><strong>Filtro: </strong> Aplicar las opciones del filtro.</p>'.
+           '<p><strong>Buscar en actividad: </strong> filtrar bitacora por actividad.</p>'.
+           '<p><strong>Restablecer filtros: </strong> restablecer filtros de busqueda.</p>'
            ;   
 
       }
