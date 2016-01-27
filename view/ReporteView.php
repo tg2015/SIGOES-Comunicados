@@ -163,9 +163,9 @@ if(isset($_POST['filtra_fecha'])){
 
 <!--  Vista HTML -->        
 
-<div class="tablenav top widefat fixed">
+<div class="tablenav top widefat fixed" width="100%">
         <div class="alignleft actions bulkactions">
-            <label class="screen-reader-text" for="bulk-action-selector-top">Filtrar por Estado</label>
+            <label class="screen-reader-text" for="bulk-action-selector-top"></label>
             <form action="admin.php?page=ReporteComunicados" method="post" target="_blank">
             <p>
             <input id="export" class="button button-primary" type="submit" value="Exportar" name="Exportar">
@@ -180,7 +180,7 @@ if(isset($_POST['filtra_fecha'])){
             <input type="hidden" value="<?php echo $fecha_fin; ?>" name="ExportarFechaFin" />
             </form>
             <form action="" method="post">      
-            <TABLE class="widefat" >    
+            <TABLE class="" >    
                 <TR>
                 <!--Filtro Estado de Publicacion-->  
                 <TD>
@@ -402,19 +402,19 @@ if(isset($_POST['filtra_fecha'])){
                 </TD>
                 
                 <TD>
-                <br/>
-                <input type="submit" class="button" value="Fitrar por fecha" name="filtra_fecha" id="post-query-submit">
+                <h3> <br/> </h3>
+                <input type="submit" class="button button-primary" value="Fitrar por fecha" name="filtra_fecha" id="post-query-submit">
                 </TD>
                 <TD>
-                <br/>
+                <h3> <br/> </h3>
                 <input type="button" class="button" value="Reestablecer" onclick="window.location.href='admin.php?page=Reporte_SIGOES'" action=$_SERVER['PHP_SELF']>
                 </TD>
                 <TD>
 
-                  <br/>
+                <h3> <br/> </h3>
                   <label class="screen-reader-text" for="post-search-input">Buscar por Titulo:</label>
                   <input id="post-search-input" type="search" value="" name="titulo">
-                  <input id="search-submit" class="button" type="submit" value="Buscar por Titulo">
+                  <input id="search-submit" class="button button-primary" type="submit" value="Buscar por Titulo">
                   
                 </TD> 
         </form>
@@ -487,8 +487,8 @@ if(isset($_POST['filtra_fecha'])){
                 'post_title' => __('Titulo'),
                 'post_type' => __('Categoria'),
                 'post_status' => __('Estado'),
-                'Rol_Autor' =>__('Rol_Autor'),
-                'alias' => __('ID_Usuario'),  
+                'Rol_Autor' =>__('Rol Autor'),
+                'alias' => __('Usuario'),  
                 'nombre' => __('Nombre'), 
                 'Institucion' => __('Institucion'), 
                 'Fecha_Creacion' => __('Fecha/hora Creado'),
