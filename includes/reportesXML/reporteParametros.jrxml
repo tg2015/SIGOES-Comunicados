@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteParametros" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="736" leftMargin="28" rightMargin="28" topMargin="28" bottomMargin="56" uuid="063777e9-2b93-40be-aea1-ddc9352505ba">
-	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="4"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="144"/>
 	<parameter name="PATH" class="java.lang.String"/>
 	<parameter name="idusuario" class="java.lang.String"/>
 	<parameter name="nombreusuario" class="java.lang.String"/>
@@ -104,9 +104,9 @@
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="30" splitType="Stretch">
+		<band height="20" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="10" width="43" height="20" backcolor="#CCCCCC" uuid="596c967a-c2c8-41f7-8d78-7347a147d11c"/>
+				<reportElement mode="Opaque" x="0" y="0" width="43" height="20" backcolor="#CCCCCC" uuid="596c967a-c2c8-41f7-8d78-7347a147d11c"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -118,7 +118,7 @@
 				<text><![CDATA[No.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="43" y="10" width="118" height="20" backcolor="#CCCCCC" uuid="32c98954-3d52-41ec-b565-a72b3ab4247b"/>
+				<reportElement mode="Opaque" x="43" y="0" width="118" height="20" backcolor="#CCCCCC" uuid="32c98954-3d52-41ec-b565-a72b3ab4247b"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -130,7 +130,7 @@
 				<text><![CDATA[Institución]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="314" y="10" width="67" height="20" backcolor="#CCCCCC" uuid="f43010a8-9f9c-4cf0-b427-cf9a56e284ee"/>
+				<reportElement mode="Opaque" x="314" y="0" width="67" height="20" backcolor="#CCCCCC" uuid="f43010a8-9f9c-4cf0-b427-cf9a56e284ee"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -142,7 +142,7 @@
 				<text><![CDATA[Teléfono]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="161" y="10" width="153" height="20" backcolor="#CCCCCC" uuid="91aa5f4f-b221-48eb-9477-e7fd0f8229e1"/>
+				<reportElement mode="Opaque" x="161" y="0" width="153" height="20" backcolor="#CCCCCC" uuid="91aa5f4f-b221-48eb-9477-e7fd0f8229e1"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -154,7 +154,7 @@
 				<text><![CDATA[Descripción]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="381" y="10" width="156" height="20" backcolor="#CCCCCC" uuid="f2c513b7-1627-43d7-aeec-3727f26634f3"/>
+				<reportElement mode="Opaque" x="381" y="0" width="156" height="20" backcolor="#CCCCCC" uuid="f2c513b7-1627-43d7-aeec-3727f26634f3"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -166,7 +166,7 @@
 				<text><![CDATA[URL]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="537" y="10" width="100" height="20" backcolor="#CCCCCC" uuid="2b65c7d2-1da4-48c4-babe-979deab8cf61"/>
+				<reportElement mode="Opaque" x="537" y="0" width="100" height="20" backcolor="#CCCCCC" uuid="2b65c7d2-1da4-48c4-babe-979deab8cf61"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -178,7 +178,7 @@
 				<text><![CDATA[Estado Institución]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="636" y="10" width="100" height="20" backcolor="#CCCCCC" uuid="77d37b5d-ca6f-4b8f-86c0-aa1256e97ff1"/>
+				<reportElement mode="Opaque" x="637" y="0" width="100" height="20" backcolor="#CCCCCC" uuid="77d37b5d-ca6f-4b8f-86c0-aa1256e97ff1"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>

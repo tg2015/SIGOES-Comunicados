@@ -4,8 +4,20 @@
 		"selected_items":
 		[
 			[
+				"Wor",
+				"wordpress"
+			],
+			[
+				"Pro",
+				"Proyectos"
+			],
+			[
+				"fa",
+				"false"
+			],
+			[
 				"ti",
-				"tituloPost"
+				"title_value2"
 			],
 			[
 				"remo",
@@ -98,10 +110,6 @@
 			[
 				"req",
 				"required"
-			],
-			[
-				"Pro",
-				"Proyecto"
 			],
 			[
 				"gl",
@@ -236,43 +244,37 @@
 	"buffers":
 	[
 		{
-			"file": "controller/EventoController.php",
+			"file": "view/ComunicadoVista.php",
 			"settings":
 			{
-				"buffer_size": 3410,
+				"buffer_size": 21632,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "controller/StreamingController.php",
+			"contents": "INSERT INTO `wordpress`.`wp_posts` (`post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES ('1', '2016-01-21 03:12:07', '2016-01-21 03:12:07', ' ', 'x', ' ', 'closed', 'closed', 'closed', ' ', 'x', ' ', ' ', '2016-01-20 21:12:07', '2016-01-20 21:12:07', ' ', ' ', 'http://localhost/wordpress/?post_type=evento&#038;p=3069', '7', 'evento', ' ', '0');\n",
 			"settings":
 			{
-				"buffer_size": 3480,
+				"buffer_size": 640,
+				"line_ending": "Unix",
+				"name": "INSERT INTO `wordpress`.`wp_posts` (`post_author`,"
+			}
+		},
+		{
+			"contents": "<?php\nclass ComunicadoVista \n{\n	\n	function __construct()\n	{\n		# code...\n	}\n	public function RenderAyudaComunicado(  ) {\n // $contextual_help .= var_dump( $screen ); // use this to help determine $screen->id\n  		function ProyectoAyuda($contextual_help, $screen_id, $screen){\n		 global $pagenow;\n\n  switch ($screen->id) {\n    //Control de Ayuda para PROYECTOS\n    case 'proyecto':\n       //Ayuda Para Editar un Proyecto\n      if ( in_array( $pagenow, array( 'post.php' ))&& $screen->id=='proyecto'  )\n      {\n        $contextual_help =\n          '<p>' . __('Editar Proyecto: Elija las opciones que presenta el SIGOES.', 'your_text_domain') . '</p>' ;\n      }elseif (in_array( $pagenow, array( 'post-new.php' ))&& $screen->id=='proyecto') {\n          //Ayuda Para Nuevo Proyecto.\n          $contextual_help =\n          '<p>' . __('Nuevo Proyecto: Opcion de publicar un proyecto.', 'your_text_domain') . '</p>'.\n          '<ul>' . __('Guardar Borrador: guarda el proyecto como borrador sin publicarlo.', 'your_text_domain') . '</ul>'.\n          '<li>' . __('Guardar Borrador: guarda el proyecto como borrador sin publicarlo.', 'your_text_domain') . '</li>'\n           ;        \n      }\n      return $contextual_help;\n    break;\n    case 'edit-proyecto':\n      if ( in_array( $pagenow, array( 'edit.php' ) ) && $screen->id=='edit-proyecto')\n        {\n          //Ayuda Para Lista Proyecto.\n        $contextual_help =\n          '<p>' . __('Lista Proyecto: Consultar todos los tipos de proyectos.', 'your_text_domain') . '</p>' ;\n      }\n      return $contextual_help;\n    break;\n///////////////////////////////////////////////////////////////////////////////////\n case 'evento':\n       //Ayuda Para Editar un Proyecto\n      if ( in_array( $pagenow, array( 'post.php' ))&& $screen->id=='evento'  )\n      {\n        $contextual_help =\n          '<p>' . __('Editar evento: Elija las opciones que presenta el SIGOES.', 'your_text_domain') . '</p>' ;\n      }elseif (in_array( $pagenow, array( 'post-new.php' ))&& $screen->id=='evento') {\n          //Ayuda Para Nuevo Proyecto.\n          $contextual_help =\n          '<p>' . __('Nuevo evento: Opcion de publicar un evento.', 'your_text_domain') . '</p>' ;        \n      }\n      return $contextual_help;\n    break;\ncase 'edit-evento':\n      if ( in_array( $pagenow, array( 'edit.php' ) ) && $screen->id=='edit-evento')\n        {\n          //Ayuda Para Lista Proyecto.\n        $contextual_help =\n          '<p>' . __('Lista evento: Consultar todos los tipos de eventos.', 'your_text_domain') . '</p>' ;\n      }\n      return $contextual_help;\n    break;\ncase 'dashboard':\n      if ( in_array( $pagenow, array( 'index.php' ) ) && $screen->id=='dashboard')\n        {\n          //Ayuda Para Lista Proyecto.\n         $screen->remove_help_tabs();\n          $contextual_help = \"\";\n        $contextual_help =\n          '<p>' . __('dashboard: Consultar todos los tipos de eventos.', 'your_text_domain') . '</p>' ;\n      }\n      return $contextual_help;\n    break;\ncase 'toplevel_page_Instituciones':\n      if ( in_array( $pagenow, array( 'admin.php' ) ) && $screen->id=='toplevel_page_Instituciones')\n        {\n          //Ayuda Para Lista Proyecto.\n         $screen->remove_help_tabs();\n          $contextual_help = \"\";\n        $contextual_help =\n          '<p>' . __('dashboard: Consultar todos los tipos de eventos.', 'your_text_domain') . '</p>' ;\n      }\n      return $contextual_help;\n    break;   \ncase 'toplevel_page_Reporte_SIGOES':\n      if ( in_array( $pagenow, array( 'admin.php' ) ) && $screen->id=='toplevel_page_Reporte_SIGOES')\n        {\n          //Ayuda Para Lista Proyecto.\n         $screen->remove_help_tabs();\n          $contextual_help = \"\";\n        $contextual_help =\n          '<p>' . __('dashboard: Consultar todos los tipos de eventos.', 'your_text_domain') . '</p>' ;\n      }\n      return $contextual_help;\n    break;\ncase 'toplevel_page_aam':\n      if ( in_array( $pagenow, array( 'admin.php' ) ) && $screen->id=='toplevel_page_aam')\n        {\n          //Ayuda Para Lista Proyecto.\n        // $screen->remove_help_tabs();\n          $contextual_help = \"\";\n        $contextual_help =\n          '<p>' . __('dashboard: Consultar todos los tipos de eventos.', 'your_text_domain') . '</p>' ;\n      }\n      return $contextual_help;\n    break; \ncase 'toplevel_page_wp_stream':\n      if ( in_array( $pagenow, array( 'admin.php' ) ) && $screen->id=='toplevel_page_wp_stream')\n        {\n          //Ayuda Para Lista Proyecto.\n         $screen->remove_help_tabs();\n          $contextual_help = \"\";\n        $contextual_help =\n          '<p>' . __('dashboard: Consultar todos los tipos de eventos.', 'your_text_domain') . '</p>' ;\n\n      }\n      return $contextual_help;\n    break;                       \n///////////////////////////////////////////////////////////////////////////////////\n\n    default:\n    # code...\n    break;\n  }\n  //Ayuda Para Editar un Evento\n  /*if ( in_array( $pagenow, array( 'post.php' ) ) )\n    {\n    $contextual_help =\n      '<p>' . __('Editar Evento.', 'your_text_domain') . '</p>' ;\n    }\n  elseif ( 'evento' == $screen->id ) {\n    $contextual_help =\n      '<p>' . __('Things to remember when adding or editing a book:', 'your_text_domain') . '</p>' .\n      '<ul>' .\n      '<li>' . __('Specify the correct genre such as Mystery, or Historic.', 'your_text_domain') . '</li>' .\n      '<li>' . __('Specify the correct writer of the book.  Remember that the Author module refers to you, the author of this book review.', 'your_text_domain') . '</li>' .\n      '</ul>' .\n      '<p>' . __('If you want to schedule the book review to be published in the future:', 'your_text_domain') . '</p>' .\n      '<ul>' .\n      '<li>' . __('Under the Publish module, click on the Edit link next to Publish.', 'your_text_domain') . '</li>' .\n      '<li>' . __('Change the date to the date to actual publish this article, then click on Ok.', 'your_text_domain') . '</li>' .\n      '</ul>' .\n      '<p><strong>' . __('For more information:', 'your_text_domain') . '</strong></p>' .\n      '<p>' . __('<a href=\"http://codex.wordpress.org/Posts_Edit_SubPanel\" target=\"_blank\">Edit Posts Documentation</a>', 'your_text_domain') . '</p>' .\n      '<p>' . __('<a href=\"http://wordpress.org/support/\" target=\"_blank\">Support Forums</a>', 'your_text_domain') . '</p>' ;\n  } elseif ( 'edit-evento' == $screen->id ) {\n    $contextual_help =\n      '<p>' . __('This is the help screen displaying the table of books blah blah blah.', 'your_text_domain') . '</p>' ;\n  }\n return $contextual_help;*/\n}//fin ProyectoAyuda\nadd_action('contextual_help','ProyectoAyuda', 10, 3 );\n\n}//Fin RenderAyudaComunicado\n}// Fin class ComunicadoVista \n?>",
+			"settings":
+			{
+				"buffer_size": 6668,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "includes/ValidacionInternaComunicado.php",
+			"contents": "jQuery(document).ready(function() {\n	// publish button validation\n	jQuery('#publish').click(function(){\n		$title_value = jQuery.trim(jQuery('#title').val());\n		if($title_value == 0 && $title_value != \" \"){\n			alert('Please insert title');\n			jQuery('.spinner').css(\"visibility\", \"hidden\");\n			jQuery('#title').focus();\n			return false;\n		}\n	});\n	// draft button validation\n	jQuery('#save-post').click(function(){\n		$title_value = jQuery.trim(jQuery('#title').val());\n		if($title_value == 0 && $title_value != \" \"){\n			alert('Please insert title');\n			jQuery('.spinner').css(\"visibility\", \"hidden\");\n			jQuery('#title').focus();\n			return false;\n		}\n	});\n});",
 			"settings":
 			{
-				"buffer_size": 56941,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "includes/js/ValidacionComunicado.js",
-			"settings":
-			{
-				"buffer_size": 2782,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "<?php\n/**\n * The base configuration for WordPress\n *\n * The wp-config.php creation script uses this file during the\n * installation. You don't have to use the web site, you can\n * copy this file to \"wp-config.php\" and fill in the values.\n *\n * This file contains the following configurations:\n *\n * * MySQL settings\n * * Secret keys\n * * Database table prefix\n * * ABSPATH\n *\n * @link https://codex.wordpress.org/Editing_wp-config.php\n *\n * @package WordPress\n */\n\n// ** MySQL settings - You can get this info from your web host ** //\n/** The name of the database for WordPress */\ndefine('DB_NAME', 'wordpress3');\n\n/** MySQL database username */\ndefine('DB_USER', 'root');\n\n/** MySQL database password */\ndefine('DB_PASSWORD', 'ap05029');\n\n/** MySQL hostname */\ndefine('DB_HOST', 'localhost');\n\n/** Database Charset to use in creating database tables. */\ndefine('DB_CHARSET', 'utf8');\n\n/** The Database Collate type. Don't change this if in doubt. */\ndefine('DB_COLLATE', '');\n\n/**#@+\n * Authentication Unique Keys and Salts.\n *\n * Change these to different unique phrases!\n * You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}\n * You can change these at any point in time to invalidate all existing cookies. This will force all users to have to log in again.\n *\n * @since 2.6.0\n */\ndefine('AUTH_KEY',         'put your unique phrase here');\ndefine('SECURE_AUTH_KEY',  'put your unique phrase here');\ndefine('LOGGED_IN_KEY',    'put your unique phrase here');\ndefine('NONCE_KEY',        'put your unique phrase here');\ndefine('AUTH_SALT',        'put your unique phrase here');\ndefine('SECURE_AUTH_SALT', 'put your unique phrase here');\ndefine('LOGGED_IN_SALT',   'put your unique phrase here');\ndefine('NONCE_SALT',       'put your unique phrase here');\n\n/**#@-*/\n\n/**\n * WordPress Database Table prefix.\n *\n * You can have multiple installations in one database if you give each\n * a unique prefix. Only numbers, letters, and underscores please!\n */\n$table_prefix  = 'wp_';\n\n/**\n * For developers: WordPress debugging mode.\n *\n * Change this to true to enable the display of notices during development.\n * It is strongly recommended that plugin and theme developers use WP_DEBUG\n * in their development environments.\n *\n * For information on other constants that can be used for debugging,\n * visit the Codex.\n *\n * @link https://codex.wordpress.org/Debugging_in_WordPress\n */\ndefine('WP_DEBUG', true);\n\n/* That's all, stop editing! Happy blogging. */\n\n/** Absolute path to the WordPress directory. */\nif ( !defined('ABSPATH') )\n	define('ABSPATH', dirname(__FILE__) . '/');\n\n/** Sets up WordPress vars and included files. */\nrequire_once(ABSPATH . 'wp-settings.php');\n\ndefine('WP_POST_REVISIONS', false);",
-			"settings":
-			{
-				"buffer_size": 2776,
-				"line_ending": "Unix"
+				"buffer_size": 657,
+				"line_ending": "Unix",
+				"name": "jQuery(document).ready(function() {"
 			}
 		},
 		{
@@ -309,10 +311,10 @@
 			}
 		},
 		{
-			"contents": "=> /var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/ValidacionInternaComunicado.php\n	|+| 1842\n	|+| 1844\n	|+| 1845\n	|+| 1847\n	|+| 1850\n",
+			"contents": "",
 			"settings":
 			{
-				"buffer_size": 151,
+				"buffer_size": 0,
 				"line_ending": "Unix",
 				"name": "Xdebug Breakpoint",
 				"read_only": true,
@@ -348,43 +350,56 @@
 	},
 	"file_history":
 	[
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/js/ValidacionComunicado.js",
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/ValidacionInternaComunicado.php",
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/index.php",
-		"/var/www/wordpress/wp-settings.php",
 		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/EstadoComunicado.php",
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/js/DeshabilitarPublish.js",
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/js/ImagenRequerida.js",
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/ImagenRequerida.php",
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/ImagenEnFeed.php",
 		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/ImagenDestacada.php",
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/SIGOES-Comunicados.sublime-project",
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/controller/StreamingController.php",
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/controller/EventoController.php",
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/controller/ProyectoController.php",
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/controller/ReporteController.php",
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/controller/InstitucionController.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/ImagenEnFeed.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/ImagenRequerida.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/MensajeComunicados.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/Rss.php",
 		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/SoloUnaCategoria.php",
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/OrdenarComunicado.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/ValidacionInternaComunicado.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/controller/StreamingController.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/controller/ReporteController.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/controller/ProyectoController.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/controller/OtrosController.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/controller/InstitucionController.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/controller/EventoController.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/controller/BitacoraController.php",
+		"/var/www/wordpress/wp-content/plugins/post-title-validation/js/post-title-validation.js",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/js/ValidacionComunicado.js",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/js/EstadoComunicado.js",
 		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/js/OrdenarComunicado.js",
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/js/Calendario/jquery-ui.css",
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/js/Calendario/jquery-1.9.1.js",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Usuarios/aam.php",
 		"/var/www/wordpress/wp-includes/plugin.php",
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/js/jquery.maskedinput.js",
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/js/taxonomy_order.js",
-		"/var/www/wordpress/wp-includes/wp-db.php",
-		"/var/www/wordpress/wp-includes/cache.php",
+		"/var/www/wordpress/wp-admin/index.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/index.php",
+		"/var/www/wordpress/wp-admin/admin-header.php",
+		"/var/www/wordpress/wp-admin/includes/class-wp-screen.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/SIGOES-Comunicados.sublime-project",
 		"/var/www/wordpress/wp-includes/load.php",
-		"/var/www/wordpress/wp-content/themes/RedSV/framework/demo-importer/demo-importer.php",
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/ValidacionComunicado.php",
+		"/var/www/wordpress/wp-includes/cache.php",
+		"/var/www/wordpress/wp-includes/wp-db.php",
+		"/var/www/wordpress/wp-settings.php",
+		"/var/www/wordpress/wp-includes/http.php",
 		"/var/www/wordpress/wp-admin/admin-ajax.php",
 		"/var/www/wordpress/wp-includes/functions.php",
+		"/var/www/wordpress/wp-admin/admin.php",
+		"/var/www/wordpress/wp-admin/edit.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/view/ComunicadoVista.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/js/DeshabilitarPublish.js",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/js/ImagenRequerida.js",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/OrdenarComunicado.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/js/Calendario/jquery-ui.css",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/js/Calendario/jquery-1.9.1.js",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/js/jquery.maskedinput.js",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/js/taxonomy_order.js",
+		"/var/www/wordpress/wp-content/themes/RedSV/framework/demo-importer/demo-importer.php",
+		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/ValidacionComunicado.php",
 		"/home/abarcawill/Dropbox/TG_2015/Shared/William/Desarrollo/SIGOES-Comunicados-07-10-15-Antes-Rafa/includes/js/ValidacionComunicado.js",
 		"/home/abarcawill/Dropbox/TG_2015/Shared/William/Desarrollo/SIGOES-Comunicados-07-10-15-Antes-Rafa/includes/ValidacionComunicado.php",
 		"/var/www/wordpress/wp-content/themes/RedSV/framework/page-composer/page-composer.php",
 		"/var/www/wordpress/wp-admin/includes/template.php",
 		"/var/www/wordpress/wp-content/themes/RedSV/framework/meta-box/inc/classes/meta-box.php",
-		"/var/www/wordpress/wp-admin/admin.php",
 		"/var/www/wordpress/wp-admin/post-new.php",
 		"/var/www/wordpress/wp-content/plugins/advanced-access-manager/application/control/subject.php",
 		"/var/www/wordpress/wp-content/plugins/metabox.php",
@@ -393,13 +408,9 @@
 		"/var/www/wordpress/wp-includes/pluggable-deprecated.php",
 		"/var/www/wordpress/wp-content/plugins/advanced-access-manager/config.php",
 		"/var/www/wordpress/wp-includes/pluggable.php",
-		"/var/www/wordpress/wp-includes/http.php",
 		"/var/www/wordpress/wp-content/uploads/export.csv",
 		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/OrdenComunicado.php",
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/includes/js/EstadoComunicado.js",
-		"/var/www/wordpress/wp-content/plugins/SIGOES-Comunicados/controller/OtrosController.php",
 		"/var/www/debug.sublime-project",
-		"/var/www/wordpress/wp-admin/admin-header.php",
 		"/var/www/wordpress/wp-admin/edit-form-advanced.php",
 		"/var/www/wordpress/wp-admin/post.php",
 		"/var/www/wordpress/wp-content/plugins/require-featured-image/admin-options.php",
@@ -430,6 +441,15 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"proyecto",
+			"proyectos",
+			"proyecto",
+			".</",
+			"edit",
+			"screen",
+			"$screen->id",
+			"screen",
+			"id",
 			"eliminar_lenguaje_HOYGAN",
 			"ortografia",
 			"desmu",
@@ -528,6 +548,10 @@
 		"regex": false,
 		"replace_history":
 		[
+			"streaming",
+			"evento",
+			"streaming",
+			"evento",
 			"OtrosController",
 			"OtrosCTP",
 			"OtrosInit",
@@ -544,355 +568,23 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "controller/EventoController.php",
+					"file": "view/ComunicadoVista.php",
 					"settings":
 					{
-						"buffer_size": 3410,
+						"buffer_size": 21632,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"bh_regions":
-							[
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close"
-							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"csslint_options":
-							{
-								"adjoining-classes": "warning",
-								"box-model": true,
-								"box-sizing": "warning",
-								"compatible-vendor-prefixes": "warning",
-								"display-property-grouping": true,
-								"duplicate-background-images": "warning",
-								"duplicate-properties": true,
-								"empty-rules": true,
-								"errors": true,
-								"fallback-colors": "warning",
-								"floats": "warning",
-								"font-faces": "warning",
-								"font-sizes": "warning",
-								"gradients": "warning",
-								"ids": "warning",
-								"import": "warning",
-								"important": "warning",
-								"known-properties": true,
-								"outline-none": "warning",
-								"overqualified-elements": "warning",
-								"qualified-headings": "warning",
-								"regex-selectors": "warning",
-								"rules-count": "warning",
-								"shorthand": "warning",
-								"star-property-hack": "warning",
-								"text-indent": "warning",
-								"underscore-property-hack": "warning",
-								"unique-headings": "warning",
-								"universal-selector": "warning",
-								"vendor-prefix": true,
-								"zero-units": "warning"
-							},
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"devel": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": "load-save",
-							"sublimelinter_delay": 2,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1704.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "controller/StreamingController.php",
-					"settings":
-					{
-						"buffer_size": 3480,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2859,
-								2859
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"bh_regions":
-							[
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close"
-							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"csslint_options":
-							{
-								"adjoining-classes": "warning",
-								"box-model": true,
-								"box-sizing": "warning",
-								"compatible-vendor-prefixes": "warning",
-								"display-property-grouping": true,
-								"duplicate-background-images": "warning",
-								"duplicate-properties": true,
-								"empty-rules": true,
-								"errors": true,
-								"fallback-colors": "warning",
-								"floats": "warning",
-								"font-faces": "warning",
-								"font-sizes": "warning",
-								"gradients": "warning",
-								"ids": "warning",
-								"import": "warning",
-								"important": "warning",
-								"known-properties": true,
-								"outline-none": "warning",
-								"overqualified-elements": "warning",
-								"qualified-headings": "warning",
-								"regex-selectors": "warning",
-								"rules-count": "warning",
-								"shorthand": "warning",
-								"star-property-hack": "warning",
-								"text-indent": "warning",
-								"underscore-property-hack": "warning",
-								"unique-headings": "warning",
-								"universal-selector": "warning",
-								"vendor-prefix": true,
-								"zero-units": "warning"
-							},
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"devel": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": "load-save",
-							"sublimelinter_delay": 2,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1549.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "includes/ValidacionInternaComunicado.php",
-					"settings":
-					{
-						"buffer_size": 56941,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								55663,
-								55663
+								13549,
+								13549
 							]
 						],
 						"settings":
@@ -1041,25 +733,355 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 44042.0,
+						"translation.y": 3674.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"settings":
+					{
+						"buffer_size": 640,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"auto_name": "INSERT INTO `wordpress`.`wp_posts` (`post_author`,",
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"settings":
+					{
+						"buffer_size": 6668,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6668,
+								6668
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 378.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "includes/js/ValidacionComunicado.js",
 					"settings":
 					{
-						"buffer_size": 2782,
+						"buffer_size": 657,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								732,
-								732
+								657,
+								657
 							]
 						],
 						"settings":
@@ -1071,6 +1093,7 @@
 								"README",
 								"FIXME"
 							],
+							"auto_name": "jQuery(document).ready(function() {",
 							"bh_regions":
 							[
 								"bh_regex",
@@ -1118,7 +1141,6 @@
 								"bh_single_quote_open",
 								"bh_single_quote_close"
 							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
 							"csslint_options":
 							{
 								"adjoining-classes": "warning",
@@ -1203,175 +1225,11 @@
 								"Ruby on Rails": "ruby"
 							},
 							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 168.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"settings":
-					{
-						"buffer_size": 2776,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2776,
-								2776
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"bh_regions":
-							[
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close"
-							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"csslint_options":
-							{
-								"adjoining-classes": "warning",
-								"box-model": true,
-								"box-sizing": "warning",
-								"compatible-vendor-prefixes": "warning",
-								"display-property-grouping": true,
-								"duplicate-background-images": "warning",
-								"duplicate-properties": true,
-								"empty-rules": true,
-								"errors": true,
-								"fallback-colors": "warning",
-								"floats": "warning",
-								"font-faces": "warning",
-								"font-sizes": "warning",
-								"gradients": "warning",
-								"ids": "warning",
-								"import": "warning",
-								"important": "warning",
-								"known-properties": true,
-								"outline-none": "warning",
-								"overqualified-elements": "warning",
-								"qualified-headings": "warning",
-								"regex-selectors": "warning",
-								"rules-count": "warning",
-								"shorthand": "warning",
-								"star-property-hack": "warning",
-								"text-indent": "warning",
-								"underscore-property-hack": "warning",
-								"unique-headings": "warning",
-								"universal-selector": "warning",
-								"vendor-prefix": true,
-								"zero-units": "warning"
-							},
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"devel": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": "load-save",
-							"sublimelinter_delay": 2,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 995.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1383,7 +1241,7 @@
 			"sheets":
 			[
 				{
-					"buffer": 5,
+					"buffer": 4,
 					"settings":
 					{
 						"buffer_size": 0,
@@ -1548,7 +1406,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 5,
 					"settings":
 					{
 						"buffer_size": 0,
@@ -1719,7 +1577,7 @@
 			"sheets":
 			[
 				{
-					"buffer": 7,
+					"buffer": 6,
 					"settings":
 					{
 						"buffer_size": 0,
@@ -1877,25 +1735,25 @@
 							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
 							"word_wrap": false
 						},
-						"translation.x": 0.0,
+						"translation.x": 61.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 7,
 					"settings":
 					{
-						"buffer_size": 151,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								151,
-								151
+								0,
+								0
 							]
 						],
 						"settings":
@@ -2091,7 +1949,7 @@
 		"rows":
 		[
 			0.0,
-			0.7,
+			0.923780487805,
 			1.0
 		]
 	},
@@ -2125,6 +1983,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 352.0,
+	"side_bar_width": 127.0,
 	"status_bar_visible": true
 }

@@ -1,4 +1,41 @@
 <?php
+/*---------------------------------------------------*/
+/* Agregar Grupo de opciones al perfil de usuario
+/*---------------------------------------------------*/
+add_action( 'show_user_profile', 'extended_user_profil_fields' );
+add_action( 'edit_user_profile', 'extended_user_profil_fields' );
+ 
+function extended_user_profil_fields( $user ) { ?>
+
+<h3><?php _e("Institucion a la que pertenece el usuario", "blank"); ?></h3>
+ 
+<table class="form-table">
+   <tr>
+      <th><label for="institucion"><?php _e("Institucion"); ?></label></th>
+      <td>
+         <input    type="text" name="institucion" id="institucion" 
+               value="<?php echo esc_attr( get_the_author_meta( 'institucion', $user->ID ) ); ?>" 
+               class="regular-text" /><br />
+         <span class="description"><?php _e("Inrgrese institucion."); ?></span>
+      </td>
+   </tr>
+   <tr>
+</table>
+
+<?php }
+ 
+add_action( 'personal_options_update', 'save_extended_user_profil_fields' );
+add_action( 'edit_user_profile_update', 'save_extended_user_profil_fields' );
+
+//Función que guarda los cambios 
+function save_extended_user_profil_fields( $user_id ) {
+ 
+if ( !current_user_can( 'edit_user', $user_id ) ) { return false; }
+ 
+update_usermeta( $user_id, 'institucion', $_POST['institucion'] );
+//update_usermeta( $user_id, 'ciudad', $_POST['ciudad'] );
+}
+
 function Activar_Reporte_Sigoes()
 {
     add_menu_page('Reporte SIGOES', 'Reporte SIGOES', 'manage_options', 'Reporte_SIGOES', 'MostrarReporte', 'dashicons-welcome-write-blog', 51);
@@ -6,6 +43,55 @@ function Activar_Reporte_Sigoes()
     add_submenu_page('null', 'ReporteComunicados', 'ReporteComunicados', 'manage_options', 'ReporteComunicados', 'ReporteComunicados', 'ReporteComunicados');
 }
 add_action('admin_menu', 'Activar_Reporte_Sigoes');
+
+
+add_action( 'in_admin_footer', 'registrar_CamposRequeridos' );
+function registrar_CamposRequeridos()
+{
+  ?>
+    <script>
+      (function ($) {
+        $('#first_name').prop('required',true);
+        $('#last_name').prop('required',true);
+      }(jQuery));
+    </script>
+
+    <script>
+      jQuery(document).ready(function() {
+        jQuery( document ).on( 'click', '#createusersub', function(){
+          var nombre = jQuery.trim(jQuery('#first_name').val());
+          var apellido = jQuery.trim(jQuery('#last_name').val());
+        if (nombre == null || nombre.trim() == ""){
+          alert("Debe llenar el campo nombre");
+          document.getElementById('first_name').focus()
+          return false;
+          }
+        if (apellido == null || apellido.trim() == ""){
+          alert("Debe llenar el campo apellido");
+          document.getElementById('last_name').focus()
+          return false;
+          }  
+      });
+
+      jQuery( document ).on( 'click', '#submit', function(){
+          var nombre = jQuery.trim(jQuery('#first_name').val());
+          var apellido = jQuery.trim(jQuery('#last_name').val());
+        if (nombre == null || nombre.trim() == ""){
+          alert("Debe llenar el campo nombre");
+          document.getElementById('first_name').focus()
+          return false;
+          }
+        if (apellido == null || apellido.trim() == ""){
+          alert("Debe llenar el campo apellido");
+          document.getElementById('last_name').focus()
+          return false;
+          }  
+      });
+
+    }); 
+    </script>
+  <?php
+}
 
 
 function ReporteComunicados()

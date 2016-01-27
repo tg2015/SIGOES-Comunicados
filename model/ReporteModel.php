@@ -58,7 +58,8 @@ $prefijo = $this->CRUD->prefix;
         (SELECT meta_value FROM ".$prefijo."usermeta WHERE user_id = post_author AND meta_key = 'nickname') alias,
         CONCAT(
         (SELECT meta_value FROM ".$prefijo."usermeta WHERE user_id = post_author AND meta_key = 'first_name') , ' ',
-        (SELECT meta_value FROM ".$prefijo."usermeta WHERE user_id = post_author AND meta_key = 'last_name') ) nombre,        
+        (SELECT meta_value FROM ".$prefijo."usermeta WHERE user_id = post_author AND meta_key = 'last_name') ) nombre,
+        (SELECT meta_value FROM ".$prefijo."usermeta WHERE user_id = post_author AND meta_key = 'Institucion') AS Institucion,
         date_format(Post.post_date, '%d-%m-%Y %H:%m:%s') AS Fecha_Creacion,
         date_format(Post.post_date_gmt, '%d-%m-%Y %H:%m:%s') AS Fecha_Modificacion
         FROM  ".$prefijo."posts AS Post, ".$prefijo."usermeta AS User,

@@ -134,9 +134,6 @@ private function get_sql_results()
     //Obtiene la consulta presentada en pantalla
     $sql_results = $reporteController->get_sql_result_pantalla($estado,$cat,$autor,$nick,$fecha_ini,$fecha_fin,$filtro_titulo);
 
-    // Obtiene consulta para crear archivo csv
-    //$array_results = $reporteController->get_sql_result_csv($estado,$cat,$autor,$nick,$fecha_ini,$fecha_fin); 
-    
     ///////////////// EXPORTAR ARCHIVOS PDF Y CSV    
     $fechaInExportar = $fecha_ini;
     $fechaFinExportar = $fecha_fin;
@@ -145,11 +142,11 @@ private function get_sql_results()
     
     if(isset($_POST['Exportar']))
     {
-    $arrayExportar = $array_results;
+    $arrayExportar  = $array_results;
     $estadoExportar = $_POST['ExportarEstado']; // Estado
     $categoExportar = $_POST['ExportarCat']; // Categoria
-    $rolExportar = $_POST['ExportarAutor'];       // Rol
-    $nickExportar = $_POST['ExportarNick'];     // Nick 
+    $rolExportar    = $_POST['ExportarAutor'];       // Rol
+    $nickExportar   = $_POST['ExportarNick'];     // Nick 
 
     
     
@@ -166,9 +163,9 @@ if(isset($_POST['filtra_fecha'])){
 
 <!--  Vista HTML -->        
 
-<div class="tablenav top widefat fixed">
+<div class="tablenav top widefat fixed" width="100%">
         <div class="alignleft actions bulkactions">
-            <label class="screen-reader-text" for="bulk-action-selector-top">Filtrar por Estado</label>
+            <label class="screen-reader-text" for="bulk-action-selector-top"></label>
             <form action="admin.php?page=ReporteComunicados" method="post" target="_blank">
             <p>
             <input id="export" class="button button-primary" type="submit" value="Exportar" name="Exportar">
@@ -183,7 +180,7 @@ if(isset($_POST['filtra_fecha'])){
             <input type="hidden" value="<?php echo $fecha_fin; ?>" name="ExportarFechaFin" />
             </form>
             <form action="" method="post">      
-            <TABLE class="widefat" >    
+            <TABLE class="" >    
                 <TR>
                 <!--Filtro Estado de Publicacion-->  
                 <TD>
@@ -259,7 +256,7 @@ if(isset($_POST['filtra_fecha'])){
                 </TD>
                 <TD>
                 <!--Filtro Rol de Usuario-->  
-                <!--<label class="screen-reader-text" for="cat">Filtrar por Rol</label>
+                <label class="screen-reader-text" for="cat">Filtrar por Rol</label>
                     <h3>Rol</h3>
                     <select id="Autor_post" class="postform" name="Autor_post" onchange = "javascript: submit()">
                         <option value="%">Todos los Roles</option>
@@ -295,9 +292,8 @@ if(isset($_POST['filtra_fecha'])){
                    
                     </select>
                 </TD>
-              -->
                 <!--Filtro Usuario de SIGOES-->  
-                <TD>
+               <!-- <TD>
                 <label class="screen-reader-text" for="cat">Filtrar por Nickname</label>
                     <h3>Usuario</h3>
                     <select id="Nick_user" class="postform" name="Nick_user" onchange = "javascript: submit()">
@@ -334,7 +330,7 @@ if(isset($_POST['filtra_fecha'])){
                    
                     </select>
                     </TD>
-                    
+                    -->
                     <TD>
                     <label class="screen-reader-text" for="filter-by-date"> Filtrar por fecha</label>
                     <h3>Fecha inicio</h3>
@@ -406,19 +402,19 @@ if(isset($_POST['filtra_fecha'])){
                 </TD>
                 
                 <TD>
-                <br/>
-                <input type="submit" class="button" value="Fitrar por fecha" name="filtra_fecha" id="post-query-submit">
+                <h3> <br/> </h3>
+                <input type="submit" class="button button-primary" value="Fitrar por fecha" name="filtra_fecha" id="post-query-submit">
                 </TD>
                 <TD>
-                <br/>
+                <h3> <br/> </h3>
                 <input type="button" class="button" value="Reestablecer" onclick="window.location.href='admin.php?page=Reporte_SIGOES'" action=$_SERVER['PHP_SELF']>
                 </TD>
                 <TD>
 
-                  <br/>
+                <h3> <br/> </h3>
                   <label class="screen-reader-text" for="post-search-input">Buscar por Titulo:</label>
                   <input id="post-search-input" type="search" value="" name="titulo">
-                  <input id="search-submit" class="button" type="submit" value="Buscar por Titulo">
+                  <input id="search-submit" class="button button-primary" type="submit" value="Buscar por Titulo">
                   
                 </TD> 
         </form>
@@ -491,9 +487,10 @@ if(isset($_POST['filtra_fecha'])){
                 'post_title' => __('Titulo'),
                 'post_type' => __('Categoria'),
                 'post_status' => __('Estado'),
-                'Rol_Autor' =>__('Rol_Autor'),
-                'alias' => __('ID_Usuario'),  
+                'Rol_Autor' =>__('Rol Autor'),
+                'alias' => __('Usuario'),  
                 'nombre' => __('Nombre'), 
+                'Institucion' => __('Institucion'), 
                 'Fecha_Creacion' => __('Fecha/hora Creado'),
                 'Fecha_Modificacion' =>__('Fecha/hora Modificado')                
             );
@@ -513,6 +510,7 @@ if(isset($_POST['filtra_fecha'])){
                 //'Rol_Autor' => array('Rol_Autor', true),  
                 'ID_Usuario' => array('alias', true),
                 'Nombre' => array('nombre', true), 
+                //'Institucion' => array('Institucion', true), 
                 //'Fecha_Creacion' => array('Fecha_Creacion', true),                
                 //'Fecha_Modificacion' => array('Fecha_Modificacion', true)
             );

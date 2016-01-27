@@ -27,7 +27,7 @@ jQuery(document).ready(function() {
 						flag = true;//para que click deje publicar
 					}else if(response=='@invalido@'){
 							//alert("response "+response);
-							alert("Titulo no permitido");
+							alert("Título no permitido");
 							jQuery('.spinner').css("visibility", "hidden");
 							jQuery('#title').focus();
 							flag = false;}
@@ -36,7 +36,7 @@ jQuery(document).ready(function() {
 							//alert("valor n: "+n);
 							if (n!=-1) {
 								//alert("response "+response);
-								alert("Titulo no permitido");
+								alert("Título no permitido");
 								jQuery('.spinner').css("visibility", "hidden");
 								jQuery('#title').focus();
 								flag = false;
@@ -73,7 +73,7 @@ jQuery(document).ready(function() {
 						flag = true;
 					}else if(response=='@invalido@'){
 							//alert("response "+response);
-							alert("Titulo no permitido");
+							alert("Título no permitido");
 							jQuery('.spinner').css("visibility", "hidden");
 							jQuery('#title').focus();
 							flag = false;}
@@ -82,7 +82,7 @@ jQuery(document).ready(function() {
 							//alert("valor n: "+n);
 							if (n!=-1) {
 								//alert("response "+response);
-								alert("Titulo no permitido");
+								alert("Título no permitido");
 								jQuery('.spinner').css("visibility", "hidden");
 								jQuery('#title').focus();
 								flag = false;
