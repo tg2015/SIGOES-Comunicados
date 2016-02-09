@@ -280,8 +280,8 @@ class InstitucionController
   </tr>
   
   <tr>
-  <th><h3>&nbsp;Dirección: </h3></th>       <td><input type="text" value="'.$direccion.'" name="direccion" id="direccion" size=37 required maxlength="100"></td>
-  <th><h3>Url: </h3></th>           <td><input type="url" value="'.$url.'" name="url" required size=37 maxlength="100" placeholder="http://www.institucion.gob.sv"><span class="requerido"></span></td>
+  <th><h3>&nbsp;Dirección: </h3><span class="description">(requerido)</span></th>       <td><input type="text" value="'.$direccion.'" name="direccion" id="direccion" size=37 required maxlength="100"></td>
+  <th><h3>Url: </h3><span class="description">(requerido)</span></th>           <td><input type="url" value="'.$url.'" name="url" required size=37 maxlength="100" placeholder="http://www.institucion.gob.sv"><span class="requerido"></span></td>
   </tr>
 
   <tr>

@@ -10,12 +10,12 @@ function crear_tablaInstitucion() {
 	idInstitucion 			INT(6) UNSIGNED AUTO_INCREMENT,
 	idUsuario 				BIGINT(20) UNSIGNED,
 	nombreInstitucion 		VARCHAR(100) NOT NULL,
-	telefonoInstitucion 	VARCHAR(9),
+	telefonoInstitucion 	VARCHAR(9) NOT NULL,
 	descripcionInstitucion 	VARCHAR(100),
-	direccionInstitucion 	VARCHAR(100),
+	direccionInstitucion 	VARCHAR(100) NOT NULL,
 	estadoInstitucion 		VARCHAR(20) DEFAULT 'Sin Comprobar',
 	estadoPlugin 	  		VARCHAR(20) DEFAULT 'Sin Comprobar',
-	urlInstitucion			VARCHAR(100),
+	urlInstitucion			VARCHAR(100) NOT NULL,
 	CONSTRAINT PRIMARY KEY (idInstitucion),
 	CONSTRAINT FK_ADMINISTRA FOREIGN KEY (idUsuario) REFERENCES $tablaUsuario(ID)
 	)$charset_collate;
@@ -39,8 +39,8 @@ function crear_tablaContacto() {
 	idContacto 			INT(6) UNSIGNED AUTO_INCREMENT,
 	idInstitucion 		INT(6) UNSIGNED,
 	nombreContacto 		VARCHAR(100) NOT NULL,
-	telefonoContacto 	VARCHAR(9),
-	emailContacto 		VARCHAR(100),
+	telefonoContacto 	VARCHAR(9) NOT NULL,
+	emailContacto 		VARCHAR(100) NOT NULL,
 	puestoContacto 		VARCHAR(100),
 	PRIMARY KEY (idContacto),
 	CONSTRAINT FK_POSEE FOREIGN KEY (idInstitucion) REFERENCES $tablaInstitucion(idInstitucion) ON DELETE CASCADE ON UPDATE CASCADE
