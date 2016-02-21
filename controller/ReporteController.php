@@ -48,6 +48,9 @@ add_action('admin_menu', 'Activar_Reporte_Sigoes');
 add_action( 'in_admin_footer', 'registrar_CamposRequeridos' );
 function registrar_CamposRequeridos()
 {
+  global $pagenow;
+  if (in_array( $pagenow, array( 'user-new.php' )) || in_array( $pagenow, array( 'user-edit.php' )))
+  {
   ?>
     <script>
       (function ($) {
@@ -91,6 +94,7 @@ function registrar_CamposRequeridos()
     }); 
     </script>
   <?php
+  }
 }
 
 

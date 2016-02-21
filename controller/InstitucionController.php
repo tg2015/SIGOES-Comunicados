@@ -27,7 +27,7 @@ function registrar_ValidacionMascara()
       if(isset($_GET["page"]))
       {
       $pagina = $_GET["page"];
-      if("AgregarContacto"==$pagina OR "AgregarInstitucion"==$pagina OR "Reporte_SIGOES"==$pagina)
+      if("AgregarContacto"==$pagina || "AgregarInstitucion"==$pagina || "Reporte_SIGOES"==$pagina)
         {
         //echo '<script type="text/javascript">alert("'.$pagina.'");</script>';
         EncolarValidacionMascara();

@@ -175,5 +175,13 @@ unset($submenu['index.php'][10]);
 unset($submenu['options-general.php'][25]); // Discussion
 return $submenu;
 }  
-add_action( 'admin_menu', 'edit_admin_menus' ); 
+add_action( 'admin_menu', 'edit_admin_menus' );
+
+
+function remove_core_updates(){
+    global $wp_version;return(object) array('last_checked'=> time(),'version_checked'=> $wp_version,);
+}
+add_filter('pre_site_transient_update_core','remove_core_updates');
+add_filter('pre_site_transient_update_plugins','remove_core_updates');
+add_filter('pre_site_transient_update_themes','remove_core_updates'); 
 ?>
