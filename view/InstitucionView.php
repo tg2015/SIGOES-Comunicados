@@ -54,9 +54,9 @@ private $posts_per_page = 10;
     <input name="formato" type="radio" value="xls">XLS
     &nbsp;&nbsp;&nbsp;&nbsp;
      <select name="tipoReporte">
-        <option value="inaccesible">Sitios Web Inaccesibles</option>
-        <option value="parametros">Parametros de Conexion</option>
         <option value="instituciones">Instituciones</option>
+        <option value="parametros">Parametros de Conexion</option>
+        <option value="inaccesible">Sitios Web Inaccesibles</option>
     </select>
     <label>Tipo de Reporte</label>
     </form>
