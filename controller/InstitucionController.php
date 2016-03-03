@@ -276,11 +276,11 @@ class InstitucionController
   
   <tr>
   <th><h3>&nbsp;Nombre Institución: <span class="description">(requerido)</span></h3></th>  <td><input type="text" value="'.$nombre.'" name="nombre" id="nombre" size=37 required maxlength="100" onkeypress="return soloLetras(event)"><span class="requerido"></span></td>
-  <th><h3>Teléfono: </h3></th>          <td><input type="text" value="'.$telefono.'" name="telefono" size=9 maxlength="9" id="phone"></td>
+  <th><h3>Teléfono: <span class="description">(requerido)</span></h3></th>          <td><input type="text" value="'.$telefono.'" name="telefono" size=9 maxlength="9" id="phone" required><span class="requerido"></span></td>
   </tr>
   
   <tr>
-  <th><h3>&nbsp;Dirección: </h3><span class="description">(requerido)</span></th>       <td><input type="text" value="'.$direccion.'" name="direccion" id="direccion" size=37 required maxlength="100"></td>
+  <th><h3>&nbsp;Dirección: </h3><span class="description">(requerido)</span></th>       <td><input type="text" value="'.$direccion.'" name="direccion" id="direccion" size=37 required maxlength="100"><span class="requerido"></span></td>
   <th><h3>Url: </h3><span class="description">(requerido)</span></th>           <td><input type="url" value="'.$url.'" name="url" required size=37 maxlength="100" placeholder="http://www.institucion.gob.sv"><span class="requerido"></span></td>
   </tr>
 
@@ -326,13 +326,13 @@ class InstitucionController
   </tr>
   
   <tr>
-  <th><h3>Nombre Institución: </h3></th>  <td><input type="text" value="'.$nombre.'" name="nombre" id="nombre" size=40 required maxlength="100" onkeypress="return soloLetras(event)"><span class="requerido"></span></td>
-  <th><h3>Teléfono: </h3></th>      <td><input type="tel" value="'.$telefono.'" name="telefono" maxlength="9" id="phone"></td>
+  <th><h3>Nombre Institución: <span class="description">(requerido)</span></h3></th>  <td><input type="text" value="'.$nombre.'" name="nombre" id="nombre" size=40 required maxlength="100" onkeypress="return soloLetras(event)"><span class="requerido"></span></td>
+  <th><h3>Teléfono: <span class="description">(requerido)</span></h3></th>      <td><input type="tel" value="'.$telefono.'" name="telefono" maxlength="9" id="phone" required><span class="requerido"></span></td>
   </tr>
   
   <tr>
-  <th><h3>&nbsp;Dirección: </h3></th>   <td><input type="text" value="'.$direccion.'" name="direccion" id="direccion" size=40 required maxlength="100"></td>
-  <th><h3>Url: </h3></th>       <td><input type="url" value="'.$url.'" name="url" required size=40 maxlength="100" placeholder="http://www.institucion.gob.sv"><span class="requerido"></span></td>
+  <th><h3>&nbsp;Dirección: <span class="description">(requerido)</span></h3></th>   <td><input type="text" value="'.$direccion.'" name="direccion" id="direccion" size=40 required maxlength="100"><span class="requerido"></span></td>
+  <th><h3>Url: <span class="description">(requerido)</span></h3></th>       <td><input type="url" value="'.$url.'" name="url" required size=40 maxlength="100" placeholder="http://www.institucion.gob.sv"><span class="requerido"></span></td>
   </tr>
   
   <tr>
@@ -406,12 +406,12 @@ class InstitucionController
   <form action="#" method="post">
   <td><input type="hidden" value="'.$idInstitucion.'" name="idInstitucion"></td>
   <tr>
-  <th><h3>&nbsp;Nombre Contacto: </h3></th> <td><input type="text" value="'.$nombre.'" id="nombre" name="nombre" size=40 required maxlength="50" onkeypress="return soloLetras(event)"><span class="requerido"></span></td>
-  <th><h3>Teléfono: </h3></th>        <td><input type="tel" value="'.$telefono.'" name="telefono" size=9 maxlength="9" id="phone"><span class="requerido"></span></td>
+  <th><h3>&nbsp;Nombre Contacto: <span class="description">(requerido)</span></h3></th> <td><input type="text" value="'.$nombre.'" id="nombre" name="nombre" size=40 required maxlength="50" onkeypress="return soloLetras(event)"><span class="requerido"></span></td>
+  <th><h3>Teléfono: <span class="description">(requerido)</span></h3></th>        <td><input type="tel" value="'.$telefono.'" name="telefono" size=9 maxlength="9" id="phone" required><span class="requerido"></span></td>
   </tr>
   
   <tr>
-  <th><h3>&nbsp;Email: </h3></th>       <td><input type="email" value="'.$email.'" id="email" name="email" size=40 required maxlength="50"><span class="requerido"></span></td>
+  <th><h3>&nbsp;Email: <span class="description">(requerido)</span></h3></th>       <td><input type="email" value="'.$email.'" id="email" name="email" size=40 required maxlength="50"><span class="requerido"></span></td>
   <th><h3>Puesto: </h3></th>          <td><input type="text" value="'.$puesto.'" name="puesto" size=30></td>
   </tr>
 
@@ -448,12 +448,12 @@ class InstitucionController
   <input type="hidden" value="'.$idContacto.'" name="idContacto"  >
   <input type="hidden" value="'.$idInstitucion.'" name="idRegresar">
   <tr>
-  <th><h3>&nbsp;Nombre Contacto: </h3></th> <td><input type="text" value="'.$nombre.'" id="nombre" name="nombre" size=40 required maxlength="50" onkeypress="return soloLetras(event)"><span class="requerido"></span></td>
-  <th><h3>Teléfono: </h3></th>        <td><input type="tel" value="'.$telefono.'" name="telefono" size=9 maxlength="9" id="phone"><span class="requerido"></span></td>
+  <th><h3>&nbsp;Nombre Contacto: <span class="description">(requerido)</span></h3></th> <td><input type="text" value="'.$nombre.'" id="nombre" name="nombre" size=40 required maxlength="50" onkeypress="return soloLetras(event)"><span class="requerido"></span></td>
+  <th><h3>Teléfono: <span class="description">(requerido)</span></h3></th>        <td><input type="tel" value="'.$telefono.'" name="telefono" size=9 maxlength="9" id="phone" required><span class="requerido"></span></td>
   </tr>
   
   <tr>
-  <th><h3>&nbsp;Email: </h3></th>       <td><input type="email" value="'.$email.'" name="email" size=40 required maxlength="50"><span class="requerido"></span></td>
+  <th><h3>&nbsp;Email: <span class="description">(requerido)</span></h3></th>       <td><input type="email" value="'.$email.'" name="email" size=40 required maxlength="50"><span class="requerido"></span></td>
   <th><h3>Puesto: </h3></th>          <td><input type="text" value="'.$puesto.'" name="puesto" size=30></td>
   </tr>
 
