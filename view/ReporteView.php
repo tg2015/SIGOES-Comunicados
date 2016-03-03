@@ -570,6 +570,9 @@ if(isset($_POST['filtra_fecha'])){
                 $no_title = __('Sin titulo');
                 if($posts[$key]->post_title == NULL)
                 {$posts[$key]->post_title = "<em>{$no_title}</em>";}
+
+                if($posts[$key]->Rol_Autor == 'administrator')
+                {$posts[$key]->Rol_Autor = 'Administrador';}
                 
                 $FC = $posts[$key]->Fecha_Creacion;
                 $FC_br1 = substr( $FC, -8);
