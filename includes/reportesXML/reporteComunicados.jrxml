@@ -331,7 +331,7 @@
 				<text><![CDATA[Estado]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="337" y="1" width="75" height="20" backcolor="#999999" uuid="779dec94-bf1b-46ef-98d1-3bd2e78c739c"/>
+				<reportElement mode="Opaque" x="280" y="1" width="75" height="20" backcolor="#999999" uuid="779dec94-bf1b-46ef-98d1-3bd2e78c739c"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -342,7 +342,7 @@
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Autor]]></text>
+				<text><![CDATA[Rol]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="412" y="1" width="88" height="20" backcolor="#999999" uuid="58e2f814-79ed-45ca-a02b-798cb7db25a5"/>
@@ -387,7 +387,7 @@
 				<text><![CDATA[Fecha Modificación Fecha / Hora]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="280" y="1" width="57" height="20" backcolor="#999999" uuid="ab4025f4-cf13-4e9e-96e4-f811b4b610b8"/>
+				<reportElement mode="Opaque" x="355" y="1" width="57" height="20" backcolor="#999999" uuid="ab4025f4-cf13-4e9e-96e4-f811b4b610b8"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -431,7 +431,7 @@
 				<textFieldExpression><![CDATA[$F{post_status}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement stretchType="RelativeToTallestObject" x="337" y="0" width="75" height="30" uuid="4bfd6913-2092-4dfe-977c-dec61d84540b"/>
+				<reportElement stretchType="RelativeToTallestObject" x="280" y="0" width="75" height="30" uuid="4bfd6913-2092-4dfe-977c-dec61d84540b"/>
 				<box rightPadding="0">
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>
@@ -525,7 +525,7 @@
 				<textFieldExpression><![CDATA[$F{post_type}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="280" y="0" width="57" height="30" uuid="3eb2b620-551d-4d42-8f48-f91059e27864"/>
+				<reportElement stretchType="RelativeToTallestObject" x="355" y="0" width="57" height="30" uuid="3eb2b620-551d-4d42-8f48-f91059e27864"/>
 				<box>
 					<pen lineWidth="1.25"/>
 					<topPen lineWidth="1.25"/>

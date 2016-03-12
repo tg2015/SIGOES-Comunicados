@@ -383,9 +383,9 @@ if(isset($_POST['filtra_fecha'])){
                 <?php
                    if(isset($_POST['fecha_ini'])){
                     $fecha_ini = $_POST['fecha_ini'];
-                    echo '<input type="date" id="fecha_ini" name = "fecha_ini" value = "'.$fecha_ini.'" class = "date" size=10 min="01-01-2005 00:00:00">';
+                    echo '<input type="date" id="fecha_ini" name = "fecha_ini" value = "'.$fecha_ini.'" class = "date" size=10 min="01-01-2005 00:00:00" readonly>';
                    }else{
-                    echo '<input type="date" id="fecha_ini" name = "fecha_ini" class = "date" size=10 min="01-01-2005 00:00:00">';
+                    echo '<input type="date" id="fecha_ini" name = "fecha_ini" class = "date" size=10 min="01-01-2005 00:00:00" readonly>';
                    }
                 ?>           
                 </TD>
@@ -394,9 +394,9 @@ if(isset($_POST['filtra_fecha'])){
                 <?php
                    if(isset($_POST['fecha_fin'])){
                     $fecha_fin = $_POST['fecha_fin'];
-                    echo '<input type="date" id="fecha_fin" name = "fecha_fin" value = "'.$fecha_fin.'" class = "date" size=10 min="01-01-2005 00:00:00">';
+                    echo '<input type="date" id="fecha_fin" name = "fecha_fin" value = "'.$fecha_fin.'" class = "date" size=10 min="01-01-2005 00:00:00" readonly>';
                    }else{
-                    echo '<input type="date" id="fecha_fin" name = "fecha_fin" class = "date" size=10 min="01-01-2005 00:00:00"> ';
+                    echo '<input type="date" id="fecha_fin" name = "fecha_fin" class = "date" size=10 min="01-01-2005 00:00:00" readonly> ';
                    }
                 ?>   
                 </TD>
@@ -570,6 +570,9 @@ if(isset($_POST['filtra_fecha'])){
                 $no_title = __('Sin titulo');
                 if($posts[$key]->post_title == NULL)
                 {$posts[$key]->post_title = "<em>{$no_title}</em>";}
+
+                if($posts[$key]->Rol_Autor == 'administrator')
+                {$posts[$key]->Rol_Autor = 'Administrador';}
                 
                 $FC = $posts[$key]->Fecha_Creacion;
                 $FC_br1 = substr( $FC, -8);
