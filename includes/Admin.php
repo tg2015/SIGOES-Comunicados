@@ -68,7 +68,7 @@ add_action('admin_menu', 'admin_pages');
             //remove_menu_page('themes.php'); // Apariencia
             //remove_menu_page('plugins.php'); // Plugins
             //remove_menu_page('users.php'); // Usuarios
-            remove_menu_page('tools.php'); // Herramientas
+            //remove_menu_page('tools.php'); // Herramientas
             //remove_menu_page('options-general.php'); // Ajustes
 	}
 

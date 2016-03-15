@@ -34,3 +34,4 @@ require_once(SIGOES_PLUGIN_DIR.'/includes/CrearTablas.php');
 require_once(SIGOES_PLUGIN_DIR.'/includes/Admin.php');
 //Mensajes
 require_once(SIGOES_PLUGIN_DIR.'/includes/MensajeComunicados.php');
+require_once(SIGOES_PLUGIN_DIR.'/includes/Sesion.php');
