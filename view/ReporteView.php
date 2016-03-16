@@ -383,9 +383,9 @@ if(isset($_POST['filtra_fecha'])){
                 <?php
                    if(isset($_POST['fecha_ini'])){
                     $fecha_ini = $_POST['fecha_ini'];
-                    echo '<input type="date" id="fecha_ini" name = "fecha_ini" value = "'.$fecha_ini.'" class = "date" size=10 min="01-01-2005 00:00:00" readonly>';
+                    echo '<input type="date" id="fecha_ini" name = "fecha_ini" value = "'.$fecha_ini.'" class = "date" size=10 min="01-01-2005 00:00:00" >';
                    }else{
-                    echo '<input type="date" id="fecha_ini" name = "fecha_ini" class = "date" size=10 min="01-01-2005 00:00:00" readonly>';
+                    echo '<input type="date" id="fecha_ini" name = "fecha_ini" class = "date" size=10 min="01-01-2005 00:00:00" >';
                    }
                 ?>           
                 </TD>
@@ -394,9 +394,9 @@ if(isset($_POST['filtra_fecha'])){
                 <?php
                    if(isset($_POST['fecha_fin'])){
                     $fecha_fin = $_POST['fecha_fin'];
-                    echo '<input type="date" id="fecha_fin" name = "fecha_fin" value = "'.$fecha_fin.'" class = "date" size=10 min="01-01-2005 00:00:00" readonly>';
+                    echo '<input type="date" id="fecha_fin" name = "fecha_fin" value = "'.$fecha_fin.'" class = "date" size=10 min="01-01-2005 00:00:00" >';
                    }else{
-                    echo '<input type="date" id="fecha_fin" name = "fecha_fin" class = "date" size=10 min="01-01-2005 00:00:00" readonly> ';
+                    echo '<input type="date" id="fecha_fin" name = "fecha_fin" class = "date" size=10 min="01-01-2005 00:00:00" > ';
                    }
                 ?>   
                 </TD>
