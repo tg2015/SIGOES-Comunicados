@@ -6,6 +6,15 @@ function customAdminCSS() {
     	display: none !important;
     }
     </style>';
+
+//.aam-icon-small-delete
+ //Ocultar boton eliminar de rol usuario
+echo '<style type="text/css">
+.aam-icon-small-delete {
+    display: none;
+    visibility: hidden;
+}
+    </style>';
 //Elimar opcion Agregar mas cetegorias
 echo '<style type="text/css">#category-add-toggle {
     display: none;
